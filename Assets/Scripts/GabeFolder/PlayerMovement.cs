@@ -58,7 +58,6 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Dash(Vector3 localDir)
     {
         cantDash = true;
-        Movement.Disable();
         float dTimeRemaining = dashTime;
 
         /* The loop below ends up being a pseudo-update function. This is able to 
@@ -73,7 +72,6 @@ public class PlayerMovement : MonoBehaviour
             transform.position += localDir * Time.deltaTime * dashSpeed;
             yield return null;
         }
-        Movement.Enable();
         yield return new WaitForSeconds(dashCooldown);
         cantDash = false;
     }
