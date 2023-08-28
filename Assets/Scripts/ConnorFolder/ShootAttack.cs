@@ -26,7 +26,7 @@ public class ShootAttack : Attack {
         var hit = Physics2D.Raycast(transform.position, dir, range == -1 ? Mathf.Infinity : range, LayerMask.GetMask("Enemy"));
 
         if(hit.collider != null) {
-            Debug.Log("Hit enemy");
+            hit.collider.gameObject.GetComponent<Health>().takeDamage(getDamage());
         }
     }
 
