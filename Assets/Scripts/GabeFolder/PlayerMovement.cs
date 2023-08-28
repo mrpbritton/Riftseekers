@@ -51,7 +51,37 @@ public class PlayerMovement : MonoBehaviour
         direction.z = pInput.Player.Movement.ReadValue<Vector3>().z;
         direction.y = 0;
 
-        player.Move(speed * Time.deltaTime * direction);
+        switch(direction.x, direction.z)
+        {
+            case (1, -1):
+                direction.x -= 1;
+                break;
+            case (1, 0):
+                direction.x -= 1;
+                break;
+            case (1, 1):
+                direction.x -= 1;
+                break;
+            case (0, 1):
+                direction.z += 1;
+                break;
+            case (0, -1):
+                direction.z -= 1;
+                break;
+            case (-1, -1):
+                direction.x += 1;
+                break;
+            case (-1, 0):
+                direction.x += 1;
+                break;
+            case (-1, 1):
+                direction.z += 1;
+                break;
+            default:
+                break;
+        }
+
+        player.Move(speed * Time.deltaTime * direction.normalized);
     }
 
     IEnumerator Dash(Vector3 localDir)
