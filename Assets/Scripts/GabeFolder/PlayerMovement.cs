@@ -6,8 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMovement : MonoBehaviour
 {
-    public InputAction Movement;
-    public InputAction DashInput;
+    public PInput pInput;
 
     [Header("Regular Movement")]
     [SerializeField, Tooltip("How fast the player moves")]
@@ -27,16 +26,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
-        Movement.Enable();
-        DashInput.Enable();
+        pInput = new PInput();
+        pInput.Enable();   
         player = GetComponent<CharacterController>();
-        DashInput.performed += DashPress;
+        pInput.Player.Dash.started += DashPress;
     }
     private void OnDisable()
     {
-        Movement.Disable();
-        DashInput.Disable();
-        DashInput.performed -= DashPress;
+        pInput.Disable();
+        pInput.Player.Dash.started -= DashPress;
     }
 
     private void DashPress(InputAction.CallbackContext c)
@@ -49,11 +47,11 @@ public class PlayerMovement : MonoBehaviour
     //cbt otherwise known as cock and ball torture
     private void Update()
     {
-        direction.x = Movement.ReadValue<Vector2>().x;
-        direction.z = Movement.ReadValue<Vector2>().y;
+        direction.x = pInput.Player.Movement.ReadValue<Vector3>().x;
+        direction.z = pInput.Player.Movement.ReadValue<Vector3>().z;
         direction.y = 0;
 
-        player.Move(direction * speed);
+        player.Move(speed * Time.deltaTime * direction);
     }
 
     IEnumerator Dash(Vector3 localDir)

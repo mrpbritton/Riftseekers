@@ -21,6 +21,7 @@ public class pMove : MonoBehaviour
     [SerializeField, Tooltip("Speed of the dash")]
     private float dashSpeed;
     private bool cantDash;
+
     private void Start()
     {
         Movement.Enable();
