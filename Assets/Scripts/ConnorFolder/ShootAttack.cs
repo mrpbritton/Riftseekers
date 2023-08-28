@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShootAttack : Attack {
     //  set to -1 for infinite
     [SerializeField] float range = -1f;
+    [SerializeField] int damage = 12;
 
 
     private void Update() {
@@ -18,21 +19,18 @@ public class ShootAttack : Attack {
     }
 
     public override int getDamage() {
-        return 12;
+        return damage;
     }
 
     public override void attack() {
         //  shoots a raycast FROM THE POSITION OF THE GUN (not from the player's position or the barrel of the gun) in the direction of the cursor
-        var dir = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        var dir = (Vector3)(Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         RaycastHit hit;
-        var thing = Physics.Raycast(transform.position, dir, out hit, range == -1 ? Mathf.Infinity : range, LayerMask.GetMask("Enemy"));
         // Does the ray intersect any objects excluding the player layer
-        if(thing) {
+        if(Physics.Raycast(transform.position, dir, out hit, range == -1 ? Mathf.Infinity : range, LayerMask.GetMask("Enemy"))) {
             hit.collider.gameObject.GetComponent<Health>().takeDamage(getDamage());
-            Debug.Log("here");
+            //Debug.Log("enemy hit");
         }
-
-        Debug.DrawRay(transform.position, dir);
 
         /*
         var hit = Physics2D.Raycast(transform.position, dir, range == -1 ? Mathf.Infinity : range, LayerMask.GetMask("Enemy"));
