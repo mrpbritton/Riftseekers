@@ -50,23 +50,6 @@ public class PlayerMovement : MonoBehaviour
         direction.x = pInput.Player.Movement.ReadValue<Vector3>().x;
         direction.z = pInput.Player.Movement.ReadValue<Vector3>().z;
         direction.y = 0;
-        
-        if(direction.z == 1 && direction.x != -1)
-        {
-            direction.x -= 1;
-        }
-        else if (direction.z == -1 && direction.x != 1)
-        {
-            direction.x += 1; 
-        }
-        else if (direction.x == 1 && direction.z != 1)
-        {
-            direction.z += 1;
-        }
-        else if (direction.x == -1 && direction.z != -1)
-        {
-            direction.z -= 1;
-        }
 
         player.Move(speed * Time.deltaTime * direction.normalized);
     }
