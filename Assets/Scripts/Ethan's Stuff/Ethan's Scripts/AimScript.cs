@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class AimScript : MonoBehaviour
 {
-    private Vector3 mousePos;
+    public GameObject Mouse;
     void Start()
     {
         
@@ -14,12 +15,6 @@ public class AimScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        LookAtMouse();
-    }
-    public void LookAtMouse()
-    {
-        mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Debug.Log("MousePos:" + mousePos);
-        transform.LookAt(new Vector3(mousePos.x, transform.position.y, mousePos.z));
+        transform.LookAt(new Vector3(Mouse.transform.position.x,1.5f , Mouse.transform.position.z));
     }
 }
