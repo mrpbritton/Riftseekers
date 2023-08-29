@@ -50,35 +50,22 @@ public class PlayerMovement : MonoBehaviour
         direction.x = pInput.Player.Movement.ReadValue<Vector3>().x;
         direction.z = pInput.Player.Movement.ReadValue<Vector3>().z;
         direction.y = 0;
-
-        switch(direction.x, direction.z)
+        
+        if(direction.z == 1 && direction.x != -1)
         {
-            case (1, -1):
-                direction.x -= 1;
-                break;
-            case (1, 0):
-                direction.x -= 1;
-                break;
-            case (1, 1):
-                direction.x -= 1;
-                break;
-            case (0, 1):
-                direction.z += 1;
-                break;
-            case (0, -1):
-                direction.z -= 1;
-                break;
-            case (-1, -1):
-                direction.x += 1;
-                break;
-            case (-1, 0):
-                direction.x += 1;
-                break;
-            case (-1, 1):
-                direction.z += 1;
-                break;
-            default:
-                break;
+            direction.x -= 1;
+        }
+        else if (direction.z == -1 && direction.x != 1)
+        {
+            direction.x += 1; 
+        }
+        else if (direction.x == 1 && direction.z != 1)
+        {
+            direction.z += 1;
+        }
+        else if (direction.x == -1 && direction.z != -1)
+        {
+            direction.z -= 1;
         }
 
         player.Move(speed * Time.deltaTime * direction.normalized);
@@ -98,9 +85,10 @@ public class PlayerMovement : MonoBehaviour
         while (dTimeRemaining > 0)
         {
             dTimeRemaining -= Time.deltaTime;
-            player.Move(localDir * dashSpeed);
+            player.Move(localDir * dashSpeed * Time.deltaTime);
             yield return null;
         }
+
         yield return new WaitForSeconds(dashCooldown);
         cantDash = false;
     }
