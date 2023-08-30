@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         pInput = new PInput();
         pInput.Enable();   
         player = GetComponent<CharacterController>();
+
         pInput.Player.Dash.started += DashPress;
     }
     private void OnDisable()
@@ -51,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
         direction.z = pInput.Player.Movement.ReadValue<Vector3>().z;
         direction.y = 0;
 
-        player.Move(speed * Time.deltaTime * direction.normalized);
+        player.Move(speed * Time.deltaTime * direction);
     }
 
     IEnumerator Dash(Vector3 localDir)
