@@ -9,9 +9,9 @@ public class Damage : GameAction
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent(out EnemyHealth healthSystem))
+        if (other.TryGetComponent(out Health healthSystem))
         {
-            healthSystem.damageTaken(damage);
+            healthSystem.takeDamage(damage);
         }
     }
 }
