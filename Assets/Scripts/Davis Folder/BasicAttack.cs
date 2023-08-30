@@ -22,4 +22,9 @@ public class BasicAttack : Attack
     {
         throw new System.NotImplementedException();
     }
+
+    public override bool isBasicAttack()
+    {
+        return true;
+    }
 }

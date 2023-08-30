@@ -23,4 +23,9 @@ public class qAbility : Attack
     {
         Debug.Log("Q ability activated");
     }
+
+    public override bool isBasicAttack()
+    {
+        return false;
+    }
 }
