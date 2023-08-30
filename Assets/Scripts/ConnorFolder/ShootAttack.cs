@@ -9,15 +9,11 @@ public class ShootAttack : Attack {
 
 
     public override attackType getAttackType() {
-        return attackType.Shoot;
+        return attackType.Secondary;
     }
 
     public override int getDamage() {
         return damage;
-    }
-
-    public override bool isBasicAttack() {
-        return false;
     }
 
     public override void attack() {

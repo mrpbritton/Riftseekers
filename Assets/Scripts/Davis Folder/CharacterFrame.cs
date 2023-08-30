@@ -19,6 +19,11 @@ public class CharacterFrame : MonoBehaviour
         pInput.Enable();
 
         pInput.Player.BasicAttack.started += ctx => basicAttack.attack();
+        pInput.Player.SecondAttack.started += ctx => secondAttack.attack();
+        pInput.Player.Ability1.started += ctx => qAbility.attack();
+        pInput.Player.Ability2.started += ctx => eAbility.attack();
+        pInput.Player.Ability3.started += ctx => rAbility.attack();
+        pInput.Player.Ult.started += ctx => fAbility.attack();
     }
 
     private void OnDisable()
