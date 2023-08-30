@@ -18,7 +18,7 @@ public class CharacterFrame : MonoBehaviour
         pInput = new PInput();
         pInput.Enable();
 
-       // pInput.Player.BasicAttack.started += basicAttack.attack();
+        pInput.Player.BasicAttack.started += ctx => basicAttack.attack();
     }
 
     private void OnDisable()
@@ -26,12 +26,4 @@ public class CharacterFrame : MonoBehaviour
         pInput.Disable();
     }
     //tree to execute each respective attack
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            //Debug.Log("Does this work?");
-            qAbility.attack();
-        }
-    }
 }
