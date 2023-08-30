@@ -54,7 +54,7 @@ public class Sword : Attack
     }
     public override attackType getAttackType()
     {
-        return attackType.Sword;
+        return attackType.Basic;
     }
     public override int getDamage()
     {

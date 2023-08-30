@@ -11,7 +11,7 @@ public class qAbility : Attack
     }
     public override attackType getAttackType()
     {
-        return attackType.Sword;
+        return attackType.QAbility;
     }
 
     /*public override void attack(InputAction.CallbackContext c)
