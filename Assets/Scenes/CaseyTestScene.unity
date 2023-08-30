@@ -184,7 +184,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 128
 --- !u!1 &848272127
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +424,7 @@ GameObject:
   - component: {fileID: 938183834}
   - component: {fileID: 938183838}
   - component: {fileID: 938183839}
+  - component: {fileID: 938183840}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -556,6 +557,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 10
   agent: {fileID: 938183838}
+--- !u!114 &938183840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 938183833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4440539afd1aad946b551b267751b09b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxhealth: 0
+  currentHealth: 0
 --- !u!1 &1077770137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,7 +1129,7 @@ GameObject:
   - component: {fileID: 1741748048}
   - component: {fileID: 1741748047}
   - component: {fileID: 1741748051}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
