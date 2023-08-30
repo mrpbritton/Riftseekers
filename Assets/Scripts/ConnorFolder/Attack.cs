@@ -12,5 +12,4 @@ public abstract class Attack : MonoBehaviour {
     public abstract attackType getAttackType();
     public abstract int getDamage();
     public abstract void attack();
-    public abstract bool isBasicAttack();   //  returns false if its a secondary attack
 }
