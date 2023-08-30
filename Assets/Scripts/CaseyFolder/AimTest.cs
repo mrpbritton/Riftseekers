@@ -10,7 +10,7 @@ public class AimTest : MonoBehaviour
     void Update()
     {
         ScreenPosition = Input.mousePosition;
-        ScreenPosition.z = Camera.main.nearClipPlane + 8.7f;
+        ScreenPosition.z = Camera.main.nearClipPlane + 21.5f;
 
         WorldPosition = Camera.main.ScreenToWorldPoint(ScreenPosition);
 
