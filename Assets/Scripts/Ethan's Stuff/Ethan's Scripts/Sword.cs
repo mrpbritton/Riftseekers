@@ -8,8 +8,8 @@ public class Sword : Attack
     [SerializeField] int damage = 12;
     [SerializeField] GameObject hurtBox;
     [SerializeField] float swingSpeed;
-    public float angle = 0;
-    public bool slice, direction; //If the attack is happening
+    private float angle = 0;
+    private bool slice, direction; //If the attack is happening
 
     void Update()
     {
