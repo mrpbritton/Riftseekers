@@ -50,7 +50,6 @@ public class PlayerMovement : MonoBehaviour
     {
         direction.x = pInput.Player.Movement.ReadValue<Vector3>().x;
         direction.z = pInput.Player.Movement.ReadValue<Vector3>().z;
-        direction.y = 0;
 
         player.Move(speed * Time.deltaTime * direction);
     }
