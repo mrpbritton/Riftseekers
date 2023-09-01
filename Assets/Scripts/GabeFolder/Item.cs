@@ -2,30 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item : MonoBehaviour
+public class Item : Interact
 {
-    private PInput pInput;
-    private GameObject player;
+    [SerializeField, Tooltip("What this item does")]
+    private string description;
+    [SerializeField, Tooltip("How much this item sells for")]
+    private int value;
 
-    [SerializeField, Tooltip("How far away the player can be from the item to pick it up")]
-    private float pickUpRange;
-    
-
-    private void Start()
+    protected override void Interacted()
     {
-        pInput.Enable();
-
-        player = GameObject.FindGameObjectWithTag("Player");
-        pInput.Player.Ability2.performed += ctxt => PickUp();
-    }
-
-    private void PickUp()
-    {
-
-    }
-
-    private void Update()
-    {
-        Debug.DrawRay(transform.position, transform.position - player.transform.position, Color.red, pickUpRange);
+        if (!canInteract) return;
+        Debug.Log("item picked up!");
+        interactSequence.Play();
     }
 }
