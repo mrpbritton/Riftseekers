@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("How fast the player moves")]
     private float speed;
     private Vector3 direction;
+    [SerializeField, Tooltip("How fast the player falls")]
+    private float fallSpeed;
 
     [Header("Dash")]
     [SerializeField, Tooltip("Cooldown of the dash ability in seconds")]
@@ -50,6 +52,12 @@ public class PlayerMovement : MonoBehaviour
         direction.z = pInput.Player.Movement.ReadValue<Vector3>().z;
 
         player.Move(speed * Time.deltaTime * direction);
+
+        //if the player isn't grounded, move them towards the ground.
+        if(player.isGrounded == false) 
+        {
+            player.Move(fallSpeed * Time.deltaTime * Vector3.down);
+        }
     }
 
     public IEnumerator Dash()
