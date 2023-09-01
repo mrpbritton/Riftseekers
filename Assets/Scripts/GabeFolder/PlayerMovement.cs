@@ -41,9 +41,7 @@ public class PlayerMovement : MonoBehaviour
     private void DashPress(InputAction.CallbackContext c)
     {
         if (cantDash) return;
-        if (direction == Vector3.zero) //if no movement, dash right
-            direction.x = 1;
-        StartCoroutine(Dash(direction));
+        StartCoroutine(Dash());
     }
     //cbt otherwise known as cock and ball torture
     private void Update()
@@ -54,10 +52,13 @@ public class PlayerMovement : MonoBehaviour
         player.Move(speed * Time.deltaTime * direction);
     }
 
-    public IEnumerator Dash(Vector3 localDir)
+    public IEnumerator Dash()
     {
         cantDash = true;
         float dTimeRemaining = dashTime;
+
+        if(direction == Vector3.zero) //if no movement, dash right
+            direction.x = 1;
 
         /* The loop below ends up being a pseudo-update function. This is able to 
          * happen because of the yield return null; at the end of this while loop.
@@ -68,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
         while (dTimeRemaining > 0)
         {
             dTimeRemaining -= Time.deltaTime;
-            player.Move(localDir * dashSpeed * Time.deltaTime);
+            player.Move(direction * dashSpeed * Time.deltaTime);
             yield return null;
         }
 
