@@ -1,11 +1,13 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CharacterFrame : MonoBehaviour
 {
     private PInput pInput;
+    [Header("Attacks and Abilities")]
     public Attack basicAttack;
     public Attack secondAttack;
     public Attack qAbility;
@@ -13,7 +15,13 @@ public class CharacterFrame : MonoBehaviour
     public Attack rAbility;
     public Attack fAbility;
 
+    [Header("Stats")]
+    public float movementSpeed;
+    public float dashSpeed;
+
     Coroutine attacker = null;
+
+    public static Action UpdateStats = delegate { };
 
     //more options to come in the future
     private void Start()
@@ -35,13 +43,17 @@ public class CharacterFrame : MonoBehaviour
         attacker = null;
     }
 
-
     void performAttack(Attack curAttack) {
         if(attacker != null) return;
         curAttack.attack();
         attacker = StartCoroutine(attackWaiter(curAttack.cooldownTime()));
     }
 
+    public static void Restat()
+    {
+        UpdateStats();
+    }
+    
     private void OnDisable()
     {
         pInput.Disable();

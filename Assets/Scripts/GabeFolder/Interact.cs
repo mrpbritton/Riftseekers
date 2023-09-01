@@ -6,6 +6,7 @@ public class Interact : MonoBehaviour
 {
     private PInput pInput;
     protected GameObject player;
+    protected CharacterFrame frame;
 
     [SerializeField, Tooltip("How far away the player can be from the interactable to interact with it")]
     protected float interactRange;
@@ -14,18 +15,21 @@ public class Interact : MonoBehaviour
     [SerializeField, Tooltip("Sequence exectuted when interacted with.")]
     protected GameActionSequence interactSequence;
 
-    protected void Start()
+    protected virtual void Start()
     {
         pInput = new();
         pInput.Enable();
-        pInput.Player.Ability2.performed += ctxt => Interacted();
+        pInput.Player.Interact.performed += ctxt => Interacted();
         if (player == null)
+        {
             player = GameObject.FindGameObjectWithTag("Player");
+            frame = player.GetComponent<CharacterFrame>();
+        }
     }
 
     protected virtual void Interacted() { /*override me*/ }
 
-    protected void Update()
+    protected virtual void Update()
     {
         interactRay.origin = transform.position;
         interactRay.direction = (player.transform.position - transform.position).normalized;

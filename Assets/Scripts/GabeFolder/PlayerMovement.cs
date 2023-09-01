@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(CharacterFrame))]
 public class PlayerMovement : MonoBehaviour
 {
     public PInput pInput;
@@ -25,19 +26,30 @@ public class PlayerMovement : MonoBehaviour
     private bool cantDash;
 
     private CharacterController player;
+    private CharacterFrame frame;
 
     private void Start()
     {
         pInput = new PInput();
         pInput.Enable();   
         player = GetComponent<CharacterController>();
-
+        frame = GetComponent<CharacterFrame>();
+        speed = frame.movementSpeed;
+        dashSpeed = frame.dashSpeed;
         pInput.Player.Dash.started += DashPress;
+
+        CharacterFrame.UpdateStats += UpdateStats;
     }
     private void OnDisable()
     {
         pInput.Disable();
         pInput.Player.Dash.started -= DashPress;
+    }
+
+    private void UpdateStats()
+    {
+        speed = frame.movementSpeed;
+        dashSpeed = frame.dashSpeed;
     }
 
     private void DashPress(InputAction.CallbackContext c)
