@@ -35,4 +35,8 @@ public class ShootAttack : Attack {
         }*/
     }
 
+    public override float cooldownTime() {
+        return 1f;
+    }
+
 }

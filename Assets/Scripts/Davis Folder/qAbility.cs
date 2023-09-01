@@ -24,4 +24,8 @@ public class qAbility : Attack
         Debug.Log("Q ability activated");
     }
 
+    public override float cooldownTime() {
+        return 1f;
+    }
+
 }

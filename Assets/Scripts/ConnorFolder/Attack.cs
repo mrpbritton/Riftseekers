@@ -12,4 +12,5 @@ public abstract class Attack : MonoBehaviour {
     public abstract attackType getAttackType();
     public abstract int getDamage();
     public abstract void attack();
+    public abstract float cooldownTime();   //  NOTE: this does nothing atm
 }

@@ -64,4 +64,7 @@ public class Sword : Attack
     {
         slice = true;
     }
+    public override float cooldownTime() {
+        return 1f;
+    }
 }
