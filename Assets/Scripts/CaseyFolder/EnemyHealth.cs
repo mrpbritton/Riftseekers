@@ -23,6 +23,7 @@ public class EnemyHealth : MonoBehaviour
     }
     private void deathAnimation()
     {
+        Debug.Log("death");
         Destroy(gameObject);
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameActionSequence : MonoBehaviour
+public class GameActionSequence : GameAction
 {
     [SerializeField]
     private List<GameAction> actionList;
