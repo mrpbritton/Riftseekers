@@ -25,7 +25,7 @@ public class Aim : MonoBehaviour
 
         //raycast
         range.direction = new Vector3(cursorWorldPos.x - originPosition.position.x, 
-                                      cursorWorldPos.y - originPosition.position.y + transform.localScale.y, 
+                                      cursorWorldPos.y - 2*originPosition.position.y, 
                                       cursorWorldPos.z - originPosition.position.z);
         range.origin = transform.position;
         Debug.DrawRay(range.origin, range.direction.normalized * detectionDistance, Color.red);

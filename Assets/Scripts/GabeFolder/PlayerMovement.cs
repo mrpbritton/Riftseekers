@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
         player.Move(speed * Time.deltaTime * direction);
     }
 
-    IEnumerator Dash(Vector3 localDir)
+    public IEnumerator Dash(Vector3 localDir)
     {
         cantDash = true;
         float dTimeRemaining = dashTime;
