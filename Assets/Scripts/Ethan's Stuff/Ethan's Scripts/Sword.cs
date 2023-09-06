@@ -6,7 +6,7 @@ public class Sword : Attack
 {
     // Start is called before the first frame update
     [SerializeField] int damage = 12;
-    [SerializeField] GameObject hurtBox;
+    [SerializeField] GameObject hurtBox, aimRotation;
     [SerializeField] float swingSpeed;
     private float angle = 0;
     private bool slice, direction; //If the attack is happening
@@ -25,12 +25,13 @@ public class Sword : Attack
                 if (angle <= 180)
                 {
                     angle += Time.deltaTime * swingSpeed * 100;
-                    hurtBox.transform.rotation = Quaternion.Euler(hurtBox.transform.rotation.x, angle, hurtBox.transform.rotation.z);
+                    hurtBox.transform.eulerAngles += new Vector3(0, Time.deltaTime * swingSpeed * 100, 0);
+
                 }
                 else
                 {
                     angle = 180;
-                    hurtBox.transform.rotation = Quaternion.Euler(hurtBox.transform.rotation.x, angle, hurtBox.transform.rotation.z);
+                    hurtBox.transform.eulerAngles = new Vector3(0, aimRotation.transform.eulerAngles.y + 180, 0);
                     direction = true;
                     slice = false;
                 }
@@ -40,12 +41,12 @@ public class Sword : Attack
                 if (angle >= 0)
                 {
                     angle -= Time.deltaTime * swingSpeed * 100;
-                    hurtBox.transform.rotation = Quaternion.Euler(hurtBox.transform.rotation.x, angle, hurtBox.transform.rotation.z);
+                    hurtBox.transform.eulerAngles -= new Vector3(0, Time.deltaTime * swingSpeed * 100, 0);
                 }
                 else
                 {
                     angle = 0;
-                    hurtBox.transform.rotation = Quaternion.Euler(hurtBox.transform.rotation.x, angle, hurtBox.transform.rotation.z);
+                    hurtBox.transform.eulerAngles = new Vector3(0, aimRotation.transform.eulerAngles.y, 0);
                     direction = false;
                     slice = false;
                 }
