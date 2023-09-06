@@ -96,4 +96,10 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         cantDash = false;
     }
+
+
+    //  for connor's dash attack
+    public float getDashTime() {
+        return dashTime;
+    }
 }

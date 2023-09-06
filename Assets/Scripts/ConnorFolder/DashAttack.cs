@@ -5,6 +5,10 @@ using UnityEngine;
 public class DashAttack : Attack {
 
     PlayerMovement pm;
+    Coroutine attacker = null;
+
+    //  the radius of the sphere collider that is used to check for collided enemies
+    [SerializeField] float radius;
 
     private void Start() {
         pm = FindObjectOfType<PlayerMovement>();
@@ -13,10 +17,8 @@ public class DashAttack : Attack {
     }
 
     public override void attack() {
-        Debug.Log("here");
-        if(Physics.CheckSphere(transform.position, 3f, LayerMask.GetMask("Enemy"))) {
-            StartCoroutine(pm.Dash());
-        }
+        StartCoroutine(pm.Dash());
+        attacker = StartCoroutine(checkForHits());
     }
 
     public override attackType getAttackType() {
@@ -24,10 +26,29 @@ public class DashAttack : Attack {
     }
 
     public override int getDamage() {
-        return 15;
+        return 10;
     }
 
     public override float cooldownTime() {
-        return 5f;
+        return 1f;
+    }
+
+    IEnumerator checkForHits() {
+        float t = pm.getDashTime();
+        float s = Time.time, e = Time.time;
+        while(t > 0f) {
+            e = Time.time;
+            t -= e - s;
+            s = Time.time;
+            var col =  Physics.OverlapSphere(pm.transform.position, radius, LayerMask.GetMask("Enemy"));
+            //  checks for monsters hit
+            if(col.Length > 0) {
+                foreach(var i in col)
+                    i.gameObject.GetComponent<EnemyHealth>().damageTaken(getDamage());
+            }
+            yield return new WaitForEndOfFrame();
+        }
+
+        attacker = null;
     }
 }

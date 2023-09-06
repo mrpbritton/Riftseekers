@@ -7,11 +7,13 @@ public class RocketBlast : MonoBehaviour {
     [SerializeField] float maxRadius;
     [SerializeField] float explodeTime;
 
+    [SerializeField] float dmg;
+
 
     private void OnTriggerEnter(Collider col) {
         if(LayerMask.LayerToName(col.gameObject.layer) == "Enemy") {
             Debug.Log("Enemy exploded");
-            //  add damaging stuff here
+            col.gameObject.GetComponent<EnemyHealth>().damageTaken(dmg);
         }
     }
 

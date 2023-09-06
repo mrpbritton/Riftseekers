@@ -17,8 +17,7 @@ public class RocketInstance : MonoBehaviour {
         switch(LayerMask.LayerToName(col.gameObject.layer)) {
             case "Enemy":
                 //case "Other tag that would cause this to explode here":
-                //  health stuff here
-                Debug.Log("Rocket hit enemy");
+                col.gameObject.GetComponent<EnemyHealth>().damageTaken(parentAttack.getDamage());
                 rb.explode();
                 break;
         }

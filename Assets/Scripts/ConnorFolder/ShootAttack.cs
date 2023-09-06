@@ -23,8 +23,7 @@ public class ShootAttack : Attack {
         RaycastHit hit;
         // Does the ray intersect any objects excluding the player layer
         if(Physics.Raycast(transform.position, dir, out hit, range == -1 ? Mathf.Infinity : range, LayerMask.GetMask("Enemy"))) {
-            hit.collider.gameObject.GetComponent<Health>().takeDamage(getDamage());
-            //Debug.Log("enemy hit");
+            hit.collider.gameObject.GetComponent<EnemyHealth>().damageTaken(getDamage());
         }
 
         /* for 2D stuff if we have 2D stuff later
