@@ -35,6 +35,7 @@ public class CharacterFrame : MonoBehaviour
         pInput.Player.Ability2.started += ctx => performAttack(eAbility);
         pInput.Player.Ability3.started += ctx => performAttack(rAbility);
         pInput.Player.Ult.started += ctx => performAttack(fAbility);
+        UpdateStats();
     }
 
     //  waits for the attack cooldown to finish

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(GameActionSequence))]
 public class Interact : MonoBehaviour
 {
     private PInput pInput;
@@ -25,6 +26,7 @@ public class Interact : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player");
             frame = player.GetComponent<CharacterFrame>();
         }
+        interactSequence = GetComponent<GameActionSequence>();
     }
 
     protected virtual void Interacted() { /*override me*/ }
