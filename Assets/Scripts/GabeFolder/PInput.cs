@@ -107,6 +107,15 @@ public partial class @PInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ControllerAim"",
+                    ""type"": ""Value"",
+                    ""id"": ""e77155af-8a87-48e5-a4ad-ec3234680115"",
+                    ""expectedControlType"": ""Vector3"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -439,6 +448,83 @@ public partial class @PInput: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""RightStick"",
+                    ""id"": ""1a0578f6-d9fd-45ac-bd3f-0c881776c061"",
+                    ""path"": ""3DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ControllerAim"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""d767fa61-7ac6-4907-bd3a-6997be73afbe"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ControllerAim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""af5c51ba-0bd0-4354-884a-7d56f888a756"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ControllerAim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""6704e42a-dbe0-4f21-a09d-73abd3553fb4"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ControllerAim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""aeec7cdc-f507-41d2-badc-1329ba29da19"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ControllerAim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""forward"",
+                    ""id"": ""41229437-fae2-48c2-b1dc-fc15f42ceafe"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ControllerAim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""backward"",
+                    ""id"": ""0be53e54-ea1f-4cae-a890-70ac374edd32"",
+                    ""path"": ""<Gamepad>/rightStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ControllerAim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -456,6 +542,7 @@ public partial class @PInput: IInputActionCollection2, IDisposable
         m_Player_BasicAttack = m_Player.FindAction("BasicAttack", throwIfNotFound: true);
         m_Player_SecondAttack = m_Player.FindAction("SecondAttack", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_ControllerAim = m_Player.FindAction("ControllerAim", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -526,6 +613,7 @@ public partial class @PInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_BasicAttack;
     private readonly InputAction m_Player_SecondAttack;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_ControllerAim;
     public struct PlayerActions
     {
         private @PInput m_Wrapper;
@@ -539,6 +627,7 @@ public partial class @PInput: IInputActionCollection2, IDisposable
         public InputAction @BasicAttack => m_Wrapper.m_Player_BasicAttack;
         public InputAction @SecondAttack => m_Wrapper.m_Player_SecondAttack;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @ControllerAim => m_Wrapper.m_Player_ControllerAim;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -575,6 +664,9 @@ public partial class @PInput: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @ControllerAim.started += instance.OnControllerAim;
+            @ControllerAim.performed += instance.OnControllerAim;
+            @ControllerAim.canceled += instance.OnControllerAim;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -606,6 +698,9 @@ public partial class @PInput: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @ControllerAim.started -= instance.OnControllerAim;
+            @ControllerAim.performed -= instance.OnControllerAim;
+            @ControllerAim.canceled -= instance.OnControllerAim;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -634,5 +729,6 @@ public partial class @PInput: IInputActionCollection2, IDisposable
         void OnBasicAttack(InputAction.CallbackContext context);
         void OnSecondAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnControllerAim(InputAction.CallbackContext context);
     }
 }

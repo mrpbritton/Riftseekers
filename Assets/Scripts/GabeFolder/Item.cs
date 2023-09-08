@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+[System.Serializable]
 public class Item : Interact
 {
     [SerializeField, Tooltip("What this item does")]
