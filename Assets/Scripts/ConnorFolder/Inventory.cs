@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class Inventory {
-    public static Bag itemBag = new Bag(10);  //  this number is the max number of items the player can hold
+    static int maxItemCount = 10;  //  this number is the max number of items the player can hold
+    public static Bag itemBag = new Bag(maxItemCount);
 
     static string bagTag = "BagTag";
 
@@ -11,10 +12,9 @@ public static class Inventory {
         var d = JsonUtility.ToJson(itemBag);
         SaveData.setString(bagTag, d);
     }
-    public static Bag loadInventory() {
+    public static void loadInventory() {
         var d = SaveData.getString(bagTag);
-        if(string.IsNullOrEmpty(d)) return null;
-        return JsonUtility.FromJson<Bag>(d);
+        itemBag = string.IsNullOrEmpty(d) ? new Bag(maxItemCount) : JsonUtility.FromJson<Bag>(d);
     }
 
     public static void addItem(Item i) {
@@ -28,6 +28,13 @@ public static class Inventory {
         if(i < itemBag.items.Count)
             itemBag.items.RemoveAt(i);
     }
+
+    public static Item getItem(int i) {
+        Debug.Log(itemBag.items.Count);
+        if(i < itemBag.items.Count)
+            return itemBag.items[i];
+        return null;
+    }
 }
 
 [System.Serializable]
@@ -37,6 +44,6 @@ public class Bag {
 
     public Bag(int max, List<Item> i = null) {
         maxCount = max;
-        items = i == null ? new List<Item> () : i;
+        items = i == null ? new List<Item>() : i;
     }
 }

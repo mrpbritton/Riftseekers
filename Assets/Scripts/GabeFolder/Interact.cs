@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(GameActionSequence))]
+[System.Serializable]
 public class Interact : MonoBehaviour
 {
     private PInput pInput;
