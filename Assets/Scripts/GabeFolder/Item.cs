@@ -6,11 +6,11 @@ using UnityEngine;
 [System.Serializable]
 public class Item : Interact
 {
-    [Tooltip("Name of the item")]
-    public string name;
+    [Tooltip("Name/title of the item")]
+    public string title;
     [Tooltip("What this item does")]
     public string description;
-    [SerializeField, Tooltip("How much this item sells for")]
+    [Tooltip("How much this item sells for")]
     public int value;
 
     protected override void Start()
