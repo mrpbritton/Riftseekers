@@ -16,6 +16,18 @@ public static class Inventory {
         if(string.IsNullOrEmpty(d)) return null;
         return JsonUtility.FromJson<Bag>(d);
     }
+
+    public static void addItem(Item i) {
+        itemBag.items.Add(i);
+    }
+    public static void removeItem(Item i) {
+        if(itemBag.items.Contains(i))
+            itemBag.items.Remove(i);
+    }
+    public static void removeItem(int i) {
+        if(i < itemBag.items.Count)
+            itemBag.items.RemoveAt(i);
+    }
 }
 
 [System.Serializable]
