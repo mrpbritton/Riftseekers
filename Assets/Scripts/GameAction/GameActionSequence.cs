@@ -11,10 +11,17 @@ public class GameActionSequence : GameAction
     {
         Play();
     }
-
     public void Play()
     {
         StartCoroutine(nameof(Sequence));
+    }
+    public override void DeAction()
+    {
+        //nothing
+    }
+    public override void ResetToDefault()
+    {
+        //nothing
     }
 
     IEnumerator Sequence()
