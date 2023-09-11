@@ -17,7 +17,8 @@ public class Interact : MonoBehaviour
     [SerializeField, Tooltip("Sequence exectuted when interacted with.")]
     protected GameActionSequence interactSequence;
 
-    protected virtual void Start()
+    protected virtual void Start() { }
+    protected void Awake()
     {
         pInput = new();
         pInput.Enable();
@@ -28,19 +29,15 @@ public class Interact : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player");
         }
 
-        //The reason we are doing an AddComponent instead of a GetComponent
-        //  is to make sure that if the item is a sphere by default, it doesn't
-        //  override the current collider
-
         interactCollider = gameObject.GetComponent<SphereCollider>();
-        interactCollider.name = "interactCollider";
-        interactCollider.isTrigger = true;
         interactCollider.radius = interactRange;
-
-        interactSequence = GetComponent<GameActionSequence>();
     }
 
-    protected virtual void Interacted() { /*override me*/ }
+    protected virtual void Interacted() 
+    {
+        if (!canInteract) return; //if cant interact, return
+        interactSequence.Play();
+    }
 
     private void OnTriggerEnter(Collider other)
     {

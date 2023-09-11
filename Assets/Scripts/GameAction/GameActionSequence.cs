@@ -7,6 +7,11 @@ public class GameActionSequence : GameAction
     [SerializeField]
     private List<GameAction> actionList;
 
+    public override void Action()
+    {
+        Play();
+    }
+
     public void Play()
     {
         StartCoroutine(nameof(Sequence));
