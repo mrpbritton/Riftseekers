@@ -629,7 +629,7 @@ MonoBehaviour:
   rAbility: {fileID: 0}
   fAbility: {fileID: 0}
   movementSpeed: 10
-  dashSpeed: 0
+  dashSpeed: 5
 --- !u!1 &1505630956
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,8 +707,6 @@ GameObject:
   - component: {fileID: 1531314703}
   - component: {fileID: 1531314701}
   - component: {fileID: 1531314707}
-  - component: {fileID: 1531314709}
-  - component: {fileID: 1531314708}
   m_Layer: 0
   m_Name: PlayerModel
   m_TagString: Untagged
@@ -844,35 +842,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Mouse: {fileID: 57990517}
---- !u!114 &1531314708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531314699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ee13536e1560e54a9bfdc479ac39398, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
-  damage: 5
---- !u!114 &1531314709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531314699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3555b29c65fdcf0459d7ca7086ba5ab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
-  gAction:
-  - {fileID: 1531314708}
 --- !u!1 &1741748046
 GameObject:
   m_ObjectHideFlags: 0

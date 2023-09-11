@@ -13,11 +13,9 @@ public class EnemyFiring : MonoBehaviour
     [SerializeField]
     private float reloadTime = 2f;
     private Quaternion rotation = Quaternion.identity;
-//    private bool reload;
     private void Start()
     {
         StartCoroutine(nameof(Reloading));
-//        reload = true;
     }
 
     private void FireShot()
@@ -27,22 +25,9 @@ public class EnemyFiring : MonoBehaviour
         project.Direction = transform.forward;
         StartCoroutine(nameof(Reloading));
     }
-    /*
-        void Update()
-        {
-
-            if (reload == false)
-            {
-                FireShot();
-                reload = true;
-                StartCoroutine(nameof(Reloading));
-            }
-        }
-    */
     IEnumerator Reloading()
     {
         yield return new WaitForSeconds(reloadTime);
-//        reload = false;
         FireShot();
     }
 
