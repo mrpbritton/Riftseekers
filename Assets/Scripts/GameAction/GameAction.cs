@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameAction : MonoBehaviour
+public abstract class GameAction : MonoBehaviour
 {
     [SerializeField]
     public float delay;
-    public virtual void Action() { }
-    public virtual void DeAction() { }
-    public virtual void ResetToDefault() { }
+    public abstract void Action();
+    public abstract void DeAction();
+    public abstract void ResetToDefault();
 }

@@ -24,4 +24,25 @@ public class GameActionTrigger : GameAction
         }
         bActive = false;
     }
+
+    public override void Action()
+    {
+        if (bActive) return;
+        StartCoroutine(nameof(DelayActions));
+    }
+
+    public void Play()
+    {
+        if (bActive) return;
+        StartCoroutine(nameof(DelayActions));
+    }
+
+    public override void DeAction()
+    {
+        //nothing
+    }
+    public override void ResetToDefault()
+    {
+        //nothing
+    }
 }
