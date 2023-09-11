@@ -8,7 +8,6 @@ public class Aim : MonoBehaviour
     private float detectionDistance;
     [SerializeField]
     private Camera cam;
-
     
     private Vector3 cursorPos;
     private Vector3 cursorDir;
@@ -19,9 +18,7 @@ public class Aim : MonoBehaviour
         cursorPos = Input.mousePosition;
 
         //raycast
-        cursorDir = new Vector3(cursorPos.x - Screen.width / 2,
-                                     cursorPos.y - Screen.height / 2,
-                                     0);
+        cursorDir = new Vector3(cursorPos.x - Screen.width / 2, cursorPos.y - Screen.height / 2, 0);
 
         //rotation
         float angle = Mathf.Atan2(cursorDir.y, cursorDir.x) * Mathf.Rad2Deg;
