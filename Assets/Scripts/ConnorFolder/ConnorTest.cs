@@ -5,6 +5,8 @@ using UnityEngine;
 public class ConnorTest : MonoBehaviour {
 
     private void Awake() {
+        //setsThings();
+        seesThings();
     }
 
     void save() {
@@ -22,8 +24,17 @@ public class ConnorTest : MonoBehaviour {
     }
 
     void setsThings() {
-        Inventory.setActiveItem(1, 0);
-        Inventory.setActiveItem(3, 1);
-        Inventory.setActiveItem(2, 2);
+        SaveData.wipe();
+        Inventory.overrideActiveItem(0, FindObjectOfType<ItemLibrary>().getItem(1));
+        Inventory.overrideActiveItem(1, FindObjectOfType<ItemLibrary>().getItem(2));
+        Inventory.overrideActiveItem(2, FindObjectOfType<ItemLibrary>().getItem(0));
+        Inventory.saveInventory();
+    }
+
+    void seesThings() {
+        Inventory.loadInventory();
+        Debug.Log(Inventory.getActiveItem(0).title);
+        Debug.Log(Inventory.getActiveItem(1).title);
+        Debug.Log(Inventory.getActiveItem(2).title);
     }
 }

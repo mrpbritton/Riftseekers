@@ -3,26 +3,42 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public static class Inventory {
-    static int maxItemCount = 10;  //  this number is the max number of items the player can hold
+    static int maxItemCount = 9;  //  this number is the max number of items the player can hold
     public static Bag itemBag = new Bag(maxItemCount);
 
     static string bagTag = "BagTag";
-    static string activeItemTag(int ind) {
-        //  checks if ind is usable
-        if(ind > 3 || ind < 0)
-            Debug.LogError("Used Invalid Active Item Slot");
-        return "ActiveItemTag" + ind.ToString();
-    }
 
     //  saves the indexes of active items
-    public static void setActiveItem(int indexInBag, int usedActiveSlot) {
-        SaveData.setInt(activeItemTag(usedActiveSlot), indexInBag);
+    public static void overrideActiveItem(int slot, ConItem item) {
+        switch(slot) {
+            case 0:
+                itemBag.activeItem1 = new ItemSaveData(item);
+                break;
+            case 1:
+                itemBag.activeItem2 = new ItemSaveData(item);
+                break;
+            case 2:
+                itemBag.activeItem3 = new ItemSaveData(item);
+                break;
+            default:
+                Debug.LogError("Trying to save an active item in an invalid slot");
+                break;
+        }
     }
     public static ConItem getActiveItem(int slotInd) {
-        int ind = SaveData.getInt(activeItemTag(slotInd), -1);
-        return ind == -1 ? null : getItem(ind);
+        switch(slotInd) {
+            case 0:
+                return itemBag.activeItem1.toItem();
+            case 1:
+                return itemBag.activeItem2.toItem();
+            case 2:
+                return itemBag.activeItem3.toItem();
+            default:
+                Debug.LogError("Trying to save an active item in an invalid slot");
+                return null;
+        }
     }
-    
+
     //  Item saving things
     public static void saveInventory() {
         var d = JsonUtility.ToJson(itemBag);
@@ -53,7 +69,11 @@ public class Bag {
     public int maxCount;
     public List<ItemSaveData> items;
 
-    public Bag(int max, List<ConItem> i = null) {
+    public int randInd;
+
+    public ItemSaveData activeItem1 = null, activeItem2 = null, activeItem3 = null;
+
+    public Bag(int max, List<ConItem> i = null, ItemSaveData active1 = null, ItemSaveData active2 = null, ItemSaveData active3 = null) {
         maxCount = max;
         items = new List<ItemSaveData>();
         if(i != null) {
@@ -61,6 +81,11 @@ public class Bag {
                 items.Add(new ItemSaveData(j));
             }
         }
+        activeItem1 = active1;
+        activeItem2 = active2;
+        activeItem3 = active3;
+
+        randInd = Random.Range(0, 100000);
     }
 }
 
