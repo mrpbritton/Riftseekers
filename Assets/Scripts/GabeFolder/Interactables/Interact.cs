@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(GameActionSequence))]
 [RequireComponent(typeof(SphereCollider))]
+[RequireComponent(typeof(GameActionSequence))]
 public class Interact : MonoBehaviour
 {
     private PInput pInput;
@@ -31,6 +31,12 @@ public class Interact : MonoBehaviour
 
         interactCollider = gameObject.GetComponent<SphereCollider>();
         interactCollider.radius = interactRange;
+    }
+
+    protected void OnDestroy()
+    {
+        pInput.Player.Interact.performed -= ctxt => Interacted();
+        pInput.Disable();
     }
 
     protected virtual void Interacted() 
