@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(GameActionSequence))]
-[System.Serializable]
+[RequireComponent(typeof(SphereCollider))]
 public class Interact : MonoBehaviour
 {
     private PInput pInput;
     protected GameObject player;
-    protected CharacterFrame frame;
 
-    [SerializeField, Tooltip("How far away the player can be from the interactable to interact with it")]
+    [SerializeField, Tooltip("Range the player can be from the interactable to interact with it")]
     protected float interactRange;
-    private Ray interactRay;
+    protected SphereCollider interactCollider;
     protected bool canInteract;
+
     [SerializeField, Tooltip("Sequence exectuted when interacted with.")]
     protected GameActionSequence interactSequence;
 
@@ -22,22 +22,33 @@ public class Interact : MonoBehaviour
         pInput = new();
         pInput.Enable();
         pInput.Player.Interact.performed += ctxt => Interacted();
+        
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player");
-            frame = player.GetComponent<CharacterFrame>();
         }
+
+        //The reason we are doing an AddComponent instead of a GetComponent
+        //  is to make sure that if the item is a sphere by default, it doesn't
+        //  override the current collider
+
+        interactCollider = gameObject.GetComponent<SphereCollider>();
+        interactCollider.name = "interactCollider";
+        interactCollider.isTrigger = true;
+        interactCollider.radius = interactRange;
+
         interactSequence = GetComponent<GameActionSequence>();
     }
 
     protected virtual void Interacted() { /*override me*/ }
 
-    protected virtual void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        interactRay.origin = transform.position;
-        interactRay.direction = (player.transform.position - transform.position).normalized;
-        Debug.DrawRay(interactRay.origin, interactRay.direction * interactRange, Color.green);
+        canInteract = true;
+    }
 
-        canInteract = Physics.Raycast(interactRay.origin, interactRay.direction, interactRange);
+    private void OnTriggerExit(Collider other)
+    {
+        canInteract = false;
     }
 }

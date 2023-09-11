@@ -17,10 +17,10 @@ public class Aim : MonoBehaviour
         //cursor into world space
         cursorPos = Input.mousePosition;
 
-        //raycast
+        //puts the cursor direction vector in the middle of the screen
         cursorDir = new Vector3(cursorPos.x - Screen.width / 2, cursorPos.y - Screen.height / 2, 0);
 
-        //rotation
+        //rotation that points somewhere around the middle of the screen
         float angle = Mathf.Atan2(cursorDir.y, cursorDir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, -angle, 0));
     }

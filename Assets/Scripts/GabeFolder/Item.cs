@@ -17,17 +17,10 @@ public class Item : Interact
     {
         base.Start();
     }
-
-    protected override void Update()
-    {
-        base.Update();
-    }
-
     protected override void Interacted()
     {
         if (!canInteract) return;
         Debug.Log("item picked up!");
-        frame.movementSpeed += 0.5f;
         CharacterFrame.Restat();
         interactSequence.Play();
     }
