@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class Inventory {
     static int maxItemCount = 9;  //  this number is the max number of items the player can hold
-    public static Bag itemBag = new Bag(maxItemCount);
+    static Bag itemBag = new Bag(maxItemCount);
 
     static string bagTag = "BagTag";
 
@@ -56,11 +56,31 @@ public static class Inventory {
         if(i < itemBag.items.Count)
             itemBag.items.RemoveAt(i);
     }
+    public static void clear() {
+        itemBag.items.Clear();
+    }
 
     public static ConItem getItem(int i) {
         if(i < itemBag.items.Count)
             return itemBag.items[i].toItem();
         return null;
+    }
+    public static List<ConItem> getItems() {
+        var temp = new List<ConItem>();
+        foreach(var i in itemBag.items) 
+            temp.Add(i.toItem());
+        return temp;
+    }
+
+    public static int itemCount(bool includeActives) {
+        int temp = itemBag.items.Count;
+        if(itemBag.activeItem1 != null)
+            temp++;
+        if(itemBag.activeItem2 != null)
+            temp++;
+        if(itemBag.activeItem3 != null)
+            temp++;
+        return temp;
     }
 }
 
@@ -68,8 +88,6 @@ public static class Inventory {
 public class Bag {
     public int maxCount;
     public List<ItemSaveData> items;
-
-    public int randInd;
 
     public ItemSaveData activeItem1 = null, activeItem2 = null, activeItem3 = null;
 
@@ -84,8 +102,6 @@ public class Bag {
         activeItem1 = active1;
         activeItem2 = active2;
         activeItem3 = active3;
-
-        randInd = Random.Range(0, 100000);
     }
 }
 
