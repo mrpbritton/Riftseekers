@@ -7,6 +7,7 @@ public static class Inventory {
     static Bag itemBag = new Bag(maxItemCount);
 
     static string bagTag = "BagTag";
+    static string thingTag = "thingTag";
 
     //  saves the indexes of active items
     public static void overrideActiveItem(int slot, ConItem item) {
@@ -71,6 +72,17 @@ public static class Inventory {
             temp.Add(i.toItem());
         return temp;
     }
+    public static int getItemIndex(ConItem item) {
+        int index = 0;
+        foreach(var i in itemBag.items) {
+            if(i.title == item.title) {
+                return index;
+            }
+            index++;
+        }
+        Debug.LogError("No index for item");
+        return -1;
+    }
 
     public static int itemCount(bool includeActives) {
         int temp = itemBag.items.Count;
@@ -81,6 +93,15 @@ public static class Inventory {
         if(itemBag.activeItem3 != null)
             temp++;
         return temp;
+    }
+
+    public static void saveThing() {
+        temp t = new temp();
+        var d = JsonUtility.ToJson(t);
+        SaveData.setString(thingTag, d);
+
+        d = SaveData.getString(thingTag);
+        var th = JsonUtility.FromJson<temp>(d);
     }
 }
 
@@ -123,4 +144,9 @@ public class ItemSaveData {
         temp.value = value;
         return temp;
     }
+}
+
+[System.Serializable]
+public class temp {
+    public int[] value;
 }
