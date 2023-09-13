@@ -71,6 +71,17 @@ public static class Inventory {
             temp.Add(i.toItem());
         return temp;
     }
+    public static int getItemIndex(ConItem item) {
+        int index = 0;
+        foreach(var i in itemBag.items) {
+            if(i.title == item.title) {
+                return index;
+            }
+            index++;
+        }
+        Debug.LogError("No index for item");
+        return -1;
+    }
 
     public static int itemCount(bool includeActives) {
         int temp = itemBag.items.Count;
