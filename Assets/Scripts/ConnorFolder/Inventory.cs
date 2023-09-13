@@ -7,7 +7,6 @@ public static class Inventory {
     static Bag itemBag = new Bag(maxItemCount);
 
     static string bagTag = "BagTag";
-    static string thingTag = "thingTag";
 
     //  saves the indexes of active items
     public static void overrideActiveItem(int slot, ConItem item) {
@@ -94,15 +93,6 @@ public static class Inventory {
             temp++;
         return temp;
     }
-
-    public static void saveThing() {
-        temp t = new temp();
-        var d = JsonUtility.ToJson(t);
-        SaveData.setString(thingTag, d);
-
-        d = SaveData.getString(thingTag);
-        var th = JsonUtility.FromJson<temp>(d);
-    }
 }
 
 [System.Serializable]
@@ -144,9 +134,4 @@ public class ItemSaveData {
         temp.value = value;
         return temp;
     }
-}
-
-[System.Serializable]
-public class temp {
-    public int[] value;
 }
