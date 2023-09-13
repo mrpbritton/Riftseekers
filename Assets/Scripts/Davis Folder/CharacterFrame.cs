@@ -1,8 +1,19 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+
+/***********************************************************************
+ * NOTE: if you add any stats in the enum, it should be added into the 
+ * Character frame and vice versa. Additionally, you should update the
+ * "UpdateStat_GA" and add a case to the switch with the stat you added.
+ ***********************************************************************/
+
+public enum CharStats
+{
+    moveSpeed,
+    dashSpeed,
+    health,
+}
 
 public class CharacterFrame : MonoBehaviour
 {
@@ -18,6 +29,7 @@ public class CharacterFrame : MonoBehaviour
     [Header("Stats")]
     public float movementSpeed;
     public float dashSpeed;
+    public float health;
 
     Coroutine attacker = null;
 
@@ -50,6 +62,9 @@ public class CharacterFrame : MonoBehaviour
         attacker = StartCoroutine(attackWaiter(curAttack.cooldownTime()));
     }
 
+    /// <summary>
+    /// Update the stats of the character frame.
+    /// </summary>
     public static void Restat()
     {
         UpdateStats();
