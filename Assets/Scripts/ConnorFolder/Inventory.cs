@@ -25,14 +25,14 @@ public static class Inventory {
                 break;
         }
     }
-    public static ConItem getActiveItem(int slotInd) {
+    public static ConItem getActiveItem(int slotInd, ItemLibrary il) {
         switch(slotInd) {
             case 0:
-                return itemBag.activeItem1.toItem();
+                return itemBag.activeItem1.toItem(il);
             case 1:
-                return itemBag.activeItem2.toItem();
+                return itemBag.activeItem2.toItem(il);
             case 2:
-                return itemBag.activeItem3.toItem();
+                return itemBag.activeItem3.toItem(il);
             default:
                 Debug.LogError("Trying to save an active item in an invalid slot");
                 return null;
@@ -60,15 +60,24 @@ public static class Inventory {
         itemBag.items.Clear();
     }
 
-    public static ConItem getItem(int i) {
+    public static ConItem getItem(int i, ItemLibrary il) {
         if(i < itemBag.items.Count)
-            return itemBag.items[i].toItem();
+            return getItem(itemBag.items[i].toItem(il), il);
         return null;
     }
-    public static List<ConItem> getItems() {
+    public static ConItem getItem(ConItem i, ItemLibrary il)
+    {
+        foreach(var j in il.getItems())
+        {
+            if (j.title == i.title)
+                return j;
+        }
+        return null;
+    }
+    public static List<ConItem> getItems(ItemLibrary il) {
         var temp = new List<ConItem>();
         foreach(var i in itemBag.items) 
-            temp.Add(i.toItem());
+            temp.Add(i.toItem(il));
         return temp;
     }
     public static int getItemIndex(ConItem item) {
@@ -127,11 +136,12 @@ public class ItemSaveData {
         description = i.description;
         value = i.value;
     }
-    public ConItem toItem() {
-        var temp = new ConItem();
-        temp.title = title;
-        temp.description = description;
-        temp.value = value;
-        return temp;
+    public ConItem toItem(ItemLibrary il) {
+        foreach(var i in il.getItems())
+        {
+            if (i.title == title)
+                return i;
+        }
+        return null;
     }
 }

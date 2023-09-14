@@ -8,7 +8,6 @@ public abstract class Attack : MonoBehaviour {
         None, Basic, Secondary, QAbility, EAbility, RAbility, FAbility
     }
 
-
     public abstract attackType getAttackType();
     public abstract int getDamage();
     public abstract void attack();

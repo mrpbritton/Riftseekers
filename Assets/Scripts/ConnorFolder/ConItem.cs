@@ -17,5 +17,4 @@ public class ConItem : ScriptableObject {
         description = saveData.description;
         value = saveData.value;
     }
-    public ConItem() { }
 }

@@ -10,11 +10,17 @@ public class AddItem_GA : GameAction
     /// <summary>
     /// Adds an item defined in the inspector to the inventory.
     /// </summary>
+
+    private void Start()
+    {
+        Inventory.loadInventory();
+    }
+
     public override void Action()
     {
         Inventory.addItem(item);
-        Debug.Log($"{Inventory.getItem(Inventory.getItemIndex(item)).name}");
         Inventory.saveInventory();
+        Debug.Log($"{Inventory.getItem(Inventory.getItemIndex(item), FindObjectOfType<ItemLibrary>()).title}");
     }
 
     /// <summary>

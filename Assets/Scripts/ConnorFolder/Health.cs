@@ -2,14 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour {
+public class Health : MonoBehaviour 
+{
     [SerializeField] int maxHealth;
-    public int health { get; private set; }
+    public float health { get; private set; }
+    private CharacterFrame frame;
 
     bool isPlayer;
 
     string playerHealthTag = "PlayerHealth";
 
+    private void UpdateStats()
+    {
+        if(isPlayer)
+        {
+            maxHealth = frame.maxHealth;
+            health = frame.health;
+            health = Mathf.Clamp(health, 0, maxHealth);
+            frame.health = health;
+            if (health <= 0)
+                Debug.Log(gameObject.name + " died!");
+        }
+    }
 
     private void Start() {
         isPlayer = gameObject.tag == "Player";
@@ -17,9 +31,18 @@ public class Health : MonoBehaviour {
 
         //  saves if this is on the player object
         if(isPlayer)
-            SaveData.setInt(playerHealthTag, health);
+        {
+            SaveData.setFloat(playerHealthTag, health);
+            frame = GetComponent<CharacterFrame>();
+            CharacterFrame.UpdateStats += UpdateStats;
+        }
+            
     }
 
+    private void OnDestroy()
+    {
+        CharacterFrame.UpdateStats -= UpdateStats;
+    }
 
     //  use this when taking damage
     public void takeDamage(int dmg) {
@@ -31,8 +54,9 @@ public class Health : MonoBehaviour {
 
         //  saves
         if(isPlayer)
-            SaveData.setInt(playerHealthTag, health);
+            SaveData.setFloat(playerHealthTag, health);
     }
+
     //  use this when healing
     public void heal(int dmg) {
         health = Mathf.Clamp(health + dmg, 0, maxHealth);
@@ -43,6 +67,6 @@ public class Health : MonoBehaviour {
 
         //  saves
         if(isPlayer)
-            SaveData.setInt(playerHealthTag, health);
+            SaveData.setFloat(playerHealthTag, health);
     }
 }

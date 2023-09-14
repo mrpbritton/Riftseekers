@@ -10,9 +10,15 @@ using UnityEngine;
 
 public enum CharStats
 {
+    maxHealth,
+    health,
     moveSpeed,
     dashSpeed,
-    health,
+    dashDistance,
+    attackDamage,
+    attackSpeed,
+    cooldownMod,
+    chargeLimit
 }
 
 public class CharacterFrame : MonoBehaviour
@@ -27,9 +33,24 @@ public class CharacterFrame : MonoBehaviour
     public Attack fAbility;
 
     [Header("Stats")]
-    public float movementSpeed;
-    public float dashSpeed;
+    [Tooltip("Maximum health of the player")]
+    public int maxHealth;
+    [Tooltip("Current health of the player")]
     public float health;
+    [Tooltip("How fast the player moves")]
+    public float movementSpeed;
+    [Tooltip("Speed of the dash")]
+    public float dashSpeed;
+    [Tooltip("How far the dash goes")]
+    public float dashDistance;
+    [Tooltip("Base attack damage; each attack derives this for a calculation")]
+    public float attackDamage;
+    [Tooltip("Base attack speed; each attack derives this for a calculation")]
+    public float attackSpeed;
+    [Tooltip("Base cooldown modifier; each ability calculates this for a calculation")]
+    public float cooldownMod;
+    [Tooltip("Limit the ultimate ability will charge to")]
+    public float chargeLimit;
 
     Coroutine attacker = null;
 
