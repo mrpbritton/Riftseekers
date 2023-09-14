@@ -5,11 +5,11 @@ using UnityEngine;
 public class RandomizeRooms : MonoBehaviour
 {
     // Start is called before the first frame update
-    private int[] test = new int[10];
-    [SerializeField] private GameObject[] rooms = new GameObject[10];
+    [SerializeField] private int roomCount;
+
     void Start()
     {
-        
+        RandomizeList();
     }
 
     // Update is called once per frame
@@ -19,24 +19,19 @@ public class RandomizeRooms : MonoBehaviour
     }
     public void RandomizeRoomOrder()//takes the randomized array and puts the rooms from the array of rooms in that order
     {
-        int[] order = new int[10];
-        order = RandomizeList();
-        for(int i = 0; i < 10; i++)
-        {
-            Instantiate(rooms[order[i] - 1], new Vector3(i * 20, 0, i * 16),Quaternion.identity);
-        }
+        RoomSaver.saveroom(RandomizeList());
     }
     private int[] RandomizeList()//Randomises an array of values from 1 to 10
     {
-        int[] rooms = new int[10];
+        int[] rooms = new int[roomCount];
         int number;
-        for(int i = 0; i < 10; i++)
+        for (int i = 0; i < roomCount; i++)
         {
             bool yes = false;
             do
             {
                 yes = false;
-                number = Random.Range(1, 11);
+                number = Random.Range(1, roomCount + 1);
                 foreach (int thing in rooms)
                 {
                     if (thing == number)
@@ -49,4 +44,10 @@ public class RandomizeRooms : MonoBehaviour
         }
         return rooms;
     }
+}
+
+
+[System.Serializable]
+public class RoomOrder{
+    public int[] roomOrder;
 }
