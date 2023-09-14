@@ -50,7 +50,7 @@ public class CharacterFrame : MonoBehaviour
     [Tooltip("Base cooldown modifier; each ability calculates this for a calculation")]
     public float cooldownMod;
     [Tooltip("Limit the ultimate ability will charge to")]
-    public float chargeLimit;
+    public int chargeLimit;
 
     Coroutine attacker = null;
 
