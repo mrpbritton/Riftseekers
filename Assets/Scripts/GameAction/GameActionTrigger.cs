@@ -7,6 +7,8 @@ public class GameActionTrigger : GameAction
     [SerializeField]
     private List<GameAction> gAction;
     private bool bActive;
+    [SerializeField]
+    private LayerMask enemyMask;
 
     //Physics driven event that requires at least one object to have a rigid body
     private void OnTriggerEnter(Collider other)

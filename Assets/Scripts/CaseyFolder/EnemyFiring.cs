@@ -13,6 +13,9 @@ public class EnemyFiring : MonoBehaviour
     [SerializeField]
     private float reloadTime = 2f;
     private Quaternion rotation = Quaternion.identity;
+    private bool bSeePlayer = true;
+    private RaycastHit hitInfo;
+
     private void Start()
     {
         StartCoroutine(nameof(Reloading));
@@ -28,7 +31,8 @@ public class EnemyFiring : MonoBehaviour
     IEnumerator Reloading()
     {
         yield return new WaitForSeconds(reloadTime);
-        FireShot();
+        if(bSeePlayer)
+            FireShot();
     }
 
 }
