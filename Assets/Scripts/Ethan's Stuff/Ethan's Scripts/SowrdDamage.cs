@@ -18,6 +18,6 @@ public class SowrdDamage : MonoBehaviour
     private void OnTriggerEnter(Collider col)
     {
         if (col.gameObject.layer == LayerMask.GetMask("Enemy"))
-            col.gameObject.GetComponent<Health>().takeDamage(5);
+            col.gameObject.GetComponent<EnemyHealth>().damageTaken(5);
     }
 }
