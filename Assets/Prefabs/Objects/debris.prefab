@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5204857594371466851}
   - component: {fileID: 3422733469238951066}
   - component: {fileID: 7783695574093894653}
+  - component: {fileID: 3454290263706599359}
   m_Layer: 0
   m_Name: debris
   m_TagString: Untagged
@@ -83,6 +84,22 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!208 &3454290263706599359
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2845644353910825556}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.117, y: 0.45900002, z: 2.2210002}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.023000002, y: 0.089, z: -0.020000001}
+  m_TimeToStationary: 0.5
 --- !u!1 &3447582304246322371
 GameObject:
   m_ObjectHideFlags: 0
