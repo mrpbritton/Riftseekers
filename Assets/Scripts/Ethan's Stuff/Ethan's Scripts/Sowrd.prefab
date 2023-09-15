@@ -30,7 +30,7 @@ Transform:
   m_Children:
   - {fileID: 6384820847386511449}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8529824332960133731
 GameObject:
@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 5112994527715611163}
   - component: {fileID: 7136350619133748819}
   - component: {fileID: 8021639912459123432}
+  - component: {fileID: 7311928489761394783}
   m_Layer: 0
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -123,7 +124,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -137,3 +138,15 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8529824332960133731}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &7311928489761394783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8529824332960133731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 754dac0b052105f4ab82d9f4e6c44e08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
