@@ -119,6 +119,7 @@ GameObject:
   - component: {fileID: 6736576878931691440}
   - component: {fileID: -3122899575494190997}
   - component: {fileID: 1916228164695147028}
+  - component: {fileID: 1820928854131425933}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -171,6 +172,10 @@ MonoBehaviour:
   delay: 0
   gAction:
   - {fileID: 1916228164695147028}
+  - {fileID: 1820928854131425933}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &1916228164695147028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,3 +189,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
+--- !u!114 &1820928854131425933
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2806661883677591592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee13536e1560e54a9bfdc479ac39398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  damage: 5
