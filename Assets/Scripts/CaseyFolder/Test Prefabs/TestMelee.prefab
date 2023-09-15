@@ -230,6 +230,8 @@ GameObject:
   - component: {fileID: 956882322456177311}
   - component: {fileID: 2531409780526549962}
   - component: {fileID: 4456155739804254130}
+  - component: {fileID: 3251999330279073328}
+  - component: {fileID: -6849738389365649994}
   m_Layer: 6
   m_Name: TestMelee
   m_TagString: Untagged
@@ -407,3 +409,35 @@ MonoBehaviour:
   maxhealth: 10
   currentHealth: 10
   usedCollider: {fileID: 7663751353188508867}
+--- !u!114 &3251999330279073328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2302720368536495275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3555b29c65fdcf0459d7ca7086ba5ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  gAction:
+  - {fileID: -6849738389365649994}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &-6849738389365649994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2302720368536495275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee13536e1560e54a9bfdc479ac39398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  damage: 5
