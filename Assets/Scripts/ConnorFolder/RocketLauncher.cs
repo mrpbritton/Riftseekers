@@ -14,6 +14,7 @@ public class RocketLauncher : Attack {
         curRocket.transform.position = transform.position;
 
         Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        dir.y = 0f;
         dir.Normalize();
         curRocket.transform.DOMove(dir * maxTravelDist, maxTravelTime);
         Destroy(curRocket.gameObject, maxTravelTime);
