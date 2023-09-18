@@ -17,18 +17,27 @@ public class PlayerMovement : MonoBehaviour
     private float fallSpeed;
 
     [Header("Dash")]
-    [SerializeField, Tooltip("Cooldown of the dash ability in seconds")]
+    [SerializeField, Tooltip("Charges the dash has. Must be at least one.")]
+    private int dashCharges;
+    [SerializeField]
+    private int remainingCharges; //how many charges the dash has left
+    [SerializeField, Tooltip("Time it takes for a whole dash to recharge in seconds")]
+    private float dashChargeCooldown;
+    private bool canRecharge; //if the dash can recharge
+    [SerializeField, Tooltip("Time between keypresses of the dash ability in seconds")]
     private float dashCooldown;
+    [SerializeField, Tooltip("Distance modifier of the dash. Will multiply against the speed. Must be at least one.")]
+    private float dashDistance;
     [SerializeField, Tooltip("How long the dash takes in seconds")]
     private float dashTime;
     [SerializeField, Tooltip("Speed of the dash")]
     private float dashSpeed;
-    private bool cantDash;
+    private bool cantDash; //whether or not the player can dash
 
     private CharacterController player;
     private CharacterFrame frame;
 
-    private void Start()
+    private void OnEnable()
     {
         pInput = new PInput();
         pInput.Enable();   
@@ -39,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
         pInput.Player.Dash.started += DashPress;
 
         CharacterFrame.UpdateStats += UpdateStats;
+        canRecharge = true;
+        remainingCharges = frame.dashCharges;
     }
     private void OnDisable()
     {
@@ -50,11 +61,15 @@ public class PlayerMovement : MonoBehaviour
     {
         speed = frame.movementSpeed;
         dashSpeed = frame.dashSpeed;
+        dashDistance = frame.dashDistance;
+        dashCharges = frame.dashCharges;
+        dashCooldown *= frame.cooldownMod;
+        dashChargeCooldown *= frame.cooldownMod;
     }
 
     private void DashPress(InputAction.CallbackContext c)
     {
-        if (cantDash) return;
+        if (cantDash || remainingCharges == 0) return;
         StartCoroutine(Dash());
     }
     //cbt otherwise known as cock and ball torture
@@ -69,6 +84,11 @@ public class PlayerMovement : MonoBehaviour
         if(player.isGrounded == false) 
         {
             player.Move(fallSpeed * Time.deltaTime * Vector3.down);
+        }
+
+        if(remainingCharges < dashCharges && canRecharge)
+        {
+            StartCoroutine(RechargeDash());
         }
     }
 
@@ -89,17 +109,27 @@ public class PlayerMovement : MonoBehaviour
         while (dTimeRemaining > 0)
         {
             dTimeRemaining -= Time.deltaTime;
-            player.Move(direction * dashSpeed * Time.deltaTime);
+            player.Move(direction * dashSpeed * Time.deltaTime * dashDistance);
             yield return null;
         }
 
         yield return new WaitForSeconds(dashCooldown);
+        remainingCharges--; //since dash was performed, subtract a dash
         cantDash = false;
     }
 
+    public IEnumerator RechargeDash()
+    {
+        canRecharge = false;
+        Debug.Log("Recharging...");
+        yield return new WaitForSeconds(dashChargeCooldown);
+        remainingCharges++;
+        canRecharge = true;
+    }
 
     //  for connor's dash attack
-    public float getDashTime() {
+    public float getDashTime() 
+    {
         return dashTime;
     }
 }

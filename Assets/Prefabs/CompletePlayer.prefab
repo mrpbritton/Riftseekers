@@ -302,9 +302,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 4
   m_FollowOffset: {x: 0, y: 20, z: -20}
-  m_XDamping: 1
-  m_YDamping: 1
-  m_ZDamping: 1
+  m_XDamping: 0.3
+  m_YDamping: 0.3
+  m_ZDamping: 0.3
   m_AngularDampingMode: 0
   m_PitchDamping: 0
   m_YawDamping: 0
@@ -343,7 +343,7 @@ Transform:
   - {fileID: 6334058779806566646}
   - {fileID: 1134619532179757097}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4440314752643908563
 PrefabInstance:
@@ -395,7 +395,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1486973088829066078, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
+      propertyPath: dashCharges
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486973088829066078, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
       propertyPath: attackDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1486973088829066078, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
+      propertyPath: dashDistance
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3254946032171043842, guid: 66562dc996ca2b5478f1b7f0a538878b,
@@ -477,6 +487,16 @@ PrefabInstance:
         type: 3}
       propertyPath: detectionDistance
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723907174109061228, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
+      propertyPath: dashDistance
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8723907174109061228, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
+      propertyPath: dashChargeCooldown
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

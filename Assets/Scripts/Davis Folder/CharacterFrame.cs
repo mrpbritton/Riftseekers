@@ -43,11 +43,13 @@ public class CharacterFrame : MonoBehaviour
     public float dashSpeed;
     [Tooltip("How far the dash goes")]
     public float dashDistance;
+    [Tooltip("How many charges the dash has")]
+    public int dashCharges;
     [Tooltip("Base attack damage; each attack derives this for a calculation")]
     public float attackDamage;
     [Tooltip("Base attack speed; each attack derives this for a calculation")]
     public float attackSpeed;
-    [Tooltip("Base cooldown modifier; each ability calculates this for a calculation")]
+    [Tooltip("Base cooldown modifier; each ability uses this for a calculation")]
     public float cooldownMod;
     [Tooltip("Limit the ultimate ability will charge to")]
     public int chargeLimit;
