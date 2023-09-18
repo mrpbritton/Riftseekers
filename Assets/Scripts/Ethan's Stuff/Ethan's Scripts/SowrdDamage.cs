@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SowrdDamage : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float damage;
     void Start()
     {
         
@@ -17,7 +17,9 @@ public class SowrdDamage : MonoBehaviour
     }
     private void OnTriggerEnter(Collider col)
     {
-        if (col.gameObject.layer == LayerMask.GetMask("Enemy"))
-            col.gameObject.GetComponent<EnemyHealth>().damageTaken(5);
+        if (col.TryGetComponent<EnemyHealth>(out EnemyHealth enemyHealth))
+        {
+            enemyHealth.damageTaken(5);
+        }
     }
 }
