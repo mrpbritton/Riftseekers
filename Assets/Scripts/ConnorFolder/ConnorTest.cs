@@ -4,31 +4,21 @@ using UnityEngine;
 
 public class ConnorTest : MonoBehaviour {
 
-    private void Awake() {
-        //setsThings();
-        seesThings();
+    int[] thing = { 3, 2, 5, 14, 567, 34 }; //  list to be saved
+
+    private void Awake() {  //  doesn't need to be in awake
+        //save  //  call this before you try to load
+        load();
     }
 
+    //  saves the list
     void save() {
-        foreach(var i in FindObjectOfType<ItemLibrary>().getItems())
-            Inventory.addItem(i);
-        Inventory.saveInventory();
-        Debug.Log("saved");
+        RoomSaver.saveroom(thing);
     }
-
+    
+    //  prints every element of the saved list
     void load() {
-        Inventory.loadInventory();
-    }
-
-    void setsThings() {
-        SaveData.wipe();
-        Inventory.overrideActiveItem(0, FindObjectOfType<ItemLibrary>().getItem(1));
-        Inventory.overrideActiveItem(1, FindObjectOfType<ItemLibrary>().getItem(2));
-        Inventory.overrideActiveItem(2, FindObjectOfType<ItemLibrary>().getItem(0));
-        Inventory.saveInventory();
-    }
-
-    void seesThings() {
-        Inventory.loadInventory();
+        foreach(var i in RoomSaver.loadroom())
+            Debug.Log(i.ToString());
     }
 }
