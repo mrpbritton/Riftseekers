@@ -8,8 +8,24 @@ public abstract class Attack : MonoBehaviour {
         None, Basic, Secondary, QAbility, EAbility, RAbility, FAbility
     }
 
+    int dmgMod;
+    float cooldownMod;
+
+    public void updateStats(int dMod, float cdMod) {
+        dmgMod = dMod;
+        cooldownMod = cdMod;
+    }
+
+
     public abstract attackType getAttackType();
-    public abstract int getDamage();
     public abstract void attack();
-    public abstract float cooldownTime();   //  NOTE: this does nothing atm
+    protected abstract int getDamage();
+    protected abstract float getCooldownTime();   //  NOTE: this does nothing atm
+
+    public int getRealDamage() {
+        return getDamage() * dmgMod;
+    }
+    public float getRealCooldownTime() {
+        return getCooldownTime() * cooldownMod;
+    }
 }

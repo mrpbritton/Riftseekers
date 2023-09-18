@@ -82,7 +82,7 @@ public class CharacterFrame : MonoBehaviour
     void performAttack(Attack curAttack) {
         if(attacker != null) return;
         curAttack.attack();
-        attacker = StartCoroutine(attackWaiter(curAttack.cooldownTime()));
+        attacker = StartCoroutine(attackWaiter(curAttack.getRealCooldownTime()));
     }
 
     /// <summary>

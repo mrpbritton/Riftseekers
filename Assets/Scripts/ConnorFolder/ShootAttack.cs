@@ -12,7 +12,7 @@ public class ShootAttack : Attack {
         return attackType.Secondary;
     }
 
-    public override int getDamage() {
+    protected override int getDamage() {
         return damage;
     }
 
@@ -34,7 +34,7 @@ public class ShootAttack : Attack {
         }*/
     }
 
-    public override float cooldownTime() {
+    protected override float getCooldownTime() {
         return 1f;
     }
 

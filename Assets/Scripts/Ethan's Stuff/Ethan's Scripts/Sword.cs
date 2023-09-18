@@ -57,7 +57,7 @@ public class Sword : Attack
     {
         return attackType.Basic;
     }
-    public override int getDamage()
+    protected override int getDamage()
     {
         return damage;
     }
@@ -65,7 +65,7 @@ public class Sword : Attack
     {
         slice = true;
     }
-    public override float cooldownTime() {
+    protected override float getCooldownTime() {
         return 1f;
     }
 }

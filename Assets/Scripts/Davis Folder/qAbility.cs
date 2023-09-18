@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 public class qAbility : Attack
 {
-    public override int getDamage()
+    protected override int getDamage()
     {
         return 12;
     }
@@ -24,7 +24,7 @@ public class qAbility : Attack
         Debug.Log("Q ability activated");
     }
 
-    public override float cooldownTime() {
+    protected override float getCooldownTime() {
         return 1f;
     }
 

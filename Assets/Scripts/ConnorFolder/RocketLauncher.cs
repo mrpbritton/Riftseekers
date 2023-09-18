@@ -22,10 +22,10 @@ public class RocketLauncher : Attack {
     public override attackType getAttackType() {
         return attackType.QAbility;
     }
-    public override int getDamage() {
+    protected override int getDamage() {
         return 30;
     }
-    public override float cooldownTime() {
+    protected override float getCooldownTime() {
         return 3f;
     }
 }
