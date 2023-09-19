@@ -5,7 +5,7 @@ using UnityEngine;
 public class Sword : Attack
 {
     // Start is called before the first frame update
-    [SerializeField] int damage = 12;
+    [SerializeField] float damage = 12;
     [SerializeField] GameObject hurtBox, aimRotation;
     [SerializeField] float swingSpeed;
     private float angle = 0;
@@ -57,7 +57,7 @@ public class Sword : Attack
     {
         return attackType.Basic;
     }
-    protected override int getDamage()
+    protected override float getDamage()
     {
         return damage;
     }

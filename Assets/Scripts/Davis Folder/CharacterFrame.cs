@@ -15,6 +15,7 @@ public enum CharStats
     moveSpeed,
     dashSpeed,
     dashDistance,
+    dashCharges,
     attackDamage,
     attackSpeed,
     cooldownMod,
@@ -37,6 +38,8 @@ public class CharacterFrame : MonoBehaviour
     public int maxHealth;
     [Tooltip("Current health of the player")]
     public float health;
+    private Health health_s;
+
     [Tooltip("How fast the player moves")]
     public float movementSpeed;
     [Tooltip("Speed of the dash")]
@@ -45,10 +48,13 @@ public class CharacterFrame : MonoBehaviour
     public float dashDistance;
     [Tooltip("How many charges the dash has")]
     public int dashCharges;
+    private PlayerMovement move_s;
+
     [Tooltip("Base attack damage; each attack derives this for a calculation")]
     public float attackDamage;
     [Tooltip("Base attack speed; each attack derives this for a calculation")]
     public float attackSpeed;
+
     [Tooltip("Base cooldown modifier; each ability uses this for a calculation")]
     public float cooldownMod;
     [Tooltip("Limit the ultimate ability will charge to")]
@@ -56,13 +62,14 @@ public class CharacterFrame : MonoBehaviour
 
     Coroutine attacker = null;
 
-    public static Action UpdateStats = delegate { };
-
     //more options to come in the future
     private void Start()
     {
         pInput = new PInput();
         pInput.Enable();
+
+        health_s = GetComponent<Health>();
+        move_s = GetComponent<PlayerMovement>();
 
         pInput.Player.BasicAttack.started += ctx => performAttack(basicAttack);
         pInput.Player.SecondAttack.started += ctx => performAttack(secondAttack);
@@ -70,7 +77,6 @@ public class CharacterFrame : MonoBehaviour
         pInput.Player.Ability2.started += ctx => performAttack(eAbility);
         pInput.Player.Ability3.started += ctx => performAttack(rAbility);
         pInput.Player.Ult.started += ctx => performAttack(fAbility);
-        UpdateStats();
     }
 
     //  waits for the attack cooldown to finish
@@ -85,17 +91,20 @@ public class CharacterFrame : MonoBehaviour
         attacker = StartCoroutine(attackWaiter(curAttack.getRealCooldownTime()));
     }
 
-    /// <summary>
-    /// Update the stats of the character frame.
-    /// </summary>
-    public static void Restat()
-    {
-        UpdateStats();
-    }
-    
     private void OnDisable()
     {
         pInput.Disable();
     }
     //tree to execute each respective attack
+
+    public void UpdateStats()
+    {
+        move_s.UpdateStats();
+        health_s.UpdateStats();
+    }
+
+    public void UpdateStats(Attack atk)
+    {
+        atk.updateStats(attackDamage, cooldownMod);
+    }
 }

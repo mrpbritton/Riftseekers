@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
 
     string playerHealthTag = "PlayerHealth";
 
-    private void UpdateStats()
+    public void UpdateStats()
     {
         if(isPlayer)
         {
@@ -34,14 +34,8 @@ public class Health : MonoBehaviour
         {
             SaveData.setFloat(playerHealthTag, health);
             frame = GetComponent<CharacterFrame>();
-            CharacterFrame.UpdateStats += UpdateStats;
         }
             
-    }
-
-    private void OnDestroy()
-    {
-        CharacterFrame.UpdateStats -= UpdateStats;
     }
 
     //  use this when taking damage

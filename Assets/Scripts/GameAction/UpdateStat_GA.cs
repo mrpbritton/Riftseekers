@@ -23,6 +23,7 @@ public class UpdateStat_GA : GameAction
     moveSpeed,
     dashSpeed,
     dashDistance,
+    dashCharges,
     attackDamage,
     attackSpeed,
     cooldownMod,
@@ -32,47 +33,52 @@ public class UpdateStat_GA : GameAction
         {
             case CharStats.maxHealth:
                 frame.maxHealth += Mathf.FloorToInt(modifier);
-                CharacterFrame.Restat();
+                frame.UpdateStats();
                 break;
 
             case CharStats.health:
                 frame.health += modifier;
-                CharacterFrame.Restat();
+                frame.UpdateStats();
                 break;
 
             case CharStats.moveSpeed:
                 frame.movementSpeed += modifier;
-                CharacterFrame.Restat();
+                frame.UpdateStats();
                 break;
             
             case CharStats.dashSpeed:
                 frame.dashSpeed += modifier;
-                CharacterFrame.Restat();
+                frame.UpdateStats();
                 break;
 
             case CharStats.dashDistance:
                 frame.dashDistance += modifier;
-                CharacterFrame.Restat();
+                frame.UpdateStats();
+                break;
+
+            case CharStats.dashCharges:
+                frame.dashCharges += Mathf.FloorToInt(modifier);
+                frame.UpdateStats();
                 break;
 
             case CharStats.attackDamage:
                 frame.attackDamage += modifier;
-                CharacterFrame.Restat();
+                frame.UpdateStats();
                 break;
 
             case CharStats.attackSpeed:
                 frame.attackSpeed += modifier;
-                CharacterFrame.Restat();
+                frame.UpdateStats();
                 break;
             
             case CharStats.cooldownMod:
                 frame.cooldownMod += modifier;
-                CharacterFrame.Restat();
+                frame.UpdateStats();
                 break;
 
             case CharStats.chargeLimit:
                 frame.chargeLimit += Mathf.FloorToInt(modifier);
-                CharacterFrame.Restat();
+                frame.UpdateStats();
                 break;
 
             default:

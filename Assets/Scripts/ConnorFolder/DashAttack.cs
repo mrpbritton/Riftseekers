@@ -25,8 +25,8 @@ public class DashAttack : Attack {
         return attackType.EAbility;
     }
 
-    protected override int getDamage() {
-        return 10;
+    protected override float getDamage() {
+        return 10f;
     }
 
     protected override float getCooldownTime() {

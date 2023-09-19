@@ -37,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController player;
     private CharacterFrame frame;
 
+    //<--- Click on the plus sign to expand
+    #region Setup
     private void OnEnable()
     {
         pInput = new PInput();
@@ -47,8 +49,8 @@ public class PlayerMovement : MonoBehaviour
         dashSpeed = frame.dashSpeed;
         pInput.Player.Dash.started += DashPress;
 
-        CharacterFrame.UpdateStats += UpdateStats;
         canRecharge = true;
+        UpdateStats();
         remainingCharges = frame.dashCharges;
     }
     private void OnDisable()
@@ -56,8 +58,9 @@ public class PlayerMovement : MonoBehaviour
         pInput.Disable();
         pInput.Player.Dash.started -= DashPress;
     }
+    #endregion
 
-    private void UpdateStats()
+    public void UpdateStats()
     {
         speed = frame.movementSpeed;
         dashSpeed = frame.dashSpeed;
@@ -67,12 +70,6 @@ public class PlayerMovement : MonoBehaviour
         dashChargeCooldown *= frame.cooldownMod;
     }
 
-    private void DashPress(InputAction.CallbackContext c)
-    {
-        if (cantDash || remainingCharges == 0) return;
-        StartCoroutine(Dash());
-    }
-    //cbt otherwise known as cock and ball torture
     private void Update()
     {
         direction.x = pInput.Player.Movement.ReadValue<Vector3>().x;
@@ -91,6 +88,15 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(RechargeDash());
         }
     }
+    
+    //<--- Click on the plus sign to expand
+    #region Dash
+    private void DashPress(InputAction.CallbackContext c)
+    {
+        if (cantDash || remainingCharges == 0) return;
+        StartCoroutine(Dash());
+    }
+    //cbt otherwise known as cock and ball torture
 
     public IEnumerator Dash()
     {
@@ -132,4 +138,5 @@ public class PlayerMovement : MonoBehaviour
     {
         return dashTime;
     }
+    #endregion
 }

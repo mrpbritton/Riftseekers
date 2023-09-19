@@ -5,14 +5,14 @@ using UnityEngine;
 public class ShootAttack : Attack {
     //  set to -1 for infinite
     [SerializeField] float range = -1f;
-    [SerializeField] int damage = 12;
+    [SerializeField] float damage = 12;
 
 
     public override attackType getAttackType() {
         return attackType.Secondary;
     }
 
-    protected override int getDamage() {
+    protected override float getDamage() {
         return damage;
     }
 

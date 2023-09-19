@@ -5,9 +5,9 @@ using UnityEngine.InputSystem;
 
 public class qAbility : Attack
 {
-    protected override int getDamage()
+    protected override float getDamage()
     {
-        return 12;
+        return 12f;
     }
     public override attackType getAttackType()
     {
