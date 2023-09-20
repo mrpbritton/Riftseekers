@@ -16,7 +16,10 @@ public class RoomTransition : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        /*if (Input.GetKeyDown(KeyCode.Space))
+        {
+            RoomTransitionz();
+        }*/
     }
     void RoomTransitionz()
     {
@@ -27,13 +30,13 @@ public class RoomTransition : MonoBehaviour
         }
         else
         {
-            for(int i = 0; i < 10; i++)
+            for(int i = 0; i < 3; i++)
             {
                 if(index == scenes[i])
                 {
                     SceneManager.LoadScene(scenes[i + 1]);
                 }
-            }
+            }   
         }
     }
     private void OnTriggerEnter(Collider other)
