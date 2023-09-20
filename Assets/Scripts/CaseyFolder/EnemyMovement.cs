@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,16 +12,25 @@ public class EnemyMovement : MonoBehaviour
     private NavMeshAgent agent;
     [SerializeField]
     private bool bMelee;
-    private GameObject target, Player, Cover, firePosition;
+    private GameObject target = null, Player, Cover, firePosition;
     [SerializeField]
-    private int coverTime = 1;
+//    private int coverTime = 1;
+
+    private void OnEnable()
+    {
+        EnemyFiring.pSeen += pSeen;
+    }
+
+    private void OnDisable()
+    {
+        EnemyFiring.pSeen -= pSeen;
+    }
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-
-//        if (bMelee)
-            target = Player;
+//        target = Player;
+        //        if (bMelee)
     }
 
     void Update()
@@ -38,7 +48,7 @@ public class EnemyMovement : MonoBehaviour
             agent.SetDestination(target.transform.position);
         }
     }
-
+/*
     //change target position to cover
     public void lookForCover()
     {
@@ -59,5 +69,9 @@ public class EnemyMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(coverTime);
     }
-    
+*/
+    public void pSeen()
+    {
+        target = Player;
+    }
 }
