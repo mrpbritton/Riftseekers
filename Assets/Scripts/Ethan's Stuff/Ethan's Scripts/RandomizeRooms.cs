@@ -9,7 +9,7 @@ public class RandomizeRooms : MonoBehaviour
 
     void Start()
     {
-        RandomizeList();
+        RandomizeRoomOrder();
     }
 
     // Update is called once per frame

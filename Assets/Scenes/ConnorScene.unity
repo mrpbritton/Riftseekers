@@ -317,7 +317,7 @@ PrefabInstance:
     - target: {fileID: 2302720368536495275, guid: 117945b8cf2c8cc4aad0809e7798b1c6,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7877150208782359511, guid: 117945b8cf2c8cc4aad0809e7798b1c6,
         type: 3}
@@ -857,6 +857,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 129630462823315945, guid: 23a2668f187d952479a324da40f43de0,
+        type: 3}
+      propertyPath: rotTrans
+      value: 
+      objectReference: {fileID: 802548704}
+    - target: {fileID: 129630462823315945, guid: 23a2668f187d952479a324da40f43de0,
+        type: 3}
+      propertyPath: masks.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 1910955948470362086, guid: 23a2668f187d952479a324da40f43de0,
         type: 3}
       propertyPath: rotTrans

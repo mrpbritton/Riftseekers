@@ -145,7 +145,7 @@ Transform:
   - {fileID: 5630963883631305936}
   - {fileID: 2453123564456540697}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8958742142963517924
 MeshFilter:
@@ -284,7 +284,6 @@ MonoBehaviour:
   rotationSpeed: 10
   agent: {fileID: 956882322456177311}
   bMelee: 1
-  coverTime: 1
 --- !u!114 &7804190910279747688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,3 +346,4 @@ MonoBehaviour:
   projectile: {fileID: 2806661883677591592, guid: 3857254fd8fd16a4b97e304f31d3a168,
     type: 3}
   reloadTime: 2
+  eRange: 10

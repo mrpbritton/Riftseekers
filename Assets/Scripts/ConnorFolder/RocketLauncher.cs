@@ -13,11 +13,6 @@ public class RocketLauncher : Attack {
         var curRocket = Instantiate(rocketPreset.gameObject);
         curRocket.GetComponent<RocketInstance>().setParentAttack(this, maxTravelTime);
         curRocket.transform.position = transform.position;
-
-        var mPos = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, 0f, Input.mousePosition.y));
-        var dir = mPos - transform.position;
-        dir.y = 0f;
-        Debug.Log(rotTrans.forward);
         curRocket.transform.DOMove(transform.position + rotTrans.right * maxTravelDist, maxTravelTime);
         Destroy(curRocket.gameObject, maxTravelTime);
     }
