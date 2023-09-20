@@ -1,9 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 
 public class EnemyFiring : MonoBehaviour
@@ -13,26 +13,57 @@ public class EnemyFiring : MonoBehaviour
     [SerializeField]
     private float reloadTime = 2f;
     private Quaternion rotation = Quaternion.identity;
-    private bool bSeePlayer = true;
+    private bool bSeePlayer = false;
     private RaycastHit hitInfo;
+    [SerializeField]
+    private float eRange = 10f;
+    private bool bSeen;
+    private GameObject Player;
+
+    public static Action pSeen = delegate { };
 
     private void Start()
     {
         StartCoroutine(nameof(Reloading));
+        Player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void FireShot()
     {
-        rotation = gameObject.transform.rotation;
-        Projectile project = Instantiate(projectile, transform.position, rotation).GetComponent<Projectile>();
-        project.Direction = transform.forward;
+        lookForPlayer();
+        if (bSeePlayer)
+        {
+            rotation = gameObject.transform.rotation;
+            Projectile project = Instantiate(projectile, transform.position, rotation).GetComponent<Projectile>();
+            project.Direction = transform.forward;
+        }
         StartCoroutine(nameof(Reloading));
     }
     IEnumerator Reloading()
     {
         yield return new WaitForSeconds(reloadTime);
-        if(bSeePlayer)
-            FireShot();
+        FireShot();
+    }
+
+    private void lookForPlayer()
+    {
+        if(Physics.Raycast(transform.position, Player.transform.position - transform.position, out hitInfo, eRange))
+        {
+            if (hitInfo.transform.CompareTag("Player"))
+            {
+                bSeePlayer = true;
+                bSeen = true;
+            }
+            else
+            {
+                bSeePlayer = false;
+            }
+        }
+        if (bSeen)
+        {
+            pSeen();
+        }
+
     }
 
 }
