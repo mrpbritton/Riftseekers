@@ -127,9 +127,8 @@ public class PlayerMovement : MonoBehaviour
     public IEnumerator RechargeDash()
     {
         canRecharge = false;
-        Debug.Log("Recharging...");
         yield return new WaitForSeconds(dashChargeCooldown);
-        remainingCharges++;
+        remainingCharges = dashCharges;
         canRecharge = true;
     }
 
