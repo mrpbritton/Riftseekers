@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6408494192368080745}
   - component: {fileID: 8070886322621848503}
   - component: {fileID: 3785200611525154723}
+  - component: {fileID: 411358271723870979}
   m_Layer: 0
   m_Name: tileCornerD
   m_TagString: Untagged
@@ -106,6 +107,28 @@ MonoBehaviour:
   m_IgnoreFromBuild: 0
   m_ApplyToChildren: 1
   m_AffectedAgents: ffffffff
+--- !u!64 &411358271723870979
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 987681595130420830}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -5453959731323649438, guid: 5b53df4530cdb794ca001b351e97c309, type: 3}
 --- !u!1 &1273147637809880761
 GameObject:
   m_ObjectHideFlags: 0
