@@ -34,6 +34,10 @@ public class PlayerMovement : MonoBehaviour
     private float dashSpeed;
     private bool cantDash; //whether or not the player can dash
 
+    [Header("Sprites")]
+    public Sprite frontRight;
+    public Sprite frontLeft;
+
     private CharacterController player;
     private CharacterFrame frame;
 
