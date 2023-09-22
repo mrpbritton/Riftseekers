@@ -20,7 +20,6 @@ public class EnemyFiring : MonoBehaviour
     private bool bSeen;
     private GameObject Player;
 
-    public static Action pSeen = delegate { };
 
     private void Start()
     {
@@ -47,7 +46,7 @@ public class EnemyFiring : MonoBehaviour
 
     private void lookForPlayer()
     {
-        if(Physics.Raycast(transform.position, Player.transform.position - transform.position, out hitInfo, eRange))
+        if (Physics.Raycast(transform.position, Player.transform.position - transform.position, out hitInfo, eRange))
         {
             if (hitInfo.transform.CompareTag("Player"))
             {
@@ -59,11 +58,6 @@ public class EnemyFiring : MonoBehaviour
                 bSeePlayer = false;
             }
         }
-        if (bSeen)
-        {
-            pSeen();
-        }
-
     }
 
 }
