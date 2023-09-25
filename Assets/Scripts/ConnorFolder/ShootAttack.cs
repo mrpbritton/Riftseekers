@@ -8,6 +8,7 @@ public class ShootAttack : Attack {
     [SerializeField] float damage = 12;
 
     [SerializeField] Transform rotTrans;
+    [SerializeField] GameObject shot;
 
 
     public override attackType getAttackType() {
@@ -25,10 +26,18 @@ public class ShootAttack : Attack {
         if(Physics.Raycast(transform.position, rotTrans.right, out hit, range == -1 ? Mathf.Infinity : range, LayerMask.GetMask("Enemy"))) {
             hit.collider.gameObject.GetComponent<EnemyHealth>().damageTaken(getDamage());
         }
+        shot.SetActive(true);
+        StartCoroutine(shotAnim());
     }
 
     protected override float getCooldownTime() {
         return 1f;
+    }
+
+    IEnumerator shotAnim() {
+        shot.SetActive(true);
+        yield return new WaitForSeconds(.1f);
+        shot.SetActive(false);
     }
 
 }

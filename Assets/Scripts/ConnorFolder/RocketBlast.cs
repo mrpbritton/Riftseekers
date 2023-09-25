@@ -12,7 +12,6 @@ public class RocketBlast : MonoBehaviour {
 
     private void OnTriggerEnter(Collider col) {
         if(LayerMask.LayerToName(col.gameObject.layer) == "Enemy") {
-            Debug.Log("Enemy exploded");
             col.gameObject.GetComponent<EnemyHealth>().damageTaken(dmg);
         }
     }

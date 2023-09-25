@@ -8,8 +8,8 @@ public abstract class Attack : MonoBehaviour {
         None, Basic, Secondary, QAbility, EAbility, RAbility, FAbility
     }
 
-    float dmgMod;
-    float cooldownMod;
+    float dmgMod = 1.0f;
+    float cooldownMod = 1.0f;
 
     public void updateStats(float dMod, float cdMod) {
         dmgMod = dMod;

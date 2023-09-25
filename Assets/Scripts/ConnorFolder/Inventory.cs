@@ -130,11 +130,13 @@ public class ItemSaveData {
     public string title;
     public string description;
     public int value;
+    public Sprite image;
 
     public ItemSaveData(ConItem i) {
         title = i.title;
         description = i.description;
         value = i.value;
+        image = i.image;
     }
     public ConItem toItem(ItemLibrary il) {
         foreach(var i in il.getItems())
