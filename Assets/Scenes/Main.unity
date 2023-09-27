@@ -389,6 +389,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 117945b8cf2c8cc4aad0809e7798b1c6, type: 3}
+--- !u!65 &240638444 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 4529715295870549197, guid: 23a2668f187d952479a324da40f43de0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1020995878}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &312879431
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,6 +867,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 926446941544406595, guid: 23a2668f187d952479a324da40f43de0,
+        type: 3}
+      propertyPath: attacking
+      value: 
+      objectReference: {fileID: 240638444}
+    - target: {fileID: 3538306815760562318, guid: 23a2668f187d952479a324da40f43de0,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3604988519602030965, guid: 23a2668f187d952479a324da40f43de0,
         type: 3}
       propertyPath: m_TagString
