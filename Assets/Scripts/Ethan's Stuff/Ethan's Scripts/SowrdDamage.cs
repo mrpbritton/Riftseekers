@@ -5,6 +5,7 @@ using UnityEngine;
 public class SowrdDamage : MonoBehaviour
 {
     public float damage;
+    public float range;
     void Start()
     {
         
@@ -21,5 +22,9 @@ public class SowrdDamage : MonoBehaviour
         {
             enemyHealth.damageTaken(5);
         }
+    }
+    public void RangeUpgrade(int newRange)
+    {
+
     }
 }

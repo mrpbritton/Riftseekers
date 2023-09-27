@@ -10,6 +10,12 @@ public class Sword : Attack
     [SerializeField] float swingSpeed;
     private float angle = 0;
     private bool slice, direction; //If the attack is happening
+    public Collider attacking;
+    private void Start()
+    {
+        
+        attacking.enabled = false;
+    }
 
     void Update()
     {
@@ -49,6 +55,7 @@ public class Sword : Attack
                     hurtBox.transform.eulerAngles = new Vector3(0, aimRotation.transform.eulerAngles.y, 0);
                     direction = false;
                     slice = false;
+                    attacking.enabled = false;
                 }
             }
         }
@@ -63,6 +70,7 @@ public class Sword : Attack
     }
     public override void attack()
     {
+        attacking.enabled = true;
         slice = true;
     }
     protected override float getCooldownTime() {
