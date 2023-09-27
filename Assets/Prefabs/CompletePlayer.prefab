@@ -321,7 +321,7 @@ GameObject:
   - component: {fileID: 8964394923793061034}
   m_Layer: 0
   m_Name: CompletePlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -343,7 +343,7 @@ Transform:
   - {fileID: 6334058779806566646}
   - {fileID: 1134619532179757097}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8898544138732961493
 GameObject:
@@ -436,6 +436,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8964394923793061034}
     m_Modifications:
+    - target: {fileID: 1123744075933665958, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1486973088829066078, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
       propertyPath: hp
@@ -595,6 +600,11 @@ PrefabInstance:
         type: 3}
       propertyPath: dashChargeCooldown
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8966802350830127632, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
+      propertyPath: radius
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

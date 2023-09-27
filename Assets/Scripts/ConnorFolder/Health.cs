@@ -12,6 +12,8 @@ public class Health : MonoBehaviour
 
     string playerHealthTag = "PlayerHealth";
 
+    PlayerUICanvas pui;
+
     public void UpdateStats()
     {
         if(isPlayer)
@@ -26,6 +28,8 @@ public class Health : MonoBehaviour
     }
 
     private void Start() {
+        pui = FindObjectOfType<PlayerUICanvas>();
+        pui.updateHealthSlider(maxHealth, (int)health);
         isPlayer = gameObject.tag == "Player";
         health = isPlayer ? SaveData.getInt(playerHealthTag) : maxHealth;
 
@@ -42,6 +46,7 @@ public class Health : MonoBehaviour
     public void takeDamage(int dmg) {
         health -= dmg;
 
+        pui.updateHealthSlider(maxHealth, (int)health);
         //  check if dead
         if(health <= 0)
             Debug.Log(gameObject.name + " died!");
@@ -49,12 +54,14 @@ public class Health : MonoBehaviour
         //  saves
         if(isPlayer)
             SaveData.setFloat(playerHealthTag, health);
+
     }
 
     //  use this when healing
     public void heal(int dmg) {
         health = Mathf.Clamp(health + dmg, 0, maxHealth);
 
+        pui.updateHealthSlider(maxHealth, (int)health);
         //  check if dead (just in case)
         if(health <= 0)
             Debug.Log(gameObject.name + " died!");
