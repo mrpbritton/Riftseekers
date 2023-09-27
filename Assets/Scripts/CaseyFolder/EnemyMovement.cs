@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,18 +15,10 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private bool bMelee;
     private GameObject target = null, Player, Cover, firePosition;
-    [SerializeField]
+    private RaycastHit hitInfo;
+//    [SerializeField]
 //    private int coverTime = 1;
 
-    private void OnEnable()
-    {
-        EnemyFiring.pSeen += pSeen;
-    }
-
-    private void OnDisable()
-    {
-        EnemyFiring.pSeen -= pSeen;
-    }
 
     private void Start()
     {
@@ -35,7 +29,14 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-//        Cover = GameObject.FindGameObjectWithTag("Cover");
+        //        Cover = GameObject.FindGameObjectWithTag("Cover");
+        if (Physics.Raycast(transform.position, Player.transform.position - transform.position, out hitInfo))
+        {
+            if (hitInfo.transform.CompareTag("Player"))
+            {
+                pSeen();
+            }
+        }
 
         if (target != null)
         {

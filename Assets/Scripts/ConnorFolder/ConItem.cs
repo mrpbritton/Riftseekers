@@ -11,10 +11,13 @@ public class ConItem : ScriptableObject {
     public string description;
     [Tooltip("How much this item sells for")]
     public int value;
+    [Tooltip("What this item looks like")]
+    public Sprite image;
 
     public ConItem(ItemSaveData saveData) {
         title = saveData.title;
         description = saveData.description;
         value = saveData.value;
+        image = saveData.image;
     }
 }
