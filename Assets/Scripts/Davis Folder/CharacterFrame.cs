@@ -60,6 +60,9 @@ public class CharacterFrame : MonoBehaviour
     [Tooltip("Limit the ultimate ability will charge to")]
     public int chargeLimit;
 
+    [Header("Sprite")]
+    public SpriteRenderer characterSprite;
+
     Coroutine attacker = null;
 
     //more options to come in the future
