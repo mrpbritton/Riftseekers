@@ -29,9 +29,7 @@ public class Health : MonoBehaviour
 
     private void Start() {
         pui = FindObjectOfType<PlayerUICanvas>();
-        pui.updateHealthSlider(maxHealth, (int)health);
         isPlayer = gameObject.tag == "Player";
-        health = isPlayer ? SaveData.getInt(playerHealthTag) : maxHealth;
 
         //  saves if this is on the player object
         if(isPlayer)
@@ -39,7 +37,8 @@ public class Health : MonoBehaviour
             SaveData.setFloat(playerHealthTag, health);
             frame = GetComponent<CharacterFrame>();
         }
-            
+        health = isPlayer ? SaveData.getInt(playerHealthTag, -1) == -1 ? frame.health : SaveData.getInt(playerHealthTag) : maxHealth;
+        pui.updateHealthSlider(maxHealth, (int)health);
     }
 
     //  use this when taking damage

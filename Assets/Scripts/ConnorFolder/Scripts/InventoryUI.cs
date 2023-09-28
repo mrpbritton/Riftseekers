@@ -11,6 +11,7 @@ public class InventoryUI : MonoBehaviour {
     ItemLibrary il;
 
     private void Awake() {
+        SaveData.wipe();
         il = FindObjectOfType<ItemLibrary>();
         show();
     }

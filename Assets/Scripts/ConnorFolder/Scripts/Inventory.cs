@@ -28,11 +28,11 @@ public static class Inventory {
     public static ConItem getActiveItem(int slotInd, ItemLibrary il) {
         switch(slotInd) {
             case 0:
-                return itemBag.activeItem1.toItem(il);
+                return itemBag.activeItem1 == null ? null :itemBag.activeItem1.toItem(il);
             case 1:
-                return itemBag.activeItem2.toItem(il);
+                return itemBag.activeItem2 == null ? null : itemBag.activeItem2.toItem(il);
             case 2:
-                return itemBag.activeItem3.toItem(il);
+                return itemBag.activeItem3 == null ? null : itemBag.activeItem3.toItem(il);
             default:
                 Debug.LogError("Trying to save an active item in an invalid slot");
                 return null;

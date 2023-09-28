@@ -10,6 +10,7 @@ public abstract class Attack : MonoBehaviour {
 
     float dmgMod = 1.0f;
     float cooldownMod = 1.0f;
+    public AbilityLibrary.abilType abilType;
 
     public void updateStats(float dMod, float cdMod) {
         dmgMod = dMod;

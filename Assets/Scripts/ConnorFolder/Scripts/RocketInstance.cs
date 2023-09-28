@@ -18,7 +18,6 @@ public class RocketInstance : MonoBehaviour {
             case "Enemy":
                 //case "Other tag that would cause this to explode here":
                 col.gameObject.GetComponent<EnemyHealth>().damageTaken(parentAttack.getRealDamage());
-                Debug.Log(parentAttack.getRealDamage().ToString());
                 rb.explode();
                 break;
         }
