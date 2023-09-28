@@ -443,11 +443,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1486973088829066078, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
-      propertyPath: hp
-      value: 
-      objectReference: {fileID: 8644573300800683811}
-    - target: {fileID: 1486973088829066078, guid: 66562dc996ca2b5478f1b7f0a538878b,
-        type: 3}
       propertyPath: health
       value: 20
       objectReference: {fileID: 0}
@@ -496,6 +491,11 @@ PrefabInstance:
       propertyPath: dashDistance
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1486973088829066078, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
+      propertyPath: characterSprite
+      value: 
+      objectReference: {fileID: 1385931883486106945}
     - target: {fileID: 2817633728589372469, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
       propertyPath: rotTrans
@@ -601,12 +601,18 @@ PrefabInstance:
       propertyPath: dashChargeCooldown
       value: 3
       objectReference: {fileID: 0}
+<<<<<<< Updated upstream
     - target: {fileID: 8966802350830127632, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
       propertyPath: radius
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+=======
+    m_RemovedComponents:
+    - {fileID: 3538697576691589697, guid: 66562dc996ca2b5478f1b7f0a538878b, type: 3}
+    - {fileID: 6495132287071826026, guid: 66562dc996ca2b5478f1b7f0a538878b, type: 3}
+>>>>>>> Stashed changes
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 8668862765239614125, guid: 66562dc996ca2b5478f1b7f0a538878b,
@@ -617,7 +623,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3828959025880857685, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
       insertIndex: 2
-      addedObject: {fileID: 8644573300800683811}
+      addedObject: {fileID: 2879490994310707860}
+    - targetCorrespondingSourceObject: {fileID: 1123744075933665958, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1385931883486106945}
   m_SourcePrefab: {fileID: 100100000, guid: 66562dc996ca2b5478f1b7f0a538878b, type: 3}
 --- !u!1 &629408075775950726 stripped
 GameObject:
@@ -625,7 +635,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4440314752643908563}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8644573300800683811
+--- !u!114 &2879490994310707860
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -650,6 +660,64 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc7744011dc28a40ad8f734e58319cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3604988519602030965 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1123744075933665958, guid: 66562dc996ca2b5478f1b7f0a538878b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4440314752643908563}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &1385931883486106945
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3604988519602030965}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 693d51077d0809645885485dc3fd2bff, type: 3}
+  m_Color: {r: 0.50628924, g: 0.85369307, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 2.56, y: 5.12}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!4 &5031319563987581310 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8668862765239614125, guid: 66562dc996ca2b5478f1b7f0a538878b,

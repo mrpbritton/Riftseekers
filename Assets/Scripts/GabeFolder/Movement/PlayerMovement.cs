@@ -35,8 +35,14 @@ public class PlayerMovement : MonoBehaviour
     private bool cantDash; //whether or not the player can dash
 
     [Header("Sprites")]
-    public Sprite frontRight;
-    public Sprite frontLeft;
+    public Sprite north;
+    public Sprite northEast;
+    public Sprite east;
+    public Sprite southEast;
+    public Sprite south;
+    public Sprite southWest;
+    public Sprite west;
+    public Sprite northWest;
 
     private CharacterController player;
     private CharacterFrame frame;
@@ -79,10 +85,58 @@ public class PlayerMovement : MonoBehaviour
         direction.x = pInput.Player.Movement.ReadValue<Vector3>().x;
         direction.z = pInput.Player.Movement.ReadValue<Vector3>().z;
 
-        player.Move(speed * Time.deltaTime * direction);
+        player.Move(speed * Time.deltaTime * direction.normalized);
+
+        #region Sprite Setting
+        if (direction.x == 1)
+        {
+            if(direction.z == -1) // SOUTHEAST
+            {
+                frame.characterSprite.sprite = southEast;
+            }
+            else if(direction.z == 0) // EAST
+            {
+                frame.characterSprite.sprite = east;
+            }
+            else // direction.z == 1 *** NORTHEAST
+            {
+                frame.characterSprite.sprite = northEast;
+            }
+        }
+        else if (direction.x == -1)
+        {
+            if (direction.z == -1) // SOUTHWEST
+            {
+                frame.characterSprite.sprite = southWest;
+            }
+            else if (direction.z == 0) // WEST
+            {
+                frame.characterSprite.sprite = west;
+            }
+            else // direction.z == 1 *** NORTHWEST
+            {
+                frame.characterSprite.sprite = northWest;
+            }
+        }
+        else //direction.x == 0
+        {
+            if (direction.z == -1) // SOUTH
+            {
+                frame.characterSprite.sprite = south;
+            }
+            else if (direction.z == 0) // NO INPUT
+            {
+                frame.characterSprite.sprite = east;
+            }
+            else // direction.z == 1 *** NORTH
+            {
+                frame.characterSprite.sprite = north;
+            }
+        }
+        #endregion
 
         //if the player isn't grounded, move them towards the ground.
-        if(player.isGrounded == false) 
+        if (player.isGrounded == false) 
         {
             player.Move(fallSpeed * Time.deltaTime * Vector3.down);
         }
@@ -119,7 +173,7 @@ public class PlayerMovement : MonoBehaviour
         while (dTimeRemaining > 0)
         {
             dTimeRemaining -= Time.deltaTime;
-            player.Move(direction * dashSpeed * Time.deltaTime * dashDistance);
+            player.Move(direction.normalized * dashSpeed * Time.deltaTime * dashDistance);
             yield return null;
         }
 
