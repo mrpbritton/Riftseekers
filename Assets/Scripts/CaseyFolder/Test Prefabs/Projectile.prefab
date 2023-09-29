@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 13706256260713247}
   - component: {fileID: 2279035841894599270}
   - component: {fileID: 5201080616295364762}
+  - component: {fileID: 4592887294288893841}
+  - component: {fileID: 1367921637787629457}
+  - component: {fileID: 8397109625162933902}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -99,7 +102,7 @@ CapsuleCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -107,6 +110,52 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &4592887294288893841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291647952603663733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3555b29c65fdcf0459d7ca7086ba5ab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  gAction:
+  - {fileID: 8397109625162933902}
+  - {fileID: 1367921637787629457}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &1367921637787629457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291647952603663733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2065eb3dc731a46b9e95eac1467c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+--- !u!114 &8397109625162933902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291647952603663733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ee13536e1560e54a9bfdc479ac39398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  damage: 5
 --- !u!1 &2806661883677591592
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,9 +166,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6662903909401236356}
   - component: {fileID: 6736576878931691440}
-  - component: {fileID: -3122899575494190997}
-  - component: {fileID: 1916228164695147028}
-  - component: {fileID: 1820928854131425933}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -157,49 +203,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0, z: 0}
   speed: 25
---- !u!114 &-3122899575494190997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2806661883677591592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3555b29c65fdcf0459d7ca7086ba5ab1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
-  gAction:
-  - {fileID: 1916228164695147028}
-  - {fileID: 1820928854131425933}
-  enemyMask:
-    serializedVersion: 2
-    m_Bits: 0
---- !u!114 &1916228164695147028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2806661883677591592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c2065eb3dc731a46b9e95eac1467c07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
---- !u!114 &1820928854131425933
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2806661883677591592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ee13536e1560e54a9bfdc479ac39398, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
-  damage: 5
