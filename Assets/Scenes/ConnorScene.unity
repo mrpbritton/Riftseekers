@@ -455,10 +455,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 151039587082595141, guid: 1cd3fdeb5684a654d8cca1f875170217,
+        type: 3}
+      propertyPath: abs.Array.data[0]
+      value: 
+      objectReference: {fileID: 382284784}
+    - target: {fileID: 151039587082595141, guid: 1cd3fdeb5684a654d8cca1f875170217,
+        type: 3}
+      propertyPath: abs.Array.data[1]
+      value: 
+      objectReference: {fileID: 382284783}
+    - target: {fileID: 151039587082595141, guid: 1cd3fdeb5684a654d8cca1f875170217,
+        type: 3}
+      propertyPath: abs.Array.data[2]
+      value: 
+      objectReference: {fileID: 382284782}
+    - target: {fileID: 151039587082595141, guid: 1cd3fdeb5684a654d8cca1f875170217,
+        type: 3}
+      propertyPath: abs.Array.data[3]
+      value: 
+      objectReference: {fileID: 382284781}
     - target: {fileID: 3172171669271624612, guid: 1cd3fdeb5684a654d8cca1f875170217,
         type: 3}
       propertyPath: m_Name
-      value: ItemLibrary
+      value: Library
       objectReference: {fileID: 0}
     - target: {fileID: 8238111960590484021, guid: 1cd3fdeb5684a654d8cca1f875170217,
         type: 3}
@@ -518,35 +538,8 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3172171669271624612, guid: 1cd3fdeb5684a654d8cca1f875170217,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 226328356}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cd3fdeb5684a654d8cca1f875170217, type: 3}
---- !u!1 &226328355 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3172171669271624612, guid: 1cd3fdeb5684a654d8cca1f875170217,
-    type: 3}
-  m_PrefabInstance: {fileID: 226328354}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &226328356
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 226328355}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b77da58cbf00fb548b8fb927028fe06e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abs:
-  - {fileID: 382284784}
-  - {fileID: 382284783}
-  - {fileID: 382284782}
-  - {fileID: 382284781}
 --- !u!1 &306394793
 GameObject:
   m_ObjectHideFlags: 0
@@ -3281,7 +3274,7 @@ PrefabInstance:
         type: 3}
       propertyPath: shopWindow
       value: 
-      objectReference: {fileID: 1037373908}
+      objectReference: {fileID: 0}
     - target: {fileID: 1572966916675165636, guid: cce5a4c4166cb124e919641c5f8f0ea6,
         type: 3}
       propertyPath: m_RootOrder

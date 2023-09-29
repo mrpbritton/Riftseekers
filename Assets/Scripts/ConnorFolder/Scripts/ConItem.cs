@@ -13,11 +13,15 @@ public class ConItem : ScriptableObject {
     public int value;
     [Tooltip("What this item looks like")]
     public Sprite image;
+    [Tooltip("What ability does this give the player")]
+    public AbilityLibrary.abilType overrideAbil = AbilityLibrary.abilType.None;
+
 
     public ConItem(ItemSaveData saveData) {
         title = saveData.title;
         description = saveData.description;
         value = saveData.value;
         image = saveData.image;
+        overrideAbil = saveData.overrideAbil;
     }
 }

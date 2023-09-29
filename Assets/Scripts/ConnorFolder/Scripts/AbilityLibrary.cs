@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AbilityLibrary : MonoBehaviour {
     public enum abilType {
-        Rocket, Dash, Sword, Pistol
+        None, Rocket, Dash, Sword, Pistol
     }
 
     [SerializeField] List<Attack> abs = new List<Attack>();
@@ -17,6 +17,8 @@ public class AbilityLibrary : MonoBehaviour {
     }
 
     public Attack getAttack(abilType type) {
+        if(type == abilType.None)
+            return null;
         return abils[type];
     }
 }

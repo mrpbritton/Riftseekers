@@ -48,10 +48,12 @@ public abstract class ShopVendor : MonoBehaviour {
     }
 
     void show() {
-        shopWindow.gameObject.SetActive(true);
+        if(shopWindow != null)
+            shopWindow.gameObject.SetActive(true);
     }
     void hide() {
-        shopWindow.gameObject.SetActive(false);
+        if(shopWindow != null)
+            shopWindow.gameObject.SetActive(false);
     }
 
     protected abstract void interact();
