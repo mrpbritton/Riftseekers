@@ -29,6 +29,8 @@ public class Health : MonoBehaviour
 
     private void Start() {
         pui = FindObjectOfType<PlayerUICanvas>();
+        if(pui == null)
+            Debug.LogError("Add Player UI Canvas (In Connor's folder) to the scene");
         isPlayer = gameObject.tag == "Player";
 
         //  saves if this is on the player object
