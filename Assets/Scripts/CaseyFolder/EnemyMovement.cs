@@ -41,7 +41,11 @@ public class EnemyMovement : MonoBehaviour
                 pSeen();
             }
         }
-//        lookForCover();
+
+        if (bCover)
+        {
+            lookForCover();
+        }
 
         if (target != null)
         {
@@ -58,6 +62,11 @@ public class EnemyMovement : MonoBehaviour
         //change target position to cover
     public void lookForCover()
     {
+        if (!bMelee)
+        {
+            agent.stoppingDistance = 0;
+        }
+
         close = 9999;
         foreach (GameObject current in cover)
         {
@@ -67,25 +76,30 @@ public class EnemyMovement : MonoBehaviour
             {
                 close = distance;
                 target = current;
-                Debug.Log(target);
             }
         }
     }
 
     public void leaveCover()
-        {
-            Debug.Log("leaving cover");
-            target = Player;
-
-    //        Debug.Log("Player found");
-        }
-
-        IEnumerator TimeInCover()
-        {
-            yield return new WaitForSeconds(1);
-        }
-    public void pSeen()
     {
         target = Player;
+//        Debug.Log("Player found");
+    }
+
+    IEnumerator TimeInCover()
+    {
+        yield return new WaitForSeconds(.5f);
+    }
+    public void pSeen()
+    {
+        if(!bCover)
+        {
+            target = Player;
+            if (!bMelee)
+            {
+                agent.stoppingDistance = 10;
+            }
+
+        }
     }
 }
