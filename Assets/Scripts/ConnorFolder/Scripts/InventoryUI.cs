@@ -7,7 +7,7 @@ public class InventoryUI : MonoBehaviour {
     [SerializeField] List<Image> activeSlots;
     [SerializeField] List<Image> inactiveSlots;
     [SerializeField] Sprite emptySlotSprite;
-    [SerializeField] ConItem tester;
+    [SerializeField] ConItem tester, tester2;
 
     ItemLibrary il;
 
@@ -17,10 +17,16 @@ public class InventoryUI : MonoBehaviour {
     private void Awake() {
         il = FindObjectOfType<ItemLibrary>();
         Inventory.loadInventory();
-        //Inventory.addItem(tester);
-        //Inventory.saveInventory();
+        //funny();
         show();
         setActIndex(0);
+    }
+
+    void funny() {
+        Inventory.addItem(tester);
+        Inventory.addItem(tester2);
+        Inventory.addItem(tester2);
+        Inventory.saveInventory();
     }
 
     public void show() {
@@ -39,15 +45,20 @@ public class InventoryUI : MonoBehaviour {
 
     public void setCurIndex(int ind) {
         curIndex = ind;
-        ConItem temp = Inventory.getActiveItem(actIndex, il);
-        if(Inventory.getItems(il).Count > curIndex)
+        ConItem temp = Inventory.getActiveItem(actIndex, il);   //  saves the active item that's being replaced
+
+        //  overrides the active item if there is a valid overrider
+        if(Inventory.getItems(il).Count > curIndex) 
             Inventory.overrideActiveItem(actIndex, Inventory.getItems(il)[curIndex]);
-        else
+        //  otherwise, just remove the active item
+        else 
             Inventory.removeActiveItem(actIndex);
-        if(temp != null)
+
+        Inventory.removeItem(curIndex); //  removes the inventory item because it's not needed anymore
+        //  adds the saved active item into the inventory if it's valid
+        if(temp != null) 
             Inventory.addItem(temp);
-        else
-            Inventory.removeItem(curIndex);
+        Inventory.saveInventory();
         show();
     }
     public void setActIndex(int ind) {
