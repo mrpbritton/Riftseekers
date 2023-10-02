@@ -7,12 +7,17 @@ public class InventoryUI : MonoBehaviour {
     [SerializeField] List<Image> activeSlots;
     [SerializeField] List<Image> inactiveSlots;
     [SerializeField] Sprite emptySlotSprite;
+    [SerializeField] ConItem tester;
 
     ItemLibrary il;
 
+    int curIndex = -1;
+
     private void Awake() {
-        SaveData.wipe();
         il = FindObjectOfType<ItemLibrary>();
+        Inventory.loadInventory();
+        //Inventory.addItem(tester);
+        //Inventory.saveInventory();
         show();
     }
 
@@ -28,5 +33,10 @@ public class InventoryUI : MonoBehaviour {
         for(int i = 0; i < inactiveSlots.Count; i++) {
             inactiveSlots[i].sprite = i < invCount ? Inventory.getItems(il)[i].image : emptySlotSprite;
         }
+    }
+
+    public void setCurIndex(int ind) {
+        curIndex = ind;
+        Debug.Log(curIndex);
     }
 }

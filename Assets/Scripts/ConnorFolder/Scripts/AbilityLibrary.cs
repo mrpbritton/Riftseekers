@@ -12,6 +12,10 @@ public class AbilityLibrary : MonoBehaviour {
 
 
     private void Awake() {
+        if(abs.Count == 0)
+            Debug.LogError("Add Player Abilities to the Ability Library");
+        else if(abs[0].abilType == abilType.None)
+            Debug.LogError("Assign abilType to attack scripts");
         foreach(var i in abs)
             abils.Add(i.abilType, i);
     }

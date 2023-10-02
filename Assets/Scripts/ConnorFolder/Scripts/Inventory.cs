@@ -28,7 +28,7 @@ public static class Inventory {
     public static ConItem getActiveItem(int slotInd, ItemLibrary il) {
         switch(slotInd) {
             case 0:
-                return itemBag.activeItem1 == null ? null :itemBag.activeItem1.toItem(il);
+                return itemBag.activeItem1 == null ? null : itemBag.activeItem1.toItem(il);
             case 1:
                 return itemBag.activeItem2 == null ? null : itemBag.activeItem2.toItem(il);
             case 2:
@@ -65,18 +65,16 @@ public static class Inventory {
             return getItem(itemBag.items[i].toItem(il), il);
         return null;
     }
-    public static ConItem getItem(ConItem i, ItemLibrary il)
-    {
-        foreach(var j in il.getItems())
-        {
-            if (j.title == i.title)
+    public static ConItem getItem(ConItem i, ItemLibrary il) {
+        foreach(var j in il.getItems()) {
+            if(j.title == i.title)
                 return j;
         }
         return null;
     }
     public static List<ConItem> getItems(ItemLibrary il) {
         var temp = new List<ConItem>();
-        foreach(var i in itemBag.items) 
+        foreach(var i in itemBag.items)
             temp.Add(i.toItem(il));
         return temp;
     }
@@ -141,9 +139,8 @@ public class ItemSaveData {
         overrideAbil = i.overrideAbil;
     }
     public ConItem toItem(ItemLibrary il) {
-        foreach(var i in il.getItems())
-        {
-            if (i.title == title)
+        foreach(var i in il.getItems()) {
+            if(i.title == title)
                 return i;
         }
         return null;
