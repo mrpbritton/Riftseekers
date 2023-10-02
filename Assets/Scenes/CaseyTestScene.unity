@@ -389,6 +389,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 956882322456177311, guid: 117945b8cf2c8cc4aad0809e7798b1c6,
+        type: 3}
+      propertyPath: m_StoppingDistance
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2302720368536495275, guid: 117945b8cf2c8cc4aad0809e7798b1c6,
         type: 3}
       propertyPath: m_Name
@@ -839,7 +844,7 @@ MonoBehaviour:
   - {fileID: 1477524939}
   enemy:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 439
 --- !u!1 &1646271376 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7512461219268474019, guid: d9b5073c269b5cc4185576610e594a05,
@@ -980,55 +985,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2274129683245823316, guid: 23a2668f187d952479a324da40f43de0,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 2297365772074828468, guid: 23a2668f187d952479a324da40f43de0,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 3096497321844679157, guid: 23a2668f187d952479a324da40f43de0,
+    - target: {fileID: 4529715295870549197, guid: 23a2668f187d952479a324da40f43de0,
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4109447756603681140, guid: 23a2668f187d952479a324da40f43de0,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
-    - target: {fileID: 5799469957730189814, guid: 23a2668f187d952479a324da40f43de0,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6334058779806566646, guid: 23a2668f187d952479a324da40f43de0,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6334058779806566646, guid: 23a2668f187d952479a324da40f43de0,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 22
-      objectReference: {fileID: 0}
-    - target: {fileID: 6334058779806566646, guid: 23a2668f187d952479a324da40f43de0,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 7430548844078876716, guid: 23a2668f187d952479a324da40f43de0,
         type: 3}
       propertyPath: m_Name
       value: CompletePlayer
-      objectReference: {fileID: 0}
-    - target: {fileID: 8838598940836543637, guid: 23a2668f187d952479a324da40f43de0,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8964394923793061034, guid: 23a2668f187d952479a324da40f43de0,
         type: 3}
