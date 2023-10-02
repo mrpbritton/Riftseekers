@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8238111960590484021}
   - component: {fileID: 1797408621559837982}
+  - component: {fileID: 151039587082595141}
   m_Layer: 0
-  m_Name: ItemLibrary
+  m_Name: Library
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1797408621559837982
 MonoBehaviour:
@@ -48,3 +49,20 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 258fbd95fcb78c44281fccf9ba058218, type: 2}
   - {fileID: 11400000, guid: f4479b43f80136045b706ffa878c0f6c, type: 2}
   - {fileID: 11400000, guid: e319d1c514e7a7e428551710065cb58a, type: 2}
+--- !u!114 &151039587082595141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3172171669271624612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b77da58cbf00fb548b8fb927028fe06e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

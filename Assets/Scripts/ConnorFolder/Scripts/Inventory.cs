@@ -131,12 +131,14 @@ public class ItemSaveData {
     public string description;
     public int value;
     public Sprite image;
+    public AbilityLibrary.abilType overrideAbil;
 
     public ItemSaveData(ConItem i) {
         title = i.title;
         description = i.description;
         value = i.value;
         image = i.image;
+        overrideAbil = i.overrideAbil;
     }
     public ConItem toItem(ItemLibrary il) {
         foreach(var i in il.getItems())

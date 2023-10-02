@@ -13,29 +13,38 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private NavMeshAgent agent;
     [SerializeField]
-    private bool bMelee;
-    private GameObject target = null, Player, Cover, firePosition;
+    private bool bMelee, bCover;
+    private GameObject target = null, Player, Gun;
     private RaycastHit hitInfo;
-//    [SerializeField]
-//    private int coverTime = 1;
+    [SerializeField]
+    private List<GameObject> cover = new List<GameObject>();
+    private float close = 9999;
+    public LayerMask enemy;
+
+
+    //    [SerializeField]
+    //    private int coverTime = 1;
 
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-//        target = Player;
-        //        if (bMelee)
+        cover.AddRange(GameObject.FindGameObjectsWithTag("Cover"));
     }
 
     void Update()
     {
-        //        Cover = GameObject.FindGameObjectWithTag("Cover");
-        if (Physics.Raycast(transform.position, Player.transform.position - transform.position, out hitInfo))
+        if (Physics.Raycast(transform.position, Player.transform.position - transform.position, out hitInfo, enemy))
         {
             if (hitInfo.transform.CompareTag("Player"))
             {
                 pSeen();
             }
+        }
+
+        if (bCover)
+        {
+            lookForCover();
         }
 
         if (target != null)
@@ -49,30 +58,48 @@ public class EnemyMovement : MonoBehaviour
             agent.SetDestination(target.transform.position);
         }
     }
-/*
-    //change target position to cover
+
+        //change target position to cover
     public void lookForCover()
     {
-        Debug.Log("looking for cover");
-        target = Cover;
-        StartCoroutine(nameof(TimeInCover));
+        if (!bMelee)
+        {
+            agent.stoppingDistance = 0;
+        }
+
+        close = 9999;
+        foreach (GameObject current in cover)
+        {
+            float distance = Vector3.Distance(transform.position, current.transform.position);
+
+            if (distance < close && current.activeSelf == true)
+            {
+                close = distance;
+                target = current;
+            }
+        }
     }
 
     public void leaveCover()
     {
-        Debug.Log("leaving cover");
         target = Player;
-
 //        Debug.Log("Player found");
     }
 
     IEnumerator TimeInCover()
     {
-        yield return new WaitForSeconds(coverTime);
+        yield return new WaitForSeconds(.5f);
     }
-*/
     public void pSeen()
     {
-        target = Player;
+        if(!bCover)
+        {
+            target = Player;
+            if (!bMelee)
+            {
+                agent.stoppingDistance = 10;
+            }
+
+        }
     }
 }

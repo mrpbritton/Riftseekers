@@ -17,7 +17,6 @@ public class EnemyFiring : MonoBehaviour
     private RaycastHit hitInfo;
     [SerializeField]
     private float eRange = 10f;
-    private bool bSeen;
     private GameObject Player;
 
 
@@ -51,7 +50,6 @@ public class EnemyFiring : MonoBehaviour
             if (hitInfo.transform.CompareTag("Player"))
             {
                 bSeePlayer = true;
-                bSeen = true;
             }
             else
             {
