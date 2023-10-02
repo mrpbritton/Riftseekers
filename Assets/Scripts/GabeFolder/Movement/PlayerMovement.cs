@@ -126,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (direction.z == 0) // NO INPUT
             {
-                frame.characterSprite.sprite = east;
+                //last input entered
             }
             else // direction.z == 1 *** NORTH
             {
