@@ -12,18 +12,17 @@ public class EnemyMovement : MonoBehaviour
     private float rotationSpeed = 2f;
     [SerializeField]
     private NavMeshAgent agent;
-    [SerializeField]
-    private bool bMelee, bCover;
-    private GameObject target = null, Player, Gun;
+    public bool bMelee, bCover;
+    private GameObject target = null, Gun, Player;
     private RaycastHit hitInfo;
     [SerializeField]
     private List<GameObject> cover = new List<GameObject>();
     private float close = 9999;
     public LayerMask enemy;
+    [SerializeField]
+    private int coverTime = 5;
 
 
-    //    [SerializeField]
-    //    private int coverTime = 1;
 
 
     private void Start()
@@ -34,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        if (Physics.Raycast(transform.position, Player.transform.position - transform.position, out hitInfo, enemy))
+        if (Physics.Raycast(transform.position, Player.transform.position - transform.position, out hitInfo, 9999, enemy))
         {
             if (hitInfo.transform.CompareTag("Player"))
             {
@@ -42,9 +41,10 @@ public class EnemyMovement : MonoBehaviour
             }
         }
 
-        if (bCover)
+        if (bCover && !bMelee)
         {
             lookForCover();
+            StartCoroutine(nameof(TimeInCover));
         }
 
         if (target != null)
@@ -80,16 +80,13 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    public void leaveCover()
-    {
-        target = Player;
-//        Debug.Log("Player found");
-    }
 
     IEnumerator TimeInCover()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(coverTime);
+        bCover = false;
     }
+
     public void pSeen()
     {
         if(!bCover)

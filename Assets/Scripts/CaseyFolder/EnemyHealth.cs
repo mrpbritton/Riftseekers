@@ -8,6 +8,8 @@ public class EnemyHealth : MonoBehaviour
 
     public float maxhealth;
     public float currentHealth;
+    private float critHealth;
+    private bool foundCover;
 
     Coroutine invincTimer = null;
     float invincTime = .5f;
@@ -18,6 +20,7 @@ public class EnemyHealth : MonoBehaviour
     private void Awake()
     {
         currentHealth = maxhealth;
+        critHealth = maxhealth * 0.5f;
         healthSlider.maxValue = maxhealth;
         healthSlider.value = currentHealth;
     }
@@ -36,6 +39,16 @@ public class EnemyHealth : MonoBehaviour
         {
             deathAnimation();
         }
+
+        if(currentHealth <= critHealth && !foundCover)
+        {
+            if(gameObject.TryGetComponent(out EnemyMovement movement))
+            {
+                movement.bCover = true;
+                foundCover = true;
+            }
+        }
+
     }
     private void deathAnimation()
     {

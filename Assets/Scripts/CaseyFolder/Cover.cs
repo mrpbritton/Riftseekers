@@ -20,7 +20,7 @@ public class Cover : MonoBehaviour
     {
         foreach(GameObject current in coverList)
         {
-            if (Physics.Raycast(current.transform.position, Player.transform.position - current.transform.position, out hitInfo, enemy))
+            if (Physics.Raycast(current.transform.position, Player.transform.position - current.transform.position, out hitInfo, 999, enemy))
             {
                 if (hitInfo.transform.CompareTag("Player"))
                 {
