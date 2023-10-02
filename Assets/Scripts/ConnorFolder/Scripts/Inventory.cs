@@ -38,6 +38,19 @@ public static class Inventory {
                 return null;
         }
     }
+    public static void removeActiveItem(int slotInd) {
+        switch(slotInd) {
+            case 0:
+                itemBag.activeItem1 = null;
+                break;
+            case 1:
+                itemBag.activeItem2 = null;
+                break;
+            case 2:
+                itemBag.activeItem3 = null;
+                break;
+        }
+    }
 
     //  Item saving things
     public static void saveInventory() {
@@ -51,6 +64,9 @@ public static class Inventory {
 
     public static void addItem(ConItem i) {
         itemBag.items.Add(new ItemSaveData(i));
+    }
+    public static void overrideItem(int ind, ConItem i) {
+        itemBag.items[ind] = new ItemSaveData(i);
     }
     public static void removeItem(int i) {
         if(i < itemBag.items.Count)
