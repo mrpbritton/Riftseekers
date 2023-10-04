@@ -16,8 +16,9 @@ public class EnemyFiring : MonoBehaviour
     private bool bSeePlayer = false;
     private RaycastHit hitInfo;
     [SerializeField]
-    private float eRange = 10f;
     private GameObject Player;
+    public LayerMask enemy;
+
 
 
     private void Start()
@@ -45,7 +46,7 @@ public class EnemyFiring : MonoBehaviour
 
     private void lookForPlayer()
     {
-        if (Physics.Raycast(transform.position, Player.transform.position - transform.position, out hitInfo, eRange))
+        if (Physics.Raycast(transform.position, Player.transform.position - transform.position, out hitInfo, 999, enemy))
         {
             if (hitInfo.transform.CompareTag("Player"))
             {

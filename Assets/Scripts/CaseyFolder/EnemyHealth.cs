@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,8 @@ public class EnemyHealth : MonoBehaviour
 
     [SerializeField] Collider usedCollider;
     [SerializeField] Slider healthSlider;
+
+    public static Action onEnemyDeath = delegate { };
 
     private void Awake()
     {
@@ -52,6 +55,7 @@ public class EnemyHealth : MonoBehaviour
     }
     private void deathAnimation()
     {
+        onEnemyDeath();
         Debug.Log("death");
         Destroy(gameObject);
     }

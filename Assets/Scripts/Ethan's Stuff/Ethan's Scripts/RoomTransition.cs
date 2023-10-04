@@ -23,21 +23,23 @@ public class RoomTransition : MonoBehaviour
     }
     void RoomTransitionz()
     {
-        int index = SceneManager.GetActiveScene().buildIndex;
-        if(index == 0)
-        {
-            SceneManager.LoadScene(scenes[0]);
-        }
-        else
-        {
-            for(int i = 0; i < 3; i++)
-            {
-                if(index == scenes[i])
-                {
-                    SceneManager.LoadScene(scenes[i + 1]);
-                }
-            }   
-        }
+        /*  int index = SceneManager.GetActiveScene().buildIndex;
+          if(index == 0)
+          {
+              SceneManager.LoadScene(scenes[0]);
+          }
+          else
+          {
+              for(int i = 0; i < 3; i++)
+              {
+                  if(index == scenes[i])
+                  {
+                      SceneManager.LoadScene(scenes[i + 1]);
+                  }
+              }   
+          }
+        */
+        SceneManager.LoadScene(4);
     }
     private void OnTriggerEnter(Collider other)
     {
