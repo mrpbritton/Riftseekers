@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class ShopVendor : MonoBehaviour {
+public abstract class MenuInstance : MonoBehaviour {
 
     PInput input;
 
     [SerializeField] Canvas shopWindow;
     [SerializeField] float maxDistFromPlayer;
 
-    bool interacting = false;
+    PlayerMovement pm;
+
+    public bool interacting { get; private set; } = false;
 
 
     private void Start() {
+        pm = FindObjectOfType<PlayerMovement>();
         hide();
         input = new PInput();
         input.Enable();
@@ -32,6 +35,11 @@ public abstract class ShopVendor : MonoBehaviour {
     }
 
     public void tryInteract() {
+        //  checks if other menus are opened
+        foreach(var i in FindObjectsOfType<MenuInstance>()) {
+            if(i != gameObject && i.interacting)
+                return;
+        }
         //  checks the dist from player
         var pPos = FindObjectOfType<CharacterFrame>();
         if(Vector3.Distance(pPos.transform.position, transform.position) > maxDistFromPlayer)
@@ -50,10 +58,12 @@ public abstract class ShopVendor : MonoBehaviour {
     void show() {
         if(shopWindow != null)
             shopWindow.gameObject.SetActive(true);
+        pm.enabled = false;
     }
     void hide() {
         if(shopWindow != null)
             shopWindow.gameObject.SetActive(false);
+        pm.enabled = true;
     }
 
     protected abstract void interact();
