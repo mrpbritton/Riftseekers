@@ -15,8 +15,10 @@ public class UpdateStat_GA : GameAction
         if (frame == null)
         {
             //finds the player if the frame isn't set, finds the player, then gets it's frame
-            frame = GameObject.FindGameObjectWithTag("Player").GetComponent<CharacterFrame>();
+            frame = FindObjectOfType<CharacterFrame>();
         }
+
+        Debug.Log(frame == null);
 
         /*    maxHealth,
     health,
