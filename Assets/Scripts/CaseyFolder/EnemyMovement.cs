@@ -33,7 +33,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        if (Physics.Raycast(transform.position, Player.transform.position - transform.position, out hitInfo, 9999, enemy))
+        if (Physics.Raycast(transform.position, Player.transform.position - transform.position, out hitInfo, float.PositiveInfinity, enemy))
         {
             if (hitInfo.transform.CompareTag("Player"))
             {
