@@ -11,7 +11,7 @@ public class Damage_GA : GameAction
     private void OnTriggerEnter(Collider other)
     {
 //        other.gameObject.GetComponentInParent<Health>().takeDamage(damage);
-        Debug.Log(other.transform.name);
+
         if (other.TryGetComponent(out Health healthSystem))
         {
             healthSystem.takeDamage(damage);
