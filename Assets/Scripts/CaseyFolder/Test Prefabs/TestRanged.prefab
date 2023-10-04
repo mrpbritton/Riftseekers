@@ -354,7 +354,10 @@ MonoBehaviour:
   projectile: {fileID: 2806661883677591592, guid: 3857254fd8fd16a4b97e304f31d3a168,
     type: 3}
   reloadTime: 2
-  eRange: 20
+  Player: {fileID: 0}
+  enemy:
+    serializedVersion: 2
+    m_Bits: 439
 --- !u!1001 &9063129239472623483
 PrefabInstance:
   m_ObjectHideFlags: 0
