@@ -114,17 +114,19 @@ public class InventoryUI : MonoBehaviour {
         actIndex = actInd;
         ConItem temp = Inventory.getActiveItem(actIndex, il);   //  saves the active item that's being replaced
         //  overrides the active item if there is a valid overrider
-        if(Inventory.getItems(il).Count > curIndex)
+        if(Inventory.getItems(il).Count > curIndex && curIndex != -1) {
             Inventory.overrideActiveItem(actIndex, Inventory.getItems(il)[curIndex]);
+            Inventory.removeItem(curIndex); //  removes the inventory item because it's not needed anymore
+        }
         //  otherwise, just remove the active item
         else
             Inventory.removeActiveItem(actIndex);
 
-        Inventory.removeItem(curIndex); //  removes the inventory item because it's not needed anymore
         //  adds the saved active item into the inventory if it's valid
         if(temp != null)
             Inventory.addItem(temp);
         Inventory.saveInventory();
         show();
+        curIndex = -1;
     }
 }
