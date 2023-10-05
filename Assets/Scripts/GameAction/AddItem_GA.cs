@@ -20,7 +20,7 @@ public class AddItem_GA : GameAction
     {
         Inventory.addItem(item);
         Inventory.saveInventory();
-        Debug.Log($"{Inventory.getItem(Inventory.getItemIndex(item), FindObjectOfType<ItemLibrary>()).title}");
+        //Debug.Log($"{Inventory.getItem(Inventory.getItemIndex(item), FindObjectOfType<ItemLibrary>()).title}");
     }
 
     /// <summary>

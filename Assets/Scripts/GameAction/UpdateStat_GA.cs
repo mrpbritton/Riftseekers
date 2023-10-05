@@ -18,8 +18,6 @@ public class UpdateStat_GA : GameAction
             frame = FindObjectOfType<CharacterFrame>();
         }
 
-        Debug.Log(frame == null);
-
         /*    maxHealth,
     health,
     moveSpeed,

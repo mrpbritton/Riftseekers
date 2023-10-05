@@ -59,6 +59,8 @@ public class CharacterFrame : MonoBehaviour
     public float cooldownMod;
     [Tooltip("Limit the ultimate ability will charge to")]
     public int chargeLimit;
+    [Tooltip("Current charge of the ultimate")]
+    public float charge;
 
     [Header("Sprite")]
     public SpriteRenderer characterSprite;
