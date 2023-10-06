@@ -39,7 +39,7 @@ public class RoomTransition : MonoBehaviour
               }   
           }
         */
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene(5);
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -2,11 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
-public class ResetScene : MonoBehaviour
+public class mainMenu : MonoBehaviour
 {
-    public void Activator()
+   public void startGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void endGame()
+    {
+        Application.Quit();
     }
 }
