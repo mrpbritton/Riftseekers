@@ -11,11 +11,24 @@ public abstract class Attack : MonoBehaviour {
     float dmgMod = 1.0f;
     float cooldownMod = 1.0f;
     public AbilityLibrary.abilType abilType;
+    private static int rayDistance = 100; //how far the ray will cast out
 
     public void updateStats(float dMod, float cdMod) {
         dmgMod = dMod;
         cooldownMod = cdMod;
     }
+
+    public static Vector3 GetPoint()
+    {
+        //puts the cursor direction vector in the middle of the screen
+        Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        RaycastHit hit;
+
+        Debug.DrawRay(cursorPos, Camera.main.transform.forward * rayDistance, Color.red, 10);
+        Physics.Raycast(cursorPos, Camera.main.transform.forward, out hit, rayDistance);
+        //Debug.Log($"hit: {hit.point} | cursorPos: {cursorPos}");
+        return hit.point;
+    }    
 
     public abstract attackType getAttackType();
     public abstract void attack();
