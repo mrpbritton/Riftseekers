@@ -23,9 +23,8 @@ public abstract class Attack : MonoBehaviour {
         //puts the cursor direction vector in the middle of the screen
         Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         RaycastHit hit;
-
         Debug.DrawRay(cursorPos, Camera.main.transform.forward * rayDistance, Color.red, 10);
-        Physics.Raycast(cursorPos, Camera.main.transform.forward, out hit, rayDistance);
+        Physics.Raycast(cursorPos, Camera.main.transform.forward, out hit, rayDistance, LayerMask.GetMask("AllButCam"));
         //Debug.Log($"hit: {hit.point} | cursorPos: {cursorPos}");
         return hit.point;
     }    

@@ -10,9 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6068217643369716489}
   - component: {fileID: 3337269939783414380}
-  - component: {fileID: 4463967580630532123}
-  - component: {fileID: 4518058348855462892}
-  - component: {fileID: 5387775388080435056}
   m_Layer: 9
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -75,66 +72,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1498177584710100535}
---- !u!65 &4463967580630532123
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4941317339861014073}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 512
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 7, y: 9.564184, z: 29.569088}
-  m_Center: {x: 0, y: -3.2822397, z: 14.784574}
---- !u!114 &4518058348855462892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4941317339861014073}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ece352d47fce8743b7aa59f89cce61a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!54 &5387775388080435056
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4941317339861014073}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 512
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &5477533092161402579
 GameObject:
   m_ObjectHideFlags: 0
@@ -595,6 +532,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 902336141959904093, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1486973088829066078, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
       propertyPath: rAbility
@@ -610,6 +552,11 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 7197552458896788780}
+    - target: {fileID: 3254946032171043842, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3550046142370946448, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
       propertyPath: abilType
