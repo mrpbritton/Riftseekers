@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-public class CreateAt : Attack
+public class DrawLine : Attack
 {
     public GameObject go;
     private readonly int posCount = 2;
