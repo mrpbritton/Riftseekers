@@ -11,8 +11,6 @@ public class Interact : MonoBehaviour
 
     [SerializeField, Tooltip("Range the player can be from the interactable to interact with it")]
     protected float interactRange;
-    protected SphereCollider interactCollider;
-    protected bool canInteract;
 
     [SerializeField, Tooltip("Sequence exectuted when interacted with.")]
     protected GameActionSequence interactSequence;
@@ -28,9 +26,6 @@ public class Interact : MonoBehaviour
         {
             player = GameObject.FindGameObjectWithTag("Player");
         }
-
-        interactCollider = gameObject.GetComponent<SphereCollider>();
-        interactCollider.radius = interactRange;
     }
 
     protected void OnDestroy()
@@ -41,17 +36,9 @@ public class Interact : MonoBehaviour
 
     protected virtual void Interacted() 
     {
-        if (!canInteract) return; //if cant interact, return
+        var pPos = new Vector2(player.transform.position.x, player.transform.position.z);
+        var mePos = new Vector2(transform.position.x, transform.position.z);
+        if (Vector2.Distance(pPos, mePos) > interactRange) return; //if cant interact, return
         interactSequence.Play();
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        canInteract = true;
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        canInteract = false;
     }
 }
