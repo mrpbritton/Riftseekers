@@ -11,6 +11,7 @@ public abstract class Attack : MonoBehaviour {
     float dmgMod = 1.0f;
     float cooldownMod = 1.0f;
     public AbilityLibrary.abilType abilType;
+    protected CharacterFrame frame;
     private static int rayDistance = 100; //how far the ray will cast out
 
     public void updateStats(float dMod, float cdMod) {
@@ -18,6 +19,10 @@ public abstract class Attack : MonoBehaviour {
         cooldownMod = cdMod;
     }
 
+    protected void Start()
+    {
+        frame = FindAnyObjectByType<CharacterFrame>();
+    }
     public static Vector3 GetPoint()
     {
         //puts the cursor direction vector in the middle of the screen
