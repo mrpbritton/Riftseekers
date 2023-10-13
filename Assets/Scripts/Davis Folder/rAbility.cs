@@ -6,7 +6,7 @@ public class coneSlice : Attack
 {
     public GameObject hurtbox;
 
-    public void Start()
+    new public void Start()
     {
         //hurtbox.active = false;
     }

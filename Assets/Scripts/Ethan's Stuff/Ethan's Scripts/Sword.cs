@@ -11,9 +11,8 @@ public class Sword : Attack
     private float angle = 0;
     private bool slice, direction; //If the attack is happening
     public Collider attacking;
-    private void Start()
+    new private void Start()
     {
-        
         attacking.enabled = false;
     }
 

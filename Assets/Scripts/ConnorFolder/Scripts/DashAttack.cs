@@ -10,7 +10,7 @@ public class DashAttack : Attack {
     //  the radius of the sphere collider that is used to check for collided enemies
     [SerializeField] float radius;
 
-    private void Start() {
+    new private void Start() {
         pm = FindObjectOfType<PlayerMovement>();
         if(transform.parent != pm.gameObject.transform)
             transform.parent = pm.gameObject.transform;
