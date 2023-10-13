@@ -11,6 +11,7 @@ public class EnemyHealth : MonoBehaviour
     public float currentHealth;
     private float critHealth;
     private bool foundCover;
+    public bool hasItem;
 
     Coroutine invincTimer = null;
     float invincTime = .5f;
