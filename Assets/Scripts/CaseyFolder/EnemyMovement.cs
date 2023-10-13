@@ -20,7 +20,7 @@ public class EnemyMovement : MonoBehaviour
     private float close = 9999;
     public LayerMask enemy;
     [SerializeField]
-    private int coverTime = 5;
+    private int coverTime = 10;
 
 
 

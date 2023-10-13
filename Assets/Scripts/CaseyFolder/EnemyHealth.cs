@@ -18,7 +18,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] Collider usedCollider;
     [SerializeField] Slider healthSlider;
 
-    public static Action onEnemyDeath = delegate { };
+    public static Action<GameObject> onEnemyDeath = delegate { };
 
     private void Awake()
     {
@@ -55,7 +55,7 @@ public class EnemyHealth : MonoBehaviour
     }
     private void deathAnimation()
     {
-        onEnemyDeath();
+        onEnemyDeath(gameObject);
         Debug.Log("death");
         Destroy(gameObject);
     }

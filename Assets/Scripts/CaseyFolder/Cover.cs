@@ -12,7 +12,7 @@ public class Cover : MonoBehaviour
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-
+        coverList.AddRange(GameObject.FindGameObjectsWithTag("Cover"));
         coverSearch();
     }
 
