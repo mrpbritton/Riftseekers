@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class Bullet : MonoBehaviour
 {
@@ -10,9 +11,28 @@ public class Bullet : MonoBehaviour
     public Vector3 direction;
     [Tooltip("Damage of the projectile")]
     public float damage;
+    [Tooltip("Time in seconds it takes for bullet to die")]
+    public float lifetime;
 
-    private void Start()
+    private void OnEnable()
     {
-        
+        Destroy(gameObject, lifetime);
+    }
+
+    private void Update()
+    {
+        transform.position += Time.deltaTime * speed * direction.normalized;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.CompareTag("Enemy"))
+        {
+            if (other.TryGetComponent(out EnemyHealth enemy))
+            {
+                enemy.damageTaken(damage);
+            }
+            Destroy(gameObject);
+        }
     }
 }
