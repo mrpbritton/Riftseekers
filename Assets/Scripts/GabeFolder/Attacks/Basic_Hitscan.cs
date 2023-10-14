@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(LineRenderer))]
-public class Basic_Shoot : Attack {
-    //  set to -1 for infinite
+public class Basic_Hitscan : Attack {
 
     [Header("Gun Attributes")]
     [SerializeField, Tooltip("How far the bullet's raycast goes")] 
