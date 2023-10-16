@@ -27,6 +27,7 @@ public class EnemyHealth : MonoBehaviour
         critHealth = maxhealth * 0.5f;
         healthSlider.maxValue = maxhealth;
         healthSlider.value = currentHealth;
+        onEnemyDeath += delegate { FindObjectOfType<VisualFX>().enemyDeathFX(gameObject); };
     }
 
     public void damageTaken(float damage)
