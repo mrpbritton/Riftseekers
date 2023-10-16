@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: -6849738389365649994}
   m_Layer: 6
   m_Name: TestMelee
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -414,6 +414,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxhealth: 10
   currentHealth: 10
+  hasItem: 0
   usedCollider: {fileID: 7663751353188508867}
   healthSlider: {fileID: 7942692018559525768}
 --- !u!114 &3251999330279073328
