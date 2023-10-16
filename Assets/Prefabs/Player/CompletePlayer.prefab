@@ -82,9 +82,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6334058779806566646}
   - component: {fileID: 7197552458896788780}
-  - component: {fileID: 2065044484736038456}
   - component: {fileID: 366643244704235567}
   - component: {fileID: 2986808354955713316}
+  - component: {fileID: 4845838514237101482}
+  - component: {fileID: 6614962957894496278}
+  - component: {fileID: 552618217479528717}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -158,14 +160,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &2065044484736038456
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5477533092161402579}
-  m_Enabled: 1
 --- !u!114 &366643244704235567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +237,67 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &4845838514237101482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5477533092161402579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a3716d4e47b39a4d98f777d3eac8632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_listeners:
+    initialListenerList: []
+    useDefaultListeners: 1
+  isEnvironmentAware: 0
+  isStaticObject: 0
+  m_positionOffsetData:
+    KeepMe: 0
+    positionOffset: {x: 0, y: 0, z: 0}
+  m_posOffsetData: {fileID: 0}
+  listenerMask: 1
+--- !u!114 &6614962957894496278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5477533092161402579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f41a88186d14dda4abe7d615eef523d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDefaultListener: 1
+  listenerId: 0
+--- !u!114 &552618217479528717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5477533092161402579}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab1760d3f10bce468d226630b13671a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerList: f7e1664c
+  useOtherObject: 0
+  data:
+    idInternal: 0
+    valueGuidInternal: 
+    WwiseObjectReference: {fileID: 11400000, guid: c7f8272d276bbaf4eb4df7e474e4cb7d,
+      type: 2}
+  decodeBank: 0
+  loadAsynchronous: 0
+  saveDecodedBank: 0
+  unloadTriggerList: 958ca0ea
+  bankNameInternal: 
+  valueGuidInternal: 
 --- !u!1 &6371800204729383757
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +445,7 @@ Transform:
   - {fileID: 6334058779806566646}
   - {fileID: 1134619532179757097}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &740624236078726492
 PrefabInstance:
@@ -1283,14 +1338,24 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 151039587082595141, guid: 1cd3fdeb5684a654d8cca1f875170217,
         type: 3}
+      propertyPath: abs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 151039587082595141, guid: 1cd3fdeb5684a654d8cca1f875170217,
+        type: 3}
       propertyPath: abs.Array.data[0]
       value: 
       objectReference: {fileID: 926446941544406595}
     - target: {fileID: 151039587082595141, guid: 1cd3fdeb5684a654d8cca1f875170217,
         type: 3}
-      propertyPath: abs.Array.data[2]
+      propertyPath: abs.Array.data[1]
       value: 
       objectReference: {fileID: 1910955948470362086}
+    - target: {fileID: 151039587082595141, guid: 1cd3fdeb5684a654d8cca1f875170217,
+        type: 3}
+      propertyPath: abs.Array.data[2]
+      value: 
+      objectReference: {fileID: 4751105773203507651}
     - target: {fileID: 151039587082595141, guid: 1cd3fdeb5684a654d8cca1f875170217,
         type: 3}
       propertyPath: abs.Array.data[3]
