@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Health : MonoBehaviour 
 {
-    [SerializeField] int maxHealth;
+    [SerializeField] 
+    public int maxHealth;
     public float health { get; private set; }
     private CharacterFrame frame;
 
@@ -59,7 +60,7 @@ public class Health : MonoBehaviour
     }
 
     //  use this when healing
-    public void heal(int dmg) {
+    public void heal(float dmg) {
         health = Mathf.Clamp(health + dmg, 0, maxHealth);
 
         pui.updateHealthSlider(maxHealth, (int)health);
