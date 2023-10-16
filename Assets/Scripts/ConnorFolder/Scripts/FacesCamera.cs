@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyHealthCanvas : MonoBehaviour {
+public class FacesCamera : MonoBehaviour {
 
     //  idk if there's a better way to do this
     //  rotates to face the camera
