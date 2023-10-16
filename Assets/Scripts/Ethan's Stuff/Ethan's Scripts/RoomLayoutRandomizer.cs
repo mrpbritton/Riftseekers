@@ -8,8 +8,9 @@ public class RoomLayoutRandomizer : MonoBehaviour
     private bool generating;
     private bool place;
     [SerializeField]
-    private GameObject tile;
+    private GameObject tile, wall;
     private int chance;
+    public List<GameObject> floorTiles, walls, blockades;
 
     public struct roomDirection
     {
@@ -47,6 +48,7 @@ public class RoomLayoutRandomizer : MonoBehaviour
         int room;//The room the new room will be placed next to
         int randomvar;//Which direction the new room will be placed
         int num; //holds the roomAdj for each number to check which rooms a room is adjacent to
+        bool skip;//used if the room decides not to place
         generating = true;
         roomX.Add(7);
         roomY.Add(7);
@@ -68,7 +70,7 @@ public class RoomLayoutRandomizer : MonoBehaviour
         {
             roomAdj[0] += 1;
         }
-        for (int i = 0; i < 50; i++)
+        for (int i = 0; i < 49; i++)
         {
             //Place a room adjacent to an existing room
             do
@@ -77,6 +79,7 @@ public class RoomLayoutRandomizer : MonoBehaviour
             } while (roomAdj[room] >= 15 || !WillPlaceRoom(roomX[room], roomY[room]));
             place = true;
             failsafe = 0;
+            skip = false;
             do
             {
                 failsafe += 1;
@@ -94,6 +97,11 @@ public class RoomLayoutRandomizer : MonoBehaviour
                             roomAdj.Add(0);
                             tiles[roomX[room], roomY[room] - 1] += 1;
                             place = false;
+                        }
+                        else
+                        {
+                            place = false;
+                            skip = true;
                         }
                     }
                 }
@@ -113,6 +121,11 @@ public class RoomLayoutRandomizer : MonoBehaviour
                             roomAdj.Add(0);
                             tiles[roomX[room] + 1, roomY[room]] += 1;
                             place = false;
+                        }
+                        else
+                        {
+                            place = false;
+                            skip = true;
                         }
                     }
                 }
@@ -134,6 +147,11 @@ public class RoomLayoutRandomizer : MonoBehaviour
                             //Debug.Log(roomAdj[roomAdj.Count-1]);
                             place = false;
                         }
+                        else
+                        {
+                            place = false;
+                            skip = true;
+                        }
                     }
                 }
                 else if(num >= 2)
@@ -154,87 +172,99 @@ public class RoomLayoutRandomizer : MonoBehaviour
                             tiles[roomX[room] - 1, roomY[room]] += 1;
                             place = false;
                         }
+                        else
+                        {
+                            place = false;
+                            skip = true;
+                        }
                     }
                 }
             } while (place && failsafe <= 20);
-            if (roomY[^1] > 0)
+            if (!skip)
             {
-                if (tiles[roomX[^1], roomY[^1] - 1] != 0)//up room
+                if (roomY[^1] > 0)
                 {
-                    for (int j = 0; j < roomX.Count; j++)
+                    if (tiles[roomX[^1], roomY[^1] - 1] != 0)//up room
                     {
-                        if (roomX[j] == roomX[^1] && roomY[j] == roomY[^1] - 1)
+                        for (int j = 0; j < roomX.Count; j++)
                         {
-                            roomAdj[j] += 2;//Is the room on top, so is showing that it is adjacent to down room
-                            roomAdj[^1] += 8;
+                            if (roomX[j] == roomX[^1] && roomY[j] == roomY[^1] - 1)
+                            {
+                                roomAdj[j] += 2;//Is the room on top, so is showing that it is adjacent to down room
+                                roomAdj[^1] += 8;
+                            }
                         }
                     }
+                }
+                else
+                {
+                    roomAdj[^1] += 8;
+                }
+                if (roomX[^1] < 13)
+                {
+                    if (tiles[roomX[^1] + 1, roomY[^1]] != 0)//right room
+                    {
+                        for (int j = 0; j < roomX.Count; j++)
+                        {
+                            if (roomX[j] == roomX[^1] + 1 && roomY[j] == roomY[^1])
+                            {
+                                roomAdj[j] += 1;//Is the room on top, so is showing that it is adjacent to down room
+                                roomAdj[^1] += 4;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    roomAdj[^1] += 4;
+                }
+                if (roomY[^1] < 13)
+                {
+                    if (tiles[roomX[^1], roomY[^1] + 1] != 0)//down room
+                    {
+                        for (int j = 0; j < roomX.Count; j++)
+                        {
+                            if (roomX[j] == roomX[^1] && roomY[j] == roomY[^1] + 1)
+                            {
+                                roomAdj[j] += 8;//Is the room on top, so is showing that it is adjacent to down room
+                                roomAdj[^1] += 2;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    roomAdj[^1] += 2;
+                }
+                if (roomX[^1] > 0)
+                {
+                    if (tiles[roomX[^1] - 1, roomY[^1]] != 0)//up room
+                    {
+                        for (int j = 0; j < roomX.Count; j++)
+                        {
+                            if (roomX[j] == roomX[^1] - 1 && roomY[j] == roomY[^1])
+                            {
+                                roomAdj[j] += 4;//Is the room on top, so is showing that it is adjacent to down room
+                                roomAdj[^1] += 1;
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    roomAdj[^1] += 1;
                 }
             }
             else
             {
-                roomAdj[^1] += 8;
-            }
-            if (roomX[^1] < 13)
-            {
-                if (tiles[roomX[^1] + 1, roomY[^1]] != 0)//right room
-                {
-                    for (int j = 0; j < roomX.Count; j++)
-                    {
-                        if (roomX[j] == roomX[^1] + 1 && roomY[j] == roomY[^1])
-                        {
-                            roomAdj[j] += 1;//Is the room on top, so is showing that it is adjacent to down room
-                            roomAdj[^1] += 4;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                roomAdj[^1] += 4;
-            }
-            if (roomY[^1] < 13)
-            {
-                if (tiles[roomX[^1], roomY[^1] + 1] != 0)//down room
-                {
-                    for (int j = 0; j < roomX.Count; j++)
-                    {
-                        if (roomX[j] == roomX[^1] && roomY[j] == roomY[^1] + 1)
-                        {
-                            roomAdj[j] += 8;//Is the room on top, so is showing that it is adjacent to down room
-                            roomAdj[^1] += 2;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                roomAdj[^1] += 2;
-            }
-            if (roomX[^1] > 0)
-            {
-                if (tiles[roomX[^1] - 1, roomY[^1]] != 0)//up room
-                {
-                    for (int j = 0; j < roomX.Count; j++)
-                    {
-                        if (roomX[j] == roomX[^1] - 1 && roomY[j] == roomY[^1])
-                        {
-                            roomAdj[j] += 4;//Is the room on top, so is showing that it is adjacent to down room
-                            roomAdj[^1] += 1;
-                        }
-                    }
-                }
-            }
-            else
-            {
-                roomAdj[^1] += 1;
+                i--;
             }
             if (failsafe > 20)
             {
                 Debug.Log("Failsafe Triggered");
                 Debug.Log("RoomAdj: [" + roomX[room] + "," + roomY[room] + "]");
             }
-            // ... (your room placement logic)
+            
 
             for (int n = 0; n < roomAdj.Count; n++)
             {
@@ -251,6 +281,39 @@ public class RoomLayoutRandomizer : MonoBehaviour
                 {
                     //Debug.Log(tiles[i, j]);
                     Instantiate(tile,new Vector3(i,0,j), Quaternion.identity);
+                    if(j == 13 || tiles[i,j+1] == 0)
+                    {
+                        if(j < 12 && tiles[i,j+2] != 0 || (j < 13 && i < 13 && tiles[i + 1, j + 1] != 0))
+                        {
+                            GameObject thing = Instantiate(wall, new Vector3(i, 0.5f, j + .5f), Quaternion.identity);
+                            thing.transform.eulerAngles = new Vector3(0, 90, 0);
+                        }
+                        else
+                        {
+                            GameObject thing = Instantiate(wall, new Vector3(i, 1, j + .5f), Quaternion.identity);
+                            thing.transform.eulerAngles = new Vector3(0, 90, 0);
+                        }
+                    }
+                    if (j == 0 || tiles[i, j - 1] == 0)//short wall
+                    {
+                        GameObject thing = Instantiate(wall, new Vector3(i, .5f, j - .5f), Quaternion.identity);
+                        thing.transform.eulerAngles = new Vector3(0, 90, 0);
+                    }
+                    if (i == 13 ||tiles[i + 1, j] == 0)
+                    {
+                        if ((i < 12 && tiles[i + 2, j] != 0) || (i < 13 && j < 13 && tiles[i + 1, j + 1] != 0))
+                        {
+                            GameObject thing = Instantiate(wall, new Vector3(i + .5f, .5f, j), Quaternion.identity);
+                        }
+                        else
+                        {
+                            GameObject thing = Instantiate(wall, new Vector3(i + .5f, 1, j), Quaternion.identity);
+                        }
+                    }
+                    if (i == 0 || tiles[i - 1, j] == 0)//short wall
+                    {
+                        GameObject thing = Instantiate(wall, new Vector3(i - .5f, .5f, j), Quaternion.identity);
+                    }
                 }
             }
         }
