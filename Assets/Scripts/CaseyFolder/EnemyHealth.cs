@@ -27,7 +27,7 @@ public class EnemyHealth : MonoBehaviour
         critHealth = maxhealth * 0.5f;
         healthSlider.maxValue = maxhealth;
         healthSlider.value = currentHealth;
-        onEnemyDeath += delegate { FindObjectOfType<VisualFX>().enemyDeathFX(transform.position); };
+        onEnemyDeath += delegate { FindObjectOfType<VisualFX>().enemyDeathFX(gameObject); };
     }
 
     private void OnDisable() {
