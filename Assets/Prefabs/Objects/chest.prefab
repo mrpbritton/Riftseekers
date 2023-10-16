@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 703364607407222114}
   - component: {fileID: 7887621932912225879}
   - component: {fileID: 8337127403963855258}
+  - component: {fileID: 983105143963448815}
   m_Layer: 0
   m_Name: chestTop
   m_TagString: Untagged
@@ -168,6 +169,27 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &983105143963448815
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6587687878667322094}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c8550959d53e84d4dad15335efac3a51, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8804089556939858010
 GameObject:
   m_ObjectHideFlags: 0
@@ -199,5 +221,5 @@ Transform:
   - {fileID: 703364607407222114}
   - {fileID: 8499195470283119921}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
