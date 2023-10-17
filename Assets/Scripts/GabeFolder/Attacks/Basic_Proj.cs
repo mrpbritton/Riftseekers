@@ -2,16 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(LineRenderer))]
-public class Basic_Proj : Attack {
-
-    [Header("Gun Attributes")]
+public class Basic_Proj : Attack 
+{
     [SerializeField, Tooltip("Used in a calculation to see how much damage dealt")]
     float damage = 1f;
     [SerializeField, Tooltip("Used in a calculation to see how long the cooldown is in seconds")]
     float baseCooldown = 3f;
-    
-    [Header("Bullet Attributes")]
     [SerializeField, Tooltip("Where the bullet instantiates")]
     private Transform origin;
     [SerializeField, Tooltip("Bullet that gets spawned")]

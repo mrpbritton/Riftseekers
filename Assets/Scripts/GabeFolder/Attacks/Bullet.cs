@@ -19,14 +19,14 @@ public class Bullet : MonoBehaviour
         Destroy(gameObject, lifetime);
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         transform.position += Time.deltaTime * speed * direction.normalized;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Enemy"))
+        if(!other.gameObject.CompareTag("Player"))
         {
             if (other.TryGetComponent(out EnemyHealth enemy))
             {
