@@ -4,7 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 
 public class VisualFX : MonoBehaviour {
-    [SerializeField] GameObject enemyCorpse;
+    [SerializeField] GameObject enemyCorpse, hitParticles;
     [SerializeField] GameObject bPool;
     [SerializeField] float minPoolSize, maxPoolSize, poolTime, poolColorTime;
     [SerializeField] Color poolStartColor, poolEndColor;
@@ -16,12 +16,20 @@ public class VisualFX : MonoBehaviour {
 
     private void OnEnable() {
         EnemyHealth.onEnemyDeath += enemyDeathFX;
+        EnemyHealth.onEnemyHit += hitFX;
     }
 
     private void OnDisable() {
         EnemyHealth.onEnemyDeath -= enemyDeathFX;
+        EnemyHealth.onEnemyHit -= hitFX;
     }
 
+    public void hitFX(Transform defender, Vector2 attackPoint) {
+        var dir = (Vector2)defender.transform.position - attackPoint;
+        var p = Instantiate(hitParticles);
+        p.transform.position = defender.position;
+        p.transform.LookAt(attackPoint, Vector3.up);
+    }
     public void enemyDeathFX(GameObject obj) {
         //  corpse
         var peeta = Instantiate(enemyCorpse);

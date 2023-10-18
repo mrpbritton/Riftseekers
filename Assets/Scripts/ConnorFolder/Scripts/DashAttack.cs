@@ -44,7 +44,7 @@ public class DashAttack : Attack {
             //  checks for monsters hit
             if(col.Length > 0) {
                 foreach(var i in col)
-                    i.gameObject.GetComponent<EnemyHealth>().damageTaken(getDamage());
+                    i.gameObject.GetComponent<EnemyHealth>().damageTaken(getDamage(), pm.transform.position);
             }
             yield return new WaitForEndOfFrame();
         }

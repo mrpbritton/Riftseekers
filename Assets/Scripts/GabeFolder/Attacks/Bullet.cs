@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
         {
             if (other.TryGetComponent(out EnemyHealth enemy))
             {
-                enemy.damageTaken(damage);
+                enemy.damageTaken(damage, transform.position);
             }
             Destroy(gameObject);
         }

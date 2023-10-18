@@ -6,9 +6,10 @@ public class SowrdDamage : MonoBehaviour
 {
     public float damage;
     public float range;
+    Transform playerTrans;
     void Start()
     {
-        
+        playerTrans = FindObjectOfType<PlayerMovement>().transform;
     }
 
     // Update is called once per frame
@@ -16,11 +17,12 @@ public class SowrdDamage : MonoBehaviour
     {
         
     }
+
     private void OnTriggerEnter(Collider col)
     {
         if (col.TryGetComponent<EnemyHealth>(out EnemyHealth enemyHealth))
         {
-            enemyHealth.damageTaken(5);
+            enemyHealth.damageTaken(5, playerTrans.position);
         }
     }
     public void RangeUpgrade(int newRange)

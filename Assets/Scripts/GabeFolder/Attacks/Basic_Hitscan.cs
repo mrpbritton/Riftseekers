@@ -51,7 +51,7 @@ public class Basic_Hitscan : Attack {
         {
             if (gotHit.collider.gameObject.TryGetComponent(out EnemyHealth enemy))
             {
-                enemy.damageTaken(damage * frame.attackDamage);
+                enemy.damageTaken(damage * frame.attackDamage, origin.position);
             }
             else /*FindObjectOfType(explode)*/
             {

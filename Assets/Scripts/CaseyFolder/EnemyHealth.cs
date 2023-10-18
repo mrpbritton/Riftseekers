@@ -20,6 +20,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] Slider healthSlider;
 
     public static Action<GameObject> onEnemyDeath = delegate { };
+    public static Action<Transform, Vector2> onEnemyHit = delegate { };
 
     private void Awake()
     {
@@ -29,7 +30,7 @@ public class EnemyHealth : MonoBehaviour
         healthSlider.value = currentHealth;
     }
 
-    public void damageTaken(float damage)
+    public void damageTaken(float damage, Vector2 attackPoint)
     {
         //  checks if invincible
         if(invincTimer != null)
@@ -38,6 +39,7 @@ public class EnemyHealth : MonoBehaviour
         currentHealth -= damage;
 
         healthSlider.value = currentHealth;
+        onEnemyHit(transform, attackPoint);
 
         if(currentHealth <= 0)
         {

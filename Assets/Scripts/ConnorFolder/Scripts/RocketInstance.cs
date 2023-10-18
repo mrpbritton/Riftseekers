@@ -17,7 +17,7 @@ public class RocketInstance : MonoBehaviour {
         switch(LayerMask.LayerToName(col.gameObject.layer)) {
             case "Enemy":
                 //case "Other tag that would cause this to explode here":
-                col.gameObject.GetComponent<EnemyHealth>().damageTaken(parentAttack.getRealDamage());
+                col.gameObject.GetComponent<EnemyHealth>().damageTaken(parentAttack.getRealDamage(), transform.position);
                 rb.explode();
                 break;
         }
