@@ -6,7 +6,7 @@ using UnityEngine;
 public class Damage_GA : GameAction
 {
     [SerializeField]
-    private int damage = 5;
+    public float damage = 5f;
 
     private void OnTriggerEnter(Collider other)
     {

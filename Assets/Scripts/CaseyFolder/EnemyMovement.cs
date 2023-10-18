@@ -12,15 +12,16 @@ public class EnemyMovement : MonoBehaviour
     private float rotationSpeed = 2f;
     [SerializeField]
     private NavMeshAgent agent;
-    public bool bMelee, bCover;
-    private GameObject target = null, Gun, Player;
+    public bool bMelee, bCover, bClose;
+    [SerializeField]
+    private GameObject target = null, Gun, Player, meleeHit;
     private RaycastHit hitInfo;
     [SerializeField]
     private List<GameObject> cover = new List<GameObject>();
     private float close = 9999;
     public LayerMask enemy;
     [SerializeField]
-    private int coverTime = 10;
+    private int coverTime = 10, hitCooldown = 1;
 
 
 
@@ -29,6 +30,7 @@ public class EnemyMovement : MonoBehaviour
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         cover.AddRange(GameObject.FindGameObjectsWithTag("Cover"));
+        meleeAttack();
     }
 
     void Update()
@@ -99,4 +101,29 @@ public class EnemyMovement : MonoBehaviour
 
         }
     }
+
+    private void meleeAttack()
+    {
+        if (!bMelee) return;
+        if (Vector3.Distance(gameObject.transform.position, Player.transform.position) <= 3)
+        {
+            bClose = true;
+        }
+        else { bClose= false; }
+
+        StartCoroutine(nameof(attackCooldown));
+    }
+
+    IEnumerator attackCooldown()
+    {
+        if (bClose)
+        {
+            meleeHit.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            meleeHit.SetActive(false);
+        }
+        yield return new WaitForSeconds(hitCooldown);
+        meleeAttack();
+    }
+
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -12,10 +13,13 @@ public class EnemyController : MonoBehaviour
     private int loot;
     [SerializeField]
     private GameObject Item;
+
+    public static Action levelComplete = delegate { };
+
     void Start()
     {
         enemies.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
-        loot = Random.Range(0, enemies.Count);
+        loot = UnityEngine.Random.Range(0, enemies.Count);
         enemies[loot].GetComponent<EnemyHealth>().hasItem = true;
     }
 
@@ -24,7 +28,8 @@ public class EnemyController : MonoBehaviour
         EnemyHealth.onEnemyDeath += onEnemyDeath;
         foreach(GameObject enemy in enemies)
         {
-
+            enemy.GetComponent<EnemyHealth>().maxhealth *= difficulty;
+            enemy.GetComponent<Damage_GA>().damage *= difficulty;
         }
     }
 
@@ -41,5 +46,11 @@ public class EnemyController : MonoBehaviour
             go.transform.position = deadEnemy.transform.position;
         }
         enemies.Remove(deadEnemy);
+        if(enemies.Count == 0)
+        {
+            //activate level complete sequence.
+            Debug.Log("you win");
+            levelComplete();
+        }
     }
 }

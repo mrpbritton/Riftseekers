@@ -45,7 +45,7 @@ public class Health : MonoBehaviour
     }
 
     //  use this when taking damage
-    public void takeDamage(int dmg) {
+    public void takeDamage(float dmg) {
         health -= dmg;
 
         pui.updateHealthSlider(maxHealth, (int)health);
