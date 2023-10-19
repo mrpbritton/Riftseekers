@@ -66,6 +66,7 @@ public class CharacterFrame : MonoBehaviour
     public SpriteRenderer characterSprite;
 
     Coroutine attacker = null;
+    bool bIsPressed;
 
     //more options to come in the future
     private void Start()
@@ -76,29 +77,57 @@ public class CharacterFrame : MonoBehaviour
         health_s = GetComponent<Health>();
         move_s = GetComponent<PlayerMovement>();
 
+        #region Started Subscriptions
         pInput.Player.BasicAttack.started += ctx => performAttack(basicAttack);
         pInput.Player.SecondAttack.started += ctx => performAttack(secondAttack);
         pInput.Player.Ability1.started += ctx => performAttack(qAbility);
         pInput.Player.Ability2.started += ctx => performAttack(eAbility);
         pInput.Player.Ability3.started += ctx => performAttack(rAbility);
         pInput.Player.Ult.started += ctx => performAttack(fAbility);
+        #endregion
+
+        #region Canceled Subscriptions
+        pInput.Player.BasicAttack.canceled += ctx => NotPressed();
+        pInput.Player.SecondAttack.canceled += ctx => NotPressed();
+        pInput.Player.Ability1.canceled += ctx => NotPressed();
+        pInput.Player.Ability2.canceled += ctx => NotPressed();
+        pInput.Player.Ability3.canceled += ctx => NotPressed();
+        pInput.Player.Ult.canceled += ctx => NotPressed();
+        #endregion
     }
 
     //  waits for the attack cooldown to finish
-    IEnumerator attackWaiter(float cooldownTime) {
-        yield return new WaitForSeconds(cooldownTime);
+    IEnumerator attackWaiter(Attack curAttack) 
+    {
+        do
+        {
+            curAttack.attack();
+            yield return new WaitForSeconds(curAttack.getRealCooldownTime());
+        } while (bIsPressed);
         attacker = null;
     }
 
-    void performAttack(Attack curAttack) {
+    void performAttack(Attack curAttack) 
+    {
         if(attacker != null) return;
-        curAttack.attack();
-        attacker = StartCoroutine(attackWaiter(curAttack.getRealCooldownTime()));
+        IsPressed();
+            attacker = StartCoroutine(attackWaiter(curAttack));
+    }
+
+    void IsPressed()
+    {
+        bIsPressed = true;
+    }
+
+    void NotPressed()
+    {
+        bIsPressed = false;
     }
 
     private void OnDisable()
     {
         pInput.Disable();
+        StopAllCoroutines();
     }
     //tree to execute each respective attack
 

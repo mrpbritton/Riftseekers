@@ -2,12 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(SphereCollider))]
 [RequireComponent(typeof(GameActionSequence))]
 public class Interact : MonoBehaviour
 {
     private PInput pInput;
-    protected GameObject player;
+    protected Transform player;
 
     [SerializeField, Tooltip("Range the player can be from the interactable to interact with it")]
     protected float interactRange;
@@ -24,7 +23,7 @@ public class Interact : MonoBehaviour
         
         if (player == null)
         {
-            player = GameObject.FindGameObjectWithTag("Player");
+            player = FindObjectOfType<PlayerMovement>().transform;
         }
     }
 
@@ -36,9 +35,9 @@ public class Interact : MonoBehaviour
 
     protected virtual void Interacted() 
     {
-        var pPos = new Vector2(player.transform.position.x, player.transform.position.z);
+        var pPos = new Vector2(player.position.x, player.position.z);
         var mePos = new Vector2(transform.position.x, transform.position.z);
-        if (Vector2.Distance(pPos, mePos) > interactRange) return; //if cant interact, return
+        if (Vector3.Distance(pPos, mePos) > interactRange) return; //if cant interact, return
         interactSequence.Play();
     }
 }

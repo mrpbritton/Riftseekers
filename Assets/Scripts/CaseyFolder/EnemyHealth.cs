@@ -13,8 +13,8 @@ public class EnemyHealth : MonoBehaviour
     private bool foundCover;
     public bool hasItem;
 
-    Coroutine invincTimer = null;
-    float invincTime = .5f;
+/*    Coroutine invincTimer = null;
+    float invincTime = .5f;*/
 
     [SerializeField] Collider usedCollider;
     [SerializeField] Slider healthSlider;
@@ -33,9 +33,9 @@ public class EnemyHealth : MonoBehaviour
     public void damageTaken(float damage, Vector2 attackPoint)
     {
         //  checks if invincible
-        if(invincTimer != null)
+/*        if(invincTimer != null)
             return;
-        invincTimer = StartCoroutine(invincibilityWaiter(invincTime));
+        invincTimer = StartCoroutine(invincibilityWaiter(invincTime));*/
         currentHealth -= damage;
 
         healthSlider.value = currentHealth;
@@ -63,10 +63,10 @@ public class EnemyHealth : MonoBehaviour
         Destroy(gameObject);
     }
 
-    IEnumerator invincibilityWaiter(float timeOnInvinc) {
+/*    IEnumerator invincibilityWaiter(float timeOnInvinc) {
         usedCollider.enabled = false;
         yield return new WaitForSeconds(timeOnInvinc);
         usedCollider.enabled = true;
         invincTimer = null;
-    }
+    }*/
 }

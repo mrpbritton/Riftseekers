@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7712018502116877924
 MeshFilter:
@@ -175,9 +175,9 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5
+        value: 0.25
         inSlope: 0
-        outSlope: -0.5
+        outSlope: -0.25
         tangentMode: 65
         weightedMode: 0
         inWeight: 0.33333334
@@ -185,7 +185,7 @@ TrailRenderer:
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -0.5
+        inSlope: -0.25
         outSlope: 0
         tangentMode: 5
         weightedMode: 0
