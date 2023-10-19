@@ -7,18 +7,24 @@ public class Shotgun : Attack
     [SerializeField, Tooltip("Used in a calculation to see how much damage dealt")]
     float damage = 1f;
     [SerializeField, Tooltip("Used in a calculation to see how long the cooldown is in seconds")]
-    float baseCooldown = 3f;
+    float baseCooldown = 1.25f;
     [SerializeField, Tooltip("Where the bullet instantiates")]
     private Transform origin;
     [SerializeField, Tooltip("Bullet that gets spawned")]
     private GameObject bullet;
     [SerializeField, Tooltip("Time in seconds it takes for bullet to die")]
-    private float lifetime;
+    private float lifetime = 3f;
     [SerializeField, Tooltip("How many bullets are shot")]
-    private int bulletCount;
+    private int bulletCount = 4;
     [SerializeField, Tooltip("How wide the spread is")]
-    private float spread;
+    private float spread = 1.25f;
 
+    protected override void Start()
+    {
+        base.Start();
+        origin = GameObject.FindWithTag("GunOrigin").transform;
+        bullet = FindFirstObjectByType<Bullet>(FindObjectsInactive.Include).gameObject;
+    }
     public override attackType getAttackType()
     {
         return attackType.Secondary;
@@ -43,10 +49,10 @@ public class Shotgun : Attack
             float zRand = Random.Range(-spread / 2, spread / 2);
             float xRand = Random.Range(-spread / 2, spread / 2);
             Vector3 newDir = new Vector3(direction.x + xRand, direction.y, direction.z + zRand);
-            //Debug.Log(newDir);
-            b.GetComponent<Bullet>().direction = newDir;
-            b.GetComponent<Bullet>().damage = getDamage();
-            b.GetComponent<Bullet>().lifetime = lifetime;
+            Bullet bScript = b.GetComponent<Bullet>();
+            bScript.direction = newDir;
+            bScript.damage = getDamage();
+            bScript.lifetime = lifetime;
         }
     }
 

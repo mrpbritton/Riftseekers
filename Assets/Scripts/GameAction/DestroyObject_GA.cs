@@ -6,7 +6,6 @@ public class DestroyObject_GA : GameAction
 {
     public override void Action()
     {
-        Debug.Log("die");
         Destroy(this.gameObject);
     }
     public override void DeAction()

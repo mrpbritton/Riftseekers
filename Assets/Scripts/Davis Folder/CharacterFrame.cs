@@ -21,6 +21,10 @@ public enum CharStats
     cooldownMod,
     chargeLimit
 }
+public enum AttackType
+{
+    handgun, shotgun, laser
+}
 
 public class CharacterFrame : MonoBehaviour
 {
@@ -94,19 +98,38 @@ public class CharacterFrame : MonoBehaviour
         pInput.Player.Ability3.canceled += ctx => NotPressed();
         pInput.Player.Ult.canceled += ctx => NotPressed();
         #endregion
+
+        AddScript_GA.ChangeAttackType += ReplaceAttack;
     }
 
     //  waits for the attack cooldown to finish
     IEnumerator attackWaiter(Attack curAttack) 
     {
-        do
-        {
+        do{
             curAttack.attack();
             yield return new WaitForSeconds(curAttack.getRealCooldownTime());
         } while (bIsPressed);
         attacker = null;
     }
-
+    private void ReplaceAttack(AttackType aType)
+    {
+        bIsPressed = false;
+        Destroy(secondAttack);
+        switch(aType)
+        {
+            case AttackType.handgun:
+                gameObject.AddComponent<Basic_Proj>();
+                secondAttack = GetComponent<Basic_Proj>();
+                break;
+            case AttackType.shotgun:
+                gameObject.AddComponent<Shotgun>();
+                secondAttack = GetComponent<Shotgun>();
+                break;
+            default:
+                Debug.LogError("Attack could not be replaced.");
+                break;
+        }
+    }
     void performAttack(Attack curAttack) 
     {
         if(attacker != null) return;
@@ -128,6 +151,7 @@ public class CharacterFrame : MonoBehaviour
     {
         pInput.Disable();
         StopAllCoroutines();
+        AddScript_GA.ChangeAttackType -= ReplaceAttack;
     }
     //tree to execute each respective attack
 
