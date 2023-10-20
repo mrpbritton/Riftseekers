@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8964394923793061034}
   m_Layer: 0
   m_Name: CompletePlayer
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,7 +32,7 @@ Transform:
   - {fileID: 1134619532179757097}
   - {fileID: 3188874725483762600}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &155275436313032755
 PrefabInstance:
@@ -207,7 +207,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 8945174771498553369}
-  id: Health
 --- !u!114 &8945174771498553369
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -429,7 +428,7 @@ PrefabInstance:
     - target: {fileID: 151039587082595141, guid: 1cd3fdeb5684a654d8cca1f875170217,
         type: 3}
       propertyPath: abs.Array.size
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 151039587082595141, guid: 1cd3fdeb5684a654d8cca1f875170217,
         type: 3}
