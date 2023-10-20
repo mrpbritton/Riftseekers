@@ -151,6 +151,25 @@ public class CharacterFrame : MonoBehaviour
     {
         pInput.Disable();
         StopAllCoroutines();
+
+        #region Started Subscriptions
+        pInput.Player.BasicAttack.started -= ctx => performAttack(basicAttack);
+        pInput.Player.SecondAttack.started -= ctx => performAttack(secondAttack);
+        pInput.Player.Ability1.started -= ctx => performAttack(qAbility);
+        pInput.Player.Ability2.started -= ctx => performAttack(eAbility);
+        pInput.Player.Ability3.started -= ctx => performAttack(rAbility);
+        pInput.Player.Ult.started -= ctx => performAttack(fAbility);
+        #endregion
+
+        #region Canceled Subscriptions
+        pInput.Player.BasicAttack.canceled -= ctx => NotPressed();
+        pInput.Player.SecondAttack.canceled -= ctx => NotPressed();
+        pInput.Player.Ability1.canceled -= ctx => NotPressed();
+        pInput.Player.Ability2.canceled -= ctx => NotPressed();
+        pInput.Player.Ability3.canceled -= ctx => NotPressed();
+        pInput.Player.Ult.canceled -= ctx => NotPressed();
+        #endregion
+
         AddScript_GA.ChangeAttackType -= ReplaceAttack;
     }
     //tree to execute each respective attack

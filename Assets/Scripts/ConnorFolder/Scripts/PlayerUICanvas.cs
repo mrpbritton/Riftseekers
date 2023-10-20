@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerUICanvas : MonoBehaviour {
-    [SerializeField] Slider slider;
+    [SerializeField, Tooltip("Slider this script accesses")] 
+    Slider slider;
 
-    public void updateHealthSlider(int maxHp, int hp) {
-        slider.maxValue = maxHp;
-        slider.value = hp;
+    public void updateSlider(int maxVal, int curVal) {
+        slider.maxValue = maxVal;
+        slider.value = curVal;
     }
 }

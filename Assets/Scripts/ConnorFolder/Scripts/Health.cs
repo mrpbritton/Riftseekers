@@ -13,7 +13,8 @@ public class Health : MonoBehaviour
 
     string playerHealthTag = "PlayerHealth";
 
-    PlayerUICanvas pui;
+    [SerializeField, Tooltip("Health slider that will be used to represent health")]
+    PlayerUICanvas healthSlider;
 
     public void UpdateStats()
     {
@@ -28,10 +29,8 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void Start() {
-        pui = FindObjectOfType<PlayerUICanvas>();
-        if(pui == null)
-            Debug.LogError("Add Player UI Canvas (In Connor's folder) to the scene");
+    private void Start() 
+    {
         isPlayer = gameObject.tag == "Player";
 
         //  saves if this is on the player object
@@ -41,14 +40,14 @@ public class Health : MonoBehaviour
             frame = GetComponent<CharacterFrame>();
         }
         health = isPlayer ? SaveData.getInt(playerHealthTag, -1) == -1 ? frame.health : SaveData.getInt(playerHealthTag) : maxHealth;
-        pui.updateHealthSlider(maxHealth, (int)health);
+        healthSlider.updateSlider(frame.maxHealth, (int)frame.health);
     }
 
     //  use this when taking damage
     public void takeDamage(float dmg) {
         health -= dmg;
 
-        pui.updateHealthSlider(maxHealth, (int)health);
+        healthSlider.updateSlider(maxHealth, (int)health);
         //  check if dead
         if(health <= 0)
             Debug.Log(gameObject.name + " died!");
@@ -63,7 +62,7 @@ public class Health : MonoBehaviour
     public void heal(float dmg) {
         health = Mathf.Clamp(health + dmg, 0, maxHealth);
 
-        pui.updateHealthSlider(maxHealth, (int)health);
+        healthSlider.updateSlider(maxHealth, (int)health);
         //  check if dead (just in case)
         if(health <= 0)
             Debug.Log(gameObject.name + " died!");
