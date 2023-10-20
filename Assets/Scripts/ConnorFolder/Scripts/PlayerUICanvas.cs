@@ -7,7 +7,13 @@ public class PlayerUICanvas : MonoBehaviour {
     [SerializeField, Tooltip("Slider this script accesses")] 
     Slider slider;
 
-    public void updateSlider(int maxVal, int curVal) {
+    private void Start() {
+        if(slider != null) {
+            updateSlider(FindObjectOfType<CharacterFrame>().maxHealth, FindObjectOfType<CharacterFrame>().health);
+        }
+    }
+
+    public void updateSlider(int maxVal, float curVal) {
         slider.maxValue = maxVal;
         slider.value = curVal;
     }
