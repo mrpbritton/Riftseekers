@@ -24,11 +24,12 @@ public class VisualFX : MonoBehaviour {
         EnemyHealth.onEnemyHit -= hitFX;
     }
 
-    public void hitFX(Transform defender, Vector2 attackPoint) {
-        var dir = (Vector2)defender.transform.position - attackPoint;
+    public void hitFX(Transform defender, Vector3 attackPoint) {
+        var dir = defender.transform.position - attackPoint;
         var p = Instantiate(hitParticles);
         p.transform.position = defender.position;
-        p.transform.LookAt(attackPoint, Vector3.up);
+        dir.Normalize();
+        p.transform.rotation = Quaternion.LookRotation(dir);
     }
     public void enemyDeathFX(GameObject obj) {
         //  corpse
