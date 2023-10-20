@@ -27,13 +27,21 @@ public class Basic_Proj : Attack
 
     public override void attack()
     {
-        Vector3 dir = Attack.GetPoint();
-        Vector3 direction = new Vector3(dir.x - origin.position.x + origin.localPosition.x, 
+        Vector3 dir;
+        if (isController)
+        {
+            dir = new Vector3 (pInput.Player.ControllerAim.ReadValue<Vector2>().x,0, pInput.Player.ControllerAim.ReadValue<Vector2>().y);
+        }
+        else
+        {
+            dir = Attack.GetPoint();
+        }
+       /* Vector3 direction = new Vector3(dir.x - origin.position.x + origin.localPosition.x, 
                                         dir.y - origin.position.y + origin.localPosition.y, 
-                                        dir.z - origin.position.z + origin.localPosition.z);
+                                        dir.z - origin.position.z + origin.localPosition.z);*/
         GameObject b = Instantiate(bullet, origin.position, bullet.transform.rotation);
         b.SetActive(true);
-        b.GetComponent<Bullet>().direction = direction;
+        b.GetComponent<Bullet>().direction = dir;
         b.GetComponent<Bullet>().damage = getDamage();
         b.GetComponent<Bullet>().lifetime = lifetime;
     }

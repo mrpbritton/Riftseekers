@@ -13,6 +13,8 @@ public abstract class Attack : MonoBehaviour {
     public AbilityLibrary.abilType abilType;
     protected static CharacterFrame frame;
     private static int rayDistance = 100; //how far the ray will cast out
+    public bool isController;
+    public PInput pInput;
 
     public void updateStats(float dMod, float cdMod) {
         dmgMod = dMod;
@@ -21,8 +23,35 @@ public abstract class Attack : MonoBehaviour {
 
     protected virtual void Start()
     {
+        pInput = new();
+        pInput.Enable();
         frame = FindAnyObjectByType<CharacterFrame>();
+
+        pInput.Player.AnyController.started += ctx => IsController();
+        pInput.Player.AnyKey.started += ctx => IsKeyboard();
     }
+
+    protected virtual void OnDisable()
+    {
+        pInput.Disable();
+        pInput.Player.AnyController.started -= ctx => IsController();
+        pInput.Player.AnyKey.started -= ctx => IsKeyboard();
+    }
+
+    private void IsController()
+    {
+        if (isController) return; //dont set it if it is set
+
+        isController = true;
+    }
+
+    private void IsKeyboard()
+    {
+        if (!isController) return; //dont set it if it is set
+        Debug.Log("IsKeyboard");
+        isController = false;
+    }
+
     public static Vector3 GetPoint()
     {
         //puts the cursor direction vector in the middle of the screen

@@ -110,12 +110,30 @@ public partial class @PInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""ControllerAim"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""e77155af-8a87-48e5-a4ad-ec3234680115"",
-                    ""expectedControlType"": ""Vector3"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""AnyKey"",
+                    ""type"": ""Button"",
+                    ""id"": ""1849d2c4-260f-43c7-bd01-7e186f10dc80"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AnyController"",
+                    ""type"": ""Button"",
+                    ""id"": ""67e4869e-d910-44d9-aad4-ace655eb5f40"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -297,6 +315,17 @@ public partial class @PInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""69e89164-4daf-4ea0-88bb-5e6bee99522d"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""4172ab68-4c9d-4333-af4a-625d73438ffb"",
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
@@ -309,7 +338,7 @@ public partial class @PInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ce53efbf-d343-429e-92e5-dcf59392da55"",
-                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""path"": ""<Gamepad>/dpad/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -331,7 +360,7 @@ public partial class @PInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""497cf747-4226-414c-979b-5fef19a8e252"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -353,7 +382,7 @@ public partial class @PInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f820fd7f-1223-46e6-b547-1019759668bd"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -375,7 +404,7 @@ public partial class @PInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""6a4b1876-1947-4b5a-a797-f68cc940c4d2"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""path"": ""<Gamepad>/dpad/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -441,7 +470,7 @@ public partial class @PInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ca9851e8-e283-4c43-985f-88d7276d43dd"",
-                    ""path"": ""<Gamepad>/select"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -450,81 +479,246 @@ public partial class @PInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""RightStick"",
-                    ""id"": ""1a0578f6-d9fd-45ac-bd3f-0c881776c061"",
-                    ""path"": ""3DVector"",
+                    ""name"": """",
+                    ""id"": ""ac6385aa-f0d2-4010-807f-31de54f1505c"",
+                    ""path"": ""<Keyboard>/anyKey"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ControllerAim"",
-                    ""isComposite"": true,
+                    ""action"": ""AnyKey"",
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""d767fa61-7ac6-4907-bd3a-6997be73afbe"",
-                    ""path"": """",
+                    ""name"": """",
+                    ""id"": ""f7a90890-836a-4230-979a-d0680ab9ab97"",
+                    ""path"": ""<Gamepad>/dpad/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ControllerAim"",
+                    ""action"": ""AnyController"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""down"",
-                    ""id"": ""af5c51ba-0bd0-4354-884a-7d56f888a756"",
-                    ""path"": """",
+                    ""name"": """",
+                    ""id"": ""5fb06c8b-ad45-438e-9ab3-54d3d891e7f1"",
+                    ""path"": ""<Gamepad>/dpad/left"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ControllerAim"",
+                    ""action"": ""AnyController"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""left"",
-                    ""id"": ""6704e42a-dbe0-4f21-a09d-73abd3553fb4"",
-                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""name"": """",
+                    ""id"": ""2b2e0b0c-ced5-4ba1-8116-f85c30ba8428"",
+                    ""path"": ""<Gamepad>/dpad/up"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ControllerAim"",
+                    ""action"": ""AnyController"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""aeec7cdc-f507-41d2-badc-1329ba29da19"",
-                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""name"": """",
+                    ""id"": ""97b753de-9ec7-4531-b2e6-ad717a898d4d"",
+                    ""path"": ""<Gamepad>/dpad/right"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ControllerAim"",
+                    ""action"": ""AnyController"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""forward"",
-                    ""id"": ""41229437-fae2-48c2-b1dc-fc15f42ceafe"",
-                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""name"": """",
+                    ""id"": ""2cce41ca-6a61-44f4-a20f-33656ee2b57e"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ControllerAim"",
+                    ""action"": ""AnyController"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""backward"",
-                    ""id"": ""0be53e54-ea1f-4cae-a890-70ac374edd32"",
+                    ""name"": """",
+                    ""id"": ""2d63dcf6-4a05-4f6e-aa8f-b308bdaada6d"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyController"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""13209480-cc3c-4eb1-9029-a8c98b3cd46f"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyController"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9f17fa59-ad22-46bf-b803-a79e6d774ad9"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyController"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""789509b6-5fb9-4911-935c-c7e21f287f3e"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyController"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""de302787-8603-4b48-9ef5-4748c81d7dd6"",
+                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyController"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e39e28f3-b1c4-472a-8044-655a2ae8c3a9"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyController"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7f59d5ed-e6bd-4363-bd39-89e4ea4475ff"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyController"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0eb2cc35-cdec-4245-9fe0-8db8ce458bc0"",
                     ""path"": ""<Gamepad>/rightStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
+                    ""action"": ""AnyController"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e4136ca6-3555-40dc-b1d3-a9b0e8e27f74"",
+                    ""path"": ""<Gamepad>/rightStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyController"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""aac940fe-8223-4b3f-aec7-8b0c7775c3d5"",
+                    ""path"": ""<Gamepad>/rightStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyController"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2fb12607-2674-44a7-b9fc-a09fe1aff3cd"",
+                    ""path"": ""<Gamepad>/rightStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyController"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""72e749b9-7aab-4a68-873f-f867f91d2723"",
+                    ""path"": ""<Gamepad>/rightStickPress"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyController"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bee9de2e-60d8-412d-aea4-bd55f9f4500d"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyController"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f7cdb240-0200-4789-a0df-0bcad6b5ca2d"",
+                    ""path"": ""<Gamepad>/select"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyController"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5dc96ee9-a702-4b3a-97fd-90a0b820e7d9"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AnyController"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c18d174d-a2ad-48e4-84dd-783744a4463e"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""ControllerAim"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -582,6 +776,8 @@ public partial class @PInput: IInputActionCollection2, IDisposable
         m_Player_SecondAttack = m_Player.FindAction("SecondAttack", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_ControllerAim = m_Player.FindAction("ControllerAim", throwIfNotFound: true);
+        m_Player_AnyKey = m_Player.FindAction("AnyKey", throwIfNotFound: true);
+        m_Player_AnyController = m_Player.FindAction("AnyController", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
@@ -656,6 +852,8 @@ public partial class @PInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SecondAttack;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_ControllerAim;
+    private readonly InputAction m_Player_AnyKey;
+    private readonly InputAction m_Player_AnyController;
     public struct PlayerActions
     {
         private @PInput m_Wrapper;
@@ -670,6 +868,8 @@ public partial class @PInput: IInputActionCollection2, IDisposable
         public InputAction @SecondAttack => m_Wrapper.m_Player_SecondAttack;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @ControllerAim => m_Wrapper.m_Player_ControllerAim;
+        public InputAction @AnyKey => m_Wrapper.m_Player_AnyKey;
+        public InputAction @AnyController => m_Wrapper.m_Player_AnyController;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -709,6 +909,12 @@ public partial class @PInput: IInputActionCollection2, IDisposable
             @ControllerAim.started += instance.OnControllerAim;
             @ControllerAim.performed += instance.OnControllerAim;
             @ControllerAim.canceled += instance.OnControllerAim;
+            @AnyKey.started += instance.OnAnyKey;
+            @AnyKey.performed += instance.OnAnyKey;
+            @AnyKey.canceled += instance.OnAnyKey;
+            @AnyController.started += instance.OnAnyController;
+            @AnyController.performed += instance.OnAnyController;
+            @AnyController.canceled += instance.OnAnyController;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -743,6 +949,12 @@ public partial class @PInput: IInputActionCollection2, IDisposable
             @ControllerAim.started -= instance.OnControllerAim;
             @ControllerAim.performed -= instance.OnControllerAim;
             @ControllerAim.canceled -= instance.OnControllerAim;
+            @AnyKey.started -= instance.OnAnyKey;
+            @AnyKey.performed -= instance.OnAnyKey;
+            @AnyKey.canceled -= instance.OnAnyKey;
+            @AnyController.started -= instance.OnAnyController;
+            @AnyController.performed -= instance.OnAnyController;
+            @AnyController.canceled -= instance.OnAnyController;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -818,6 +1030,8 @@ public partial class @PInput: IInputActionCollection2, IDisposable
         void OnSecondAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnControllerAim(InputAction.CallbackContext context);
+        void OnAnyKey(InputAction.CallbackContext context);
+        void OnAnyController(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
