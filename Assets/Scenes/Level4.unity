@@ -187,7 +187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 264835050}
   m_LocalRotation: {x: 0.38268343, y: -0, z: -0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 34, z: -20}
+  m_LocalPosition: {x: 0, y: 35, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -414,7 +414,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275848543}
   m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 34, z: -20}
+  m_LocalPosition: {x: 0, y: 35, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -447,7 +447,7 @@ PrefabInstance:
     - target: {fileID: 4472193430858894744, guid: f7eeb7a04f63b784eafda47737afdb39,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: -4
       objectReference: {fileID: 0}
     - target: {fileID: 4472193430858894744, guid: f7eeb7a04f63b784eafda47737afdb39,
         type: 3}
@@ -755,6 +755,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: CompletePlayer (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8918837840777473427, guid: 23a2668f187d952479a324da40f43de0,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8918837840777473427, guid: 23a2668f187d952479a324da40f43de0,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8964394923793061034, guid: 23a2668f187d952479a324da40f43de0,
         type: 3}
       propertyPath: m_RootOrder
@@ -817,7 +827,7 @@ PrefabInstance:
   m_SourcePrefab: {fileID: 100100000, guid: 23a2668f187d952479a324da40f43de0, type: 3}
 --- !u!4 &1629669560 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8964394923793061034, guid: 23a2668f187d952479a324da40f43de0,
+  m_CorrespondingSourceObject: {fileID: 7291086632770198049, guid: 23a2668f187d952479a324da40f43de0,
     type: 3}
   m_PrefabInstance: {fileID: 1629669559}
   m_PrefabAsset: {fileID: 0}
@@ -867,7 +877,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: a3d4637f5a0f3c441b8d30b4fccfd629, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: cae3b00dd63a4534caf79ecf0ff91b31, type: 2}
   m_BuildHeightMesh: 0
 --- !u!4 &1854006259
 Transform:
