@@ -50,7 +50,7 @@ public class Shotgun : Attack
             float xRand = Random.Range(-spread / 2, spread / 2);
             Vector3 newDir = new Vector3(direction.x + xRand, direction.y, direction.z + zRand);
             Bullet bScript = b.GetComponent<Bullet>();
-            bScript.direction = newDir;
+            bScript.direction = newDir.normalized;
             bScript.damage = getDamage();
             bScript.lifetime = lifetime;
         }
