@@ -22,10 +22,23 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="3331313354" Type="User" Language="SFX" Hash="{1C85FCBF-DA1E-750F-5CC8-7391FE926866}">
-			<ShortName>TestSB</ShortName>
-			<Path>TestSB.bnk</Path>
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{653CEFC6-1FFD-AB67-CAB7-74DAADCEA63E}">
+			<ShortName>Main</ShortName>
+			<Path>Main.bnk</Path>
+			<Media>
+				<File Id="368981843" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Gunshot.wav</ShortName>
+					<CachePath>SFX/Gunshot_283DA874.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="1139050097" Name="Pistol_Fire_Player" DurationType="OneShot" DurationMin="0.99104095" DurationMax="0.99104095">
+					<MediaRefs>
+						<MediaRef Id="368981843"/>
+					</MediaRefs>
+				</Event>
+			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{ABA93C88-C33D-B35F-D9D3-69AFC6C07115}</FileHash>
+	<FileHash>{AE39690B-0804-F13B-14AB-68C8D5FF4620}</FileHash>
 </SoundBanksInfo>

@@ -44,6 +44,8 @@ public class Basic_Proj : Attack
         b.GetComponent<Bullet>().direction = dir;
         b.GetComponent<Bullet>().damage = getDamage();
         b.GetComponent<Bullet>().lifetime = lifetime;
+
+        AkSoundEngine.PostEvent("Pistol_Fire_player", gameObject);
     }
 
     protected override float getCooldownTime() 

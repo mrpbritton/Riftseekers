@@ -11,10 +11,15 @@
 
 namespace AK
 {
+    namespace EVENTS
+    {
+        static const AkUniqueID PISTOL_FIRE_PLAYER = 1139050097U;
+    } // namespace EVENTS
+
     namespace BANKS
     {
         static const AkUniqueID INIT = 1355168291U;
-        static const AkUniqueID TESTSB = 3331313354U;
+        static const AkUniqueID MAIN = 3161908922U;
     } // namespace BANKS
 
     namespace BUSSES

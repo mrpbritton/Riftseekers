@@ -3,8 +3,10 @@
 	<SoundBanks>
 		<WorkUnit Name="Default Work Unit" ID="{F6DD45C8-2149-44C5-8158-D0818779A7F6}" PersistMode="Standalone">
 			<ChildrenList>
-				<SoundBank Name="TestSB" ID="{036B3DD9-A5C5-4453-89AE-B184B99A358B}">
-					<ObjectInclusionList/>
+				<SoundBank Name="Main" ID="{5D7F4A27-F4A0-45B8-907E-77FADEB92221}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Pistol_Fire_player" ID="{68626C42-BD51-483E-9982-24247DAC4A6B}" WorkUnitID="{697396FA-772C-4458-A229-FDD1542B5EF0}" Origin="Manual" Filter="7"/>
+					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>
 				</SoundBank>

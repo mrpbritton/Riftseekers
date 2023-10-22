@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="16" SoundBankVersion="145">
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="145">
 	<RootPaths>
-		<ProjectRoot>../..</ProjectRoot>
-		<SourceFilesRoot>../../.cache/Mac</SourceFilesRoot>
+		<ProjectRoot>../../../Riftseekers_WwiseProject</ProjectRoot>
+		<SourceFilesRoot>../../../Riftseekers_WwiseProject/.cache/Windows</SourceFilesRoot>
 		<SoundBanksRoot>.</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>.</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>../../../Riftseekers_WwiseProject/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<SoundBanks>
-		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{F56A610C-C7C4-F874-B68B-7ADDF94EBB7A}">
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{986487A9-2683-E47A-8688-3D0FE6FDB954}">
 			<ShortName>Init</ShortName>
 			<Path>Init.bnk</Path>
 			<Plugins>
@@ -22,13 +22,13 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{FF37DA65-B832-6AAC-AA86-D829C926ABD3}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{653CEFC6-1FFD-AB67-CAB7-74DAADCEA63E}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
 				<File Id="368981843" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Gunshot.wav</ShortName>
-					<CachePath>SFX/Gunshot_D9D18078.wem</CachePath>
+					<CachePath>SFX/Gunshot_283DA874.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
@@ -40,5 +40,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{4A72EBE4-9D73-2A19-074C-B49BFDF1093E}</FileHash>
+	<FileHash>{010A9DA6-651F-766F-8834-4ECC1B2D34F9}</FileHash>
 </SoundBanksInfo>
