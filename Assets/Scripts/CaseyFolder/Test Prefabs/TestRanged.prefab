@@ -286,11 +286,17 @@ MonoBehaviour:
   agent: {fileID: 956882322456177311}
   bMelee: 0
   bCover: 0
+  bClose: 0
+  target: {fileID: 0}
+  Gun: {fileID: 0}
+  Player: {fileID: 0}
+  meleeHit: {fileID: 0}
   cover: []
   enemy:
     serializedVersion: 2
     m_Bits: 439
   coverTime: 1
+  hitCooldown: 1
 --- !u!114 &7804190910279747688
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,8 +309,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4440539afd1aad946b551b267751b09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxhealth: 3
-  currentHealth: 3
+  maxhealth: 2
+  currentHealth: 2
   hasItem: 0
   usedCollider: {fileID: 7663751353188508867}
   healthSlider: {fileID: 3857813249340620856}
