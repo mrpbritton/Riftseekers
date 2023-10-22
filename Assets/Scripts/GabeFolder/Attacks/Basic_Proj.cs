@@ -7,7 +7,7 @@ public class Basic_Proj : Attack
     [SerializeField, Tooltip("Used in a calculation to see how much damage dealt")]
     float damage = 1f;
     [SerializeField, Tooltip("Used in a calculation to see how long the cooldown is in seconds")]
-    float baseCooldown = 3f;
+    float baseCooldown = 0.4f;
     [SerializeField, Tooltip("Where the bullet instantiates")]
     private Transform origin;
     [SerializeField, Tooltip("Bullet that gets spawned")]
