@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4592887294288893841}
   - component: {fileID: 8397109625162933902}
   - component: {fileID: 1367921637787629457}
+  - component: {fileID: 3975857199836577123}
   m_Layer: 0
   m_Name: Projectile
   m_TagString: Untagged
@@ -100,7 +101,7 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
@@ -128,7 +129,7 @@ MonoBehaviour:
   - {fileID: 1367921637787629457}
   enemyMask:
     serializedVersion: 2
-    m_Bits: 503
+    m_Bits: 64
 --- !u!114 &8397109625162933902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,6 +157,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
+--- !u!54 &3975857199836577123
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2291647952603663733}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 64
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2806661883677591592
 GameObject:
   m_ObjectHideFlags: 0

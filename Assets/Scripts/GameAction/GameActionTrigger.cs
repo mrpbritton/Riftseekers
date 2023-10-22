@@ -13,7 +13,7 @@ public class GameActionTrigger : GameAction
     //Physics driven event that requires at least one object to have a rigid body
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.layer != enemyMask) return;
+        if (other.gameObject.layer == enemyMask) return;
         if (bActive) return;
         StartCoroutine(nameof(DelayActions));
     }
