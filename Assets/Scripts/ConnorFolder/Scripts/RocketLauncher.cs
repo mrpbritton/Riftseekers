@@ -16,6 +16,10 @@ public class RocketLauncher : Attack {
         curRocket.transform.DOMove(transform.position + rotTrans.right * maxTravelDist, maxTravelTime);
         Destroy(curRocket.gameObject, maxTravelTime);
     }
+
+    public override void reset()
+    {
+    }
     public override attackType getAttackType() {
         return attackType.QAbility;
     }

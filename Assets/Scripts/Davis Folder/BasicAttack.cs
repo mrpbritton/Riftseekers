@@ -22,6 +22,10 @@ public class BasicAttack : Attack
     {
         throw new System.NotImplementedException();
     }
+
+    public override void reset()
+    {
+    }
     protected override float getCooldownTime() {
         return 1f;
     }

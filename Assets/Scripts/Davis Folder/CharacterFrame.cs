@@ -116,6 +116,7 @@ public class CharacterFrame : MonoBehaviour
         do{
             curAttack.attack();
             yield return new WaitForSeconds(curAttack.getRealCooldownTime());
+            curAttack.reset();
         } while (bIsPressed);
         attacker = null;
     }

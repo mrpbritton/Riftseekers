@@ -17,6 +17,11 @@ public class CapUlt : Attack
         }
     }
 
+    public override void reset()
+    {
+        //
+    }
+
     private void Awake()
     {
         
