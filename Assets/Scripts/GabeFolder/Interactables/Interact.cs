@@ -12,7 +12,9 @@ public class Interact : MonoBehaviour
     protected float interactRange;
 
     [SerializeField, Tooltip("Sequence exectuted when interacted with.")]
-    protected GameActionSequence interactSequence;
+    public GameActionSequence interactSequence;
+
+    InteractUI helperUI;
 
     protected virtual void Start() { }
     protected void Awake()
@@ -20,7 +22,12 @@ public class Interact : MonoBehaviour
         pInput = new();
         pInput.Enable();
         pInput.Player.Interact.performed += ctxt => Interacted();
-        
+
+        if(FindObjectOfType<InteractUI>() == null)
+            Debug.LogError("Add InteractableUI Prefab to scene (under connor's folder in scripts)");
+        helperUI = FindObjectOfType<InteractUI>();
+        helperUI.addInteractable(transform);
+
         if (player == null)
         {
             player = FindObjectOfType<PlayerMovement>().transform;
@@ -39,5 +46,10 @@ public class Interact : MonoBehaviour
         var mePos = new Vector2(transform.position.x, transform.position.z);
         if (Vector3.Distance(pPos, mePos) > interactRange) return; //if cant interact, return
         interactSequence.Play();
+        helperUI.completeInteraction(transform);
+    }
+
+    public float getInteractRange() {
+        return interactRange;
     }
 }
