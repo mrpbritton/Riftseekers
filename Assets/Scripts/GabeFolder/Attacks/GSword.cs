@@ -27,6 +27,7 @@ public class GSword : Attack
 
     public override void attack()
     {
+        hitbox.GetComponent<DoDamage>().damage = damage;
         StartCoroutine(Swing());
     }
 

@@ -7,7 +7,7 @@ public class Shotgun : Attack
     [SerializeField, Tooltip("Used in a calculation to see how much damage dealt")]
     float damage = 1f;
     [SerializeField, Tooltip("Used in a calculation to see how long the cooldown is in seconds")]
-    float baseCooldown = 1.25f;
+    float baseCooldown = 0.75f;
     [SerializeField, Tooltip("Where the bullet instantiates")]
     private Transform origin;
     [SerializeField, Tooltip("Bullet that gets spawned")]
@@ -17,7 +17,9 @@ public class Shotgun : Attack
     [SerializeField, Tooltip("How many bullets are shot")]
     private int bulletCount = 4;
     [SerializeField, Tooltip("How wide the spread is")]
-    private float spread = 0.5f;
+    private float spread = 0.35f;
+/*    [SerializeField, Tooltip("How strong the knockback is")]
+    private float knockback = 1f;*/
     private Vector3 cachedDir = new(1, 1, 1);
 
     protected override void Start()
@@ -77,6 +79,8 @@ public class Shotgun : Attack
             bScript.GetComponent<DoDamage>().damage = getDamage();
             bScript.lifetime = lifetime;
         }
+
+/*        frame.gameObject.GetComponent<CharacterController>().Move(-direction * knockback);*/
     }
 
     protected override float getCooldownTime()

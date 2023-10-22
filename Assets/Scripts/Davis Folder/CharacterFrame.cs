@@ -66,8 +66,16 @@ public class CharacterFrame : MonoBehaviour
     [Tooltip("Current charge of the ultimate")]
     public float charge;
 
-    [Header("Sprite")]
+    [Header("Sprites")]
     public SpriteRenderer characterSprite;
+    public Sprite north;
+    public Sprite northEast;
+    public Sprite east;
+    public Sprite southEast;
+    public Sprite south;
+    public Sprite southWest;
+    public Sprite west;
+    public Sprite northWest;
 
     Coroutine attacker = null;
     bool bIsPressed;
@@ -145,6 +153,57 @@ public class CharacterFrame : MonoBehaviour
     void NotPressed()
     {
         bIsPressed = false;
+    }
+
+    public void UpdateSprite(Vector3 direction)
+    {
+        #region Sprite Setting
+        if (direction.x > 0)
+        {
+            if (direction.z < 0) // SOUTHEAST
+            {
+                characterSprite.sprite = southEast;
+            }
+            else if (direction.z == 0) // EAST
+            {
+                characterSprite.sprite = east;
+            }
+            else // direction.z == 1 *** NORTHEAST
+            {
+                characterSprite.sprite = northEast;
+            }
+        }
+        else if (direction.x < 0)
+        {
+            if (direction.z < 0) // SOUTHWEST
+            {
+                characterSprite.sprite = southWest;
+            }
+            else if (direction.z == 0) // WEST
+            {
+                characterSprite.sprite = west;
+            }
+            else // direction.z == 1 *** NORTHWEST
+            {
+                characterSprite.sprite = northWest;
+            }
+        }
+        else //direction.x == 0
+        {
+            if (direction.z < 0) // SOUTH
+            {
+                characterSprite.sprite = south;
+            }
+            else if (direction.z == 0) // NO INPUT
+            {
+                //last input entered
+            }
+            else // direction.z == 1 *** NORTH
+            {
+                characterSprite.sprite = north;
+            }
+        }
+        #endregion
     }
 
     private void OnDisable()
