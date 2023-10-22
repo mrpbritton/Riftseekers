@@ -17,7 +17,7 @@ public class Shotgun : Attack
     [SerializeField, Tooltip("How many bullets are shot")]
     private int bulletCount = 4;
     [SerializeField, Tooltip("How wide the spread is")]
-    private float spread = 1.25f;
+    private float spread = 0.5f;
     private Vector3 cachedDir = new(1, 1, 1);
 
     protected override void Start()
