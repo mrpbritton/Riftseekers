@@ -21,6 +21,10 @@ public class DashAttack : Attack {
         attacker = StartCoroutine(checkForHits());
     }
 
+    public override void reset()
+    {
+    }
+
     public override attackType getAttackType() {
         return attackType.EAbility;
     }

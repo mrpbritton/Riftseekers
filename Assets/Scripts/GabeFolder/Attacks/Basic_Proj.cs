@@ -63,6 +63,10 @@ public class Basic_Proj : Attack
         AkSoundEngine.PostEvent("Pistol_Fire_player", gameObject);
     }
 
+    public override void reset()
+    {
+    }
+
     protected override float getCooldownTime() 
     {
         return baseCooldown / frame.attackSpeed;

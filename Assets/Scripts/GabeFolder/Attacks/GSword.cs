@@ -28,15 +28,14 @@ public class GSword : Attack
     public override void attack()
     {
         hitbox.GetComponent<DoDamage>().damage = damage;
-        StartCoroutine(Swing());
+        hitbox.gameObject.SetActive(true);
     }
 
-    IEnumerator Swing()
+    public override void reset()
     {
-        hitbox.gameObject.SetActive(true);
-        yield return new WaitForSeconds(getCooldownTime());
         hitbox.gameObject.SetActive(false);
     }
+
 
     protected override float getCooldownTime()
     {

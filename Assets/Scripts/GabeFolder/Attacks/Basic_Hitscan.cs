@@ -65,6 +65,10 @@ public class Basic_Hitscan : Attack {
         }
     }
 
+    public override void reset()
+    {
+    }
+
     protected override float getCooldownTime() 
     {
         return baseCooldown / frame.attackSpeed;

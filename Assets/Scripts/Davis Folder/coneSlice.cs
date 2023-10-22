@@ -24,6 +24,10 @@ public class qAbility : Attack
         Debug.Log("Q ability activated");
     }
 
+    public override void reset()
+    {
+    }
+
     protected override float getCooldownTime() {
         return 1f;
     }

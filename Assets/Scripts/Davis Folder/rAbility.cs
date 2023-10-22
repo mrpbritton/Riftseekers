@@ -24,6 +24,10 @@ public class coneSlice : Attack
         hurtbox.SetActive(false);
     }
 
+    public override void reset()
+    {
+    }
+
     private IEnumerator inBetween()
     {
         yield return new WaitForSeconds(100000f);

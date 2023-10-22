@@ -83,6 +83,11 @@ public class Shotgun : Attack
 /*        frame.gameObject.GetComponent<CharacterController>().Move(-direction * knockback);*/
     }
 
+    public override void reset()
+    {
+        //
+    }
+
     protected override float getCooldownTime()
     {
         return baseCooldown / frame.attackSpeed;
