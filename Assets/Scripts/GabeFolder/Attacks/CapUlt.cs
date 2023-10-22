@@ -22,11 +22,6 @@ public class CapUlt : Attack
         
     }
 
-    private void OnDisable()
-    {
-        
-    }
-
     private void ManageCharge()
     {
 

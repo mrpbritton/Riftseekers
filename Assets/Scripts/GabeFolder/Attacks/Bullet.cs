@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField, Tooltip("Speed of the projectile")]
     private float speed;
-    [Tooltip("Direction the projectile is headed")]
+    [HideInInspector, Tooltip("Direction the projectile is headed")]
     public Vector3 direction;
     [Tooltip("Damage of the projectile")]
     public float damage;
@@ -26,7 +26,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!other.gameObject.CompareTag("Player"))
+        if(!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Bullet"))
         {
             if (other.TryGetComponent(out EnemyHealth enemy))
             {
