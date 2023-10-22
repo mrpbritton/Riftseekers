@@ -14,6 +14,7 @@ public class Basic_Proj : Attack
     private GameObject bullet;
     [SerializeField, Tooltip("Time in seconds it takes for bullet to die")]
     private float lifetime;
+    private Vector3 cachedDir = new(1, 1, 1);
 
     public override attackType getAttackType() 
     {
@@ -28,20 +29,33 @@ public class Basic_Proj : Attack
     public override void attack()
     {
         Vector3 dir;
+        Vector3 direction;
         if (isController)
         {
-            dir = new Vector3 (pInput.Player.ControllerAim.ReadValue<Vector2>().x,0, pInput.Player.ControllerAim.ReadValue<Vector2>().y);
+            dir = new Vector3(pInput.Player.ControllerAim.ReadValue<Vector2>().x, 0, pInput.Player.ControllerAim.ReadValue<Vector2>().y);
+
+            if (dir == Vector3.zero)
+            {
+                dir = cachedDir;
+            }
+            else
+            {
+                cachedDir = dir;
+            }
+
+            direction = dir;
         }
         else
         {
             dir = Attack.GetPoint();
+            direction = new Vector3(dir.x - origin.position.x + origin.localPosition.x,
+                                            dir.y - origin.position.y + origin.localPosition.y,
+                                            dir.z - origin.position.z + origin.localPosition.z);
         }
-       /* Vector3 direction = new Vector3(dir.x - origin.position.x + origin.localPosition.x, 
-                                        dir.y - origin.position.y + origin.localPosition.y, 
-                                        dir.z - origin.position.z + origin.localPosition.z);*/
+
         GameObject b = Instantiate(bullet, origin.position, bullet.transform.rotation);
         b.SetActive(true);
-        b.GetComponent<Bullet>().direction = dir;
+        b.GetComponent<Bullet>().direction = direction;
         b.GetComponent<Bullet>().damage = getDamage();
         b.GetComponent<Bullet>().lifetime = lifetime;
 

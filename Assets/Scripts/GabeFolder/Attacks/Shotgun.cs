@@ -18,6 +18,7 @@ public class Shotgun : Attack
     private int bulletCount = 4;
     [SerializeField, Tooltip("How wide the spread is")]
     private float spread = 1.25f;
+    private Vector3 cachedDir = new(1, 1, 1);
 
     protected override void Start()
     {
@@ -37,10 +38,31 @@ public class Shotgun : Attack
 
     public override void attack()
     {
-        Vector3 dir = Attack.GetPoint();
-        Vector3 direction = new Vector3(dir.x - origin.position.x + origin.localPosition.x,
-                                        dir.y - origin.position.y + origin.localPosition.y,
-                                        dir.z - origin.position.z + origin.localPosition.z);
+        Vector3 dir;
+        Vector3 direction;
+        if (isController)
+        {
+            dir = new Vector3(pInput.Player.ControllerAim.ReadValue<Vector2>().x, 0, pInput.Player.ControllerAim.ReadValue<Vector2>().y);
+
+            if (dir == Vector3.zero)
+            {
+                dir = cachedDir;
+            }
+            else
+            {
+                cachedDir = dir;
+            }
+
+            direction = dir;
+        }
+        else
+        {
+            dir = Attack.GetPoint();
+            direction = new Vector3(dir.x - origin.position.x + origin.localPosition.x,
+                                            dir.y - origin.position.y + origin.localPosition.y,
+                                            dir.z - origin.position.z + origin.localPosition.z);
+        }
+
         
         for(int i = 0; i < bulletCount; i++)
         {

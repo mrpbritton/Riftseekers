@@ -23,7 +23,7 @@ public abstract class Attack : MonoBehaviour {
 
     protected virtual void Start()
     {
-        pInput = new();
+        pInput = new PInput();
         pInput.Enable();
         frame = FindAnyObjectByType<CharacterFrame>();
 
@@ -31,11 +31,11 @@ public abstract class Attack : MonoBehaviour {
         pInput.Player.AnyKey.started += ctx => IsKeyboard();
     }
 
-    protected virtual void OnDisable()
+    protected void OnDisable()
     {
-        pInput.Disable();
         pInput.Player.AnyController.started -= ctx => IsController();
         pInput.Player.AnyKey.started -= ctx => IsKeyboard();
+        pInput.Disable();
     }
 
     private void IsController()
