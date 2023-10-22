@@ -9,8 +9,6 @@ public class Bullet : MonoBehaviour
     private float speed;
     [HideInInspector, Tooltip("Direction the projectile is headed")]
     public Vector3 direction;
-    [Tooltip("Damage of the projectile")]
-    public float damage;
     [Tooltip("Time in seconds it takes for bullet to die")]
     public float lifetime;
 
@@ -28,11 +26,7 @@ public class Bullet : MonoBehaviour
     {
         if(!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Bullet"))
         {
-            if (other.TryGetComponent(out EnemyHealth enemy))
-            {
-                enemy.damageTaken(damage, transform.position);
-            }
-            Destroy(gameObject);
+            Destroy(gameObject, 0.0001f);
         }
     }
 }

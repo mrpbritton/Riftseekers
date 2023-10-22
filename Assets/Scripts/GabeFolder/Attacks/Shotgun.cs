@@ -63,6 +63,7 @@ public class Shotgun : Attack
                                             dir.z - origin.position.z + origin.localPosition.z);
         }
 
+        direction = direction.normalized;
         
         for(int i = 0; i < bulletCount; i++)
         {
@@ -73,7 +74,7 @@ public class Shotgun : Attack
             Vector3 newDir = new Vector3(direction.x + xRand, direction.y, direction.z + zRand);
             Bullet bScript = b.GetComponent<Bullet>();
             bScript.direction = newDir.normalized;
-            bScript.damage = getDamage();
+            bScript.GetComponent<DoDamage>().damage = getDamage();
             bScript.lifetime = lifetime;
         }
     }

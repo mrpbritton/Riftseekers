@@ -55,9 +55,10 @@ public class Basic_Proj : Attack
 
         GameObject b = Instantiate(bullet, origin.position, bullet.transform.rotation);
         b.SetActive(true);
-        b.GetComponent<Bullet>().direction = direction;
-        b.GetComponent<Bullet>().damage = getDamage();
-        b.GetComponent<Bullet>().lifetime = lifetime;
+        Bullet bs = b.GetComponent<Bullet>(); //(b)ullet(s)cript
+        bs.direction = direction;
+        b.GetComponent<DoDamage>().damage = getDamage();
+        bs.lifetime = lifetime;
 
         AkSoundEngine.PostEvent("Pistol_Fire_player", gameObject);
     }
