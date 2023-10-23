@@ -33,7 +33,7 @@ Transform:
   - {fileID: 3430324134011355578}
   - {fileID: 5701483791246596465}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4440314752643908563
 PrefabInstance:
@@ -136,6 +136,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: GunOrigin
       objectReference: {fileID: 0}
+    - target: {fileID: 2755336133540598544, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
+      propertyPath: cooldownBar
+      value: 
+      objectReference: {fileID: 8239503204652013478}
     - target: {fileID: 3550046142370946448, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
       propertyPath: hurtBox
