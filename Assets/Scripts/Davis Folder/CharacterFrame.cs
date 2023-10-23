@@ -251,10 +251,8 @@ public class CharacterFrame : MonoBehaviour
     }
     public void Update()
     {
-        //Debug.Log(health);
         if(trueHealth.health <= 0)
         {
-            Debug.Log("test");
             transfer.playerDeath();
         }
     }
