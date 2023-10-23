@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Net.Http.Headers;
 using UnityEngine;
 
 /***********************************************************************
@@ -244,4 +245,13 @@ public class CharacterFrame : MonoBehaviour
     {
         atk.updateStats(attackDamage, cooldownMod);
     }
+    public void Update()
+    {
+        if(health <= 0)
+        {
+            var transfer = new LevelManager();
+            transfer.playerDeath();
+        }
+    }
+
 }
