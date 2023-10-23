@@ -33,7 +33,7 @@ Transform:
   - {fileID: 3430324134011355578}
   - {fileID: 5701483791246596465}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4440314752643908563
 PrefabInstance:
@@ -445,6 +445,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4084779081802602083, guid: 56c8faf6bb7a767458213c9ba55dbcf5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -671,6 +676,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3676753698503091864, guid: 28cb8f400ceb08a4e912fceb063d32c1,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3676753698503091864, guid: 28cb8f400ceb08a4e912fceb063d32c1,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3782885424808526837, guid: 28cb8f400ceb08a4e912fceb063d32c1,
         type: 3}
