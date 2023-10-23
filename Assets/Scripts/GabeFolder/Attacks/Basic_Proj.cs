@@ -30,6 +30,9 @@ public class Basic_Proj : Attack
     {
         Vector3 dir;
         Vector3 direction;
+
+        cooldownBar.updateSlider(getCooldownTime());
+
         if (isController)
         {
             dir = new Vector3(pInput.Player.ControllerAim.ReadValue<Vector2>().x, 0, pInput.Player.ControllerAim.ReadValue<Vector2>().y);

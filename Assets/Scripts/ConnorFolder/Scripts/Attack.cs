@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public abstract class Attack : MonoBehaviour {
@@ -13,8 +14,10 @@ public abstract class Attack : MonoBehaviour {
     public AbilityLibrary.abilType abilType;
     protected static CharacterFrame frame;
     private static int rayDistance = 100; //how far the ray will cast out
+    [HideInInspector]
     public bool isController;
     public PInput pInput;
+    public PlayerUICanvas cooldownBar;
 
     public void updateStats(float dMod, float cdMod) {
         dmgMod = dMod;
