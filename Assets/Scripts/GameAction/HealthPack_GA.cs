@@ -17,7 +17,7 @@ public class HealthPack_GA : GameAction
         if (health.health == health.maxHealth) return;
         healAmount = health.maxHealth * healPercent;
         health.heal(healAmount);
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
     public override void DeAction()
     {
