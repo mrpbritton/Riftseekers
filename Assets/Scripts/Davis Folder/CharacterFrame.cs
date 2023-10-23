@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Net.Http.Headers;
 using UnityEngine;
 
 /***********************************************************************
@@ -76,6 +77,10 @@ public class CharacterFrame : MonoBehaviour
     public Sprite southWest;
     public Sprite west;
     public Sprite northWest;
+
+    [Header("Managers")]
+    public LevelManager transfer;
+    public Health trueHealth;
 
     Coroutine attacker = null;
     bool bIsPressed;
@@ -244,4 +249,14 @@ public class CharacterFrame : MonoBehaviour
     {
         atk.updateStats(attackDamage, cooldownMod);
     }
+    public void Update()
+    {
+        //Debug.Log(health);
+        if(trueHealth.health <= 0)
+        {
+            Debug.Log("test");
+            transfer.playerDeath();
+        }
+    }
+
 }
