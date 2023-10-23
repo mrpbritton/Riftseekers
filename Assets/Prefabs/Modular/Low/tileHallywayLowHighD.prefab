@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 5051206293134682013}
   - component: {fileID: 2233603546326497056}
   - component: {fileID: 1459969420992906959}
+  - component: {fileID: 2966865775831510411}
   m_Layer: 0
   m_Name: tileWallOnlyD
   m_TagString: Untagged
@@ -232,6 +233,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8234182743768154353, guid: 2b6fa02afc96eee49bcd28d6d4c8c168, type: 3}
+--- !u!114 &2966865775831510411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5899183401533598639}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &6065732896052422747
 GameObject:
   m_ObjectHideFlags: 0
@@ -244,6 +264,7 @@ GameObject:
   - component: {fileID: 3760652395346578652}
   - component: {fileID: 8737370929602682352}
   - component: {fileID: 4476353275684686748}
+  - component: {fileID: 7288394293298946193}
   m_Layer: 0
   m_Name: tileWallOnlyShortenedD (1)
   m_TagString: Untagged
@@ -338,6 +359,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6822595582209801495, guid: 22008e58cc76f4144ab76ee0bf38cd85, type: 3}
+--- !u!114 &7288394293298946193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6065732896052422747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &9122337878145219101
 GameObject:
   m_ObjectHideFlags: 0

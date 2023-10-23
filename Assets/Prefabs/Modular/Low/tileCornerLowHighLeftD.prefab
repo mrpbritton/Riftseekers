@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2062105012340984925}
   - component: {fileID: 6914467119172280386}
   - component: {fileID: 8736945147303177173}
+  - component: {fileID: 4095160171710281473}
   m_Layer: 0
   m_Name: tileWallOnlyShortenedD (1)
   m_TagString: Untagged
@@ -106,6 +107,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6822595582209801495, guid: 22008e58cc76f4144ab76ee0bf38cd85, type: 3}
+--- !u!114 &4095160171710281473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447437708977607804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &1199683251647930753
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,6 +138,7 @@ GameObject:
   - component: {fileID: 6941563945008406954}
   - component: {fileID: 6755603230510795483}
   - component: {fileID: 8001222155706655023}
+  - component: {fileID: 9099724391505728991}
   m_Layer: 0
   m_Name: tileWallOnlyShortenedD
   m_TagString: Untagged
@@ -212,6 +233,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6822595582209801495, guid: 22008e58cc76f4144ab76ee0bf38cd85, type: 3}
+--- !u!114 &9099724391505728991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199683251647930753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &2293527145402552422
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +426,7 @@ GameObject:
   - component: {fileID: 9050318116185124647}
   - component: {fileID: 5024264176721695920}
   - component: {fileID: 2881071082019051611}
+  - component: {fileID: 2221924927340422170}
   m_Layer: 0
   m_Name: tileCornerOnlyD
   m_TagString: Untagged
@@ -480,6 +521,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 441418566253628091, guid: d1858bfec4e61e043aad0b79bc4919e9, type: 3}
+--- !u!114 &2221924927340422170
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5917049588673302454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &7543590809223214799
 GameObject:
   m_ObjectHideFlags: 0
@@ -492,6 +552,7 @@ GameObject:
   - component: {fileID: 7181671616821281971}
   - component: {fileID: 4388200311625524103}
   - component: {fileID: 1533447960350508015}
+  - component: {fileID: 3609052971286563240}
   m_Layer: 0
   m_Name: tileWallOnlyD
   m_TagString: Untagged
@@ -586,3 +647,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8234182743768154353, guid: 2b6fa02afc96eee49bcd28d6d4c8c168, type: 3}
+--- !u!114 &3609052971286563240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7543590809223214799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
