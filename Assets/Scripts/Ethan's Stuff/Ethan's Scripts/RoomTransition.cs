@@ -41,6 +41,23 @@ public class RoomTransition : MonoBehaviour
         */
         SceneManager.LoadScene(5);
     }
+
+    private void OnEnable()
+    {
+        EnemyController.levelComplete += levelComplete;
+    }
+
+    private void OnDisable()
+    {
+        EnemyController.levelComplete -= levelComplete;
+    }
+
+    private void levelComplete()
+    {
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
+        gameObject.GetComponent<Collider>().enabled = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
