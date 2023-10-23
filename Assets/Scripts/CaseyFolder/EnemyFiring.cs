@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
+
 
 
 public class EnemyFiring : MonoBehaviour
@@ -18,6 +20,9 @@ public class EnemyFiring : MonoBehaviour
     [SerializeField]
     private GameObject Player;
     public LayerMask enemy;
+    [SerializeField]
+    private NavMeshAgent agent;
+
 
 
 
@@ -51,10 +56,12 @@ public class EnemyFiring : MonoBehaviour
             if (hitInfo.transform.CompareTag("Player"))
             {
                 bSeePlayer = true;
+                agent.stoppingDistance = 10;
             }
             else
             {
                 bSeePlayer = false;
+                agent.stoppingDistance = 0;
             }
         }
     }
