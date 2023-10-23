@@ -30,8 +30,8 @@ Transform:
   m_Children:
   - {fileID: 7291086632770198049}
   - {fileID: 1134619532179757097}
-  - {fileID: 5701483791246596465}
   - {fileID: 3430324134011355578}
+  - {fileID: 5701483791246596465}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -414,15 +414,30 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: cab474912f1ef6f49afd9da06451a29a, type: 2}
+    - target: {fileID: 2643375642204714127, guid: 56c8faf6bb7a767458213c9ba55dbcf5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3765223204140951591, guid: 56c8faf6bb7a767458213c9ba55dbcf5,
         type: 3}
       propertyPath: transition
       value: 
       objectReference: {fileID: 3004298652872104463}
+    - target: {fileID: 3776435839395736110, guid: 56c8faf6bb7a767458213c9ba55dbcf5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4084779081802602083, guid: 56c8faf6bb7a767458213c9ba55dbcf5,
         type: 3}
       propertyPath: m_Name
       value: LevelManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 4084779081802602083, guid: 56c8faf6bb7a767458213c9ba55dbcf5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
