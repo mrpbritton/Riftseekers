@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
 
    public void playerDeath()
     {
-        StartCoroutine(levelTransition(3, "death"));
+        StartCoroutine(levelTransition(1, "death"));
     }
     
     public void loadSpecific(int index)

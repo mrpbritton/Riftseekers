@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class RoomTransition : MonoBehaviour
 {
-
+    public LevelManager sceneGuy;
     int[] scenes = new int[4];
     // Start is called before the first frame update
     void Start()
@@ -45,7 +45,8 @@ public class RoomTransition : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            RoomTransitionz();
+            sceneGuy.loadNextScene();
+            //RoomTransitionz();
         }
     }
 }
