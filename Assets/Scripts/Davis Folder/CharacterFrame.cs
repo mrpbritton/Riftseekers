@@ -78,6 +78,10 @@ public class CharacterFrame : MonoBehaviour
     public Sprite west;
     public Sprite northWest;
 
+    [Header("Managers")]
+    public LevelManager transfer;
+    public Health trueHealth;
+
     Coroutine attacker = null;
     bool bIsPressed;
 
@@ -247,9 +251,10 @@ public class CharacterFrame : MonoBehaviour
     }
     public void Update()
     {
-        if(health <= 0)
+        //Debug.Log(health);
+        if(trueHealth.health <= 0)
         {
-            var transfer = new LevelManager();
+            Debug.Log("test");
             transfer.playerDeath();
         }
     }

@@ -12,22 +12,25 @@ public class LevelManager : MonoBehaviour
 
    public void loadNextScene()
     {
-        StartCoroutine(levelTransition(SceneManager.GetActiveScene().buildIndex + 1));
+        StartCoroutine(levelTransition(SceneManager.GetActiveScene().buildIndex + 1, "none"));
     }
 
    public void playerDeath()
     {
-        StartCoroutine(levelTransition(1));
+        StartCoroutine(levelTransition(3, "death"));
     }
     
     public void loadSpecific(int index)
     {
-        StartCoroutine(levelTransition(index));
+        StartCoroutine(levelTransition(index, "none"));
     }
 
-    IEnumerator levelTransition(int levelIndex)
+    IEnumerator levelTransition(int levelIndex, string trigger)
     {
-        transition.SetTrigger("Start");
+        if (trigger != "none")
+        {
+            transition.SetTrigger(trigger);
+        }
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(levelIndex);
     }
