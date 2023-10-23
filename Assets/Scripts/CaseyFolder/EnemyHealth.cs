@@ -11,7 +11,7 @@ public class EnemyHealth : MonoBehaviour
     public float currentHealth;
     private float critHealth;
     private bool foundCover;
-    public bool hasItem;
+    public bool hasItem, firstDamage;
 
 /*    Coroutine invincTimer = null;
     float invincTime = .5f;*/
@@ -32,6 +32,11 @@ public class EnemyHealth : MonoBehaviour
 
     public void damageTaken(float damage, Vector3 attackPoint)
     {
+        if(!firstDamage)
+        {
+            GetComponentInChildren<Canvas>().enabled = true;
+            firstDamage = true;
+        }
         //  checks if invincible
 /*        if(invincTimer != null)
             return;

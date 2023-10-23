@@ -146,7 +146,7 @@ Transform:
   - {fileID: 2453123564456540697}
   - {fileID: 9141151637567058839}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8958742142963517924
 MeshFilter:
@@ -312,6 +312,7 @@ MonoBehaviour:
   maxhealth: 2
   currentHealth: 2
   hasItem: 0
+  firstDamage: 0
   usedCollider: {fileID: 7663751353188508867}
   healthSlider: {fileID: 3857813249340620856}
 --- !u!1 &7963801440353076063
@@ -493,6 +494,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: EnemyHealthCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 6946444713226923283, guid: ec506b7681e99c2479abe7ec43ffcd5f,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9006507288531849956, guid: ec506b7681e99c2479abe7ec43ffcd5f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
