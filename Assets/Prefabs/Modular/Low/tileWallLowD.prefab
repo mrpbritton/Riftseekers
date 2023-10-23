@@ -171,6 +171,7 @@ GameObject:
   - component: {fileID: 1491642973759232522}
   - component: {fileID: 3699590718603439808}
   - component: {fileID: 2413036261392090902}
+  - component: {fileID: 5224810815812189153}
   m_Layer: 0
   m_Name: tileWallOnlyShortenedD
   m_TagString: Untagged
@@ -265,3 +266,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6822595582209801495, guid: 22008e58cc76f4144ab76ee0bf38cd85, type: 3}
+--- !u!114 &5224810815812189153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2906909012595248917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff

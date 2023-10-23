@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2062105012340984925}
   - component: {fileID: 6914467119172280386}
   - component: {fileID: 8736945147303177173}
+  - component: {fileID: 1159160399273503577}
   m_Layer: 0
   m_Name: tileWallOnlyShortenedD (1)
   m_TagString: Untagged
@@ -106,6 +107,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6822595582209801495, guid: 22008e58cc76f4144ab76ee0bf38cd85, type: 3}
+--- !u!114 &1159160399273503577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447437708977607804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &1199683251647930753
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,6 +138,7 @@ GameObject:
   - component: {fileID: 6941563945008406954}
   - component: {fileID: 6755603230510795483}
   - component: {fileID: 8001222155706655023}
+  - component: {fileID: 2286127751266737036}
   m_Layer: 0
   m_Name: tileWallOnlyShortenedD
   m_TagString: Untagged
@@ -212,6 +233,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 6822595582209801495, guid: 22008e58cc76f4144ab76ee0bf38cd85, type: 3}
+--- !u!114 &2286127751266737036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199683251647930753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &2293527145402552422
 GameObject:
   m_ObjectHideFlags: 0
@@ -387,6 +427,7 @@ GameObject:
   - component: {fileID: 3155477953232291884}
   - component: {fileID: 62565169959776737}
   - component: {fileID: 3847520565319180473}
+  - component: {fileID: 8054688185454183499}
   m_Layer: 0
   m_Name: tileCornerOnlyD (1)
   m_TagString: Untagged
@@ -481,6 +522,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 441418566253628091, guid: d1858bfec4e61e043aad0b79bc4919e9, type: 3}
+--- !u!114 &8054688185454183499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7315230187694278815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &7598283754356525891
 GameObject:
   m_ObjectHideFlags: 0
@@ -493,6 +553,7 @@ GameObject:
   - component: {fileID: 8512365121852448087}
   - component: {fileID: 7008103600516058081}
   - component: {fileID: 8358386813591834031}
+  - component: {fileID: 911078061956104264}
   m_Layer: 0
   m_Name: tileCornerOnlyShortenedD
   m_TagString: Untagged
@@ -587,6 +648,25 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -5857249456124250398, guid: be44ae183aef2c44093c68e608595784, type: 3}
+--- !u!114 &911078061956104264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7598283754356525891}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
 --- !u!1 &7639290783461471234
 GameObject:
   m_ObjectHideFlags: 0
@@ -599,6 +679,7 @@ GameObject:
   - component: {fileID: 2939415696472511743}
   - component: {fileID: 1167770801181776249}
   - component: {fileID: 4075269955129830380}
+  - component: {fileID: 3813729775149866401}
   m_Layer: 0
   m_Name: tileWallOnlyD (2)
   m_TagString: Untagged
@@ -693,3 +774,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -8234182743768154353, guid: 2b6fa02afc96eee49bcd28d6d4c8c168, type: 3}
+--- !u!114 &3813729775149866401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7639290783461471234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 0
+  m_Area: 0
+  m_OverrideGenerateLinks: 0
+  m_GenerateLinks: 0
+  m_IgnoreFromBuild: 0
+  m_ApplyToChildren: 1
+  m_AffectedAgents: ffffffff
