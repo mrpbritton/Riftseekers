@@ -10,10 +10,13 @@ public class GSword : Attack
     float baseCooldown = .5f;
     [SerializeField, Tooltip("Hitbox the Sword uses")]
     Transform hitbox;
+    DoDamage damScript;
 
     protected override void Start()
     {
         base.Start();
+        damScript = hitbox.GetComponent<DoDamage>();
+        damScript.damage = damage;
     }
     public override attackType getAttackType()
     {
@@ -27,7 +30,11 @@ public class GSword : Attack
 
     public override void attack()
     {
-        hitbox.GetComponent<DoDamage>().damage = damage;
+        if (damScript.damage != damage)
+        {
+            damScript.damage = damage;
+        }
+        cooldownBar.updateSlider(getCooldownTime());
         hitbox.gameObject.SetActive(true);
     }
 

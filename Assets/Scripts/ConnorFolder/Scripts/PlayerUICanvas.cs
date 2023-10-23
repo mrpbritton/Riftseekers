@@ -38,7 +38,7 @@ public class PlayerUICanvas : MonoBehaviour {
         {
             dTimeRemaining -= Time.deltaTime;
             slider.value = (maxTime - dTimeRemaining)/maxTime;
-            Debug.Log("AAA");
+            //Debug.Log("AAA");
             yield return null;
         }
 
