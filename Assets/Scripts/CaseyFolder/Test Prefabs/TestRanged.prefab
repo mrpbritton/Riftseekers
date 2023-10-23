@@ -146,7 +146,7 @@ Transform:
   - {fileID: 2453123564456540697}
   - {fileID: 9141151637567058839}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8958742142963517924
 MeshFilter:
@@ -365,6 +365,7 @@ MonoBehaviour:
   enemy:
     serializedVersion: 2
     m_Bits: 439
+  agent: {fileID: 956882322456177311}
 --- !u!1001 &9063129239472623483
 PrefabInstance:
   m_ObjectHideFlags: 0
