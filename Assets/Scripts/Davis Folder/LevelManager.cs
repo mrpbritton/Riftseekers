@@ -32,6 +32,12 @@ public class LevelManager : MonoBehaviour
             transition.SetTrigger(trigger);
         }
         yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene(levelIndex);
+        if (levelIndex < 8)
+        {
+            SceneManager.LoadScene(levelIndex);
+        } else
+        {
+            SceneManager.LoadScene(0);
+        }
     }
 }
