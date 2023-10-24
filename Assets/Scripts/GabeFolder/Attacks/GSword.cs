@@ -9,7 +9,7 @@ public class GSword : Attack
     [SerializeField, Tooltip("Used in a calculation to see how long the cooldown is in seconds")]
     float baseCooldown = .5f;
     [SerializeField, Tooltip("How long the hitbox stays")]
-    float hitboxTime = .2f;
+    float hitboxTime = .05f;
     [SerializeField, Tooltip("The axis that rotates according to the player's movement")]
     private Transform origin;
     [SerializeField, Tooltip("Hitbox the Sword uses")]
