@@ -12,6 +12,8 @@ public class bonuspicker : MonoBehaviour
     public UnityEngine.UIElements.Button button3;
     public CharacterFrame Character;
 
+    private int bonus1, bonus2, bonus3 = 10;
+
 
     public string[] descriptions = new string[8];
     public int[] bonuses = new int[8];
@@ -39,8 +41,37 @@ public class bonuspicker : MonoBehaviour
         return randomNumber;
     }
 
-    private void verifyNumber()
+    private int verifyNumber(int number)
     {
+        if(number == bonus1 || number == bonus2)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
+    }
 
-    } 
+    private void generateBonuses()
+    {
+        int buffer, verify = 10;
+        int picked = 0;
+        while(picked < 3)
+        {
+            buffer = randomPicker();
+            verify = verifyNumber(buffer);
+            if(verify == 0 && bonus1 == 10)
+            {
+                bonus1 = buffer;
+            } else if(verify == 0 && bonus2 == 10)
+            {
+                bonus2 = buffer;
+            }
+            else if (verify == 0 && bonus3 == 10)
+            {
+
+            }
+        }
+    }
 }
