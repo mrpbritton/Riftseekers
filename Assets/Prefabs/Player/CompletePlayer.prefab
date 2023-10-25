@@ -41,6 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8964394923793061034}
+  - component: {fileID: 4865779752117141236}
   m_Layer: 0
   m_Name: CompletePlayer
   m_TagString: Untagged
@@ -66,8 +67,28 @@ Transform:
   - {fileID: 5701483791246596465}
   - {fileID: 4124214301755376211}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4865779752117141236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7430548844078876716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 024a59072aa6d9345b220fb358344d7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orthoSize: 14.75
+  bType: 0
+  backColor: {r: 0, g: 0, b: 0, a: 1}
+  rotation: {x: 0.38268346, y: 0, z: 0, w: 0.9238795}
+  vOrthoSize: 14.75
+  farClipPane: 5000
+  offset: {x: 0, y: 20, z: -20}
+  dampening: {x: 0.3, y: 0.3, z: 0.3}
 --- !u!1001 &2935528525003935754
 PrefabInstance:
   m_ObjectHideFlags: 0
