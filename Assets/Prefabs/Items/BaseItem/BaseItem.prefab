@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 7980214661142494641}
   - component: {fileID: 6699765996139923174}
   - component: {fileID: 1657638599707244875}
-  - component: {fileID: 8764132997103219636}
   - component: {fileID: 4046893905827859892}
+  - component: {fileID: 9211515255636103888}
   m_Layer: 0
   m_Name: BaseItem
   m_TagString: Untagged
@@ -87,8 +87,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   actionList:
-  - {fileID: 8764132997103219636}
   - {fileID: 1657638599707244875}
+  - {fileID: 9211515255636103888}
   - {fileID: 6699765996139923174}
 --- !u!114 &6699765996139923174
 MonoBehaviour:
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c2065eb3dc731a46b9e95eac1467c07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  delay: 0
+  delay: 0.1
 --- !u!114 &1657638599707244875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -116,23 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  item: {fileID: 11400000, guid: e319d1c514e7a7e428551710065cb58a, type: 2}
---- !u!114 &8764132997103219636
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6832642559768804790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33422379da2c3c645aab31e52daf3f21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
-  frame: {fileID: 0}
-  stat: 2
-  modifier: 5
+  item: {fileID: 11400000, guid: 5840d634ed5e9a14fa5c3d96ae708b85, type: 2}
 --- !u!212 &4046893905827859892
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -174,7 +158,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ac5f7f9cd7a52da4d9e486d5ba24cf9a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d2d27d76deb13ea47b56533e6e068b0f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -185,3 +169,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &9211515255636103888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6832642559768804790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa5505b45ece8f4986643d11aa06db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  aType: 1
