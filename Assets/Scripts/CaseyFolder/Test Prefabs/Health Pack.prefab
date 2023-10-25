@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2102087462501029543}
   - component: {fileID: 590513079760476333}
   - component: {fileID: 6166428943804152863}
+  - component: {fileID: -1072965183571922492}
   m_Layer: 0
   m_Name: Health Pack
   m_TagString: Untagged
@@ -137,6 +138,7 @@ MonoBehaviour:
   delay: 0
   actionList:
   - {fileID: 6166428943804152863}
+  - {fileID: -1072965183571922492}
 --- !u!114 &6166428943804152863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,3 +153,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   healPercent: 0.25
+--- !u!114 &-1072965183571922492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7452127282766360242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2065eb3dc731a46b9e95eac1467c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0

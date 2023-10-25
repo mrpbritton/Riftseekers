@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5483569127535632500}
   - component: {fileID: 1042167058117472350}
   - component: {fileID: 1634566255216486190}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Transitioner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 2751455411597181231}
   - component: {fileID: 2883971483864834016}
   - component: {fileID: 1227929347698718805}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +209,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3776435839395736110}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
@@ -223,7 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1190279938936601755}
   - component: {fileID: 3765223204140951591}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: LevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -258,5 +258,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3be34cc78a272f4ca2d95cc5521c9f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transition: {fileID: 0}
+  transition: {fileID: 1634566255216486190}
   transitionTime: 1
