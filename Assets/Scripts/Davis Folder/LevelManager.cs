@@ -17,6 +17,7 @@ public class LevelManager : MonoBehaviour
 
    public void playerDeath()
     {
+        SaveData.deleteCurrentSave();
         StartCoroutine(levelTransition(1, "death"));
     }
     
