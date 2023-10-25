@@ -26,11 +26,12 @@ public class EnemyController : MonoBehaviour
     private void OnEnable()
     {
         EnemyHealth.onEnemyDeath += onEnemyDeath;
-        foreach(GameObject enemy in enemies)
+/*        foreach(GameObject enemy in enemies)
         {
             enemy.GetComponent<EnemyHealth>().maxhealth *= difficulty;
             enemy.GetComponent<Damage_GA>().damage *= difficulty;
         }
+*/
     }
 
     private void OnDisable()
