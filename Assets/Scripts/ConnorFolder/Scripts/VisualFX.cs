@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Rendering.Universal;
 
 public class VisualFX : MonoBehaviour {
     [SerializeField] GameObject enemyCorpse, hitParticles;
     [SerializeField] GameObject bPool;
     [SerializeField] float minPoolSize, maxPoolSize, poolTime, poolColorTime;
-    [SerializeField] Color poolStartColor, poolEndColor;
+    [SerializeField] float poolEndAlpha;
 
 
     private void Awake() {
@@ -39,11 +40,21 @@ public class VisualFX : MonoBehaviour {
 
         //  blood pool
         var p = Instantiate(bPool);
-        var yP = peeta.transform.position.y - peeta.transform.lossyScale.y / 2.0f;
-        p.transform.position = new Vector3(peeta.transform.position.x, yP + .1f, peeta.transform.position.z);
-        p.transform.localScale = Vector3.zero;
-        p.transform.DOScale(Random.Range(minPoolSize, maxPoolSize), poolTime);
-        p.GetComponent<SpriteRenderer>().color = poolStartColor;
-        p.GetComponent<SpriteRenderer>().DOColor(poolEndColor, poolColorTime);
+        float dpDepth = .1f;
+        p.transform.position = peeta.transform.position + new Vector3(0f, -peeta.transform.lossyScale.y - dpDepth / 2f, 0f);
+        var dp = p.GetComponent<DecalProjector>();
+        dp.size = Vector3.zero;
+
+        //  scales
+        float curSize = 0f;
+        float targetSize = Random.Range(minPoolSize, maxPoolSize);
+        DOTween.To(() => curSize, x => curSize = x, targetSize, poolTime).OnUpdate(() => {
+            dp.size = new Vector3(curSize, curSize, dpDepth);
+        });
+        //  colors
+        float curColor = 1f;
+        DOTween.To(() => curColor, x => curColor = x, poolEndAlpha, poolColorTime).OnUpdate(() => {
+            dp.fadeFactor = curColor;
+        });
     }
 }
