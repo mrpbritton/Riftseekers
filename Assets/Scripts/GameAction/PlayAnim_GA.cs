@@ -7,7 +7,7 @@ public class PlayAnim_GA : GameAction
     [SerializeField, Tooltip("Animation that will be played")]
     private Animator anim;
     [SerializeField]
-    private string actionID,deactionID;
+    private string actionID, deactionID;
 
     public override void Action()
     {
