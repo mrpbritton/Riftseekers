@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.005805085, g: 0.051328942, b: 0.08331497, a: 1}
+  m_IndirectSpecularColor: {r: 0.0057418146, g: 0.051255625, b: 0.08317153, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1403,6 +1403,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1726,6 +1733,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2464874774120446858, guid: 331e138557806794c95c89615fbe4c34,
+        type: 3}
+      propertyPath: enemySlider
+      value: 
+      objectReference: {fileID: 1020995880}
     - target: {fileID: 2502079855477282841, guid: 331e138557806794c95c89615fbe4c34,
         type: 3}
       propertyPath: m_RootOrder
@@ -1786,12 +1798,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Navigator
       objectReference: {fileID: 0}
-    - target: {fileID: 7750732156827821421, guid: 331e138557806794c95c89615fbe4c34,
-        type: 3}
-      propertyPath: m_NavMeshData
-      value: 
-      objectReference: {fileID: 23800000, guid: c559775f9c9fe314fa9fd4620fc64f6c,
-        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2079,6 +2085,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3be34cc78a272f4ca2d95cc5521c9f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1020995880 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6336920181394286004, guid: 23a2668f187d952479a324da40f43de0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1020995878}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562bdb6481cecca43b707bb4653ca7a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1038954521
@@ -2682,6 +2700,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

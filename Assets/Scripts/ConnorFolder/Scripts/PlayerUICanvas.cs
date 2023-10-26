@@ -10,7 +10,7 @@ public class PlayerUICanvas : MonoBehaviour {
 
     private void Start() {
         DOTween.Init();
-        updateSlider(FindObjectOfType<CharacterFrame>().maxHealth, FindObjectOfType<CharacterFrame>().health);
+        //updateSlider(FindObjectOfType<CharacterFrame>().maxHealth, FindObjectOfType<CharacterFrame>().health);
     }
 
     public void updateSlider(float maxVal, float curVal) {
@@ -21,5 +21,11 @@ public class PlayerUICanvas : MonoBehaviour {
         slider.maxValue = 1;
         slider.value = 0;
         slider.DOValue(1, cooldownTime);
+    }
+    public void enemyBar(float total, float current)
+    {
+        Debug.Log($"{total} {current}");
+        slider.maxValue = total;
+        slider.value = current;
     }
 }
