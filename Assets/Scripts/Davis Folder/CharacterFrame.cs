@@ -70,14 +70,8 @@ public class CharacterFrame : MonoBehaviour
     [Header("Sprites")]
     public Animator character;
     public SpriteRenderer characterSprite;
-/*    public Sprite north;*/
-    public Sprite northEast;
-    public Sprite east;
-    public Sprite southEast;
-    public Sprite south;
-    public Sprite southWest;
-    public Sprite west;
-    public Sprite northWest;
+    /*    public Sprite north;*/
+    private cardinalDirection cachedDir;
 
     [Header("Managers")]
     public LevelManager transfer;
@@ -164,26 +158,25 @@ public class CharacterFrame : MonoBehaviour
 
     public void UpdateSprite(Vector3 direction)
     {
-        character.SetBool("North", false);
-        character.SetBool("East", false);
-        character.SetBool("South", false);
-        character.SetBool("West", false);
         #region Sprite Setting
-        character.SetBool("IsWalking", true);
         if (direction.x > 0)
         {
             
             if (direction.z < 0) // SOUTHEAST
             {
                 //characterSprite.sprite = southEast;
+                character.SetTrigger("WalkSE");
+                cachedDir = cardinalDirection.southEast;
             }
             else if (direction.z == 0) // EAST
             {
-                character.SetBool("East", true);
+                character.SetTrigger("WalkE");
+                cachedDir = cardinalDirection.east;
             }
             else // direction.z == 1 *** NORTHEAST
             {
                 character.SetTrigger("WalkNE");
+                cachedDir = cardinalDirection.northEast;
             }
         }
         else if (direction.x < 0)
@@ -191,29 +184,64 @@ public class CharacterFrame : MonoBehaviour
             if (direction.z < 0) // SOUTHWEST
             {
                 //characterSprite.sprite = southWest;
+                character.SetTrigger("WalkSW");
+                cachedDir = cardinalDirection.southWest;
             }
             else if (direction.z == 0) // WEST
             {
-                character.SetBool("West", true);
+                character.SetTrigger("WalkW");
+                cachedDir = cardinalDirection.west;
             }
             else // direction.z == 1 *** NORTHWEST
             {
                 //characterSprite.sprite = northWest;
+                character.SetTrigger("WalkNW");
+                cachedDir = cardinalDirection.northWest;
             }
         }
         else //direction.x == 0
         {
             if (direction.z < 0) // SOUTH
             {
-                character.SetBool("South", true);
+                character.SetTrigger("WalkS");
+                cachedDir = cardinalDirection.south;
             }
             else if (direction.z == 0) // NO INPUT
             {
-                character.SetBool("IsWalking", false);
+                switch(cachedDir.ToString())
+                {
+                    case "north":
+                        character.SetTrigger("WalkNStop");
+                        break;
+                    case "northEast":
+                        character.SetTrigger("WalkNEStop");
+                        break;
+                    case "northWest":
+                        character.SetTrigger("WalkNWStop");
+                        break;
+                    case "south":
+                        character.SetTrigger("WalkSStop");
+                        break;
+                    case "southEast":
+                        character.SetTrigger("WalkSEStop");
+                        break;
+                    case "southWest":
+                        character.SetTrigger("WalkSWStop");
+                        break;
+                    case "east":
+                        character.SetTrigger("WalkEStop");
+                        break;
+                    case "west":
+                        character.SetTrigger("WalkWStop");
+                        break;
+                    default:
+                        break;
+                }
             }
             else // direction.z == 1 *** NORTH
             {
-                character.SetBool("North", true);
+                character.SetTrigger("WalkN");
+                cachedDir = cardinalDirection.north;
             }
         }
         #endregion
@@ -271,4 +299,8 @@ public class CharacterFrame : MonoBehaviour
         }
     }
 
+    public enum cardinalDirection
+    {
+        north, south, east, west, northEast, northWest, southEast, southWest
+    }
 }
