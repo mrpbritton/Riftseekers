@@ -385,6 +385,8 @@ GameObject:
   - component: {fileID: 8062144510452728786}
   - component: {fileID: 3000455031500569705}
   - component: {fileID: 4673012977432442182}
+  - component: {fileID: 3363366970274212706}
+  - component: {fileID: 2918412901219357599}
   m_Layer: 5
   m_Name: BonusUI
   m_TagString: Untagged
@@ -411,7 +413,7 @@ RectTransform:
   - {fileID: 7529533412575730614}
   - {fileID: 224609124154836899}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -452,10 +454,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -514,17 +516,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bonusScreen: {fileID: 3000455031500569705}
+  button1: {fileID: 3999917475847106761}
+  button2: {fileID: 2614047343471340684}
+  button3: {fileID: 3385912928196296079}
   Character: {fileID: 0}
+  sequence: {fileID: 3363366970274212706}
+  stat: {fileID: 2918412901219357599}
   descriptions:
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Gain 20% increased attack damage.
+  - Gain 10% increased attack speed.
+  - Gain 30% cooldown reduction.
+  - Gain 1 extra dash charge.
+  - Gain 10% increased dash distance.
+  - Gain 15% increased dash speed.
+  - Gain 10% increased maximum HP.
+  - Gain 20% increased movement speed.
   bonuses: 0100000002000000030000000400000005000000060000000700000008000000
+--- !u!114 &3363366970274212706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518238275383116493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0eee4d62bb7a8ce428997bf573230e8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  actionList: []
+--- !u!114 &2918412901219357599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518238275383116493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33422379da2c3c645aab31e52daf3f21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  frame: {fileID: 0}
+  stat: 0
+  modifier: 0
 --- !u!1 &2850626932544421563
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,7 +715,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7529533412575730614
 RectTransform:
   m_ObjectHideFlags: 0
@@ -785,6 +822,18 @@ MonoBehaviour:
       - m_Target: {fileID: 4673012977432442182}
         m_TargetAssemblyTypeName: bonuspicker, Assembly-CSharp
         m_MethodName: bonusOpener
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4673012977432442182}
+        m_TargetAssemblyTypeName: bonuspicker, Assembly-CSharp
+        m_MethodName: setup
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -915,7 +964,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8411892089920555551}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4673012977432442182}
+        m_TargetAssemblyTypeName: bonuspicker, Assembly-CSharp
+        m_MethodName: chooseBonus
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5242694467919818667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1206,7 +1267,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &224609124154836899
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1443,7 +1504,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1162706566623124193}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4673012977432442182}
+        m_TargetAssemblyTypeName: bonuspicker, Assembly-CSharp
+        m_MethodName: chooseBonus
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7646714404116961208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,4 +1773,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3702602987634850880}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4673012977432442182}
+        m_TargetAssemblyTypeName: bonuspicker, Assembly-CSharp
+        m_MethodName: chooseBonus
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 2
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
