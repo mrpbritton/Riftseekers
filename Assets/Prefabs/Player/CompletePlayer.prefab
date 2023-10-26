@@ -35,7 +35,7 @@ Transform:
   - {fileID: 5701483791246596465}
   - {fileID: 4124214301755376211}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 152
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4865779752117141236
 MonoBehaviour:
@@ -511,6 +511,11 @@ PrefabInstance:
       propertyPath: transfer
       value: 
       objectReference: {fileID: 819248734881027334}
+    - target: {fileID: 1486973088829066078, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 4807824780061092648}
     - target: {fileID: 2755336133540598544, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
       propertyPath: cooldownBar
@@ -589,6 +594,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3369389731291683691}
+    - targetCorrespondingSourceObject: {fileID: 1123744075933665958, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4807824780061092648}
     - targetCorrespondingSourceObject: {fileID: 2454600713428121223, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
       insertIndex: -1
@@ -698,6 +707,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05d5567470faecf43a075ca709d6e1c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &3604988519602030965 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1123744075933665958, guid: 66562dc996ca2b5478f1b7f0a538878b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4440314752643908563}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &4807824780061092648
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3604988519602030965}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0a87ec04073a3484c9f306ab481d42a9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!4 &7291086632770198049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6390623351485340146, guid: 66562dc996ca2b5478f1b7f0a538878b,
