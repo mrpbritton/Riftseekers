@@ -10,6 +10,7 @@ public class RoomTransition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sceneGuy = FindObjectOfType<LevelManager>();
         scenes = RoomSaver.loadroom();
     }
 

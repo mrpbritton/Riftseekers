@@ -42,7 +42,8 @@ public class InventoryUI : MonoBehaviour {
     }
 
     private void OnDisable() {
-        controls.Disable();
+        if(controls != null)
+            controls.Disable();
     }
 
     void toggleShown() {
@@ -88,7 +89,7 @@ public class InventoryUI : MonoBehaviour {
         dragged.gameObject.SetActive(true);
         dragged.sprite = Inventory.getItems(il)[ind].image;
     }
-    
+
     public void setActIndex(int ind) {
         actIndex = ind;
         switch(ind) {

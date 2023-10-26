@@ -35,7 +35,7 @@ public class SpawnCam : MonoBehaviour
             thing();
     }
 
-    void thing() {
+    public void thing() {
         if(Camera.main != null && !Camera.main.TryGetComponent(out CinemachineBrain brain)) {
             DestroyImmediate(Camera.main.gameObject);
         }
@@ -74,9 +74,5 @@ public class SpawnCam : MonoBehaviour
             transposer.m_YDamping = dampening.y;
             transposer.m_ZDamping = dampening.z;
         }
-    }
-
-    private void OnEnable() {
-        thing();
     }
 }
