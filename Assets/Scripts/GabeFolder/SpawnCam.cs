@@ -30,7 +30,12 @@ public class SpawnCam : MonoBehaviour
     private Vector3 dampening = new(0.3f, 0.3f, 0.3f);
 
 
-    private void OnEnable() {
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.I))
+            thing();
+    }
+
+    void thing() {
         if(Camera.main != null && !Camera.main.TryGetComponent(out CinemachineBrain brain)) {
             DestroyImmediate(Camera.main.gameObject);
         }
@@ -69,5 +74,9 @@ public class SpawnCam : MonoBehaviour
             transposer.m_YDamping = dampening.y;
             transposer.m_ZDamping = dampening.z;
         }
+    }
+
+    private void OnEnable() {
+        thing();
     }
 }
