@@ -22,7 +22,7 @@ public class EnemyHealth : MonoBehaviour
     public static Action<GameObject> onEnemyDeath = delegate { };
     public static Action<Transform, Vector3> onEnemyHit = delegate { };
 
-    private void Awake()
+    private void Start()
     {
         currentHealth = maxhealth;
         critHealth = maxhealth * 0.5f;

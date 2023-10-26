@@ -20,7 +20,7 @@ public class InventoryUI : MonoBehaviour {
     bool draggedState = true;
     bool shown = false;
 
-    private void Awake() {
+    private void Start() {
         il = FindObjectOfType<ItemLibrary>();
         pm = FindObjectOfType<PlayerMovement>();
         Inventory.loadInventory();
