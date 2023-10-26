@@ -14,144 +14,261 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+<<<<<<< Updated upstream
 				<Event Name="PLayer_Hit" ID="{B1775071-199F-47A9-BE4C-EDA8FEFEEDB4}">
 					<ChildrenList>
 						<Action Name="" ID="{C5F28D3C-A8D0-40E5-8541-64F3CC5FEB44}" ShortID="660051075">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Player_Hit" ID="{B71BA39C-19C2-4B33-9283-90A0B27F716F}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+=======
+				<Event Name="Object_Hit" ID="{ADDF73BA-A2C3-4902-8E9A-5A598FDD1F7E}">
+					<ChildrenList>
+						<Action Name="" ID="{5F9700D2-D7EC-4A45-B589-50C6030D9289}" ShortID="846032074">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Object_Hit" ID="{4EA632B9-0493-4E3D-AED5-9DC69A4C39B2}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+>>>>>>> Stashed changes
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
+<<<<<<< Updated upstream
 				<Event Name="Player_Death" ID="{14D84C94-F0BB-42B1-A24D-2C057CCEB473}">
 					<ChildrenList>
 						<Action Name="" ID="{FFABF467-7FEA-4F94-AAF3-8549033BDF0A}" ShortID="287619693">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Player_Death" ID="{5E3D172B-F7C5-42F4-88F4-39B2FF607203}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+=======
+				<Event Name="Enemy_Hit" ID="{007E5E5B-8C1F-446A-AE5F-F8FAF21E0F6A}">
+					<ChildrenList>
+						<Action Name="" ID="{626ED103-5FB3-40B1-949A-B0F72AC6197A}" ShortID="498394207">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Hit" ID="{0B3FE2CC-D457-49EA-A000-1165820231B5}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+>>>>>>> Stashed changes
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
+<<<<<<< Updated upstream
 				<Event Name="Enemy_Hit" ID="{997054EC-98BF-4010-90B1-5E643044AFEF}">
 					<ChildrenList>
 						<Action Name="" ID="{65395FB3-A6F6-4A89-BCDE-5171DCE04FD5}" ShortID="799595416">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Enemy_Hit" ID="{A9432198-26D8-4BA3-899E-A7E4015ABD8F}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+=======
+				<Event Name="Player_Hit" ID="{C447D052-5C80-4CB3-AB66-22259D00C066}">
+					<ChildrenList>
+						<Action Name="" ID="{09EA580A-C0EA-4ACB-B555-23909C62C67E}" ShortID="680250478">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Hit" ID="{D3718699-1675-44BA-BE14-AD7DAC02297B}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+>>>>>>> Stashed changes
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
+<<<<<<< Updated upstream
 				<Event Name="Enemy_Death" ID="{3633AF4B-527D-4DC2-8EB7-B1E05F51CD34}">
 					<ChildrenList>
 						<Action Name="" ID="{8E90EAD0-1A50-44F7-9CBF-1A40D25B0A09}" ShortID="542336986">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Enemy_Death" ID="{80E06CD0-58E2-4BB5-A4D7-473659363B45}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+=======
+				<Event Name="Sword_Swing_Player" ID="{8079B90F-321B-4A3D-9356-76F745B458E3}">
+					<ChildrenList>
+						<Action Name="" ID="{CF342E5C-0060-4679-8F4F-86BCE9F295FD}" ShortID="284680470">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Sword_Swing" ID="{62DB7683-C0DE-46A1-B6AB-8EC53BA1C3C5}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+>>>>>>> Stashed changes
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
+<<<<<<< Updated upstream
 				<Event Name="Shotgun_Fire" ID="{5072E1D9-E751-4862-A282-63540F703B73}">
 					<ChildrenList>
 						<Action Name="" ID="{5E60ADCD-32A0-491C-B625-A6A755BDFA28}" ShortID="556394138">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Shotgun_Fire" ID="{1551C548-59BF-4079-9380-38436FC07650}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+=======
+				<Event Name="Player_Step_Left" ID="{3981849B-15E8-4DF8-87B3-AE94E8355F2F}">
+					<ChildrenList>
+						<Action Name="" ID="{87E5CE2C-75EE-4CE2-9F70-42A4332E7BC7}" ShortID="460139492">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Step_Left" ID="{80438E99-3805-4C13-9B59-DE6E0E87EDE1}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+>>>>>>> Stashed changes
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
+<<<<<<< Updated upstream
 				<Event Name="Sword_Swing" ID="{F0B15155-20E2-4F26-9D93-A588F7337EE3}">
 					<ChildrenList>
 						<Action Name="" ID="{E841DC10-0A2B-4143-8380-EEA198058DCE}" ShortID="1009186802">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Sword_Swing" ID="{100FF889-1D47-4E24-9E42-EFD19C49BB37}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+=======
+				<Event Name="Dash_Player" ID="{D98BDC0E-7FDD-49EE-BD99-594F3A0474AE}">
+					<ChildrenList>
+						<Action Name="" ID="{4980446A-9363-47A2-AA22-12B8C9E32485}" ShortID="778257407">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dash" ID="{0ACFF787-A0EE-4972-A329-36FFF52C1C44}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+>>>>>>> Stashed changes
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
+<<<<<<< Updated upstream
 				<Event Name="Health_Pickup" ID="{F5D2221F-9F8F-484D-9044-D87C43175540}">
 					<ChildrenList>
 						<Action Name="" ID="{93581410-355A-4D3A-BAF5-27D5240AE21D}" ShortID="920414668">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Health_Pickup" ID="{B08D2C5E-50C3-4F58-93C1-823773005CD1}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+=======
+				<Event Name="Item_Pickup" ID="{5B667E5B-8C6F-4D4A-B8E0-A8283B54662C}">
+					<ChildrenList>
+						<Action Name="" ID="{21B1EEE2-9017-4775-B580-CE025B857EF4}" ShortID="827716585">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Item_Pickup" ID="{477CF5B8-8BF2-42B2-A793-050FED322B21}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+>>>>>>> Stashed changes
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
+<<<<<<< Updated upstream
 				<Event Name="Item_Pickup" ID="{117FD6AE-50D6-4154-90B6-A28E6FFFB7B7}">
 					<ChildrenList>
 						<Action Name="" ID="{EDEA7A83-AFB1-4A85-999D-AE5BFAB3B72A}" ShortID="569708794">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Item_Pickup" ID="{BF070DE6-DCBF-4FCE-B8B6-ECAA2906D11C}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+=======
+				<Event Name="Heath_Pickup" ID="{A1068C8B-E608-4743-A14B-6EA5F4EFCC0A}">
+					<ChildrenList>
+						<Action Name="" ID="{668F25B8-2673-42DE-9FDE-FD9CC58BCB1B}" ShortID="63561702">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Health_Pickup" ID="{29DD57DB-214C-4609-926D-C19E3ED161C8}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+>>>>>>> Stashed changes
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
+<<<<<<< Updated upstream
 				<Event Name="Chest_Open" ID="{484EA352-3A6C-4BCF-B7C1-17223D7AD16A}">
 					<ChildrenList>
 						<Action Name="" ID="{D868EF79-D8EC-4177-954D-E713FFA79DE6}" ShortID="486388008">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Chest_Open" ID="{F13C8059-1043-44D5-BB7B-0DFD5E33486B}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+=======
+				<Event Name="Chest_Open" ID="{BAC505D4-3D27-4339-B5BE-5EA791073F0B}">
+					<ChildrenList>
+						<Action Name="" ID="{BCAFA5D8-E933-41AA-A40E-8DA4D76ABE4F}" ShortID="589068287">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Chest_Open" ID="{F5F220D1-25C9-4B0B-83B7-1F7BAA9229A6}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+>>>>>>> Stashed changes
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
+<<<<<<< Updated upstream
 				<Event Name="Step_Left" ID="{B69E0162-4502-4BC7-B0DF-DA8450FE731E}">
 					<ChildrenList>
 						<Action Name="" ID="{D45838CE-5796-4297-913A-E85E24743A45}" ShortID="72653079">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Step_Left" ID="{A85F7CDA-C05C-4BBA-ABF0-C6F6A4F405F2}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+=======
+				<Event Name="Player_Step_Right" ID="{8D756952-BEBE-4E61-868E-CA292232D7A3}">
+					<ChildrenList>
+						<Action Name="" ID="{88D71FC7-DDB0-4D2B-A7B6-26206E44E87E}" ShortID="297493773">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Step_Right" ID="{5086C908-1921-4703-B8C8-1916A07034FD}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+>>>>>>> Stashed changes
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
+<<<<<<< Updated upstream
 				<Event Name="Step_Right" ID="{2A94EB61-1AB0-4F71-9AB2-E668F579402B}">
 					<ChildrenList>
 						<Action Name="" ID="{65E1334C-0218-47D0-9272-2E4BCE076F5C}" ShortID="959505758">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Step_Right" ID="{3C25F201-6741-44FE-8619-AAF180C291EF}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+=======
+				<Event Name="Player_Death" ID="{993C6F47-D6E1-4C95-A647-9C61F48C6D83}">
+					<ChildrenList>
+						<Action Name="" ID="{66AB32A4-6686-453E-BEF7-77B79F81F5DF}" ShortID="736266155">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Death" ID="{C71A3001-FC2D-4A65-B9E7-71E62CCC74CC}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+>>>>>>> Stashed changes
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
+<<<<<<< Updated upstream
 				<Event Name="Object_Hit" ID="{E9CCDBEC-ACAD-400D-AB22-867F9AD38051}">
 					<ChildrenList>
 						<Action Name="" ID="{D50959CD-B56A-413F-B07D-D9595FE820E1}" ShortID="864078895">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Object_Hit" ID="{AE4E137F-0287-45D0-A63D-7DA20BD3DABE}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+=======
+				<Event Name="Enemy_Death" ID="{66B96486-613A-4CF0-9D8C-C4B0F67651D2}">
+					<ChildrenList>
+						<Action Name="" ID="{17084CF8-5287-498D-9253-7020082DD758}" ShortID="487439096">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Death" ID="{D163AFE0-A610-4968-A6C6-3B31B3D136EF}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+>>>>>>> Stashed changes
 								</Reference>
 							</ReferenceList>
 						</Action>
 					</ChildrenList>
 				</Event>
+<<<<<<< Updated upstream
 				<Event Name="Dash" ID="{80E3CD04-C75C-472C-8985-34DD17847154}">
 					<ChildrenList>
 						<Action Name="" ID="{C06246A2-B84D-4370-8AA5-D211F6D800BF}" ShortID="697731437">
 							<ReferenceList>
 								<Reference Name="Target">
 									<ObjectRef Name="Dash" ID="{B2044A95-3890-4CAA-AD32-4AA3DD41AE8F}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+=======
+				<Event Name="Shotgun_Fire" ID="{2DB531AA-1E49-4BFE-8E0F-538012C36D4E}">
+					<ChildrenList>
+						<Action Name="" ID="{0EBB279D-3D20-4E49-AA17-72A1E581908A}" ShortID="746569034">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Shotgun_Fire" ID="{561FD9D3-AE6C-47E1-BB7D-F001D513BFA8}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+>>>>>>> Stashed changes
 								</Reference>
 							</ReferenceList>
 						</Action>

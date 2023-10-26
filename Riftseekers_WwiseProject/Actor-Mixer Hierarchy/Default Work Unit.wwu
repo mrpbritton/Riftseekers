@@ -7,7 +7,11 @@
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
+<<<<<<< Updated upstream
 								<Value>-8</Value>
+=======
+								<Value>-11</Value>
+>>>>>>> Stashed changes
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -31,20 +35,33 @@
 								<MediaID ID="368981843"/>
 							</MediaIDList>
 						</AudioFileSource>
+<<<<<<< Updated upstream
 						<AudioFileSource Name="GunshotV2" ID="{61248EAE-7DA3-40CC-903F-4271522913D7}">
 							<PropertyList>
 								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
 								<Property Name="TrimBegin" Type="Real64" Value="0.108759422408915"/>
 								<Property Name="TrimEnd" Type="Real64" Value="1.66322336220463"/>
+=======
+						<AudioFileSource Name="GunshotV2" ID="{8A815E13-51BE-4DBC-9EBF-68A236E98212}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.0795800651772549"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1.3953038094412"/>
+>>>>>>> Stashed changes
 							</PropertyList>
 							<Language>SFX</Language>
 							<AudioFile>GunshotV2.wav</AudioFile>
 							<MediaIDList>
+<<<<<<< Updated upstream
 								<MediaID ID="417615081"/>
+=======
+								<MediaID ID="20320240"/>
+>>>>>>> Stashed changes
 							</MediaIDList>
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
+<<<<<<< Updated upstream
 						<ActiveSource Name="GunshotV2" ID="{61248EAE-7DA3-40CC-903F-4271522913D7}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
@@ -53,6 +70,16 @@
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
 								<Value>-4</Value>
+=======
+						<ActiveSource Name="GunshotV2" ID="{8A815E13-51BE-4DBC-9EBF-68A236E98212}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Object_Hit" ID="{4EA632B9-0493-4E3D-AED5-9DC69A4C39B2}" ShortID="265408026">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+>>>>>>> Stashed changes
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -65,15 +92,24 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
+<<<<<<< Updated upstream
 						<AudioFileSource Name="Player_Hit" ID="{F2939904-1CAD-483F-9718-507A3A9AE382}">
 							<Language>SFX</Language>
 							<AudioFile>Player_Hit.wav</AudioFile>
 							<MediaIDList>
 								<MediaID ID="955411906"/>
+=======
+						<AudioFileSource Name="Object_Impact_Laser" ID="{43C89484-1369-4084-830E-30293F74910E}">
+							<Language>SFX</Language>
+							<AudioFile>Object_Impact_Laser.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="748818982"/>
+>>>>>>> Stashed changes
 							</MediaIDList>
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
+<<<<<<< Updated upstream
 						<ActiveSource Name="Player_Hit" ID="{F2939904-1CAD-483F-9718-507A3A9AE382}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
@@ -194,6 +230,12 @@
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="Shotgun_Fire" ID="{1551C548-59BF-4079-9380-38436FC07650}" ShortID="35561571">
+=======
+						<ActiveSource Name="Object_Impact_Laser" ID="{43C89484-1369-4084-830E-30293F74910E}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Player_Step_Left" ID="{80438E99-3805-4C13-9B59-DE6E0E87EDE1}" ShortID="135738400">
+>>>>>>> Stashed changes
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
@@ -210,19 +252,85 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
+<<<<<<< Updated upstream
 						<AudioFileSource Name="Shotgun" ID="{F036CBE0-24D6-429C-B164-6E30C137571F}">
 							<Language>SFX</Language>
 							<AudioFile>Shotgun.wav</AudioFile>
 							<MediaIDList>
 								<MediaID ID="808207301"/>
+=======
+						<AudioFileSource Name="Footstep_Left" ID="{5876C58C-FBF7-4002-AD77-D2802D8125CA}">
+							<Language>SFX</Language>
+							<AudioFile>Footstep_Left.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="165008366"/>
+>>>>>>> Stashed changes
 							</MediaIDList>
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
+<<<<<<< Updated upstream
 						<ActiveSource Name="Shotgun" ID="{F036CBE0-24D6-429C-B164-6E30C137571F}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="Object_Hit" ID="{AE4E137F-0287-45D0-A63D-7DA20BD3DABE}" ShortID="216769318">
+=======
+						<ActiveSource Name="Footstep_Left" ID="{5876C58C-FBF7-4002-AD77-D2802D8125CA}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Player_Step_Right" ID="{5086C908-1921-4703-B8C8-1916A07034FD}" ShortID="975958895">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-15</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{7D98BA98-543C-4BE2-919A-DA606AAFF6F2}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88A7D5C2-7694-4163-A7F5-36EC903CE290}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Footstep_Right" ID="{24F7A41E-9581-4C43-BA2E-A827B835CBDA}">
+							<Language>SFX</Language>
+							<AudioFile>Footstep_Right.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="632385639"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Footstep_Right" ID="{24F7A41E-9581-4C43-BA2E-A827B835CBDA}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Sword_Swing" ID="{62DB7683-C0DE-46A1-B6AB-8EC53BA1C3C5}" ShortID="1008826403">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{7D98BA98-543C-4BE2-919A-DA606AAFF6F2}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88A7D5C2-7694-4163-A7F5-36EC903CE290}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Sword_Swing" ID="{86BFE63B-1C77-4163-B447-1C0E21E15EE4}">
+							<Language>SFX</Language>
+							<AudioFile>Sword_Swing.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="29050505"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Sword_Swing" ID="{86BFE63B-1C77-4163-B447-1C0E21E15EE4}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Chest_Open" ID="{F5F220D1-25C9-4B0B-83B7-1F7BAA9229A6}" ShortID="510474809">
+>>>>>>> Stashed changes
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
@@ -239,6 +347,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
+<<<<<<< Updated upstream
 						<AudioFileSource Name="Object_Impact_Laser" ID="{AA9AD7B1-1AEA-4F4F-ABAB-900765B1EDE3}">
 							<Language>SFX</Language>
 							<AudioFile>Object_Impact_Laser.wav</AudioFile>
@@ -360,14 +469,60 @@
 							<AudioFile>Chest_Open.wav</AudioFile>
 							<MediaIDList>
 								<MediaID ID="381510756"/>
+=======
+						<AudioFileSource Name="Chest_Open" ID="{5FE4CF6A-0989-4679-B15D-13422EA6B40B}">
+							<Language>SFX</Language>
+							<AudioFile>Chest_Open.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="413212261"/>
+>>>>>>> Stashed changes
 							</MediaIDList>
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
+<<<<<<< Updated upstream
 						<ActiveSource Name="Chest_Open" ID="{96763C13-D8F1-4134-8839-F45C891DA210}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="Health_Pickup" ID="{B08D2C5E-50C3-4F58-93C1-823773005CD1}" ShortID="186626665">
+=======
+						<ActiveSource Name="Chest_Open" ID="{5FE4CF6A-0989-4679-B15D-13422EA6B40B}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Item_Pickup" ID="{477CF5B8-8BF2-42B2-A793-050FED322B21}" ShortID="893160290">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-14</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{7D98BA98-543C-4BE2-919A-DA606AAFF6F2}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88A7D5C2-7694-4163-A7F5-36EC903CE290}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Item_Pickup" ID="{A7068896-47D0-4276-9DBA-981BC5715C71}">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>Item_Pickup.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="1004786617"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Item_Pickup" ID="{A7068896-47D0-4276-9DBA-981BC5715C71}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Health_Pickup" ID="{29DD57DB-214C-4609-926D-C19E3ED161C8}" ShortID="19044388">
+>>>>>>> Stashed changes
 					<PropertyList>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
@@ -384,15 +539,24 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
+<<<<<<< Updated upstream
 						<AudioFileSource Name="Health_Pickup" ID="{9A3BE2DD-9F30-472E-8348-AE5E631A710E}">
 							<Language>SFX</Language>
 							<AudioFile>Health_Pickup.wav</AudioFile>
 							<MediaIDList>
 								<MediaID ID="322140775"/>
+=======
+						<AudioFileSource Name="Health_Pickup" ID="{E5DE2077-E94B-4E1C-9E4C-B9182AED18CA}">
+							<Language>SFX</Language>
+							<AudioFile>Health_Pickup.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="84875850"/>
+>>>>>>> Stashed changes
 							</MediaIDList>
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
+<<<<<<< Updated upstream
 						<ActiveSource Name="Health_Pickup" ID="{9A3BE2DD-9F30-472E-8348-AE5E631A710E}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
@@ -401,6 +565,16 @@
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
 								<Value>-12</Value>
+=======
+						<ActiveSource Name="Health_Pickup" ID="{E5DE2077-E94B-4E1C-9E4C-B9182AED18CA}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Player_Hit" ID="{D3718699-1675-44BA-BE14-AD7DAC02297B}" ShortID="327054239">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-4</Value>
+>>>>>>> Stashed changes
 							</ValueList>
 						</Property>
 					</PropertyList>
@@ -413,16 +587,173 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
+<<<<<<< Updated upstream
 						<AudioFileSource Name="Item_Pickup" ID="{3D211E51-0DBC-46B2-8F0F-FB2F18610734}">
 							<Language>SFX</Language>
 							<AudioFile>Item_Pickup.wav</AudioFile>
 							<MediaIDList>
 								<MediaID ID="54274961"/>
+=======
+						<AudioFileSource Name="Player_Hit" ID="{6AA4122C-B4E9-4596-901B-82449D309FFC}">
+							<Language>SFX</Language>
+							<AudioFile>Player_Hit.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="614104257"/>
+>>>>>>> Stashed changes
 							</MediaIDList>
 						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
+<<<<<<< Updated upstream
 						<ActiveSource Name="Item_Pickup" ID="{3D211E51-0DBC-46B2-8F0F-FB2F18610734}" Platform="Linked"/>
+=======
+						<ActiveSource Name="Player_Hit" ID="{6AA4122C-B4E9-4596-901B-82449D309FFC}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Player_Death" ID="{C71A3001-FC2D-4A65-B9E7-71E62CCC74CC}" ShortID="300251470">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-4</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{7D98BA98-543C-4BE2-919A-DA606AAFF6F2}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88A7D5C2-7694-4163-A7F5-36EC903CE290}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Player_Death" ID="{88264BB1-7F0B-4873-B288-E7879C5BCC65}">
+							<Language>SFX</Language>
+							<AudioFile>Player_Death.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="272283673"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Player_Death" ID="{88264BB1-7F0B-4873-B288-E7879C5BCC65}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Enemy_Hit" ID="{0B3FE2CC-D457-49EA-A000-1165820231B5}" ShortID="321231369">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{7D98BA98-543C-4BE2-919A-DA606AAFF6F2}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88A7D5C2-7694-4163-A7F5-36EC903CE290}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Enemy_Hit" ID="{EE7DB7CB-C2B9-4129-BBCA-7889E9345EAC}">
+							<Language>SFX</Language>
+							<AudioFile>Enemy_Hit.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="131759509"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Enemy_Hit" ID="{EE7DB7CB-C2B9-4129-BBCA-7889E9345EAC}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Enemy_Death" ID="{D163AFE0-A610-4968-A6C6-3B31B3D136EF}" ShortID="15167992">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-9</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{7D98BA98-543C-4BE2-919A-DA606AAFF6F2}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88A7D5C2-7694-4163-A7F5-36EC903CE290}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Enemy_Death" ID="{054B5ACB-78F5-4739-AB98-D72C35E9056D}">
+							<Language>SFX</Language>
+							<AudioFile>Enemy_Death.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="946336277"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Enemy_Death" ID="{054B5ACB-78F5-4739-AB98-D72C35E9056D}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Shotgun_Fire" ID="{561FD9D3-AE6C-47E1-BB7D-F001D513BFA8}" ShortID="75866386">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-17</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{7D98BA98-543C-4BE2-919A-DA606AAFF6F2}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88A7D5C2-7694-4163-A7F5-36EC903CE290}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Shotgun" ID="{09076BE3-C890-4829-9E04-17EF0E236DF5}">
+							<Language>SFX</Language>
+							<AudioFile>Shotgun.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="224079697"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Shotgun" ID="{09076BE3-C890-4829-9E04-17EF0E236DF5}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Dash" ID="{0ACFF787-A0EE-4972-A329-36FFF52C1C44}" ShortID="373684114">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>-10</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{7D98BA98-543C-4BE2-919A-DA606AAFF6F2}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{88A7D5C2-7694-4163-A7F5-36EC903CE290}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Dash" ID="{6E6483E8-CE9F-4AAF-83FC-A52B9C8C835E}">
+							<Language>SFX</Language>
+							<AudioFile>Dash.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="680251023"/>
+							</MediaIDList>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Dash" ID="{6E6483E8-CE9F-4AAF-83FC-A52B9C8C835E}" Platform="Linked"/>
+>>>>>>> Stashed changes
 					</ActiveSourceList>
 				</Sound>
 			</ChildrenList>
