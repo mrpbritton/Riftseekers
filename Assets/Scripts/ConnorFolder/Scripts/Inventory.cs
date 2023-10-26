@@ -6,8 +6,6 @@ public static class Inventory {
     static int maxItemCount = 9;  //  this number is the max number of items the player can hold
     static Bag itemBag = new Bag(maxItemCount);
 
-    static PlayerManager curPlayerManager;
-
     static string bagTag = "BagTag";
 
     //  saves the indexes of active items
@@ -52,18 +50,6 @@ public static class Inventory {
                 itemBag.activeItem3 = null;
                 break;
         }
-    }
-
-    public static void setPlayerManager(PlayerManager pm) {
-        curPlayerManager = pm;
-    }
-    public static PlayerManager getPlayerManager() {
-        return curPlayerManager;
-    }
-    public static void overridePlayerManagersTransform(PlayerManager outdated) {
-        curPlayerManager.transform.position = outdated.transform.position;
-        curPlayerManager.transform.localScale = outdated.transform.localScale;
-        curPlayerManager.transform.rotation = outdated.transform.rotation;
     }
 
     //  Item saving things
