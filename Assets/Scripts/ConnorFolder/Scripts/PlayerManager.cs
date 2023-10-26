@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour {
         if(Inventory.getPlayerManager() == null) {
             DontDestroyOnLoad(tallestParent);
             Inventory.setPlayerManager(this);   //  sets as curPlayerManager
+            GetComponentInParent<SpawnCam>().manageCamera();
         } 
         //  checks if not the current player manager
         else if(Inventory.getPlayerManager().gameObject.GetInstanceID() != gameObject.GetInstanceID()) {

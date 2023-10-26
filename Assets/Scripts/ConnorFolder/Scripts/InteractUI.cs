@@ -75,7 +75,7 @@ public class InteractUI : MonoBehaviour {
     }
 
     IEnumerator interactableChecker() {
-        if(interactables.Count > 0) {
+        if(interactables.Count > 0 && playerTrans != null) {
             closestInteractable = interactables.FindClosest(playerTrans.position);
             var d = Vector3.Distance(closestInteractable.transform.position, playerTrans.position);
             var ir = closestInteractable.GetComponent<Interact>().getInteractRange();

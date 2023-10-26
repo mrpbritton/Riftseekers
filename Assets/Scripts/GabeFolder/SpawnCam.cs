@@ -29,15 +29,13 @@ public class SpawnCam : MonoBehaviour
     [SerializeField, Tooltip("Dampening of the Camera")]
     private Vector3 dampening = new(0.3f, 0.3f, 0.3f);
 
-    private void OnEnable()
-    {
-        if(Camera.main != null && !Camera.main.TryGetComponent(out CinemachineBrain brain))
-        {
+    //  called from the player manager
+    public void manageCamera() {
+        if(Camera.main != null && !Camera.main.TryGetComponent(out CinemachineBrain brain)) {
             DestroyImmediate(Camera.main.gameObject);
         }
 
-        if(Camera.main == null)
-        {
+        if(Camera.main == null) {
             GameObject go = new();
             go.name = "Main Camera";
             go.tag = "MainCamera";
@@ -53,8 +51,7 @@ public class SpawnCam : MonoBehaviour
             mainCam.backgroundColor = backColor;
         }
 
-        if(GameObject.FindGameObjectWithTag("VirtCam") == null)
-        {
+        if(GameObject.FindGameObjectWithTag("VirtCam") == null) {
             GameObject go = new();
             go.name = "Virtual Camera";
             go.tag = "VirtCam";
