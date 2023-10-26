@@ -1403,6 +1403,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -1954,42 +1961,42 @@ PrefabInstance:
     - target: {fileID: 7522409031575823692, guid: 23a2668f187d952479a324da40f43de0,
         type: 3}
       propertyPath: descriptions.Array.data[0]
-      value: This is the first bonus
+      value: Gain 20% increased attack damage.
       objectReference: {fileID: 0}
     - target: {fileID: 7522409031575823692, guid: 23a2668f187d952479a324da40f43de0,
         type: 3}
       propertyPath: descriptions.Array.data[1]
-      value: This is the Second bonus
+      value: Gain 10% increased attack speed.
       objectReference: {fileID: 0}
     - target: {fileID: 7522409031575823692, guid: 23a2668f187d952479a324da40f43de0,
         type: 3}
       propertyPath: descriptions.Array.data[2]
-      value: This is the third bonus
+      value: Gain 30% cooldown reduction.
       objectReference: {fileID: 0}
     - target: {fileID: 7522409031575823692, guid: 23a2668f187d952479a324da40f43de0,
         type: 3}
       propertyPath: descriptions.Array.data[3]
-      value: This is the fourth bonus
+      value: Gain 1 extra dash charge.
       objectReference: {fileID: 0}
     - target: {fileID: 7522409031575823692, guid: 23a2668f187d952479a324da40f43de0,
         type: 3}
       propertyPath: descriptions.Array.data[4]
-      value: This is the fifth bonus
+      value: Gain 10% increased dash distance.
       objectReference: {fileID: 0}
     - target: {fileID: 7522409031575823692, guid: 23a2668f187d952479a324da40f43de0,
         type: 3}
       propertyPath: descriptions.Array.data[5]
-      value: This is the sixth bonus
+      value: Gain 15% increased dash speed.
       objectReference: {fileID: 0}
     - target: {fileID: 7522409031575823692, guid: 23a2668f187d952479a324da40f43de0,
         type: 3}
       propertyPath: descriptions.Array.data[6]
-      value: This is the seventh bonus
+      value: Gain 10% increased maximum HP.
       objectReference: {fileID: 0}
     - target: {fileID: 7522409031575823692, guid: 23a2668f187d952479a324da40f43de0,
         type: 3}
       propertyPath: descriptions.Array.data[7]
-      value: This is the eighth bonus
+      value: Gain 20% increased movement speed.
       objectReference: {fileID: 0}
     - target: {fileID: 8918837840777473427, guid: 23a2668f187d952479a324da40f43de0,
         type: 3}
@@ -2682,6 +2689,13 @@ MonoBehaviour:
     GateFit: 2
     FocusDistance: 10
     m_SensorSize: {x: 1, y: 1}
+    Iso: 200
+    ShutterSpeed: 0.005
+    Aperture: 16
+    BladeCount: 5
+    Curvature: {x: 2, y: 11}
+    BarrelClipping: 0.25
+    Anamorphism: 0
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0

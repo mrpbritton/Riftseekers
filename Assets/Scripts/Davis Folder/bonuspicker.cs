@@ -91,24 +91,77 @@ public class bonuspicker : MonoBehaviour
 
     public void setup()
     {
+        bonus1 = randomPicker();
+        bonus2 = randomPicker();
+        bonus3 = randomPicker();
         //generateBonuses();
-        button1.text = descriptions[randomPicker()];
-        button2.text = descriptions[randomPicker()];
-        button3.text = descriptions[randomPicker()];
+        button1.text = descriptions[bonus1];
+        button2.text = descriptions[bonus2];
+        button3.text = descriptions[bonus3];
+        bonusOpener();
     }
 
-    public void chooseBonus(int choice)
+    public void chooseBonus(int button)
+    {
+        if(button == 1)
+        {
+            applyBonus(bonus1);
+        } else if(button == 2)
+        {
+            applyBonus(bonus2);
+        } else if(button == 3)
+        {
+            applyBonus(bonus3);
+        }
+        bonusCloser();
+    }
+
+    public void applyBonus(int choice)
     {
         switch(choice)
         {
             case 0:
                 stat.stat = CharStats.attackDamage;
+                stat.modifier *= 1.2f;
+                break;
+            case 1:
+                stat.stat = CharStats.attackSpeed;
+                stat.modifier *= 1.1f;
+                break;
+            case 2:
+                stat.stat = CharStats.cooldownMod;
+                stat.modifier *= 1.3f;
+                break;
+            case 3:
+                stat.stat = CharStats.dashCharges;
                 stat.modifier = 1f;
+                break;
+            case 4:
+                stat.stat = CharStats.dashDistance;
+                stat.modifier = 1.1f;
+                break;
+            case 5:
+                stat.stat = CharStats.dashSpeed;
+                stat.modifier = 1.15f;
+                break;
+            case 6:
+                stat.stat = CharStats.maxHealth;
+                stat.modifier = 1.1f;
+                break;
+            case 7:
+                stat.stat = CharStats.moveSpeed;
+                stat.modifier = 1.2f;
                 break;
             default:
                 break;
         }
-
+        Debug.Log("Bonus Applied! " + choice);
         sequence.Play();
+    }
+
+    private void OnEnable()
+    {
+        EnemyController.levelComplete += setup;
+
     }
 }
