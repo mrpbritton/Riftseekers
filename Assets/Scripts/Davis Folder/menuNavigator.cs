@@ -4,5 +4,10 @@ using UnityEngine;
 
 public class menuNavigator : MonoBehaviour
 {
-    public GameObject firstSelected;
+    public GameObject button1, button2, button3;
+
+    public void startNavigation()
+    {
+
+    }
 }
