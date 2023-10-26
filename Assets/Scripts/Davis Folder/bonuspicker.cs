@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using TMPro;
-
+[RequireComponent(typeof(GameActionSequence))]
+[RequireComponent(typeof(UpdateStat_GA))]
 public class bonuspicker : MonoBehaviour
 {
     public Animator bonusScreen;
@@ -12,7 +13,8 @@ public class bonuspicker : MonoBehaviour
     public TMP_Text button2;
     public TMP_Text button3;
     public CharacterFrame Character;
-
+    public GameActionSequence sequence;
+    public UpdateStat_GA stat;
     private int bonus1, bonus2, bonus3 = 10;
 
 
@@ -24,6 +26,12 @@ public class bonuspicker : MonoBehaviour
     {
         bonusScreen.SetTrigger(trigger);
         yield return new WaitForSeconds(timeToWait);
+    }
+
+    private void Start()
+    {
+        sequence = GetComponent<GameActionSequence>();
+        stat = GetComponent<UpdateStat_GA>();
     }
 
     public void bonusOpener()
@@ -87,5 +95,20 @@ public class bonuspicker : MonoBehaviour
         button1.text = descriptions[randomPicker()];
         button2.text = descriptions[randomPicker()];
         button3.text = descriptions[randomPicker()];
+    }
+
+    public void chooseBonus(int choice)
+    {
+        switch(choice)
+        {
+            case 0:
+                stat.stat = CharStats.attackDamage;
+                stat.modifier = 1f;
+                break;
+            default:
+                break;
+        }
+
+        sequence.Play();
     }
 }
