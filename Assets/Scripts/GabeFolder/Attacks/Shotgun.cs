@@ -40,6 +40,8 @@ public class Shotgun : Attack
 
     public override void attack()
     {
+        AkSoundEngine.PostEvent("Shotgun_Fire", gameObject);
+
         Vector3 dir;
         Vector3 direction;
         if (isController)

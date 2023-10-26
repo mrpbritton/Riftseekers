@@ -5,7 +5,20 @@
 			<ChildrenList>
 				<SoundBank Name="Main" ID="{5D7F4A27-F4A0-45B8-907E-77FADEB92221}">
 					<ObjectInclusionList>
+						<ObjectRef Name="Object_Hit" ID="{E9CCDBEC-ACAD-400D-AB22-867F9AD38051}" WorkUnitID="{697396FA-772C-4458-A229-FDD1542B5EF0}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Hit" ID="{997054EC-98BF-4010-90B1-5E643044AFEF}" WorkUnitID="{697396FA-772C-4458-A229-FDD1542B5EF0}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Item_Pickup" ID="{117FD6AE-50D6-4154-90B6-A28E6FFFB7B7}" WorkUnitID="{697396FA-772C-4458-A229-FDD1542B5EF0}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Player_Death" ID="{14D84C94-F0BB-42B1-A24D-2C057CCEB473}" WorkUnitID="{697396FA-772C-4458-A229-FDD1542B5EF0}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Dash" ID="{80E3CD04-C75C-472C-8985-34DD17847154}" WorkUnitID="{697396FA-772C-4458-A229-FDD1542B5EF0}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="PLayer_Hit" ID="{B1775071-199F-47A9-BE4C-EDA8FEFEEDB4}" WorkUnitID="{697396FA-772C-4458-A229-FDD1542B5EF0}" Origin="Manual" Filter="7"/>
 						<ObjectRef Name="Pistol_Fire_player" ID="{68626C42-BD51-483E-9982-24247DAC4A6B}" WorkUnitID="{697396FA-772C-4458-A229-FDD1542B5EF0}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Health_Pickup" ID="{F5D2221F-9F8F-484D-9044-D87C43175540}" WorkUnitID="{697396FA-772C-4458-A229-FDD1542B5EF0}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Shotgun_Fire" ID="{5072E1D9-E751-4862-A282-63540F703B73}" WorkUnitID="{697396FA-772C-4458-A229-FDD1542B5EF0}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Step_Left" ID="{B69E0162-4502-4BC7-B0DF-DA8450FE731E}" WorkUnitID="{697396FA-772C-4458-A229-FDD1542B5EF0}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Chest_Open" ID="{484EA352-3A6C-4BCF-B7C1-17223D7AD16A}" WorkUnitID="{697396FA-772C-4458-A229-FDD1542B5EF0}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Enemy_Death" ID="{3633AF4B-527D-4DC2-8EB7-B1E05F51CD34}" WorkUnitID="{697396FA-772C-4458-A229-FDD1542B5EF0}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Sword_Swing" ID="{F0B15155-20E2-4F26-9D93-A588F7337EE3}" WorkUnitID="{697396FA-772C-4458-A229-FDD1542B5EF0}" Origin="Manual" Filter="7"/>
+						<ObjectRef Name="Step_Right" ID="{2A94EB61-1AB0-4F71-9AB2-E668F579402B}" WorkUnitID="{697396FA-772C-4458-A229-FDD1542B5EF0}" Origin="Manual" Filter="7"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>
 					<GameSyncExclusionList/>

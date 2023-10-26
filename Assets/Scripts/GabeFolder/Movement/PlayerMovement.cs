@@ -110,6 +110,8 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator Dash()
     {
+        AkSoundEngine.PostEvent("Dash", gameObject);
+
         cantDash = true;
         float dTimeRemaining = dashTime;
 

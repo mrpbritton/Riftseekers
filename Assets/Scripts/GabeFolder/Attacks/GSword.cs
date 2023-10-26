@@ -108,6 +108,9 @@ public class GSword : Attack
 
     IEnumerator Swing()
     {
+        AkSoundEngine.PostEvent("Sword_Swing", gameObject);
+
+
         hitbox.gameObject.SetActive(true);
         yield return new WaitForSeconds(hitboxTime);
         hitbox.gameObject.SetActive(false);

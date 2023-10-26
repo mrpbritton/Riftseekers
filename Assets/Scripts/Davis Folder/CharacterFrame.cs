@@ -249,10 +249,17 @@ public class CharacterFrame : MonoBehaviour
     {
         atk.updateStats(attackDamage, cooldownMod);
     }
+
+    bool dumbo = true;
     public void Update()
-    {
+    {       
         if(trueHealth.health <= 0)
         {
+            if (dumbo)
+            {
+                AkSoundEngine.PostEvent("Player_Death", gameObject);
+                dumbo = false;
+            }
             transfer.playerDeath();
         }
     }

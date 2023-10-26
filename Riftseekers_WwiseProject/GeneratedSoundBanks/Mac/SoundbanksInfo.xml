@@ -22,23 +22,140 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{FF37DA65-B832-6AAC-AA86-D829C926ABD3}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{98C9F6D0-E2C3-1996-F3DD-B42781023648}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
-				<File Id="368981843" Language="SFX" Streaming="false" Location="Memory">
-					<ShortName>Gunshot.wav</ShortName>
-					<CachePath>SFX/Gunshot_D9D18078.wem</CachePath>
+				<File Id="51320770" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Enemy_Death.wav</ShortName>
+					<CachePath>SFX/Enemy_Death_10C4C929.wem</CachePath>
+				</File>
+				<File Id="54274961" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Item_Pickup.wav</ShortName>
+					<CachePath>SFX/Item_Pickup_10C4C929.wem</CachePath>
+				</File>
+				<File Id="221262295" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Dash.wav</ShortName>
+					<CachePath>SFX/Dash_10C4C929.wem</CachePath>
+				</File>
+				<File Id="322140775" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Health_Pickup.wav</ShortName>
+					<CachePath>SFX/Health_Pickup_10C4C929.wem</CachePath>
+				</File>
+				<File Id="381510756" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Chest_Open.wav</ShortName>
+					<CachePath>SFX/Chest_Open_10C4C929.wem</CachePath>
+				</File>
+				<File Id="417615081" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>GunshotV2.wav</ShortName>
+					<CachePath>SFX/GunshotV2_F2F187EA.wem</CachePath>
+				</File>
+				<File Id="500257084" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player_Death.wav</ShortName>
+					<CachePath>SFX/Player_Death_10C4C929.wem</CachePath>
+				</File>
+				<File Id="507151849" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Enemy_Hit.wav</ShortName>
+					<CachePath>SFX/Enemy_Hit_10C4C929.wem</CachePath>
+				</File>
+				<File Id="620325535" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Footstep_Right.wav</ShortName>
+					<CachePath>SFX/Footstep_Right_10C4C929.wem</CachePath>
+				</File>
+				<File Id="768473490" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Sword_Swing.wav</ShortName>
+					<CachePath>SFX/Sword_Swing_10C4C929.wem</CachePath>
+				</File>
+				<File Id="800536299" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Object_Impact_Laser.wav</ShortName>
+					<CachePath>SFX/Object_Impact_Laser_10C4C929.wem</CachePath>
+				</File>
+				<File Id="808207301" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Shotgun.wav</ShortName>
+					<CachePath>SFX/Shotgun_10C4C929.wem</CachePath>
+				</File>
+				<File Id="955411906" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Player_Hit.wav</ShortName>
+					<CachePath>SFX/Player_Hit_10C4C929.wem</CachePath>
+				</File>
+				<File Id="1042813148" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Footstep_Left.wav</ShortName>
+					<CachePath>SFX/Footstep_Left_10C4C929.wem</CachePath>
 				</File>
 			</Media>
 			<Events>
-				<Event Id="1139050097" Name="Pistol_Fire_player" DurationType="OneShot" DurationMin="0.99104095" DurationMax="0.99104095">
+				<Event Id="2728948375" Name="Chest_Open" DurationType="OneShot" DurationMin="1.3106803" DurationMax="1.3106803">
 					<MediaRefs>
-						<MediaRef Id="368981843"/>
+						<MediaRef Id="381510756"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1942692385" Name="Dash" DurationType="OneShot" DurationMin="1.1650567" DurationMax="1.1650567">
+					<MediaRefs>
+						<MediaRef Id="221262295"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1205999388" Name="Enemy_Death" DurationType="OneShot" DurationMin="0.8855102" DurationMax="0.8855102">
+					<MediaRefs>
+						<MediaRef Id="51320770"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1010055213" Name="Enemy_Hit" DurationType="OneShot" DurationMin="0.3926304" DurationMax="0.3926304">
+					<MediaRefs>
+						<MediaRef Id="507151849"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3731941266" Name="Health_Pickup" DurationType="OneShot" DurationMin="1.1650567" DurationMax="1.1650567">
+					<MediaRefs>
+						<MediaRef Id="322140775"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="566396871" Name="Item_Pickup" DurationType="OneShot" DurationMin="2.0388436" DurationMax="2.0388436">
+					<MediaRefs>
+						<MediaRef Id="54274961"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1941595306" Name="Object_Hit" DurationType="OneShot" DurationMin="1.8203855" DurationMax="1.8203855">
+					<MediaRefs>
+						<MediaRef Id="800536299"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1139050097" Name="Pistol_Fire_player" DurationType="OneShot" DurationMin="1.554464" DurationMax="1.554464">
+					<MediaRefs>
+						<MediaRef Id="417615081"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3083087645" Name="Player_Death" DurationType="OneShot" DurationMin="0.8437188" DurationMax="0.8437188">
+					<MediaRefs>
+						<MediaRef Id="500257084"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="871813740" Name="PLayer_Hit" DurationType="OneShot" DurationMin="0.34111112" DurationMax="0.34111112">
+					<MediaRefs>
+						<MediaRef Id="955411906"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3982195600" Name="Shotgun_Fire" DurationType="OneShot" DurationMin="1.8203855" DurationMax="1.8203855">
+					<MediaRefs>
+						<MediaRef Id="808207301"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="3658882689" Name="Step_Left" DurationType="OneShot" DurationMin="0.5097279" DurationMax="0.5097279">
+					<MediaRefs>
+						<MediaRef Id="1042813148"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="1251284340" Name="Step_Right" DurationType="OneShot" DurationMin="0.65535146" DurationMax="0.65535146">
+					<MediaRefs>
+						<MediaRef Id="620325535"/>
+					</MediaRefs>
+				</Event>
+				<Event Id="476098351" Name="Sword_Swing" DurationType="OneShot" DurationMin="1.1650567" DurationMax="1.1650567">
+					<MediaRefs>
+						<MediaRef Id="768473490"/>
 					</MediaRefs>
 				</Event>
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{4A72EBE4-9D73-2A19-074C-B49BFDF1093E}</FileHash>
+	<FileHash>{5AB788BE-D28E-7318-2904-D85BBA9FEE7B}</FileHash>
 </SoundBanksInfo>

@@ -14,6 +14,149 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="PLayer_Hit" ID="{B1775071-199F-47A9-BE4C-EDA8FEFEEDB4}">
+					<ChildrenList>
+						<Action Name="" ID="{C5F28D3C-A8D0-40E5-8541-64F3CC5FEB44}" ShortID="660051075">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Hit" ID="{B71BA39C-19C2-4B33-9283-90A0B27F716F}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Player_Death" ID="{14D84C94-F0BB-42B1-A24D-2C057CCEB473}">
+					<ChildrenList>
+						<Action Name="" ID="{FFABF467-7FEA-4F94-AAF3-8549033BDF0A}" ShortID="287619693">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Death" ID="{5E3D172B-F7C5-42F4-88F4-39B2FF607203}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Hit" ID="{997054EC-98BF-4010-90B1-5E643044AFEF}">
+					<ChildrenList>
+						<Action Name="" ID="{65395FB3-A6F6-4A89-BCDE-5171DCE04FD5}" ShortID="799595416">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Hit" ID="{A9432198-26D8-4BA3-899E-A7E4015ABD8F}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Death" ID="{3633AF4B-527D-4DC2-8EB7-B1E05F51CD34}">
+					<ChildrenList>
+						<Action Name="" ID="{8E90EAD0-1A50-44F7-9CBF-1A40D25B0A09}" ShortID="542336986">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Death" ID="{80E06CD0-58E2-4BB5-A4D7-473659363B45}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Shotgun_Fire" ID="{5072E1D9-E751-4862-A282-63540F703B73}">
+					<ChildrenList>
+						<Action Name="" ID="{5E60ADCD-32A0-491C-B625-A6A755BDFA28}" ShortID="556394138">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Shotgun_Fire" ID="{1551C548-59BF-4079-9380-38436FC07650}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Sword_Swing" ID="{F0B15155-20E2-4F26-9D93-A588F7337EE3}">
+					<ChildrenList>
+						<Action Name="" ID="{E841DC10-0A2B-4143-8380-EEA198058DCE}" ShortID="1009186802">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Sword_Swing" ID="{100FF889-1D47-4E24-9E42-EFD19C49BB37}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Health_Pickup" ID="{F5D2221F-9F8F-484D-9044-D87C43175540}">
+					<ChildrenList>
+						<Action Name="" ID="{93581410-355A-4D3A-BAF5-27D5240AE21D}" ShortID="920414668">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Health_Pickup" ID="{B08D2C5E-50C3-4F58-93C1-823773005CD1}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Item_Pickup" ID="{117FD6AE-50D6-4154-90B6-A28E6FFFB7B7}">
+					<ChildrenList>
+						<Action Name="" ID="{EDEA7A83-AFB1-4A85-999D-AE5BFAB3B72A}" ShortID="569708794">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Item_Pickup" ID="{BF070DE6-DCBF-4FCE-B8B6-ECAA2906D11C}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Chest_Open" ID="{484EA352-3A6C-4BCF-B7C1-17223D7AD16A}">
+					<ChildrenList>
+						<Action Name="" ID="{D868EF79-D8EC-4177-954D-E713FFA79DE6}" ShortID="486388008">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Chest_Open" ID="{F13C8059-1043-44D5-BB7B-0DFD5E33486B}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Step_Left" ID="{B69E0162-4502-4BC7-B0DF-DA8450FE731E}">
+					<ChildrenList>
+						<Action Name="" ID="{D45838CE-5796-4297-913A-E85E24743A45}" ShortID="72653079">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Step_Left" ID="{A85F7CDA-C05C-4BBA-ABF0-C6F6A4F405F2}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Step_Right" ID="{2A94EB61-1AB0-4F71-9AB2-E668F579402B}">
+					<ChildrenList>
+						<Action Name="" ID="{65E1334C-0218-47D0-9272-2E4BCE076F5C}" ShortID="959505758">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Step_Right" ID="{3C25F201-6741-44FE-8619-AAF180C291EF}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Object_Hit" ID="{E9CCDBEC-ACAD-400D-AB22-867F9AD38051}">
+					<ChildrenList>
+						<Action Name="" ID="{D50959CD-B56A-413F-B07D-D9595FE820E1}" ShortID="864078895">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Object_Hit" ID="{AE4E137F-0287-45D0-A63D-7DA20BD3DABE}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Dash" ID="{80E3CD04-C75C-472C-8985-34DD17847154}">
+					<ChildrenList>
+						<Action Name="" ID="{C06246A2-B84D-4370-8AA5-D211F6D800BF}" ShortID="697731437">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dash" ID="{B2044A95-3890-4CAA-AD32-4AA3DD41AE8F}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

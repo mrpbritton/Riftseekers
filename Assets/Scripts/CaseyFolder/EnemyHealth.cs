@@ -49,9 +49,16 @@ public class EnemyHealth : MonoBehaviour
         if(currentHealth <= 0)
         {
             deathAnimation();
+
+            AkSoundEngine.PostEvent("Enemy_Death", gameObject);
+        }
+        else
+        {
+            AkSoundEngine.PostEvent("Enemy_Hit", gameObject);
         }
 
-        if(currentHealth <= critHealth && !foundCover)
+
+        if (currentHealth <= critHealth && !foundCover)
         {
             if(gameObject.TryGetComponent(out EnemyMovement movement))
             {
