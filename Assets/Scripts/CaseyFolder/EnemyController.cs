@@ -7,20 +7,26 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     [SerializeField]
-    private List<GameObject> enemies = new List<GameObject>();
+    public List<GameObject> enemies = new List<GameObject>();
     [SerializeField]
     public float difficulty = 1;
     private int loot;
     [SerializeField]
     private GameObject Item;
+    [SerializeField]
+    PlayerUICanvas enemySlider;
+    public float total;
+
 
     public static Action levelComplete = delegate { };
+
 
     void Start()
     {
         enemies.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
         loot = UnityEngine.Random.Range(0, enemies.Count);
         enemies[loot].GetComponent<EnemyHealth>().hasItem = true;
+        total = enemies.Count;
     }
 
     private void OnEnable()
@@ -53,5 +59,6 @@ public class EnemyController : MonoBehaviour
             Debug.Log("you win");
             levelComplete();
         }
+        enemySlider.updateSlider(total, enemies.Count);
     }
 }
