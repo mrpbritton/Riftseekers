@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         pInput.Enable();
         player = gameObject.GetComponent<CharacterController>();
         frame = gameObject.GetComponent<CharacterFrame>();
+        character = gameObject.GetComponentInChildren<Animator>();
         speed = frame.movementSpeed;
         dashSpeed = frame.dashSpeed;
         pInput.Player.Dash.started += DashPress;
@@ -119,7 +120,57 @@ public class PlayerMovement : MonoBehaviour
 
         if (direction == Vector3.zero) //if no movement, dash right
             direction.x = 1;
+        #region Sprite Setting
+        if (direction.x > 0)
+        {
 
+            if (direction.z < 0) // SOUTHEAST
+            {
+                //characterSprite.sprite = southEast;
+                character.SetTrigger("DashSE");
+            }
+            else if (direction.z == 0) // EAST
+            {
+                character.SetTrigger("DashE");
+            }
+            else // direction.z == 1 *** NORTHEAST
+            {
+                character.SetTrigger("DashNE");
+            }
+        }
+        else if (direction.x < 0)
+        {
+            if (direction.z < 0) // SOUTHWEST
+            {
+                //characterSprite.sprite = southWest;
+                character.SetTrigger("DashSW");
+            }
+            else if (direction.z == 0) // WEST
+            {
+                character.SetTrigger("DashW");
+            }
+            else // direction.z == 1 *** NORTHWEST
+            {
+                //characterSprite.sprite = northWest;
+                character.SetTrigger("DashNW");
+            }
+        }
+        else //direction.x == 0
+        {
+            if (direction.z < 0) // SOUTH
+            {
+                character.SetTrigger("DashS");
+            }
+            else if (direction.z == 0) // NO INPUT
+            {
+                character.SetTrigger("DashE");
+            }
+            else // direction.z == 1 *** NORTH
+            {
+                character.SetTrigger("DashN");
+            }
+        }
+        #endregion
         /* The loop below ends up being a pseudo-update function. This is able to 
          * happen because of the yield return null; at the end of this while loop.
          * Every iteration makes the dTimeRemaining decrease until it is zero (or 
@@ -136,6 +187,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         remainingCharges--; //since dash was performed, subtract a dash
         cantDash = false;
+        frame.UpdateSprite(direction);
     }
 
     public IEnumerator RechargeDash()
