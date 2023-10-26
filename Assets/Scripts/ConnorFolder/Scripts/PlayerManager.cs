@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class PlayerManager : MonoBehaviour {
     private void Awake() {
@@ -20,5 +21,8 @@ public class PlayerManager : MonoBehaviour {
             Inventory.overridePlayerManagersTransform(this);
             Destroy(tallestParent.gameObject);  //  sets curPlayerManager's transform to equal this ones
         }
+
+        //GameObject.FindWithTag("VirtCam").GetComponent<CinemachineVirtualCamera>().Follow = FindFirstObjectByType<CharacterFrame>().gameObject.transform;
+        //FindFirstObjectByType<CharacterFrame>().gameObject.transform
     }
 }

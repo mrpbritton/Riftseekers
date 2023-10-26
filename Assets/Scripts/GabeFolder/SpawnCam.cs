@@ -31,6 +31,9 @@ public class SpawnCam : MonoBehaviour
 
     //  called from the player manager
     public void manageCamera() {
+
+        Debug.Log("Called");
+
         if(Camera.main != null && !Camera.main.TryGetComponent(out CinemachineBrain brain)) {
             DestroyImmediate(Camera.main.gameObject);
         }
