@@ -71,7 +71,7 @@ public class CharacterFrame : MonoBehaviour
     public Animator character;
     public SpriteRenderer characterSprite;
     /*    public Sprite north;*/
-    private cardinalDirection cachedDir;
+    private CardinalDirection cachedDir;
 
     [Header("Managers")]
     public LevelManager transfer;
@@ -166,17 +166,17 @@ public class CharacterFrame : MonoBehaviour
             {
                 //characterSprite.sprite = southEast;
                 character.SetTrigger("WalkSE");
-                cachedDir = cardinalDirection.southEast;
+                cachedDir = CardinalDirection.southEast;
             }
             else if (direction.z == 0) // EAST
             {
                 character.SetTrigger("WalkE");
-                cachedDir = cardinalDirection.east;
+                cachedDir = CardinalDirection.east;
             }
             else // direction.z == 1 *** NORTHEAST
             {
                 character.SetTrigger("WalkNE");
-                cachedDir = cardinalDirection.northEast;
+                cachedDir = CardinalDirection.northEast;
             }
         }
         else if (direction.x < 0)
@@ -185,18 +185,18 @@ public class CharacterFrame : MonoBehaviour
             {
                 //characterSprite.sprite = southWest;
                 character.SetTrigger("WalkSW");
-                cachedDir = cardinalDirection.southWest;
+                cachedDir = CardinalDirection.southWest;
             }
             else if (direction.z == 0) // WEST
             {
                 character.SetTrigger("WalkW");
-                cachedDir = cardinalDirection.west;
+                cachedDir = CardinalDirection.west;
             }
             else // direction.z == 1 *** NORTHWEST
             {
                 //characterSprite.sprite = northWest;
                 character.SetTrigger("WalkNW");
-                cachedDir = cardinalDirection.northWest;
+                cachedDir = CardinalDirection.northWest;
             }
         }
         else //direction.x == 0
@@ -204,7 +204,7 @@ public class CharacterFrame : MonoBehaviour
             if (direction.z < 0) // SOUTH
             {
                 character.SetTrigger("WalkS");
-                cachedDir = cardinalDirection.south;
+                cachedDir = CardinalDirection.south;
             }
             else if (direction.z == 0) // NO INPUT
             {
@@ -241,7 +241,7 @@ public class CharacterFrame : MonoBehaviour
             else // direction.z == 1 *** NORTH
             {
                 character.SetTrigger("WalkN");
-                cachedDir = cardinalDirection.north;
+                cachedDir = CardinalDirection.north;
             }
         }
         #endregion
@@ -298,9 +298,8 @@ public class CharacterFrame : MonoBehaviour
             transfer.playerDeath();
         }
     }
-
-    public enum cardinalDirection
-    {
-        north, south, east, west, northEast, northWest, southEast, southWest
-    }
+}
+public enum CardinalDirection
+{
+    north, south, east, west, northEast, northWest, southEast, southWest
 }
