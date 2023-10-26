@@ -26,8 +26,13 @@ public class InteractUI : MonoBehaviour {
         background.transform.localScale = new Vector3(background.transform.localScale.x, 0f, 0f);
     }
 
+    private void OnDisable() {
+        if(checker != null)
+            StopCoroutine(checker);
+    }
+
     public void addInteractable(Transform ting) {
-        if(!initted) {
+        if(!initted || playerTrans == null) {
             DOTween.Init();
             playerTrans = FindObjectOfType<PlayerMovement>().transform;
             fc = background.GetComponent<FacesCamera>();
