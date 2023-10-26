@@ -6,10 +6,10 @@ public class UpdateStat_GA : GameAction
 {
     [SerializeField, Tooltip("Player's Frame")]
     private CharacterFrame frame;
-    [SerializeField, Tooltip("Stat to be changed")]
-    private CharStats stat;
-    [SerializeField, Tooltip("Change in the stat")]
-    private float modifier;
+    [Tooltip("Stat to be changed")]
+    public CharStats stat;
+    [Tooltip("Change in the stat")]
+    public float modifier;
     public override void Action()
     {
         if (frame == null)

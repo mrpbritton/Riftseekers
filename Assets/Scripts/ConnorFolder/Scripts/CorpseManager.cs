@@ -20,8 +20,8 @@ public class CorpseManager : MonoBehaviour {
 
         //  changed closests so swap active colliders
         if(prevClosest != closest) {
-            prevClosest.GetComponent<Collider>().enabled = false;
-            closest.GetComponent<Collider>().enabled = true;
+            //prevClosest.GetComponent<Collider>().enabled = false;
+            //closest.GetComponent<Collider>().enabled = true;
         }
         float dist = Vector2.Distance(new Vector2(playerTrans.position.x, playerTrans.position.z), new Vector2(closest.position.x, closest.position.z));
 
@@ -34,7 +34,7 @@ public class CorpseManager : MonoBehaviour {
     }
 
     public void addCorpse(GameObject c) {
-        c.GetComponent<Collider>().enabled = corpses.Count == 0;
+        //c.GetComponent<Collider>().enabled = corpses.Count == 0;
         corpses.Add(c.transform);
     }
     public void removeCorpse(GameObject c) {
