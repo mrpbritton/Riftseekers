@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.005805085, g: 0.051328942, b: 0.08331497, a: 1}
+  m_IndirectSpecularColor: {r: 0.0057418146, g: 0.051255625, b: 0.08317153, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -608,6 +608,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1209913697}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &239758790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 239758781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4818b928bb8f0214686dcf0ec3bf8572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  eventName: Chest_Open
+  eventName2: Item_Pickup
 --- !u!1 &266992688
 GameObject:
   m_ObjectHideFlags: 0
@@ -2351,6 +2366,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 61836069}
     m_Modifications:
+    - target: {fileID: 2051355772905924639, guid: 61057bf7207515b4685612006b1e9dd6,
+        type: 3}
+      propertyPath: actionList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2051355772905924639, guid: 61057bf7207515b4685612006b1e9dd6,
+        type: 3}
+      propertyPath: actionList.Array.data[1]
+      value: 
+      objectReference: {fileID: 239758790}
     - target: {fileID: 4859774960355232124, guid: 61057bf7207515b4685612006b1e9dd6,
         type: 3}
       propertyPath: m_RootOrder
@@ -2435,6 +2460,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 239758782}
+    - targetCorrespondingSourceObject: {fileID: 6729847259385091051, guid: 61057bf7207515b4685612006b1e9dd6,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 239758790}
   m_SourcePrefab: {fileID: 100100000, guid: 61057bf7207515b4685612006b1e9dd6, type: 3}
 --- !u!1001 &1266240891
 PrefabInstance:

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3273,7 +3273,7 @@ MonoBehaviour:
   data:
     idInternal: 0
     valueGuidInternal: 
-    WwiseObjectReference: {fileID: 11400000, guid: c7f8272d276bbaf4eb4df7e474e4cb7d,
+    WwiseObjectReference: {fileID: 11400000, guid: ee91b5c9de15f2a4ca386c4e7e62d736,
       type: 2}
   decodeBank: 0
   loadAsynchronous: 0
@@ -3425,7 +3425,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0
+  near clip plane: 0.1
   far clip plane: 5000
   field of view: 40
   orthographic: 1
@@ -3452,7 +3452,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 275848543}
-  m_LocalRotation: {x: 0.38268343, y: 0, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268346, y: 0, z: 0, w: 0.9238795}
   m_LocalPosition: {x: 0, y: 36, z: -20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14307,6 +14307,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1603492674}
     m_Modifications:
+    - target: {fileID: 1005440842170521024, guid: 4e5b44894a5fe6746806daac662b0c70,
+        type: 3}
+      propertyPath: actionList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1005440842170521024, guid: 4e5b44894a5fe6746806daac662b0c70,
+        type: 3}
+      propertyPath: actionList.Array.data[2]
+      value: 
+      objectReference: {fileID: 1349667959}
     - target: {fileID: 8744664660840836694, guid: 4e5b44894a5fe6746806daac662b0c70,
         type: 3}
       propertyPath: m_RootOrder
@@ -14370,7 +14380,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8804089556939858010, guid: 4e5b44894a5fe6746806daac662b0c70,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1349667959}
   m_SourcePrefab: {fileID: 100100000, guid: 4e5b44894a5fe6746806daac662b0c70, type: 3}
 --- !u!4 &1349667957 stripped
 Transform:
@@ -14378,6 +14392,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1349667956}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1349667958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8804089556939858010, guid: 4e5b44894a5fe6746806daac662b0c70,
+    type: 3}
+  m_PrefabInstance: {fileID: 1349667956}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1349667959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1349667958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4818b928bb8f0214686dcf0ec3bf8572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  eventName: Chest_Open
+  eventName2: Item_Pickup
 --- !u!1001 &1355122825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -20964,6 +20999,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1603492674}
     m_Modifications:
+    - target: {fileID: 1005440842170521024, guid: 4e5b44894a5fe6746806daac662b0c70,
+        type: 3}
+      propertyPath: actionList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1005440842170521024, guid: 4e5b44894a5fe6746806daac662b0c70,
+        type: 3}
+      propertyPath: actionList.Array.data[2]
+      value: 
+      objectReference: {fileID: 1971916683}
     - target: {fileID: 8744664660840836694, guid: 4e5b44894a5fe6746806daac662b0c70,
         type: 3}
       propertyPath: m_RootOrder
@@ -21027,7 +21072,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8804089556939858010, guid: 4e5b44894a5fe6746806daac662b0c70,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1971916683}
   m_SourcePrefab: {fileID: 100100000, guid: 4e5b44894a5fe6746806daac662b0c70, type: 3}
 --- !u!4 &1971916681 stripped
 Transform:
@@ -21035,6 +21084,27 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1971916680}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1971916682 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8804089556939858010, guid: 4e5b44894a5fe6746806daac662b0c70,
+    type: 3}
+  m_PrefabInstance: {fileID: 1971916680}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1971916683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1971916682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4818b928bb8f0214686dcf0ec3bf8572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  eventName: Chest_Open
+  eventName2: Item_Pickup
 --- !u!1001 &1992250801
 PrefabInstance:
   m_ObjectHideFlags: 0
