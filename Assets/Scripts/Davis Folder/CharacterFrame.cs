@@ -68,8 +68,9 @@ public class CharacterFrame : MonoBehaviour
     public float charge;
 
     [Header("Sprites")]
+    public Animator character;
     public SpriteRenderer characterSprite;
-    public Sprite north;
+/*    public Sprite north;*/
     public Sprite northEast;
     public Sprite east;
     public Sprite southEast;
@@ -81,6 +82,7 @@ public class CharacterFrame : MonoBehaviour
     [Header("Managers")]
     public LevelManager transfer;
     public Health trueHealth;
+    private Animator playerAnimator;
 
     Coroutine attacker = null;
     bool bIsPressed;
@@ -150,7 +152,6 @@ public class CharacterFrame : MonoBehaviour
         IsPressed();
             attacker = StartCoroutine(attackWaiter(curAttack));
     }
-
     void IsPressed()
     {
         bIsPressed = true;
@@ -163,50 +164,56 @@ public class CharacterFrame : MonoBehaviour
 
     public void UpdateSprite(Vector3 direction)
     {
+        character.SetBool("North", false);
+        character.SetBool("East", false);
+        character.SetBool("South", false);
+        character.SetBool("West", false);
         #region Sprite Setting
+        character.SetBool("IsWalking", true);
         if (direction.x > 0)
         {
+            
             if (direction.z < 0) // SOUTHEAST
             {
-                characterSprite.sprite = southEast;
+                //characterSprite.sprite = southEast;
             }
             else if (direction.z == 0) // EAST
             {
-                characterSprite.sprite = east;
+                character.SetBool("East", true);
             }
             else // direction.z == 1 *** NORTHEAST
             {
-                characterSprite.sprite = northEast;
+                character.SetTrigger("WalkNE");
             }
         }
         else if (direction.x < 0)
         {
             if (direction.z < 0) // SOUTHWEST
             {
-                characterSprite.sprite = southWest;
+                //characterSprite.sprite = southWest;
             }
             else if (direction.z == 0) // WEST
             {
-                characterSprite.sprite = west;
+                character.SetBool("West", true);
             }
             else // direction.z == 1 *** NORTHWEST
             {
-                characterSprite.sprite = northWest;
+                //characterSprite.sprite = northWest;
             }
         }
         else //direction.x == 0
         {
             if (direction.z < 0) // SOUTH
             {
-                characterSprite.sprite = south;
+                character.SetBool("South", true);
             }
             else if (direction.z == 0) // NO INPUT
             {
-                //last input entered
+                character.SetBool("IsWalking", false);
             }
             else // direction.z == 1 *** NORTH
             {
-                characterSprite.sprite = north;
+                character.SetBool("North", true);
             }
         }
         #endregion

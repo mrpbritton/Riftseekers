@@ -36,7 +36,9 @@ public class PlayerMovement : MonoBehaviour
 
     private CharacterController player;
     private CharacterFrame frame;
+    private Animator character;
     private Vector3 cachedDirection;
+    
 
     //<--- Click on the plus sign to expand
     #region Setup
@@ -44,8 +46,8 @@ public class PlayerMovement : MonoBehaviour
     {
         pInput = new PInput();
         pInput.Enable();
-        player = GetComponent<CharacterController>();
-        frame = GetComponent<CharacterFrame>();
+        player = gameObject.GetComponent<CharacterController>();
+        frame = gameObject.GetComponent<CharacterFrame>();
         speed = frame.movementSpeed;
         dashSpeed = frame.dashSpeed;
         pInput.Player.Dash.started += DashPress;
