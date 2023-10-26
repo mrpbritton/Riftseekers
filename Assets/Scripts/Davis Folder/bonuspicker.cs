@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using TMPro;
 
 public class bonuspicker : MonoBehaviour
 {
     public Animator bonusScreen;
-    public UnityEngine.UIElements.Button button1;
-    public UnityEngine.UIElements.Button button2;
-    public UnityEngine.UIElements.Button button3;
+    public TMP_Text button1;
+    public TMP_Text button2;
+    public TMP_Text button3;
     public CharacterFrame Character;
 
     private int bonus1, bonus2, bonus3 = 10;
@@ -57,21 +58,34 @@ public class bonuspicker : MonoBehaviour
     {
         int buffer, verify = 10;
         int picked = 0;
-        while(picked < 3)
+        while (picked < 3)
         {
             buffer = randomPicker();
             verify = verifyNumber(buffer);
-            if(verify == 0 && bonus1 == 10)
+            if (verify == 0 && bonus1 == 10)
             {
                 bonus1 = buffer;
-            } else if(verify == 0 && bonus2 == 10)
+                picked++;
+            }
+            else if (verify == 0 && bonus2 == 10)
             {
                 bonus2 = buffer;
+                picked++;
             }
             else if (verify == 0 && bonus3 == 10)
             {
-
+                bonus3 = buffer;
+                picked++;
             }
         }
+        Debug.Log("Bonuses are: " + bonus1 + bonus2 + bonus3);
+    }
+
+    public void setup()
+    {
+        //generateBonuses();
+        button1.text = descriptions[randomPicker()];
+        button2.text = descriptions[randomPicker()];
+        button3.text = descriptions[randomPicker()];
     }
 }
