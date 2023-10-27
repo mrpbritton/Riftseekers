@@ -20,6 +20,7 @@ public class PlaySound_GA : GameAction
         else
         {
             AkSoundEngine.PostEvent(eventName2, gameObject);
+            firstInteraction = true;
         }
     }
     public override void DeAction()

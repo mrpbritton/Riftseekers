@@ -33,6 +33,7 @@ public class Basic_Proj : Attack
 
         cooldownBar.updateSlider(getCooldownTime());
 
+        AkSoundEngine.PostEvent("Pistol_Fire_player", gameObject);
         if (isController)
         {
             dir = new Vector3(pInput.Player.ControllerAim.ReadValue<Vector2>().x, 0, pInput.Player.ControllerAim.ReadValue<Vector2>().y);
@@ -63,7 +64,6 @@ public class Basic_Proj : Attack
         b.GetComponent<DoDamage>().damage = getDamage();
         bs.lifetime = lifetime;
 
-        AkSoundEngine.PostEvent("Pistol_Fire_player", gameObject);
     }
 
     public override void reset()

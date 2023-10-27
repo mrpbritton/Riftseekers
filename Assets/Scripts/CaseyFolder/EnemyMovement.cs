@@ -105,6 +105,7 @@ public class EnemyMovement : MonoBehaviour
         if (!bMelee) return;
         if (Vector3.Distance(gameObject.transform.position, Player.transform.position) <= 3)
         {
+            AkSoundEngine.PostEvent("Enemy_Melee", gameObject);
             bClose = true;
         }
         else { bClose= false; }

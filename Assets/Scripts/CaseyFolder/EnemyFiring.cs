@@ -37,6 +37,7 @@ public class EnemyFiring : MonoBehaviour
         lookForPlayer();
         if (bSeePlayer)
         {
+            AkSoundEngine.PostEvent("Enemy_Fire", gameObject);
             rotation = gameObject.transform.rotation;
             Projectile project = Instantiate(projectile, transform.position, rotation).GetComponent<Projectile>();
             project.Direction = transform.forward;

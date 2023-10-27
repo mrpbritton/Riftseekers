@@ -36,11 +36,16 @@ public class bonuspicker : MonoBehaviour
 
     public void bonusOpener()
     {
+        AkSoundEngine.PostEvent("Bonus_Menu_Open", gameObject);
+
         StartCoroutine(animationPlay("open", 1f));
     }
 
     public void bonusCloser()
     {
+        AkSoundEngine.PostEvent("Bonus_Menu_Close", gameObject);
+
+
         StartCoroutine(animationPlay("close", 1f));
     }
 

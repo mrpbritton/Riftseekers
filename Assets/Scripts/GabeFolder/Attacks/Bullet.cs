@@ -26,6 +26,10 @@ public class Bullet : MonoBehaviour
     {
         if(!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Bullet"))
         {
+            if (!other.gameObject.CompareTag("Enemy"))
+            {
+                AkSoundEngine.PostEvent("Object_Hit", gameObject);
+            }
             Destroy(gameObject, 0.0001f);
         }
     }
