@@ -21,9 +21,16 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(levelTransition(1, "death"));
     }
     
-    public void loadSpecific(int index, string trigger)
+    public void loadSpecific(int index)
     {
-        StartCoroutine(levelTransition(index, trigger));
+        if(index == 1)
+        {
+            StartCoroutine(levelTransition(index, "death"));
+        } else if(index == 3)
+        {
+            StartCoroutine(levelTransition(index, "alive"));
+        }
+        StartCoroutine(levelTransition(index, "none"));
     }
 
     IEnumerator levelTransition(int levelIndex, string trigger)

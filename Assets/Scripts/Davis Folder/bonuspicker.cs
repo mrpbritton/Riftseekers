@@ -98,7 +98,10 @@ public class bonuspicker : MonoBehaviour
         button1.text = descriptions[bonus1];
         button2.text = descriptions[bonus2];
         button3.text = descriptions[bonus3];
-        
+        Character.gameObject.GetComponent<PlayerMovement>().enabled = false;
+        //Character.gameObject.GetComponent<Basic_Proj>().enabled = false;
+        //Character.gameObject.GetComponent<GSword>().enabled = false;
+        // Character.enabled = false;
         bonusOpener();
     }
 
@@ -115,7 +118,10 @@ public class bonuspicker : MonoBehaviour
             applyBonus(bonus3);
         }
         bonusCloser();
-        
+        //Character.enabled = true;
+        Character.gameObject.GetComponent<PlayerMovement>().enabled = true;
+        //Character.gameObject.GetComponent<Basic_Proj>().enabled = true;
+        //Character.gameObject.GetComponent<GSword>().enabled = true;
     }
 
     public void applyBonus(int choice)
