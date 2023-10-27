@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 6854085199888981998}
   - component: {fileID: 5676950591752172731}
   - component: {fileID: 52529612864127189}
+  - component: {fileID: 1679344165736758150}
   m_Layer: 0
   m_Name: chest
   m_TagString: Untagged
@@ -281,7 +282,7 @@ MonoBehaviour:
   actionList:
   - {fileID: 6854085199888981998}
   - {fileID: 5676950591752172731}
-  - {fileID: 52529612864127189}
+  - {fileID: 1679344165736758150}
 --- !u!114 &6854085199888981998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,6 +315,21 @@ MonoBehaviour:
   go: {fileID: 6183051943068497198}
   bEnableState: 0
 --- !u!114 &52529612864127189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8804089556939858010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4818b928bb8f0214686dcf0ec3bf8572, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  eventName: Chest_Open
+  eventName2: Item_Pickup
+--- !u!114 &1679344165736758150
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
