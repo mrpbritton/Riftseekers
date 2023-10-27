@@ -84,11 +84,14 @@ public class CharacterFrame : MonoBehaviour
     //more options to come in the future
     private void Start()
     {
-        pInput = new PInput();
-        pInput.Enable();
-
         health_s = GetComponent<Health>();
         move_s = GetComponent<PlayerMovement>();
+    }
+
+    private void OnEnable()
+    {
+        pInput = new PInput();
+        pInput.Enable();
 
         #region Started Subscriptions
         pInput.Player.BasicAttack.started += ctx => performAttack(basicAttack);
