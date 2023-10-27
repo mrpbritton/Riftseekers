@@ -293,9 +293,9 @@ public class CharacterFrame : MonoBehaviour
             if (dumbo)
             {
                 AkSoundEngine.PostEvent("Player_Death", gameObject);
+                transfer.playerDeath();
                 dumbo = false;
             }
-            transfer.playerDeath();
         }
     }
 }

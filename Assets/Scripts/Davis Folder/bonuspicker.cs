@@ -98,6 +98,7 @@ public class bonuspicker : MonoBehaviour
         button1.text = descriptions[bonus1];
         button2.text = descriptions[bonus2];
         button3.text = descriptions[bonus3];
+        
         bonusOpener();
     }
 
@@ -114,6 +115,7 @@ public class bonuspicker : MonoBehaviour
             applyBonus(bonus3);
         }
         bonusCloser();
+        
     }
 
     public void applyBonus(int choice)

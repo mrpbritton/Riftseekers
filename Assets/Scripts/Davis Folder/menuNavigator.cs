@@ -19,4 +19,5 @@ public class menuNavigator : MonoBehaviour
         EnemyController.levelComplete += startNavigation;
 
     }
+
 }

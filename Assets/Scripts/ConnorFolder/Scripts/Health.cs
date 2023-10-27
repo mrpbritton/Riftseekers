@@ -77,4 +77,9 @@ public class Health : MonoBehaviour
         AkSoundEngine.PostEvent("Health_Pickup", gameObject);
 
     }
+
+    private void OnEnable()
+    {
+        health = maxHealth;
+    }
 }
