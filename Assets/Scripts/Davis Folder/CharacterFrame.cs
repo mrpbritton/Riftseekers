@@ -250,6 +250,43 @@ public class CharacterFrame : MonoBehaviour
         #endregion
     }
 
+    /// <summary>
+    /// Only use this for the default direction.
+    /// </summary>
+    /// <param name="cachedDir">Should be CardinalDirection.east</param>
+    public void UpdateSprite(CardinalDirection cachedDir)
+    {
+        switch (cachedDir.ToString())
+        {
+            case "north":
+                character.SetTrigger("WalkNStop");
+                break;
+            case "northEast":
+                character.SetTrigger("WalkNEStop");
+                break;
+            case "northWest":
+                character.SetTrigger("WalkNWStop");
+                break;
+            case "south":
+                character.SetTrigger("WalkSStop");
+                break;
+            case "southEast":
+                character.SetTrigger("WalkSEStop");
+                break;
+            case "southWest":
+                character.SetTrigger("WalkSWStop");
+                break;
+            case "east":
+                character.SetTrigger("WalkEStop");
+                break;
+            case "west":
+                character.SetTrigger("WalkWStop");
+                break;
+            default:
+                break;
+        }
+    }
+
     private void OnDisable()
     {
         pInput.Disable();

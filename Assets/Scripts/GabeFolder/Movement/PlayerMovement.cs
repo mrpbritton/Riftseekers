@@ -194,9 +194,11 @@ public class PlayerMovement : MonoBehaviour
         cantDash = false;
         if(isDefDash)
         {
-            character.SetTrigger("DashDefStop");
+            character.SetTrigger("WalkE");
+            frame.UpdateSprite(CardinalDirection.east);
         }
-        frame.UpdateSprite(direction);
+
+        frame.UpdateSprite(dashDirection);
     }
 
     public IEnumerator RechargeDash()
