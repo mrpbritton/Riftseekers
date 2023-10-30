@@ -16,7 +16,7 @@ public class PlayerSpawnPos : MonoBehaviour {
         else {
             FindObjectOfType<PlayerManager>().getTallestParent().transform.position = transform.position;
             var obj2 = FindObjectOfType<PlayerManager>();
-            obj2.transform.localPosition = Vector3.zero + new Vector3(0f, obj2.transform.lossyScale.y * 2f);
+            obj2.transform.localPosition = Vector3.zero;
             state = true;
         }
     }
