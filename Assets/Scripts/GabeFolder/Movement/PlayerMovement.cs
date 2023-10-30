@@ -38,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     private CharacterFrame frame;
     private Animator character;
     private Vector3 cachedDirection;
+    private Vector3 dashDirection;
     
 
     //<--- Click on the plus sign to expand
@@ -116,10 +117,11 @@ public class PlayerMovement : MonoBehaviour
         AkSoundEngine.PostEvent("Dash", gameObject);
 
         cantDash = true;
+        bool isDefDash = false; //is default dash
         float dTimeRemaining = dashTime;
 
-        if (direction == Vector3.zero) //if no movement, dash right
-            direction.x = 1;
+        dashDirection = direction;
+
         #region Sprite Setting
         if (direction.x > 0)
         {
@@ -163,7 +165,10 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (direction.z == 0) // NO INPUT
             {
-                character.SetTrigger("DashE");
+                //EAST BY DEFAULT
+                character.SetTrigger("DashDef");
+                dashDirection = Vector3.right;
+                isDefDash = true;
             }
             else // direction.z == 1 *** NORTH
             {
@@ -180,13 +185,17 @@ public class PlayerMovement : MonoBehaviour
         while (dTimeRemaining > 0)
         {
             dTimeRemaining -= Time.deltaTime;
-            player.Move(direction.normalized * dashSpeed * Time.deltaTime * dashDistance);
+            player.Move(dashDistance * dashSpeed * Time.deltaTime * dashDirection.normalized);
             yield return null;
         }
 
         yield return new WaitForSeconds(dashCooldown);
         remainingCharges--; //since dash was performed, subtract a dash
         cantDash = false;
+        if(isDefDash)
+        {
+            character.SetTrigger("DashDefStop");
+        }
         frame.UpdateSprite(direction);
     }
 
