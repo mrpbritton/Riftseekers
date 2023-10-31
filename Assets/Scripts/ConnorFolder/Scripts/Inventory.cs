@@ -145,7 +145,7 @@ public class ItemSaveData {
     public string description;
     public int value;
     public Sprite image;
-    public AbilityLibrary.abilType overrideAbil;
+    public Attack.attackType overrideAbil;
 
     public ItemSaveData(ConItem i) {
         title = i.title;
