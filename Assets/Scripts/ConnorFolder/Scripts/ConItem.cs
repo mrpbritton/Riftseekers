@@ -14,7 +14,7 @@ public class ConItem : ScriptableObject {
     [Tooltip("What this item looks like")]
     public Sprite image;
     [Tooltip("What ability does this give the player")]
-    public AbilityLibrary.abilType overrideAbil = AbilityLibrary.abilType.None;
+    public Attack.attackType overrideAbil = Attack.attackType.None;
 
 
     public ConItem(ItemSaveData saveData) {

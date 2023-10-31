@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,6 +20,8 @@ public class InventoryUI : MonoBehaviour {
 
     bool draggedState = true;
     bool shown = false;
+
+    public static Action<List<ConItem>> applyActiveItemEffect = delegate {};
 
     private void Start() {
         il = FindObjectOfType<ItemLibrary>();
@@ -77,6 +80,16 @@ public class InventoryUI : MonoBehaviour {
         background.gameObject.SetActive(false);
     }
 
+    void checkActiveItems(int masterInd, Attack.attackType overtype) {
+        for(int i = 2; i >=0; i--) {
+            if(i != masterInd && Inventory.getActiveItem(i, il).overrideAbil == overtype) { // move back to inv
+                var temp = Inventory.getActiveItem(i, il);
+                Inventory.removeActiveItem(i);
+                Inventory.addItem(temp);
+            }
+        }
+    }
+
     public void setCurIndex(int ind) {
         if(ind >= Inventory.getItems(il).Count) {
             return;
@@ -126,7 +139,10 @@ public class InventoryUI : MonoBehaviour {
         //  adds the saved active item into the inventory if it's valid
         if(temp != null)
             Inventory.addItem(temp);
+
+        checkActiveItems(actInd, temp.overrideAbil);
         Inventory.saveInventory();
+        applyActiveItemEffect(new List<ConItem>() { Inventory.getActiveItem(0, il), Inventory.getActiveItem(1, il), Inventory.getActiveItem(2, il) });
         show();
         curIndex = -1;
     }
