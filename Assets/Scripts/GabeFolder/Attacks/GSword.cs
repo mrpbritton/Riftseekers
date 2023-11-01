@@ -16,7 +16,7 @@ public class GSword : Attack
     private Transform hitbox;
     private DoDamage damScript;
     private Vector3 direction; //what the direction currently is
-    private Vector3 cachedDirection; //filtered direction; cannot be zero
+    private Vector3 cachedDir; //filtered direction; cannot be zero
 
     protected override void Start()
     {
@@ -35,73 +35,38 @@ public class GSword : Attack
         return damage * frame.attackDamage;
     }
 
-    private void Update()
-    { 
-        direction.x = pInput.Player.Movement.ReadValue<Vector3>().x;
-        direction.z = pInput.Player.Movement.ReadValue<Vector3>().z;
-
-        direction = direction.normalized;
-
-        if(direction != Vector3.zero && direction != cachedDirection)
-        {
-            cachedDirection = direction;
-        }
-    }
-
     public override void attack()
     {
-        #region Rotation Setting
-        if (direction.x > 0)
+        Vector3 dir;
+        if (isController)
         {
-            if (direction.z < 0) // SOUTHEAST
+            dir = new Vector3(pInput.Player.ControllerAim.ReadValue<Vector2>().x, 0, pInput.Player.ControllerAim.ReadValue<Vector2>().y);
+
+            if (dir == Vector3.zero)
             {
-                origin.rotation = Quaternion.Euler(new Vector3(0, 315, 0));
+                dir = cachedDir;
             }
-            else if (direction.z == 0) // EAST
+            else
             {
-                origin.rotation = Quaternion.Euler(new Vector3(0, 270, 0));
+                cachedDir = dir;
             }
-            else // direction.z == 1 *** NORTHEAST
-            {
-                origin.rotation = Quaternion.Euler(new Vector3(0, 225, 0));
-            }
+
+            direction = dir;
         }
-        else if (direction.x < 0)
+        else
         {
-            if (direction.z < 0) // SOUTHWEST
-            {
-                origin.rotation = Quaternion.Euler(new Vector3(0, 45, 0));
-            }
-            else if (direction.z == 0) // WEST
-            {
-                origin.rotation = Quaternion.Euler(new Vector3(0, 90, 0));
-            }
-            else // direction.z == 1 *** NORTHWEST
-            {
-                origin.rotation = Quaternion.Euler(new Vector3(0, 135, 0));
-            }
+            dir = Attack.GetPoint();
+            direction = new Vector3(dir.x - origin.position.x + origin.localPosition.x,
+                                            dir.y - origin.position.y + origin.localPosition.y,
+                                            dir.z - origin.position.z + origin.localPosition.z);
         }
-        else //direction.x == 0
-        {
-            if (direction.z < 0) // SOUTH
-            {
-                origin.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
-            }
-            else if (direction.z == 0) // NO INPUT
-            {
-                //last input entered
-            }
-            else // direction.z == 1 *** NORTH
-            {
-                origin.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
-            }
-        }
-        #endregion
-        
+        origin.forward = direction;
+
         if (damScript.damage != damage)
         {
             damScript.damage = damage;
         }
+
         cooldownBar.updateSlider(getCooldownTime());
         StartCoroutine(Swing());
     }
@@ -109,7 +74,6 @@ public class GSword : Attack
     IEnumerator Swing()
     {
         AkSoundEngine.PostEvent("Sword_Swing", gameObject);
-
 
         hitbox.gameObject.SetActive(true);
         yield return new WaitForSeconds(hitboxTime);

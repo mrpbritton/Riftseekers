@@ -5,10 +5,10 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 
 public abstract class Attack : MonoBehaviour {
-    public enum attackType {
+    public enum attackType
+    {
         None, Basic, Secondary, QAbility, EAbility, RAbility, FAbility
     }
-
     float dmgMod = 1.0f;
     float cooldownMod = 1.0f;
     public AbilityLibrary.abilType abilType;
