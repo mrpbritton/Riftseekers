@@ -11,8 +11,7 @@ GameObject:
   - component: {fileID: 3527873712795885371}
   - component: {fileID: 7059240391197747775}
   - component: {fileID: 197639484464645333}
-  - component: {fileID: 3758131768021783314}
-  - component: {fileID: 7447141679430241165}
+  - component: {fileID: 4797749984219292983}
   m_Layer: 0
   m_Name: debris
   m_TagString: Untagged
@@ -64,6 +63,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 5b7b335c3a6a87840b2291aae63d3c25, type: 2}
+  - {fileID: 2100000, guid: 8f04861580bf1e043b89775133eba04e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,7 +85,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3758131768021783314
+--- !u!65 &4797749984219292983
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,21 +104,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 4.5788116, y: 0.91846085, z: 4.6512537}
-  m_Center: {x: -0.1374644, y: 0.0886091, z: 0.44643414}
---- !u!208 &7447141679430241165
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7070013672564381981}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 2.289, y: 0.45900002, z: 2.3260002}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -0.13700001, y: 0.089, z: 0.446}
-  m_TimeToStationary: 0.5
+  m_Size: {x: 4.5788116, y: 1.9384071, z: 4.6512537}
+  m_Center: {x: -0.06851375, y: 0, z: 0.26438487}
