@@ -55,18 +55,6 @@ public class bonuspicker : MonoBehaviour
         return randomNumber;
     }
 
-    private int verifyNumber(int number)
-    {
-        if(number == bonus1 || number == bonus2)
-        {
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-
     private void validateBonuses(int bonus)
     {
         if(bonus == 1)
