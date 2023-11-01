@@ -67,31 +67,46 @@ public class bonuspicker : MonoBehaviour
         }
     }
 
-    private void generateBonuses()
+    private void validateBonuses(int bonus)
     {
-        int buffer, verify = 10;
-        int picked = 0;
-        while (picked < 3)
+        if(bonus == 1)
         {
-            buffer = randomPicker();
-            verify = verifyNumber(buffer);
-            if (verify == 0 && bonus1 == 10)
+            if(bonus1 != bonus2 && bonus1 != bonus3)
             {
-                bonus1 = buffer;
-                picked++;
+                Debug.Log("Validated bonus 1");
+            } else
+            {
+                bonus1 = randomPicker();
+                validateBonuses(1);
             }
-            else if (verify == 0 && bonus2 == 10)
+        } else if(bonus == 2)
+        {
+            if (bonus2 != bonus1 && bonus2 != bonus3)
             {
-                bonus2 = buffer;
-                picked++;
+                Debug.Log("Validated bonus 2");
             }
-            else if (verify == 0 && bonus3 == 10)
+            else
             {
-                bonus3 = buffer;
-                picked++;
+                bonus2 = randomPicker();
+                validateBonuses(2);
             }
         }
-        Debug.Log("Bonuses are: " + bonus1 + bonus2 + bonus3);
+        else if(bonus == 3)
+        {
+            if (bonus3 != bonus1 && bonus3 != bonus2)
+            {
+                Debug.Log("Validated bonus 3");
+            }
+            else
+            {
+                bonus3 = randomPicker();
+                validateBonuses(3);
+            }
+        } else
+        {
+            Debug.LogError("Not a valid bonus!");
+        }
+       
     }
 
     public void setup()
@@ -99,14 +114,14 @@ public class bonuspicker : MonoBehaviour
         bonus1 = randomPicker();
         bonus2 = randomPicker();
         bonus3 = randomPicker();
-        //generateBonuses();
+        for(int c = 1; c < 4; c++)
+        {
+            validateBonuses(c);
+        }
         button1.text = descriptions[bonus1];
         button2.text = descriptions[bonus2];
         button3.text = descriptions[bonus3];
         Character.gameObject.GetComponent<PlayerMovement>().enabled = false;
-        //Character.gameObject.GetComponent<Basic_Proj>().enabled = false;
-        //Character.gameObject.GetComponent<GSword>().enabled = false;
-        // Character.enabled = false;
         bonusOpener();
     }
 
