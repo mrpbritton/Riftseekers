@@ -9,6 +9,8 @@ public class RoomLayoutRandomizer : MonoBehaviour
     public int levelSize;
     [Tooltip("The amount of tiles generated. Setting to higher than levelSize squared will break the program")]
     public int tileCount;
+    [Tooltip("The concentration that Obstacles will spawn")]
+    public int barrelDensity;
     private bool generating;
     private bool place;
     [SerializeField]
@@ -263,14 +265,6 @@ public class RoomLayoutRandomizer : MonoBehaviour
                 Debug.Log("Failsafe Triggered");
                 Debug.Log("RoomAdj: [" + roomX[room] + "," + roomY[room] + "]");
             }
-
-
-            for (int n = 0; n < roomAdj.Count; n++)
-            {
-                //Debug.Log("[" + roomX[n] + "," + roomY[n] + "]: " + roomAdj[n]);
-            }
-
-
         }
         for (int i = 0; i < listSize; i++)//puts the rooms in place physically
         {
@@ -279,28 +273,28 @@ public class RoomLayoutRandomizer : MonoBehaviour
                 if (tiles[i, j] != 0)
                 {
                     //Debug.Log(tiles[i, j]);
-                    GameObject thingTile = Instantiate(tile, new Vector3(4.25f * i - 2, 0, 4.25f * j - 2), Quaternion.identity);
-                    buildSources.Add(new NavMeshBuildSource() { shape = NavMeshBuildSourceShape.Box, size = new Vector3(4.25f,1,4.25f),transform = Matrix4x4.TRS(thingTile.transform.position, Quaternion.identity, Vector3.one)});
+                    GameObject thingTile = Instantiate(tile, new Vector3(4.25f * (i/Mathf.Sqrt(2) - j/Mathf.Sqrt(2)) , 0, 4.25f * (i/Mathf.Sqrt(2) + j/Mathf.Sqrt(2))), Quaternion.identity);
+                    buildSources.Add(new NavMeshBuildSource() { shape = NavMeshBuildSourceShape.Box, size = new Vector3(4.25f, .01f, 4.25f),transform = Matrix4x4.TRS(thingTile.transform.position + new Vector3(0,0,3),Quaternion.Euler(0,45,0), Vector3.one)});
 
                     //thingTile.transform.eulerAngles = new Vector3(0, 45, 0);
                     if (j == listSize - 1 || tiles[i, j + 1] == 0)
                     {
                         if (j < listSize - 2 && tiles[i, j + 2] != 0 || (j < listSize - 1 && i < listSize - 1 && tiles[i + 1, j + 1] != 0))
                         {
-                            GameObject thing = Instantiate(wall, new Vector3(thingTile.transform.position.x, 2, thingTile.transform.position.z + 2), Quaternion.identity);
-                            thing.transform.eulerAngles = new Vector3(0, 90, 0);
+                            GameObject thing = Instantiate(wall, new Vector3(thingTile.transform.position.x, .5f, thingTile.transform.position.z + 6), Quaternion.identity);
+                            thing.transform.eulerAngles = new Vector3(0, -90, 0);
 
                         }
                         else
                         {
-                            GameObject thing = Instantiate(wall, new Vector3(thingTile.transform.position.x, 1, thingTile.transform.position.z + 2), Quaternion.identity);
-                            thing.transform.eulerAngles = new Vector3(0, 90, 0);
+                            GameObject thing = Instantiate(wall, new Vector3(thingTile.transform.position.x, 2, thingTile.transform.position.z + 6), Quaternion.identity);
+                            thing.transform.eulerAngles = new Vector3(0, -90, 0);
 
                         }
                     }
-                    if (j == 0 || tiles[i, j - 1] == 0)//short wall
+                    if (j == 0 || tiles[i, j - 1] == 0)//short wall, bottom right
                     {
-                        GameObject thing = Instantiate(wall, new Vector3(thingTile.transform.position.x, 1, thingTile.transform.position.z - 2), Quaternion.identity);
+                        GameObject thing = Instantiate(wall, new Vector3(thingTile.transform.position.x, .5f, thingTile.transform.position.z), Quaternion.identity);
                         thing.transform.eulerAngles = new Vector3(0, 90, 0);
 
                     }
@@ -308,24 +302,24 @@ public class RoomLayoutRandomizer : MonoBehaviour
                     {
                         if ((i < 12 && tiles[i + 2, j] != 0) || (i < listSize - 1 && j < listSize - 1 && tiles[i + 1, j + 1] != 0))
                         {
-                            GameObject thing = Instantiate(wall, new Vector3(thingTile.transform.position.x + 2, 2, thingTile.transform.position.z), Quaternion.identity);
-                            //thing.transform.eulerAngles = new Vector3(0, 45, 0);
+                            GameObject thing = Instantiate(wall, new Vector3(thingTile.transform.position.x + 3, .5f, thingTile.transform.position.z + 3), Quaternion.identity);
+                            //thing.transform.eulerAngles = new Vector3(0, -90, 0);
                         }
                         else
                         {
-                            GameObject thing = Instantiate(wall, new Vector3(thingTile.transform.position.x + 2, 1, thingTile.transform.position.z), Quaternion.identity);
-                            //thing.transform.eulerAngles = new Vector3(0, 45, 0);
+                            GameObject thing = Instantiate(wall, new Vector3(thingTile.transform.position.x + 3, 2, thingTile.transform.position.z + 3), Quaternion.identity);
+                            //thing.transform.eulerAngles = new Vector3(0, -90, 0);
                         }
                     }
-                    if (i == 0 || tiles[i - 1, j] == 0)//short wall
+                    if (i == 0 || tiles[i - 1, j] == 0)//short wall, bottom left
                     {
-                        GameObject thing = Instantiate(wall, new Vector3(thingTile.transform.position.x - 2, 1, thingTile.transform.position.z), Quaternion.identity);
-                        //thing.transform.eulerAngles = new Vector3(0, 45, 0);
+                        GameObject thing = Instantiate(wall, new Vector3(thingTile.transform.position.x - 3, .5f, thingTile.transform.position.z + 3), Quaternion.identity);
+                        thing.transform.eulerAngles = new Vector3(0, 180, 0);
                     }
                 }
             }
         }
-        NavMeshData built = NavMeshBuilder.BuildNavMeshData(buildSettings, buildSources, new Bounds(new Vector3(levelSize * 2.5f, 0, levelSize * 2.5f), new Vector3(levelSize * 5, 10, levelSize * 5)), Vector3.zero, Quaternion.identity);
+        NavMeshData built = NavMeshBuilder.BuildNavMeshData(buildSettings, buildSources, new Bounds(new Vector3(0, 0, levelSize * 4.25f / Mathf.Sqrt(2)), new Vector3(levelSize * 5, 10, levelSize * 5)), Vector3.zero, Quaternion.identity);
         NavMesh.AddNavMeshData(built);
         for (int i = 0; i < roomAdj.Count; i++)
         {
@@ -383,6 +377,56 @@ public class RoomLayoutRandomizer : MonoBehaviour
                 Debug.Log("Adjacencies: " + chance + " failed");
                 return false;
             }
+        }
+    }
+    public bool WillBlockade(int X, int Y, int[,] tiles, int levelSize)
+    {
+        int tileCount = 0;
+        tiles[X, Y] = 0;//The tile we want to remove
+        List<int[]> tileQueue = new List<int[]>();
+        List<int[]> tilesChecked = new List<int[]>();
+
+        for (int i = 0; i < levelSize; i++)//How many tiles are in the level
+        {
+            for(int j = 0; j < levelSize; j++)
+            {
+                if(tiles[i,j] != 0)
+                {
+                    if (tileQueue.Count == 0)
+                        tileQueue.Add(new int[] { i, j });//put the first available tile into the Queue
+                    tileCount++;
+                }
+            }
+        }
+        while(tileQueue.Count != 0)//scan the grid from the first square
+        {
+            //For each loop
+            if(tileQueue[0][0] != 0 && tiles[tileQueue[0][0] - 1, tileQueue[0][1]] != 0 && !tileQueue.Contains(new int[] { tileQueue[0][0] - 1, tileQueue[0][1] }) && !tilesChecked.Contains(new int[] { tileQueue[0][0] - 1, tileQueue[0][1] }))//If not on the edge and there is a tile in the -i direction, and the list is not in the queue or checked tiles
+            {
+                tileQueue.Add(new int[] { tileQueue[0][0] - 1, tileQueue[0][1] });
+            }
+            if (tileQueue[0][1] != 0 && tiles[tileQueue[0][0], tileQueue[0][1] - 1] != 0 && !tileQueue.Contains(new int[] { tileQueue[0][0], tileQueue[0][1] - 1 }) && !tilesChecked.Contains(new int[] { tileQueue[0][0], tileQueue[0][1] - 1 }))//If not on the edge and there is a tile in the -j direction, and the list is not in the queue or checked tiles
+            {
+                tileQueue.Add(new int[] { tileQueue[0][0], tileQueue[0][1] + 1 });
+            }
+            if (tileQueue[0][0] != levelSize - 1 && tiles[tileQueue[0][0] + 1, tileQueue[0][1]] != 0 && !tileQueue.Contains(new int[] { tileQueue[0][0] + 1, tileQueue[0][1] }) && !tilesChecked.Contains(new int[] { tileQueue[0][0] + 1, tileQueue[0][1] }))//If not on the edge and there is a tile in the +i direction, and the list is not in the queue or checked tiles
+            {
+                tileQueue.Add(new int[] { tileQueue[0][0] + 1, tileQueue[0][1] });
+            }
+            if (tileQueue[0][1] != levelSize - 1 && tiles[tileQueue[0][0], tileQueue[0][1] + 1] != 0 && !tileQueue.Contains(new int[] { tileQueue[0][0], tileQueue[0][1] + 1 }) && !tilesChecked.Contains(new int[] { tileQueue[0][0], tileQueue[0][1] + 1 }))//If not on the edge and there is a tile in the +j direction, and the list is not in the queue or checked tiles
+            {
+                tileQueue.Add(new int[] { tileQueue[0][0], tileQueue[0][1] + 1 });
+            }
+            tilesChecked.Add(tileQueue[0]);
+            tileQueue.RemoveAt(0);
+        }
+        if(tilesChecked.Count == tileCount)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 }
