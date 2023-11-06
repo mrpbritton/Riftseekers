@@ -769,7 +769,7 @@ GameObject:
   - component: {fileID: 2118230443}
   - component: {fileID: 2118230444}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Generator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -802,16 +802,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e72d74f26717bbf4ba02b797ab9f786d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelSize: 20
-  tileCount: -343254
+  levelSize: 14
+  tileCount: 50
   barrelDensity: 0
   tile: {fileID: 3447058289229900703, guid: bd77e7aa599a81d4995d72f2cb45d843, type: 3}
   wall: {fileID: 1881960739195848541, guid: a0a9ee6504e09fc4287b21debd9383a8, type: 3}
-  floorTiles: []
-  walls: []
-  shortWalls: []
-  blockades: []
-  enemyTiles: []
+  floorTiles:
+  - {fileID: 3447058289229900703, guid: bd77e7aa599a81d4995d72f2cb45d843, type: 3}
+  walls:
+  - {fileID: 1881960739195848541, guid: a0a9ee6504e09fc4287b21debd9383a8, type: 3}
+  shortWalls:
+  - {fileID: 1454754179836737965, guid: b95ed38722641364cb2fa2587647a370, type: 3}
+  blockades:
+  - {fileID: 3447058289229900703, guid: 43e39ed4d8e8353429c6810295f0eaae, type: 3}
+  enemyTiles:
+  - {fileID: 3447058289229900703, guid: 6aabc71825ba80449ab8669f514cfad3, type: 3}
 --- !u!114 &2118230444
 MonoBehaviour:
   m_ObjectHideFlags: 0

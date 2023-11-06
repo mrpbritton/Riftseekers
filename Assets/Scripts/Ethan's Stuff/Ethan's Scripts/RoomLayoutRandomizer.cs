@@ -32,7 +32,7 @@ public class RoomLayoutRandomizer : MonoBehaviour
     void Randomize(int listSize, int roomCount)
     {
         int[,] tiles = new int[listSize, listSize];
-
+        int[,] altTiles = new int[listSize, listSize];
         /*Codes for 1st iteration of randomizer:
          * 0: unassigned
          * 1: starting room
@@ -266,6 +266,13 @@ public class RoomLayoutRandomizer : MonoBehaviour
                 Debug.Log("RoomAdj: [" + roomX[room] + "," + roomY[room] + "]");
             }
         }
+        for(int i = 0; i < levelSize; i++)
+        {
+            for(int j = 0; j < levelSize; j++)
+            {
+                altTiles[i, j] = tiles[i, j];
+            }
+        }
         for (int i = 0; i < listSize; i++)//puts the rooms in place physically
         {
             for (int j = 0; j < listSize; j++)
@@ -273,7 +280,8 @@ public class RoomLayoutRandomizer : MonoBehaviour
                 if (tiles[i, j] != 0)
                 {
                     //Debug.Log(tiles[i, j]);
-                    GameObject thingTile = Instantiate(tile, new Vector3(4.25f * (i/Mathf.Sqrt(2) - j/Mathf.Sqrt(2)) , 0, 4.25f * (i/Mathf.Sqrt(2) + j/Mathf.Sqrt(2))), Quaternion.identity);
+                    GameObject thingTile = PlaceTile(altTiles,i,j);
+                    //GameObject thingTile = Instantiate(tile, new Vector3(4.25f * (i/Mathf.Sqrt(2) - j/Mathf.Sqrt(2)) , 0, 4.25f * (i/Mathf.Sqrt(2) + j/Mathf.Sqrt(2))), Quaternion.identity);
                     buildSources.Add(new NavMeshBuildSource() { shape = NavMeshBuildSourceShape.Box, size = new Vector3(4.25f, .01f, 4.25f),transform = Matrix4x4.TRS(thingTile.transform.position + new Vector3(0,0,3),Quaternion.Euler(0,45,0), Vector3.one)});
 
                     //thingTile.transform.eulerAngles = new Vector3(0, 45, 0);
@@ -281,14 +289,12 @@ public class RoomLayoutRandomizer : MonoBehaviour
                     {
                         if (j < listSize - 2 && tiles[i, j + 2] != 0 || (j < listSize - 1 && i < listSize - 1 && tiles[i + 1, j + 1] != 0))
                         {
-                            GameObject thing = Instantiate(wall, new Vector3(thingTile.transform.position.x, .5f, thingTile.transform.position.z + 6), Quaternion.identity);
-                            thing.transform.eulerAngles = new Vector3(0, -90, 0);
-
+                            PlaceWall(thingTile, wall, true, 0, 6, -90);
                         }
                         else
                         {
-                            GameObject thing = Instantiate(wall, new Vector3(thingTile.transform.position.x, 2, thingTile.transform.position.z + 6), Quaternion.identity);
-                            thing.transform.eulerAngles = new Vector3(0, -90, 0);
+                            PlaceWall(thingTile, wall, false, 0, 6, -90);
+
 
                         }
                     }
@@ -321,15 +327,11 @@ public class RoomLayoutRandomizer : MonoBehaviour
         }
         NavMeshData built = NavMeshBuilder.BuildNavMeshData(buildSettings, buildSources, new Bounds(new Vector3(0, 0, levelSize * 4.25f / Mathf.Sqrt(2)), new Vector3(levelSize * 5, 10, levelSize * 5)), Vector3.zero, Quaternion.identity);
         NavMesh.AddNavMeshData(built);
-        for (int i = 0; i < roomAdj.Count; i++)
-        {
-            //Debug.Log("[" + roomX[i] + "," + roomY[i] + "]: " + roomAdj[i]);
-        }
     }
     public bool WillPlaceRoom(int X, int Y, int[,] tiles, int levelSize)
     {
         int chance = 0;//Figure out how many rooms the selected room is bordering
-        Debug.Log("Pos: [" + X + "," + Y + "]");
+        //Debug.Log("Pos: [" + X + "," + Y + "]");
         if (X != 0 && tiles[X - 1, Y] >= 1)
         {
             chance += 1;
@@ -349,19 +351,19 @@ public class RoomLayoutRandomizer : MonoBehaviour
         if (chance <= 1)//If bordering one or two rooms, then just place it
         {
 
-            Debug.Log("Adjacencies: " + chance + " placed");
+            //Debug.Log("Adjacencies: " + chance + " placed");
             return true;
         }
         else if (chance == 2)//If bordering 2 rooms, place it half of the time
         {
             if (Random.Range(0, 1) == 0)
             {
-                Debug.Log("Adjacencies: " + chance + " placed");
+                //Debug.Log("Adjacencies: " + chance + " placed");
                 return true;
             }
             else
             {
-                Debug.Log("Adjacencies: " + chance + " failed");
+                //Debug.Log("Adjacencies: " + chance + " failed");
                 return false;
             }
         }
@@ -369,20 +371,28 @@ public class RoomLayoutRandomizer : MonoBehaviour
         {
             if (Random.Range(0, 20) == 0)
             {
-                Debug.Log("Adjacencies: " + chance + " placed");
+                //Debug.Log("Adjacencies: " + chance + " placed");
                 return true;
             }
             else
             {
-                Debug.Log("Adjacencies: " + chance + " failed");
+                //Debug.Log("Adjacencies: " + chance + " failed");
                 return false;
             }
         }
     }
-    public bool WillBlockade(int X, int Y, int[,] tiles, int levelSize)
+    public bool WillBlockade(int X, int Y, int[,] grid, int levelSize)
     {
+        int[,] tileGrid = new int[levelSize,levelSize];
+        for(int i = 0; i < levelSize; i++)
+        {
+            for(int j = 0; j < levelSize; j++)
+            {
+                tileGrid[i, j] = grid[i, j];
+            }
+        }
         int tileCount = 0;
-        tiles[X, Y] = 0;//The tile we want to remove
+        tileGrid[X, Y] = 0;//The tile we want to remove
         List<int[]> tileQueue = new List<int[]>();
         List<int[]> tilesChecked = new List<int[]>();
 
@@ -390,7 +400,7 @@ public class RoomLayoutRandomizer : MonoBehaviour
         {
             for(int j = 0; j < levelSize; j++)
             {
-                if(tiles[i,j] != 0)
+                if(tileGrid[i,j] != 0)
                 {
                     if (tileQueue.Count == 0)
                         tileQueue.Add(new int[] { i, j });//put the first available tile into the Queue
@@ -398,27 +408,72 @@ public class RoomLayoutRandomizer : MonoBehaviour
                 }
             }
         }
+        int debug = 0;
         while(tileQueue.Count != 0)//scan the grid from the first square
         {
+            int[] tileCheck;
             //For each loop
-            if(tileQueue[0][0] != 0 && tiles[tileQueue[0][0] - 1, tileQueue[0][1]] != 0 && !tileQueue.Contains(new int[] { tileQueue[0][0] - 1, tileQueue[0][1] }) && !tilesChecked.Contains(new int[] { tileQueue[0][0] - 1, tileQueue[0][1] }))//If not on the edge and there is a tile in the -i direction, and the list is not in the queue or checked tiles
+            /*if(tileQueue[0][0] != 0 && tiles[tileQueue[0][0] - 1, tileQueue[0][1]] != 0 && !tileQueue.Contains(new int[] { tileQueue[0][0] - 1, tileQueue[0][1] }) && !tilesChecked.Contains(new int[] { tileQueue[0][0] - 1, tileQueue[0][1] }))//If not on the edge and there is a tile in the -i direction, and the list is not in the queue or checked tiles
             {
                 tileQueue.Add(new int[] { tileQueue[0][0] - 1, tileQueue[0][1] });
-            }
-            if (tileQueue[0][1] != 0 && tiles[tileQueue[0][0], tileQueue[0][1] - 1] != 0 && !tileQueue.Contains(new int[] { tileQueue[0][0], tileQueue[0][1] - 1 }) && !tilesChecked.Contains(new int[] { tileQueue[0][0], tileQueue[0][1] - 1 }))//If not on the edge and there is a tile in the -j direction, and the list is not in the queue or checked tiles
+            }*/
+            if(tileQueue[0][0] > 0)
             {
-                tileQueue.Add(new int[] { tileQueue[0][0], tileQueue[0][1] + 1 });
+                //Debug.Log("[" + tileQueue[0][0] + "," + tileQueue[0][1] + "]");
+                tileCheck = new int[] { tileQueue[0][0] - 1, tileQueue[0][1] };
+                //Debug.Log(tileCheck[0] + "," + tileCheck[1]);
+                if (tileGrid[tileCheck[0], tileCheck[1]] != 0)
+                {
+                    //Debug.Log("Check 2");
+
+                    if(!IsInList(tileQueue,tileCheck))
+                    {
+                        //Debug.Log("Check 3");
+                        if(!IsInList(tilesChecked,tileCheck))
+                        {
+                            //Debug.Log("Check 4");
+                            tileQueue.Add(new int[] { tileQueue[0][0] - 1, tileQueue[0][1] });
+                        }
+                    }
+                }
             }
-            if (tileQueue[0][0] != levelSize - 1 && tiles[tileQueue[0][0] + 1, tileQueue[0][1]] != 0 && !tileQueue.Contains(new int[] { tileQueue[0][0] + 1, tileQueue[0][1] }) && !tilesChecked.Contains(new int[] { tileQueue[0][0] + 1, tileQueue[0][1] }))//If not on the edge and there is a tile in the +i direction, and the list is not in the queue or checked tiles
+            if (tileQueue[0][1] != 0)
             {
-                tileQueue.Add(new int[] { tileQueue[0][0] + 1, tileQueue[0][1] });
+                tileCheck = new int[] { tileQueue[0][0], tileQueue[0][1] - 1 };
+                if (tileGrid[tileCheck[0], tileCheck[1]] != 0 && !IsInList(tileQueue, tileCheck) && !IsInList(tilesChecked, tileCheck))//If not on the edge and there is a tile in the -j direction, and the list is not in the queue or checked tiles
+                {
+                    tileQueue.Add(new int[] { tileQueue[0][0], tileQueue[0][1] - 1 });
+                }
             }
-            if (tileQueue[0][1] != levelSize - 1 && tiles[tileQueue[0][0], tileQueue[0][1] + 1] != 0 && !tileQueue.Contains(new int[] { tileQueue[0][0], tileQueue[0][1] + 1 }) && !tilesChecked.Contains(new int[] { tileQueue[0][0], tileQueue[0][1] + 1 }))//If not on the edge and there is a tile in the +j direction, and the list is not in the queue or checked tiles
+            if (tileQueue[0][0] != levelSize - 1)
             {
-                tileQueue.Add(new int[] { tileQueue[0][0], tileQueue[0][1] + 1 });
+                tileCheck = new int[] { tileQueue[0][0] + 1, tileQueue[0][1] };
+                if (tileGrid[tileCheck[0], tileCheck[1]] != 0 && !IsInList(tileQueue, tileCheck) && !IsInList(tilesChecked, tileCheck))//If not on the edge and there is a tile in the +i direction, and the list is not in the queue or checked tiles
+                {
+                    tileQueue.Add(new int[] { tileQueue[0][0] + 1, tileQueue[0][1] });
+                }
+            }
+            if (tileQueue[0][1] != levelSize - 1)//If not on the edge and there is a tile in the +j direction, and the list is not in the queue or checked tiles
+            {
+                tileCheck = new int[] { tileQueue[0][0] , tileQueue[0][1] + 1 };
+                if (tileGrid[tileCheck[0], tileCheck[1]] != 0 && !IsInList(tileQueue, tileCheck) && !IsInList(tilesChecked, tileCheck))
+                {
+                    tileQueue.Add(new int[] { tileQueue[0][0], tileQueue[0][1] + 1 });
+                }
             }
             tilesChecked.Add(tileQueue[0]);
+            //Debug.Log("[" + tilesChecked[^1][0] + "," + tilesChecked[^1][1] + "]");
             tileQueue.RemoveAt(0);
+            /*foreach(int[] item in tilesChecked)
+            {
+                Debug.Log("{" + item[0] + "," + item[1] + "}");
+            }*/
+            debug++;
+            if(debug > 100)
+            {
+                Debug.Log("Error");
+                return false;
+            }
         }
         if(tilesChecked.Count == tileCount)
         {
@@ -428,5 +483,75 @@ public class RoomLayoutRandomizer : MonoBehaviour
         {
             return false;
         }
+    }
+    public void PlaceWall(GameObject tile,GameObject wall, bool shorter, int left, int right, int spin)
+    {
+        float highPos = 2;
+        if (shorter)
+        {
+            highPos = .5f;
+        }
+        GameObject thing = Instantiate(wall, new Vector3(tile.transform.position.x + left, highPos, tile.transform.position.z + right), Quaternion.identity);
+        thing.transform.eulerAngles = new Vector3(0, spin, 0);
+        return;
+    }
+    public GameObject PlaceTile(int[,] grid,int X, int Y)//Will place a tile at the desired location, with a chance of being a blockade or an enemy tile
+    {
+        if (WillBlockade(X, Y, grid, levelSize) && Adjacencies(grid,levelSize,X,Y) != 1 && !(X == levelSize / 2 && Y == levelSize / 2))
+        {
+            if(Random.Range(0,4) == 0)
+            {
+                grid[X, Y] = 0;
+                if (Random.Range(0, 2) == 0)
+                {
+                    return Instantiate(blockades[0], new Vector3(4.25f * (X / Mathf.Sqrt(2) - Y / Mathf.Sqrt(2)), 0, 4.25f * (X / Mathf.Sqrt(2) + Y / Mathf.Sqrt(2))), Quaternion.identity);
+                }
+                else
+                {
+                    return Instantiate(enemyTiles[0], new Vector3(4.25f * (X / Mathf.Sqrt(2) - Y / Mathf.Sqrt(2)), 0, 4.25f * (X / Mathf.Sqrt(2) + Y / Mathf.Sqrt(2))), Quaternion.identity);
+
+                }
+            }
+            else
+            {
+                return Instantiate(floorTiles[0], new Vector3(4.25f * (X / Mathf.Sqrt(2) - Y / Mathf.Sqrt(2)), 0, 4.25f * (X / Mathf.Sqrt(2) + Y / Mathf.Sqrt(2))), Quaternion.identity);
+            }
+        }
+        else
+        {
+            return Instantiate(floorTiles[0], new Vector3(4.25f * (X / Mathf.Sqrt(2) - Y / Mathf.Sqrt(2)), 0, 4.25f * (X / Mathf.Sqrt(2) + Y / Mathf.Sqrt(2))), Quaternion.identity);
+        }
+    }
+    public bool IsInList(List<int[]> checker, int[] target)
+    {
+        foreach(int[] tile in checker)
+        {
+            if(tile[0] == target[0] && tile[1] == target[1])
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+    public int Adjacencies(int[,] tiles, int levelSize, int X, int Y)
+    {
+        int adjacent = 0;
+        if (X != 0 && tiles[X - 1, Y] != 0)
+        {
+            adjacent += 1;
+        }
+        if (X != levelSize - 1 && tiles[X + 1, Y] != 0)
+        {
+            adjacent += 1;
+        }
+        if (Y != levelSize - 1 && tiles[X, Y + 1] != 0)
+        {
+            adjacent += 1;
+        }
+        if (Y != 0 && tiles[X, Y - 1] != 0)
+        {
+            adjacent += 1;
+        }
+        return adjacent;
     }
 }
