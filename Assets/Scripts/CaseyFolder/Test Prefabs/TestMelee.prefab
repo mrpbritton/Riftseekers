@@ -366,7 +366,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 8
+  m_Speed: 12
   m_Acceleration: 50
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -395,6 +395,9 @@ MonoBehaviour:
   bMelee: 1
   bCover: 0
   bClose: 0
+  bDash: 0
+  bCanHit: 1
+  bAttacking: 0
   target: {fileID: 0}
   Gun: {fileID: 0}
   Player: {fileID: 0}
@@ -421,6 +424,9 @@ MonoBehaviour:
   currentHealth: 3
   hasItem: 0
   firstDamage: 0
+  hit: 0
+  bStunned: 0
+  stunTime: 2
   usedCollider: {fileID: 7663751353188508867}
   healthSlider: {fileID: 7942692018559525768}
 --- !u!1 &9055377851869249656
@@ -528,8 +534,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 0
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 2}
+  m_Center: {x: 0, y: 0, z: 0.5}
 --- !u!114 &5357085926368826721
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -258,8 +258,8 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 5
-  m_Acceleration: 8
+  m_Speed: 8
+  m_Acceleration: 25
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 10
@@ -287,6 +287,9 @@ MonoBehaviour:
   bMelee: 0
   bCover: 0
   bClose: 0
+  bDash: 0
+  bCanHit: 1
+  bAttacking: 0
   target: {fileID: 0}
   Gun: {fileID: 0}
   Player: {fileID: 0}
@@ -295,7 +298,7 @@ MonoBehaviour:
   enemy:
     serializedVersion: 2
     m_Bits: 439
-  coverTime: 1
+  coverTime: 5
   hitCooldown: 1
 --- !u!114 &7804190910279747688
 MonoBehaviour:
@@ -313,6 +316,9 @@ MonoBehaviour:
   currentHealth: 2
   hasItem: 0
   firstDamage: 0
+  hit: 0
+  bStunned: 0
+  stunTime: 1
   usedCollider: {fileID: 7663751353188508867}
   healthSlider: {fileID: 3857813249340620856}
 --- !u!1 &7963801440353076063
@@ -362,6 +368,8 @@ MonoBehaviour:
   projectile: {fileID: 2806661883677591592, guid: 3857254fd8fd16a4b97e304f31d3a168,
     type: 3}
   reloadTime: 2
+  bSeePlayer: 0
+  bStunned: 0
   Player: {fileID: 0}
   enemy:
     serializedVersion: 2
@@ -488,6 +496,16 @@ PrefabInstance:
     - target: {fileID: 224424607670795500, guid: ec506b7681e99c2479abe7ec43ffcd5f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008296335609969041, guid: ec506b7681e99c2479abe7ec43ffcd5f,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1008296335609969041, guid: ec506b7681e99c2479abe7ec43ffcd5f,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5250403076446709916, guid: ec506b7681e99c2479abe7ec43ffcd5f,
