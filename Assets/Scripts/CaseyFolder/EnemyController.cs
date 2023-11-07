@@ -31,6 +31,7 @@ public class EnemyController : MonoBehaviour
         loot = UnityEngine.Random.Range(0, enemies.Count);
         enemies[loot].GetComponent<EnemyHealth>().hasItem = true;
         total = enemies.Count;
+        enemySlider.updateSlider(total, enemies.Count);
     }
 
     private void OnEnable()
