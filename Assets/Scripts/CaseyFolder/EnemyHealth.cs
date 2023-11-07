@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour
     public float maxhealth;
     public float currentHealth;
     private float critHealth;
-    private bool foundCover;
+    private bool foundCover, bDead;
     public bool hasItem, firstDamage, hit, bStunned;
     [SerializeField]
     private float stunTime = 0.5f;
@@ -50,6 +50,8 @@ public class EnemyHealth : MonoBehaviour
 
         if(currentHealth <= 0)
         {
+            if (bDead) return;
+            bDead = true;
             deathAnimation();
 
             AkSoundEngine.PostEvent("Enemy_Death", gameObject);
@@ -89,18 +91,17 @@ public class EnemyHealth : MonoBehaviour
     private void deathAnimation()
     {
         onEnemyDeath(gameObject);
-        Debug.Log("dead");
         Destroy(gameObject);
     }
 
     IEnumerator stunned()
     {
         if(!GetComponent<EnemyMovement>().bMelee) GetComponentInChildren<EnemyFiring>().bStunned = true;
-        GetComponent<EnemyMovement>().bCanHit = false;
+        else GetComponent<EnemyMovement>().bCanHit = false;
         GetComponent<EnemyMovement>().agent.speed = 0;
         yield return new WaitForSeconds(stunTime);
         if (!GetComponent<EnemyMovement>().bMelee) GetComponentInChildren<EnemyFiring>().bStunned = false;
-        GetComponent<EnemyMovement>().bCanHit = true;
+        else GetComponent<EnemyMovement>().bCanHit = true;
         GetComponent<EnemyMovement>().agent.speed = 12;
         bStunned = false;
     }
