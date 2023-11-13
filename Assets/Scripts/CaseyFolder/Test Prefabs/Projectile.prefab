@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 446522487866787143}
   m_Layer: 0
   m_Name: Projectile
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
   - {fileID: 1367921637787629457}
   enemyMask:
     serializedVersion: 2
-    m_Bits: 64
+    m_Bits: 2112
 --- !u!114 &8397109625162933902
 MonoBehaviour:
   m_ObjectHideFlags: 0
