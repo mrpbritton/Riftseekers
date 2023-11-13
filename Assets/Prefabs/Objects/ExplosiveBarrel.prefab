@@ -24,14 +24,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 627367781350518051}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.38, y: 16.06, z: -4.43}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7351068589997143840}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7219115847487336413
 MonoBehaviour:
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e9b3aa31144034f9de190b3a4f738e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 5
+  radius: 3
   explosionEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -61,6 +61,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: barrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4366704268168203058, guid: 04a76ebe6393ee049bdd4ec45fee81fd,
+        type: 3}
+      propertyPath: m_TagString
+      value: ExplosionBarrel
       objectReference: {fileID: 0}
     - target: {fileID: 8105525300521834476, guid: 04a76ebe6393ee049bdd4ec45fee81fd,
         type: 3}
@@ -125,6 +130,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8868907909168569144}
+    - targetCorrespondingSourceObject: {fileID: 4366704268168203058, guid: 04a76ebe6393ee049bdd4ec45fee81fd,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3913925845074395227}
   m_SourcePrefab: {fileID: 100100000, guid: 04a76ebe6393ee049bdd4ec45fee81fd, type: 3}
 --- !u!1 &3089759456039087102 stripped
 GameObject:
@@ -148,7 +157,58 @@ MonoBehaviour:
   - Bullet
   ev:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 627367781350518051}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7219115847487336413}
+        m_TargetAssemblyTypeName: ExplosiveBarrelIntsance, Assembly-CSharp
+        m_MethodName: triggerExplosion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!54 &3913925845074395227
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3089759456039087102}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!4 &7351068589997143840 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8105525300521834476, guid: 04a76ebe6393ee049bdd4ec45fee81fd,
