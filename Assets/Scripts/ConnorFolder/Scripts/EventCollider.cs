@@ -6,11 +6,11 @@ using UnityEngine.Events;
 
 public class EventCollider : MonoBehaviour {
     [SerializeField] string[] checkedTags;
-    [SerializeField] UnityEvent ev;
+    [SerializeField] UnityEvent ev = new UnityEvent();
 
-    private void OnCollisionEnter(Collision col) {
-        Debug.Log(col.gameObject.tag);
-        if(checkedTags.Contains(col.gameObject.tag))
+    private void OnTriggerEnter(Collider col) {
+        if(checkedTags.Contains(col.gameObject.tag)) {
             ev.Invoke();
+        }
     }
 }

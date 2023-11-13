@@ -15,18 +15,13 @@ public class ExplosionManager : MonoBehaviour {
 
     [SerializeField] bool smoothScale = false;
 
-
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.H))
-            explode(FindObjectOfType<PlayerManager>().transform.position + new Vector3(3f, 0f, 3f), 5f, explosionState.None);
-    }
-
     private void Start() {
         DOTween.Init();
     }
 
     public void explode(Vector2 pos, float scale, explosionState state) {
         var obj = Instantiate(explosionPrefab.gameObject, pos, Quaternion.identity, null);
+        obj.transform.position = pos;
         if(!smoothScale)
             obj.transform.localScale = new Vector3(scale, scale, scale);
         else {

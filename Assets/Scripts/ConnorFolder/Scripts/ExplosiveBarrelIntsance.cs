@@ -12,7 +12,6 @@ public class ExplosiveBarrelIntsance : MonoBehaviour {
     }
 
     public void triggerExplosion() {
-        Debug.Log("Explosided");
         explosionEvent.Invoke();
     }
 }
