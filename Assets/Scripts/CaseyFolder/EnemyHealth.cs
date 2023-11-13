@@ -102,7 +102,7 @@ public class EnemyHealth : MonoBehaviour
         yield return new WaitForSeconds(stunTime);
         if (!GetComponent<EnemyMovement>().bMelee) GetComponentInChildren<EnemyFiring>().bStunned = false;
         else GetComponent<EnemyMovement>().bCanHit = true;
-        GetComponent<EnemyMovement>().agent.speed = 12;
+        GetComponent<EnemyMovement>().agent.speed = GetComponent<EnemyMovement>().enemySpeed;
         bStunned = false;
     }
 

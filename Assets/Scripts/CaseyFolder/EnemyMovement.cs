@@ -22,7 +22,7 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private int coverTime = 10;
     [SerializeField]
-    private float hitCooldown = 1;
+    public float hitCooldown = 1, enemySpeed;
 
 
 
@@ -31,7 +31,7 @@ public class EnemyMovement : MonoBehaviour
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         cover.AddRange(GameObject.FindGameObjectsWithTag("Cover"));
-        meleeAttack();
+        enemySpeed = agent.speed;
     }
 
     void Update()
@@ -120,13 +120,12 @@ public class EnemyMovement : MonoBehaviour
 
     IEnumerator attackCooldown()
     {
-        float i = agent.speed;
         agent.speed = 0;
         yield return new WaitForSeconds(hitCooldown);
         meleeHit.GetComponent<Collider>().enabled = true;
         yield return new WaitForSeconds(0.25f);
         meleeHit.GetComponent<Collider>().enabled = false;
-        agent.speed = i;
+        agent.speed = enemySpeed;
         bAttacking = false;
     }
 
