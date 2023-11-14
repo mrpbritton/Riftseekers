@@ -18,7 +18,7 @@ public class ExplosionManager : MonoBehaviour {
         DOTween.Init();
     }
 
-    public void explode(Vector2 pos, float scale, explosionState state) {
+    public void explode(Vector3 pos, float scale, explosionState state) {
         var obj = Instantiate(explosionPrefab.gameObject, pos, Quaternion.identity, null);
         obj.transform.position = pos;
         if(!smoothScale)
