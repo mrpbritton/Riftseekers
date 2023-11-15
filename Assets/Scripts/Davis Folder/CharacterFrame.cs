@@ -33,7 +33,7 @@ public class CharacterFrame : MonoBehaviour
     private PInput pInput;
     
     [Tooltip("If true, the player is using controller. False, K&M.")]
-    public bool isController;
+    private static bool isController;
     [Header("Attacks and Abilities")]
     public Attack basicAttack;
     public Attack secondAttack;
@@ -80,7 +80,6 @@ public class CharacterFrame : MonoBehaviour
     [Header("Managers")]
     public LevelManager transfer;
     public Health trueHealth;
-    private Animator playerAnimator;
 
     Coroutine attacker = null;
     bool bIsPressed;
@@ -115,9 +114,12 @@ public class CharacterFrame : MonoBehaviour
         pInput.Player.Ult.canceled += ctx => NotPressed();
         #endregion
 
+        pInput.Player.AnyController.performed += ctxt => 
+
         AddScript_GA.ChangeAttackType += ReplaceAttack;
     }
 
+    #region Attacks
     //  waits for the attack cooldown to finish
     IEnumerator attackWaiter(Attack curAttack) 
     {
@@ -168,7 +170,9 @@ public class CharacterFrame : MonoBehaviour
     {
         bIsPressed = false;
     }
+    #endregion
 
+    #region Sprites
     public void UpdateSprite(Vector3 direction)
     {
         #region Sprite Setting
@@ -296,6 +300,16 @@ public class CharacterFrame : MonoBehaviour
                 break;
         }
     }
+    #endregion
+
+    #region Controller Setting
+
+    private void ChangeMediums()
+    {
+
+    }
+
+    #endregion
 
     private void OnDisable()
     {
@@ -323,6 +337,7 @@ public class CharacterFrame : MonoBehaviour
         AddScript_GA.ChangeAttackType -= ReplaceAttack;
     }
     //tree to execute each respective attack
+
 
     public void UpdateStats()
     {
