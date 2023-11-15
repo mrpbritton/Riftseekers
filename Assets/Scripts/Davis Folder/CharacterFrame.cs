@@ -31,6 +31,9 @@ public enum AttackType
 public class CharacterFrame : MonoBehaviour
 {
     private PInput pInput;
+    
+    [Tooltip("If true, the player is using controller. False, K&M.")]
+    public bool isController;
     [Header("Attacks and Abilities")]
     public Attack basicAttack;
     public Attack secondAttack;

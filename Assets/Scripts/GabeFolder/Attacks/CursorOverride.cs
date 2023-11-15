@@ -13,7 +13,7 @@ public class CursorOverride : MonoBehaviour
     [SerializeField, Tooltip("Distance away from the player the cursor will be")]
     private float cursorDistance = 10;
     [SerializeField, Tooltip("Cursor object")]
-    private Transform cursorObject;
+    private RectTransform cursorObject;
     public CursorMode cursorMode = CursorMode.Auto;
     private Vector2 hotSpot = Vector2.zero; //default
 
@@ -36,14 +36,22 @@ public class CursorOverride : MonoBehaviour
 
         player = FindObjectOfType<CharacterController>().transform;
         pInput.Player.ControllerAim.performed += ctxt => SetController();
+        pInput.Player.ControllerAim.performed += ctxt => UpdateDirection(ctxt.ReadValue<Vector2>());
+        pInput.Player.ControllerAim.canceled += ctxt => ResetDefaults();
+    }
+
+    private void UpdateDirection(Vector2 newDir)
+    {
+        direction = new Vector3(newDir.x, newDir.y, 0);
+    }
+
+    private void ResetDefaults()
+    {
+        
     }
 
     private void Update()
     {
-        direction = pInput.Player.ControllerAim.ReadValue<Vector2>();
-        direction = new Vector3(direction.x, 0, direction.y);
-        direction = direction.normalized;
-        Debug.Log(direction);
 
         if (Input.mousePosition != cachedMousePosition && direction != Vector3.zero)
         {
@@ -73,9 +81,10 @@ public class CursorOverride : MonoBehaviour
                     cursorObject.gameObject.SetActive(true);
                 }
 
-                cursorObject.localPosition = new Vector3(direction.x * cursorDistance,
-                                                         direction.y,
-                                                         direction.z * cursorDistance);
+                cursorObject.localPosition = Camera.main.WorldToViewportPoint(direction * cursorDistance);
+                cursorObject.localPosition = new Vector3(cursorObject.localPosition.x,
+                                                         cursorObject.localPosition.y,
+                                                         0);
             }
         }
         else
