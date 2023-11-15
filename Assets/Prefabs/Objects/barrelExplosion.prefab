@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2904425727959692877}
   - component: {fileID: 1993990184417044436}
   - component: {fileID: 6462879255978313726}
+  - component: {fileID: 8613737193479121494}
   m_Layer: 0
   m_Name: barrelPartA
   m_TagString: Untagged
@@ -105,6 +106,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &8613737193479121494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 494160710627134461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1cb2431fcb3f0488ebbf8717c3fad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  mat: {fileID: 2100000, guid: daad44bffa511764691eeef8cdc933bd, type: 2}
+  time: 0
+  reference: _Opacity
 --- !u!1 &3415334262897423049
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,6 +134,7 @@ GameObject:
   - component: {fileID: 7006665879728796871}
   - component: {fileID: 718971208712306995}
   - component: {fileID: 1849028983737343982}
+  - component: {fileID: 1259967749911405469}
   m_Layer: 0
   m_Name: barrelPartC
   m_TagString: Untagged
@@ -210,6 +228,22 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1259967749911405469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3415334262897423049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1cb2431fcb3f0488ebbf8717c3fad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 1
+  mat: {fileID: 2100000, guid: daad44bffa511764691eeef8cdc933bd, type: 2}
+  time: 1
+  reference: _Opacity
 --- !u!1 &6272574049344777764
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +290,7 @@ GameObject:
   - component: {fileID: 1400895217105455812}
   - component: {fileID: 3738015391021585424}
   - component: {fileID: 1052739907289011387}
+  - component: {fileID: 4449623490105081803}
   m_Layer: 0
   m_Name: barrelPartB
   m_TagString: Untagged
@@ -349,3 +384,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &4449623490105081803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6367470859728606283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb1cb2431fcb3f0488ebbf8717c3fad9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
+  mat: {fileID: 2100000, guid: daad44bffa511764691eeef8cdc933bd, type: 2}
+  time: 0
+  reference: _Opacity
