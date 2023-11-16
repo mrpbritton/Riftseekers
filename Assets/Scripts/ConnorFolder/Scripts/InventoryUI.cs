@@ -21,8 +21,6 @@ public class InventoryUI : MonoBehaviour {
     bool draggedState = true;
     bool shown = false;
 
-    bool usingKeyboard = true;
-
     public static Action<List<ConItem>> applyActiveItemEffect = delegate { };
 
     private void Start() {
@@ -34,10 +32,12 @@ public class InventoryUI : MonoBehaviour {
         controls = new PInput();
         controls.Enable();
         controls.UI.Pause.performed += ctx => toggleShown();
+
+        InputManager.switchInput += swapState;
     }
 
     private void LateUpdate() {
-        if(usingKeyboard) {
+        if(InputManager.isUsingKeyboard()) {
             if(draggedState)
                 dragged.transform.position = Input.mousePosition;
             if(draggedState && Input.GetMouseButtonDown(0)) {
@@ -53,6 +53,7 @@ public class InventoryUI : MonoBehaviour {
     private void OnDisable() {
         if(controls != null)
             controls.Disable();
+        InputManager.switchInput -= swapState;
     }
 
     void toggleShown() {
@@ -77,6 +78,9 @@ public class InventoryUI : MonoBehaviour {
         for(int i = 0; i < inactiveSlots.Count; i++) {
             inactiveSlots[i].sprite = i < invCount ? Inventory.getItems(il)[i].image : emptySlotSprite;
         }
+
+        if(!InputManager.isUsingKeyboard())
+            inactiveSlots[0].GetComponent<Button>().Select();
     }
     void hide() {
         shown = false;
@@ -97,15 +101,12 @@ public class InventoryUI : MonoBehaviour {
     }
 
 
-    void swapState(bool usingController) {
-        usingKeyboard = !usingController;
-
+    void swapState(bool usingKeyboard) {
         if(!usingKeyboard) {
             inactiveSlots[0].GetComponent<Button>().Select();
         }
     }
 
-    //  keyboard
     public void setCurIndex(int ind) {
         if(ind >= Inventory.getItems(il).Count) {
             return;

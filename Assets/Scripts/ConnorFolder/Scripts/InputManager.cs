@@ -14,8 +14,8 @@ public class InputManager : MonoBehaviour {
         pInput.Enable();
 
         switchInput += updateInputState;
-        pInput.Player.AnyKey.performed += ctxt => switchInput(true);
-        pInput.Player.AnyController.performed += ctxt => switchInput(false);
+        pInput.Player.AnyKey.performed += ctxt => trySwitchInput(true);
+        pInput.Player.AnyController.performed += ctxt => trySwitchInput(false);
     }
 
     private void OnDisable() {
@@ -28,6 +28,11 @@ public class InputManager : MonoBehaviour {
 
     void updateInputState(bool b) {
         usingKeyboard = b;
+    }
+
+    void trySwitchInput(bool b) {
+        if(usingKeyboard != b)
+            switchInput(b);
     }
 
     public static bool isUsingKeyboard() {
