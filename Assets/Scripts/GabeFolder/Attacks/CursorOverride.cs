@@ -81,8 +81,8 @@ public class CursorOverride : MonoBehaviour
                     cursorObject.gameObject.SetActive(true);
                 }
 
-                /*cursorObject.localPosition = Camera.main.WorldToViewportPoint(direction * cursorDistance);*/
-                cursorObject.localPosition = direction * cursorDistance;
+                cursorObject.localPosition = Camera.main.WorldToViewportPoint(direction * cursorDistance);
+                //cursorObject.localPosition = direction * cursorDistance;
                 cursorObject.localPosition = new Vector3(cursorObject.localPosition.x,
                                                          cursorObject.localPosition.y,
                                                          0);
