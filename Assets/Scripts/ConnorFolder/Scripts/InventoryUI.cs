@@ -21,7 +21,9 @@ public class InventoryUI : MonoBehaviour {
     bool draggedState = true;
     bool shown = false;
 
-    public static Action<List<ConItem>> applyActiveItemEffect = delegate {};
+    bool usingKeyboard = true;
+
+    public static Action<List<ConItem>> applyActiveItemEffect = delegate { };
 
     private void Start() {
         il = FindObjectOfType<ItemLibrary>();
@@ -32,15 +34,19 @@ public class InventoryUI : MonoBehaviour {
         controls = new PInput();
         controls.Enable();
         controls.UI.Pause.performed += ctx => toggleShown();
-        //setActIndex(0);
     }
 
     private void LateUpdate() {
-        if(draggedState)
-            dragged.transform.position = Input.mousePosition;
-        if(draggedState && Input.GetMouseButtonDown(0)) {
-            draggedState = false;
-            dragged.gameObject.SetActive(false);
+        if(usingKeyboard) {
+            if(draggedState)
+                dragged.transform.position = Input.mousePosition;
+            if(draggedState && Input.GetMouseButtonDown(0)) {
+                draggedState = false;
+                dragged.gameObject.SetActive(false);
+            }
+        }
+        else {
+
         }
     }
 
@@ -81,7 +87,7 @@ public class InventoryUI : MonoBehaviour {
     }
 
     void checkActiveItems(int masterInd, Attack.attackType overtype) {
-        for(int i = 2; i >=0; i--) {
+        for(int i = 2; i >= 0; i--) {
             if(i != masterInd && Inventory.getActiveItem(i, il).overrideAbil == overtype) { // move back to inv
                 var temp = Inventory.getActiveItem(i, il);
                 Inventory.removeActiveItem(i);
@@ -90,6 +96,16 @@ public class InventoryUI : MonoBehaviour {
         }
     }
 
+
+    void swapState(bool usingController) {
+        usingKeyboard = !usingController;
+
+        if(!usingKeyboard) {
+            inactiveSlots[0].GetComponent<Button>().Select();
+        }
+    }
+
+    //  keyboard
     public void setCurIndex(int ind) {
         if(ind >= Inventory.getItems(il).Count) {
             return;

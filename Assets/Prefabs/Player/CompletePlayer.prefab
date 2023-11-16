@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: -9041257450676976811}
   - component: {fileID: 8886723061355660411}
   - component: {fileID: 130114435631846485}
+  - component: {fileID: 6965546520022807130}
   m_Layer: 0
   m_Name: CompletePlayer
   m_TagString: Untagged
@@ -242,6 +243,18 @@ MonoBehaviour:
   delay: 0
   eventName: Step_Left
   eventName2: Step_Right
+--- !u!114 &6965546520022807130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7430548844078876716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ec298495d897b243b2621dca11efa13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2935528525003935754
 PrefabInstance:
   m_ObjectHideFlags: 0
