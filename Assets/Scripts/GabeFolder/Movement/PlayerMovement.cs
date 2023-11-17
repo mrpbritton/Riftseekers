@@ -39,12 +39,13 @@ public class PlayerMovement : MonoBehaviour
     private Animator character;
     private Vector3 cachedDirection;
     private Vector3 dashDirection;
-    
+    public static Transform playerTrans;
 
     //<--- Click on the plus sign to expand
     #region Setup
     private void OnEnable()
     {
+        playerTrans = transform;
         pInput = new PInput();
         pInput.Enable();
         player = gameObject.GetComponent<CharacterController>();

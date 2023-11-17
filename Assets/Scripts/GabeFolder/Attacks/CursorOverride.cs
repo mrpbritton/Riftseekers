@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CursorOverride : MonoBehaviour
 {
+    [SerializeField]
+    private LineRenderer lRenderer;
     [SerializeField, Tooltip("Using controller or not")]
     private bool isController;
     [SerializeField, Tooltip("Cursor sprite")]
@@ -13,7 +15,7 @@ public class CursorOverride : MonoBehaviour
     [SerializeField, Tooltip("Distance away from the player the cursor will be")]
     private float cursorDistance = 10;
     [SerializeField, Tooltip("Cursor object")]
-    private RectTransform cursorObject;
+    private Transform cursorObject;
     public CursorMode cursorMode = CursorMode.Auto;
     private Vector2 hotSpot = Vector2.zero; //default
 
@@ -42,7 +44,8 @@ public class CursorOverride : MonoBehaviour
 
     private void UpdateDirection(Vector2 newDir)
     {
-        direction = new Vector3(newDir.x, newDir.y, 0);
+        //negative 1 lets it be accurate at the correct level
+        direction = new Vector3(newDir.x, -1, newDir.y);
     }
 
     private void ResetDefaults()
@@ -52,7 +55,11 @@ public class CursorOverride : MonoBehaviour
 
     private void Update()
     {
-
+        /*
+         * BUG:
+         * cursor disappears when click when controller plugged in.
+         * 
+         */
         if (Input.mousePosition != cachedMousePosition && direction != Vector3.zero)
         {
             cachedMousePosition = Input.mousePosition;
@@ -75,17 +82,19 @@ public class CursorOverride : MonoBehaviour
             }
             else
             {
-                Debug.Log(cursorObject.gameObject.activeInHierarchy);
+                //Debug.Log(cursorObject.gameObject.activeInHierarchy);
                 if (!cursorObject.gameObject.activeInHierarchy)
                 {
                     cursorObject.gameObject.SetActive(true);
                 }
 
-                cursorObject.localPosition = Camera.main.WorldToViewportPoint(direction * cursorDistance);
-                //cursorObject.localPosition = direction * cursorDistance;
-                cursorObject.localPosition = new Vector3(cursorObject.localPosition.x,
-                                                         cursorObject.localPosition.y,
-                                                         0);
+/*                lRenderer.SetPosition(0, PlayerMovement.playerTrans.position);
+                lRenderer.SetPosition(1, new Vector3(pInput.Player.ControllerAim.ReadValue<Vector2>().x, 0,
+                                                        pInput.Player.ControllerAim.ReadValue<Vector2>().y) *3
+                                                        + PlayerMovement.playerTrans.position);*/
+                //Vector3 originPos = Camera.main.WorldToViewportPoint(transform.position); //this is on the player
+                //Vector3 originPos = player.localPosition;
+                cursorObject.localPosition = direction * cursorDistance;
             }
         }
         else
