@@ -34,7 +34,7 @@ public class Basic_Proj : Attack
         cooldownBar.updateSlider(getCooldownTime());
 
         AkSoundEngine.PostEvent("Pistol_Fire_player", gameObject);
-        if (isController)
+        if(!InputManager.isUsingKeyboard())
         {
             dir = new Vector3(pInput.Player.ControllerAim.ReadValue<Vector2>().x, 0, pInput.Player.ControllerAim.ReadValue<Vector2>().y);
 
@@ -51,7 +51,7 @@ public class Basic_Proj : Attack
         }
         else
         {
-            dir = Attack.GetPoint();
+            dir = GetPoint();
             direction = new Vector3(dir.x - origin.position.x + origin.localPosition.x,
                                             dir.y - origin.position.y + origin.localPosition.y,
                                             dir.z - origin.position.z + origin.localPosition.z);

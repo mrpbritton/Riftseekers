@@ -41,7 +41,7 @@ public class Basic_Hitscan : Attack {
 
     public override void attack()
     {
-        Vector3 dir = Attack.GetPoint();
+        Vector3 dir = GetPoint();
         Vector3 direction = new Vector3(dir.x - origin.position.x + origin.localPosition.x, 
                                         dir.y - origin.position.y + origin.localPosition.y, 
                                         dir.z - origin.position.z + origin.localPosition.z);

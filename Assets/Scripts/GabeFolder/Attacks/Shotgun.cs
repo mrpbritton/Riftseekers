@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Shotgun : Attack
 {
@@ -25,6 +26,7 @@ public class Shotgun : Attack
     protected override void Start()
     {
         base.Start();
+        pInput.Enable();
         origin = GameObject.FindWithTag("GunOrigin").transform;
         bullet = FindFirstObjectByType<Bullet>(FindObjectsInactive.Include).gameObject;
     }
@@ -44,7 +46,7 @@ public class Shotgun : Attack
 
         Vector3 dir;
         Vector3 direction;
-        if (isController)
+        if (!InputManager.isUsingKeyboard())
         {
             dir = new Vector3(pInput.Player.ControllerAim.ReadValue<Vector2>().x, 0, pInput.Player.ControllerAim.ReadValue<Vector2>().y);
 
@@ -61,7 +63,7 @@ public class Shotgun : Attack
         }
         else
         {
-            dir = Attack.GetPoint();
+            dir = GetPoint();
             direction = new Vector3(dir.x - origin.position.x + origin.localPosition.x,
                                             dir.y - origin.position.y + origin.localPosition.y,
                                             dir.z - origin.position.z + origin.localPosition.z);

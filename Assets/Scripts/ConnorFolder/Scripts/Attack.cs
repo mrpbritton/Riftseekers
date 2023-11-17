@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.InputSystem;
 
 public abstract class Attack : MonoBehaviour {
     public enum attackType
@@ -14,9 +12,7 @@ public abstract class Attack : MonoBehaviour {
     public AbilityLibrary.abilType abilType;
     protected static CharacterFrame frame;
     private static int rayDistance = 100; //how far the ray will cast out
-    [HideInInspector]
-    public bool isController;
-    public PInput pInput;
+    protected PInput pInput;
     public PlayerUICanvas cooldownBar;
 
     public void updateStats(float dMod, float cdMod) {
@@ -29,33 +25,14 @@ public abstract class Attack : MonoBehaviour {
         pInput = new PInput();
         pInput.Enable();
         frame = FindAnyObjectByType<CharacterFrame>();
-
-        pInput.Player.AnyController.started += ctx => IsController();
-        pInput.Player.AnyKey.started += ctx => IsKeyboard();
     }
 
     protected void OnDisable()
     {
-        pInput.Player.AnyController.started -= ctx => IsController();
-        pInput.Player.AnyKey.started -= ctx => IsKeyboard();
         pInput.Disable();
     }
 
-    private void IsController()
-    {
-        if (isController) return; //dont set it if it is set
-
-        isController = true;
-    }
-
-    private void IsKeyboard()
-    {
-        if (!isController) return; //dont set it if it is set
-        Debug.Log("IsKeyboard");
-        isController = false;
-    }
-
-    public static Vector3 GetPoint()
+    protected Vector3 GetPoint()
     {
         //puts the cursor direction vector in the middle of the screen
         Vector3 cursorPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
