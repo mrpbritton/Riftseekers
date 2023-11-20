@@ -41,7 +41,7 @@ public class ExplosionManager : MonoBehaviour {
     }
     IEnumerator queueExplodeWaiter(Transform pos, float scale, explosionState state, float delay) {
         yield return new WaitForSeconds(delay);
-        if(transform != null)
+        if(pos != null)
             explode(pos.position, scale, state);
     }
 }

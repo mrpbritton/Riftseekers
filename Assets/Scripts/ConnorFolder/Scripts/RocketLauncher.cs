@@ -11,15 +11,11 @@ public class RocketLauncher : Attack {
     public override void attack() {
         var curRocket = Instantiate(rocketPreset.gameObject);
         var rocketEndExplosion = explosionManager.queueExplode(curRocket.transform, explosionSize, ExplosionManager.explosionState.HurtsEnemies, maxTravelTime);
-        curRocket.GetComponent<DoDamage>().extraRunOnHit.AddListener(delegate {
-            StopCoroutine(rocketEndExplosion);
-            explosionManager.explode(curRocket.transform.position, explosionSize, ExplosionManager.explosionState.HurtsEnemies); 
-            Destroy(curRocket.gameObject); 
-        });
+        curRocket.GetComponent<RocketInstance>().setup(rocketEndExplosion, explosionManager, explosionSize);
         curRocket.transform.position = transform.position;
         var dir = GetPoint() - transform.position;
         curRocket.transform.DOMove(transform.position + (dir.normalized * maxTravelDist), maxTravelTime);
-        Destroy(curRocket.gameObject, maxTravelTime + .01f);
+        Destroy(curRocket.gameObject, maxTravelTime + .1f);
     }
 
     public override void reset()
