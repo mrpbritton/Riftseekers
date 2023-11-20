@@ -718,6 +718,11 @@ PrefabInstance:
       objectReference: {fileID: 2473559326970361746}
     - target: {fileID: 1486973088829066078, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
+      propertyPath: qAbility
+      value: 
+      objectReference: {fileID: 3840245540853374335}
+    - target: {fileID: 1486973088829066078, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
       propertyPath: transfer
       value: 
       objectReference: {fileID: 819248734881027334}
@@ -835,6 +840,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3828959025880857685, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
+      insertIndex: 7
+      addedObject: {fileID: 3840245540853374335}
+    - targetCorrespondingSourceObject: {fileID: 3828959025880857685, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
       insertIndex: -1
       addedObject: {fileID: 3369389731291683691}
     - targetCorrespondingSourceObject: {fileID: 5468476014619769451, guid: 66562dc996ca2b5478f1b7f0a538878b,
@@ -860,6 +869,25 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4440314752643908563}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3840245540853374335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629408075775950726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efc7744011dc28a40ad8f734e58319cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilType: 1
+  cooldownBar: {fileID: 0}
+  rocketPreset: {fileID: 452768422209887091, guid: 5ebbfc75a74dc7449ab1ab2a569c983e,
+    type: 3}
+  maxTravelDist: 7
+  maxTravelTime: 0.5
+  explosionSize: 0
 --- !u!114 &3369389731291683691
 MonoBehaviour:
   m_ObjectHideFlags: 0

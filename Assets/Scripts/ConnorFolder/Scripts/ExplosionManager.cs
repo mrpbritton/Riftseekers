@@ -29,9 +29,19 @@ public class ExplosionManager : MonoBehaviour {
         }
     }
 
+    //  returns the index of the started queue in the queue list (so that we can stop them if we need to)
+    public Coroutine queueExplode(Transform pos, float scale, explosionState state, float delay) {
+        return StartCoroutine(queueExplodeWaiter(pos, scale, state, delay));
+    }
+
     IEnumerator endExplosion(Transform obj) {
         yield return new WaitForSeconds(holdTime);
         obj.DOScale(0f, disappearTime);
         Destroy(obj.gameObject, disappearTime + .01f);
+    }
+    IEnumerator queueExplodeWaiter(Transform pos, float scale, explosionState state, float delay) {
+        yield return new WaitForSeconds(delay);
+        if(transform != null)
+            explode(pos.position, scale, state);
     }
 }

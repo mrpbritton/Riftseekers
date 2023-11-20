@@ -14,6 +14,7 @@ public abstract class Attack : MonoBehaviour {
     private static int rayDistance = 100; //how far the ray will cast out
     protected PInput pInput;
     public PlayerUICanvas cooldownBar;
+    protected ExplosionManager explosionManager;
 
     public void updateStats(float dMod, float cdMod) {
         dmgMod = dMod;
@@ -25,6 +26,7 @@ public abstract class Attack : MonoBehaviour {
         pInput = new PInput();
         pInput.Enable();
         frame = FindAnyObjectByType<CharacterFrame>();
+        explosionManager = FindObjectOfType<ExplosionManager>();
     }
 
     protected void OnDisable()
