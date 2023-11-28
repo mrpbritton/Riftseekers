@@ -23,9 +23,9 @@ public enum CharStats
     cooldownMod,
     chargeLimit
 }
-public enum AttackType
+public enum AttackScript
 {
-    handgun, shotgun, laser
+    none, sword, handgun, shotgun, laser
 }
 
 public class CharacterFrame : MonoBehaviour
@@ -74,7 +74,6 @@ public class CharacterFrame : MonoBehaviour
     [Header("Sprites")]
     public Animator character;
     public SpriteRenderer characterSprite;
-    /*    public Sprite north;*/
     private CardinalDirection cachedDir;
 
     [Header("Managers")]
@@ -116,7 +115,7 @@ public class CharacterFrame : MonoBehaviour
 
         pInput.Player.AnyController.performed += ctxt => 
 
-        AddScript_GA.ChangeAttackType += ReplaceAttack;
+        //AddScript_GA.ChangeAttackType += ReplaceAttack;
     }
 
     #region Attacks
@@ -131,22 +130,66 @@ public class CharacterFrame : MonoBehaviour
         attacker = null;
     }
 
-    private void UpdateAttack(List<ConItem> items)
+    private void UpdateAttack()
     {
+        List<ConItem> activeItems = new();
 
+        for(int i = 0; i < 3; i++)
+        {
+            activeItems.Add(Inventory.getActiveItem(i, FindFirstObjectByType<ItemLibrary>()));
+        }
+     
+        foreach(ConItem item in activeItems)
+        {
+            if(item != null)
+            {
+                if(item.overrideAbil != Attack.attackType.None) //if it isn't a passive item
+                {
+                    ReplaceAttack(item.overrideAbil, item.attackScript);
+                }
+                else
+                {
+
+                }
+            }
+        }
     }
 
-    private void ReplaceAttack(AttackType aType)
+    private void ReplaceAttack(Attack.attackType aType, AttackScript aScript)
     {
         bIsPressed = false;
-        Destroy(secondAttack);
+
         switch(aType)
         {
-            case AttackType.handgun:
-                gameObject.AddComponent<Basic_Proj>();
-                secondAttack = GetComponent<Basic_Proj>();
+            case Attack.attackType.Basic:
+                Destroy(basicAttack);
                 break;
-            case AttackType.shotgun:
+            case Attack.attackType.Secondary:
+                Destroy(secondAttack);
+                break;
+            case Attack.attackType.EAbility:
+                Destroy(eAbility);
+                break;
+            case Attack.attackType.FAbility:
+                Destroy(fAbility);
+                break;
+            case Attack.attackType.RAbility:
+                Destroy(rAbility);
+                break;
+            case Attack.attackType.QAbility:
+                Destroy(qAbility);
+                break;
+            default: //this will also be none, cause this shouldn't happen
+                break;
+        }
+
+        switch(aScript)
+        {
+            case AttackScript.handgun:
+                gameObject.AddComponent<Handgun>();
+                secondAttack = GetComponent<Handgun>();
+                break;
+            case AttackScript.shotgun:
                 gameObject.AddComponent<Shotgun>();
                 secondAttack = GetComponent<Shotgun>();
                 break;
@@ -334,7 +377,7 @@ public class CharacterFrame : MonoBehaviour
         pInput.Player.Ult.canceled -= ctx => NotPressed();
         #endregion
 
-        AddScript_GA.ChangeAttackType -= ReplaceAttack;
+        //AddScript_GA.ChangeAttackType -= ReplaceAttack;
     }
     //tree to execute each respective attack
 

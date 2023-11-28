@@ -13,9 +13,10 @@ public class ConItem : ScriptableObject {
     public int value;
     [Tooltip("What this item looks like")]
     public Sprite image;
-    [Tooltip("What ability does this give the player")]
+    [Tooltip("What type of ability does this give the player")]
     public Attack.attackType overrideAbil = Attack.attackType.None;
-
+    [Tooltip("What the type of attack script this will give the player, if any")]
+    public AttackScript attackScript;
 
     public ConItem(ItemSaveData saveData) {
         title = saveData.title;

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Basic_Proj : Attack 
+public class Handgun : Attack 
 {
     [SerializeField, Tooltip("Used in a calculation to see how much damage dealt")]
     float damage = 1f;

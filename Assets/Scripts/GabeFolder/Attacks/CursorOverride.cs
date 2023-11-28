@@ -68,6 +68,8 @@ public class CursorOverride : MonoBehaviour
          * cursor disappears when click when controller plugged in.
          * 
          */
+
+
         if (Input.mousePosition != cachedMousePosition && direction != Vector3.zero)
         {
             cachedMousePosition = Input.mousePosition;
