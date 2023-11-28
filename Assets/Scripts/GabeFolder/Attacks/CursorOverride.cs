@@ -21,6 +21,7 @@ public class CursorOverride : MonoBehaviour
 
     private PInput pInput;
     private Vector3 direction;
+    private Vector3 originPos;
     private Transform player;
 
     private Vector3 cachedMousePosition;
@@ -45,7 +46,14 @@ public class CursorOverride : MonoBehaviour
     private void UpdateDirection(Vector2 newDir)
     {
         //negative 1 lets it be accurate at the correct level
-        direction = new Vector3(newDir.x, -1, newDir.y);
+        /*
+         *  THIS SHIT IS STILL BROKEN PLEASE FIX IT
+         * 
+         *  The y value has to go from 0 (at the bottom) to 1 (at the top)
+         *  animation curve from 0 - 1?
+         *  right now I have sin(5x/pi), which is close to one but not exactly
+         */
+        direction = new Vector3(newDir.x, Mathf.Sin(5*newDir.y/Mathf.PI) - 0.5f, newDir.y);
     }
 
     private void ResetDefaults()
@@ -76,7 +84,7 @@ public class CursorOverride : MonoBehaviour
                 player = FindObjectOfType<CharacterController>().transform;
             }
 
-            if(direction == Vector3.zero)
+            if(direction.x == 0 && direction.z == 0)
             {
                 cursorObject.gameObject.SetActive(false);
             }
@@ -93,8 +101,9 @@ public class CursorOverride : MonoBehaviour
                                                         pInput.Player.ControllerAim.ReadValue<Vector2>().y) *3
                                                         + PlayerMovement.playerTrans.position);*/
                 //Vector3 originPos = Camera.main.WorldToViewportPoint(transform.position); //this is on the player
-                //Vector3 originPos = player.localPosition;
-                cursorObject.localPosition = direction * cursorDistance;
+                originPos = player.localPosition;
+
+                cursorObject.localPosition = /*originPos +*/ direction * cursorDistance;
             }
         }
         else
