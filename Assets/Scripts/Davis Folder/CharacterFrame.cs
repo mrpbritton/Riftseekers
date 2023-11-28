@@ -113,7 +113,7 @@ public class CharacterFrame : MonoBehaviour
         pInput.Player.Ult.canceled += ctx => NotPressed();
         #endregion
 
-        pInput.Player.AnyController.performed += ctxt => 
+        //pInput.Player.AnyController.performed += ctxt => 
 
         //AddScript_GA.ChangeAttackType += ReplaceAttack;
     }
