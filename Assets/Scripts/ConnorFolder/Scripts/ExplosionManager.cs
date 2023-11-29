@@ -12,21 +12,27 @@ public class ExplosionManager : MonoBehaviour {
     [SerializeField] GameObject explosionPrefab;
     [SerializeField] float holdTime, disappearTime, growTime;
 
-    [SerializeField] bool smoothScale = false;
-
     private void Start() {
         DOTween.Init();
     }
 
     public void explode(Vector3 pos, float scale, explosionState state) {
+        explodeWithColor(pos, scale, state, Color.white);
+    }
+    public void explodeWithColor(Vector3 pos, float scale, explosionState state, Color c) {
         var obj = Instantiate(explosionPrefab.gameObject, pos, Quaternion.identity, null);
-        obj.transform.position = pos;
-        if(!smoothScale)
-            obj.transform.localScale = new Vector3(scale, scale, scale);
-        else {
-            obj.transform.DOScale(scale, growTime);
-            StartCoroutine(endExplosion(obj.transform));
+
+        //  sets color if there is a custom color
+        if(c != Color.white) {
+            var m = obj.GetComponent<ParticleSystemRenderer>().material.color = c;
+            foreach(var i in obj.GetComponentsInChildren<ParticleSystemRenderer>()) {
+                i.material.color = c;
+            }
         }
+
+        //  pos / scale
+        obj.transform.position = pos;
+        obj.transform.localScale = new Vector3(scale, scale, scale);
     }
 
     //  returns the index of the started queue in the queue list (so that we can stop them if we need to)

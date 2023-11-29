@@ -11,8 +11,6 @@ public class ExplosiveBarrelIntsance : MonoBehaviour {
     [SerializeField] float maxKnockback;
     [SerializeField] UnityEvent explosionEvent;
 
-    SphereCollider coll;
-
 
     private void OnTriggerEnter(Collider col) {
         if(col.gameObject.tag == "Player" && (state == ExplosionManager.explosionState.HurtsAll || state == ExplosionManager.explosionState.HurtsPlayer)) {
@@ -29,17 +27,14 @@ public class ExplosiveBarrelIntsance : MonoBehaviour {
     }
 
     private void Start() {
-        coll = GetComponent<SphereCollider>();
-        coll.radius = radius;
-        coll.enabled = false;
         explosionEvent.AddListener(delegate { FindObjectOfType<ExplosionManager>().explode(transform.position, radius, ExplosionManager.explosionState.HurtsAll); });
-        explosionEvent.AddListener(delegate { coll.enabled = true; Invoke("resetCol", .15f); });
     }
 
     public void triggerExplosion() {
         explosionEvent.Invoke();
     }
-    void resetCol() {
-        coll.enabled = false;
+
+    public void test() {
+        Debug.Log("here");
     }
 }

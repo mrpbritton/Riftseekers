@@ -13,8 +13,8 @@ public class RocketInstance : MonoBehaviour {
             if(!col.gameObject.CompareTag("Enemy")) {
                 AkSoundEngine.PostEvent("Object_Hit", gameObject);
             }
-            StopCoroutine(expCo);
             Debug.Log(col.gameObject.tag);
+            StopCoroutine(expCo);
             em.explode(transform.position, expSize, ExplosionManager.explosionState.HurtsEnemies);
             Destroy(gameObject, 0.0001f);
         }
