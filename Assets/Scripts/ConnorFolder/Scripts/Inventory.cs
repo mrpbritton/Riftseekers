@@ -39,6 +39,7 @@ public static class Inventory {
         }
     }
     public static void removeActiveItem(int slotInd) {
+        
         switch(slotInd) {
             case 0:
                 itemBag.activeItem1 = null;
@@ -76,9 +77,9 @@ public static class Inventory {
         itemBag.items.Clear();
     }
 
-    public static ConItem getItem(int i, ItemLibrary il) {
-        if(i < itemBag.items.Count)
-            return getItem(itemBag.items[i].toItem(il), il);
+    public static ConItem getItem(int index, ItemLibrary il) {
+        if(index < itemBag.items.Count)
+            return getItem(itemBag.items[index].toItem(il), il);
         return null;
     }
     public static ConItem getItem(ConItem i, ItemLibrary il) {

@@ -177,10 +177,13 @@ public class InventoryUI : MonoBehaviour {
         }
         //  otherwise, just remove the active item
         else
+        {
+            character.RemoveAbility(Inventory.getActiveItem(actIndex, il));
             Inventory.removeActiveItem(actIndex);
+        }
 
         //  adds the saved active item into the inventory if it's valid
-        if(temp != null)
+        if (temp != null)
             Inventory.addItem(temp);
 
         Inventory.saveInventory();

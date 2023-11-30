@@ -75,6 +75,8 @@ public class CharacterFrame : MonoBehaviour
     [Header("Managers")]
     public LevelManager transfer;
     public Health trueHealth;
+    [SerializeField, Tooltip("The scriptable object of the default stats")]
+    private DefaultStats_SO defaultStats;
 
     Coroutine attacker = null;
     bool bIsPressed;
@@ -85,7 +87,7 @@ public class CharacterFrame : MonoBehaviour
         health_s = GetComponent<Health>();
         move_s = GetComponent<PlayerMovement>();
 
-        //SaveData.wipe();
+        SaveData.wipe();
     }
 
     private void OnEnable()
@@ -136,7 +138,8 @@ public class CharacterFrame : MonoBehaviour
         {
             activeItems.Add(Inventory.getActiveItem(i, FindFirstObjectByType<ItemLibrary>()));
         }
-     
+
+
         foreach(ConItem item in activeItems)
         {
             if(item != null)
@@ -150,7 +153,78 @@ public class CharacterFrame : MonoBehaviour
                     ReplacePassive(item.passiveScript);
                 }
             }
+            else
+            {
+                FixAbility();
+            }
         }
+    }
+
+    /// <summary>
+    /// If any abilities are null, this will set them to the base ability
+    /// </summary>
+    private void FixAbility()
+    {
+        if(basicAttack == null)
+        {
+            gameObject.AddComponent<GSword>();
+            basicAttack = GetComponent<GSword>();
+        }
+        if(secondAttack == null)
+        {
+            gameObject.AddComponent<Handgun>();
+            secondAttack = GetComponent<Handgun>();
+        }
+        if(eAbility == null)
+        {
+
+        }
+        if(fAbility == null)
+        {
+
+        }
+        if (rAbility == null)
+        {
+
+        }
+        if (qAbility == null)
+        {
+
+        }
+    }
+
+    public void RemoveAbility(ConItem item)
+    {
+        switch (item.overrideAbil)
+        {
+            case Attack.attackType.Basic:
+                Destroy(basicAttack);
+                basicAttack = null;
+                break;
+            case Attack.attackType.Secondary:
+                Destroy(secondAttack);
+                secondAttack = null;
+                break;
+            case Attack.attackType.EAbility:
+                Destroy(eAbility);
+                eAbility = null;
+                break;
+            case Attack.attackType.FAbility:
+                Destroy(fAbility);
+                fAbility = null;
+                break;
+            case Attack.attackType.RAbility:
+                Destroy(rAbility);
+                rAbility = null;
+                break;
+            case Attack.attackType.QAbility:
+                Destroy(qAbility);
+                qAbility = null;
+                break;
+            default: //this will also be none, cause this shouldn't happen
+                break;
+        }
+        FixAbility();
     }
 
     private void ReplacePassive(PassiveScript pScript)
