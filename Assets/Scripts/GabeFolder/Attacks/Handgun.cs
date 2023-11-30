@@ -15,7 +15,12 @@ public class Handgun : Attack
     [SerializeField, Tooltip("Time in seconds it takes for bullet to die")]
     private float lifetime;
     private Vector3 cachedDir = new(1, 1, 1);
-
+    protected override void Start()
+    {
+        base.Start();
+        origin = GameObject.FindWithTag("GunOrigin").transform;
+        bullet = FindFirstObjectByType<Bullet>(FindObjectsInactive.Include).gameObject;
+    }
     public override attackType getAttackType() 
     {
         return attackType.Secondary;
@@ -31,7 +36,7 @@ public class Handgun : Attack
         Vector3 dir;
         Vector3 direction;
 
-        cooldownBar.updateSlider(getCooldownTime());
+        //cooldownBar.updateSlider(getCooldownTime());
 
         AkSoundEngine.PostEvent("Pistol_Fire_player", gameObject);
         if(!InputManager.isUsingKeyboard())
