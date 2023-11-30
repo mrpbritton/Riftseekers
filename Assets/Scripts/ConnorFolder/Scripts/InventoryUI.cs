@@ -14,6 +14,7 @@ public class InventoryUI : MonoBehaviour {
     ItemLibrary il;
     PInput controls;
     PlayerMovement pm;
+    CharacterFrame character;
 
     int curIndex = -1;
     int actIndex = 0;
@@ -26,6 +27,7 @@ public class InventoryUI : MonoBehaviour {
     private void Start() {
         il = FindObjectOfType<ItemLibrary>();
         pm = FindObjectOfType<PlayerMovement>();
+        character = FindObjectOfType<CharacterFrame>();
         Inventory.loadInventory();
         hide();
         dragged.gameObject.SetActive(false);
@@ -186,5 +188,6 @@ public class InventoryUI : MonoBehaviour {
         show();
         actIndex = -1;
         curIndex = -1;
+        character.UpdateAttack();
     }
 }

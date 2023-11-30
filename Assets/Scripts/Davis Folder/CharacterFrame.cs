@@ -23,10 +23,6 @@ public enum CharStats
     cooldownMod,
     chargeLimit
 }
-public enum AttackScript
-{
-    none, sword, handgun, shotgun, laser
-}
 
 public class CharacterFrame : MonoBehaviour
 {
@@ -88,6 +84,8 @@ public class CharacterFrame : MonoBehaviour
     {
         health_s = GetComponent<Health>();
         move_s = GetComponent<PlayerMovement>();
+
+        //SaveData.wipe();
     }
 
     private void OnEnable()
@@ -130,7 +128,7 @@ public class CharacterFrame : MonoBehaviour
         attacker = null;
     }
 
-    private void UpdateAttack()
+    public void UpdateAttack()
     {
         List<ConItem> activeItems = new();
 
@@ -147,18 +145,31 @@ public class CharacterFrame : MonoBehaviour
                 {
                     ReplaceAttack(item.overrideAbil, item.attackScript);
                 }
-                else
+                else //if it is a passive item
                 {
-
+                    ReplacePassive(item.passiveScript);
                 }
             }
         }
     }
 
+    private void ReplacePassive(PassiveScript pScript)
+    {
+        switch (pScript)
+        {
+            case PassiveScript.combatBoots:
+                Debug.Log("combatBoots");
+                var script = gameObject.AddComponent<CombatBoots>();
+                script.Equip(this);
+                break;
+            default:
+                Debug.LogError("Passive could not be added.");
+                break;
+        }
+    }
+
     private void ReplaceAttack(Attack.attackType aType, AttackScript aScript)
     {
-        bIsPressed = false;
-
         switch(aType)
         {
             case Attack.attackType.Basic:
@@ -198,6 +209,7 @@ public class CharacterFrame : MonoBehaviour
                 break;
         }
     }
+
     void performAttack(Attack curAttack) 
     {
         if(attacker != null) return;
