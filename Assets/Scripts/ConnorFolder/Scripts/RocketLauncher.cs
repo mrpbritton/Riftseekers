@@ -6,12 +6,12 @@ using DG.Tweening;
 public class RocketLauncher : Attack {
 
     [SerializeField] GameObject rocketPreset;
-    [SerializeField] float maxTravelDist, maxTravelTime, explosionSize;
+    [SerializeField] float maxTravelDist, maxTravelTime, explosionSize, explosionDmg, explosionKnockback;
 
     public override void attack() {
         var curRocket = Instantiate(rocketPreset.gameObject);
-        var rocketEndExplosion = explosionManager.queueExplode(curRocket.transform, explosionSize, ExplosionManager.explosionState.HurtsEnemies, maxTravelTime);
-        curRocket.GetComponent<RocketInstance>().setup(rocketEndExplosion, explosionManager, explosionSize);
+        var rocketEndExplosion = explosionManager.queueExplode(curRocket.transform, explosionSize, explosionDmg, explosionKnockback, ExplosionManager.explosionState.HurtsEnemies, maxTravelTime);
+        curRocket.GetComponent<RocketInstance>().setup(rocketEndExplosion, explosionManager, explosionSize, explosionDmg, explosionKnockback);
         curRocket.transform.position = transform.position;
         var dir = GetPoint() - transform.position;
         curRocket.transform.DOMove(transform.position + (dir.normalized * maxTravelDist), maxTravelTime);

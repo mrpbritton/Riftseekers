@@ -16,11 +16,12 @@ public class ExplosionManager : MonoBehaviour {
         DOTween.Init();
     }
 
-    public void explode(Vector3 pos, float scale, explosionState state) {
-        explodeWithColor(pos, scale, state, Color.white);
+    public void explode(Vector3 pos, float scale, float dmg, float knockback, explosionState state) {
+        explodeWithColor(pos, scale, dmg, knockback, state, Color.white);
     }
-    public void explodeWithColor(Vector3 pos, float scale, explosionState state, Color c) {
+    public void explodeWithColor(Vector3 pos, float scale, float dmg, float knockback, explosionState state, Color c) {
         var obj = Instantiate(explosionPrefab.gameObject, pos, Quaternion.identity, null);
+        obj.GetComponent<ExplosionCollider>().enableColliding(scale, dmg, knockback, state);
 
         //  sets color if there is a custom color
         if(c != Color.white) {
@@ -36,8 +37,8 @@ public class ExplosionManager : MonoBehaviour {
     }
 
     //  returns the index of the started queue in the queue list (so that we can stop them if we need to)
-    public Coroutine queueExplode(Transform pos, float scale, explosionState state, float delay) {
-        return StartCoroutine(queueExplodeWaiter(pos, scale, state, delay));
+    public Coroutine queueExplode(Transform pos, float scale, float dmg, float knockback, explosionState state, float delay) {
+        return StartCoroutine(queueExplodeWaiter(pos, scale, dmg, knockback, state, delay));
     }
 
     IEnumerator endExplosion(Transform obj) {
@@ -45,9 +46,9 @@ public class ExplosionManager : MonoBehaviour {
         obj.DOScale(0f, disappearTime);
         Destroy(obj.gameObject, disappearTime + .01f);
     }
-    IEnumerator queueExplodeWaiter(Transform pos, float scale, explosionState state, float delay) {
+    IEnumerator queueExplodeWaiter(Transform pos, float scale, float dmg, float knockback, explosionState state, float delay) {
         yield return new WaitForSeconds(delay);
         if(pos != null)
-            explode(pos.position, scale, state);
+            explode(pos.position, scale, dmg, knockback, state);
     }
 }

@@ -33,7 +33,7 @@ public class Bullet : MonoBehaviour
                 AkSoundEngine.PostEvent("Object_Hit", gameObject);
             }
             var hitOffset = (transform.position - playerTrans.position).normalized * 1f;
-            FindObjectOfType<ExplosionManager>().explodeWithColor(transform.position - hitOffset, .25f, ExplosionManager.explosionState.None, GetComponent<MeshRenderer>().material.color);
+            FindObjectOfType<ExplosionManager>().explodeWithColor(transform.position - hitOffset, .25f, 0f, 0f, ExplosionManager.explosionState.None, GetComponent<MeshRenderer>().material.color);
             Destroy(gameObject, 0.0001f);
         }
     }
