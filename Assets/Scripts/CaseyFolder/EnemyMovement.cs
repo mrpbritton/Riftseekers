@@ -13,7 +13,7 @@ public class EnemyMovement : MonoBehaviour
     public NavMeshAgent agent;
     public bool bMelee, bCover, bClose, bDash, bCanHit = true, bAttacking;
     [SerializeField]
-    private GameObject target = null, Gun, Player, meleeHit;
+    private GameObject Player, meleeHit;
     private RaycastHit hitInfo;
     [SerializeField]
     private List<GameObject> cover = new List<GameObject>();
@@ -23,6 +23,7 @@ public class EnemyMovement : MonoBehaviour
     private int coverTime = 10;
     [SerializeField]
     public float hitCooldown = 1, enemySpeed;
+    public GameObject target = null;
 
 
 

@@ -54,8 +54,8 @@ public class EnemyController : MonoBehaviour
     {
         if (deadEnemy.GetComponent<EnemyHealth>().hasItem)
         {
-            //GameObject go = PrefabUtility.InstantiatePrefab(Item) as GameObject;
-            //go.transform.position = deadEnemy.transform.position;
+            GameObject go = Instantiate(Item);
+            go.transform.position = deadEnemy.transform.position;
         }
         enemies.Remove(deadEnemy);
         if(enemies.Count == 0)
