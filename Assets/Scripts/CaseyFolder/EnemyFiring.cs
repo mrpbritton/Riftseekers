@@ -15,7 +15,7 @@ public class EnemyFiring : MonoBehaviour
     [SerializeField]
     private float reloadTime = 2f;
     private Quaternion rotation = Quaternion.identity;
-    public bool bSeePlayer, bStunned;
+    public bool bSeePlayer, bStunned, firing;
     private RaycastHit hitInfo;
     [SerializeField]
     private GameObject Player;
@@ -46,7 +46,12 @@ public class EnemyFiring : MonoBehaviour
     }
     IEnumerator Reloading()
     {
-        yield return new WaitForSeconds(reloadTime);
+        yield return new WaitForSeconds(reloadTime * (1f/4f));
+        firing = false;
+        yield return new WaitForSeconds(reloadTime * (2f/4f));
+        firing = true;
+        yield return new WaitForSeconds(reloadTime * (1f/4f));
+
         FireShot();
     }
 

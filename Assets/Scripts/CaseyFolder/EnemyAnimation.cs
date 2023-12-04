@@ -61,6 +61,13 @@ public class EnemyAnimation : MonoBehaviour
                     character.SetTrigger("StandN");
                     break;
                 }
+
+                if (GetComponent<EnemyMovement>().bMelee == false && GetComponentInChildren<EnemyFiring>().firing == true)
+                {
+                    character.SetTrigger("StandN");
+                    break;
+                }
+
                 character.SetTrigger("WalkN");
                 break;
 
@@ -70,6 +77,13 @@ public class EnemyAnimation : MonoBehaviour
                     character.SetTrigger("StandNE");
                     break;
                 }
+
+                if (GetComponent<EnemyMovement>().bMelee == false && GetComponentInChildren<EnemyFiring>().firing == true)
+                {
+                    character.SetTrigger("StandNE");
+                    break;
+                }
+
                 character.SetTrigger("WalkNE");
                 break;
 
@@ -79,6 +93,13 @@ public class EnemyAnimation : MonoBehaviour
                     character.SetTrigger("StandE");
                     break;
                 }
+
+                if (GetComponent<EnemyMovement>().bMelee == false && GetComponentInChildren<EnemyFiring>().firing == true)
+                {
+                    character.SetTrigger("StandE");
+                    break;
+                }
+
                 character.SetTrigger("WalkE");
                 break;
 
@@ -88,6 +109,13 @@ public class EnemyAnimation : MonoBehaviour
                     character.SetTrigger("StandSE");
                     break;
                 }
+
+                if (GetComponent<EnemyMovement>().bMelee == false && GetComponentInChildren<EnemyFiring>().firing == true)
+                {
+                    character.SetTrigger("StandSE");
+                    break;
+                }
+
                 character.SetTrigger("WalkSE");
                 break;
 
@@ -97,6 +125,13 @@ public class EnemyAnimation : MonoBehaviour
                     character.SetTrigger("StandS");
                     break;
                 }
+
+                if (GetComponent<EnemyMovement>().bMelee == false && GetComponentInChildren<EnemyFiring>().firing == true)
+                {
+                    character.SetTrigger("StandS");
+                    break;
+                }
+
                 character.SetTrigger("WalkS");
                 break;
 
@@ -106,6 +141,13 @@ public class EnemyAnimation : MonoBehaviour
                     character.SetTrigger("StandSW");
                     break;
                 }
+
+                if (GetComponent<EnemyMovement>().bMelee == false && GetComponentInChildren<EnemyFiring>().firing == true)
+                {
+                    character.SetTrigger("StandSW");
+                    break;
+                }
+
                 character.SetTrigger("WalkSW");
                 break;
 
@@ -115,6 +157,13 @@ public class EnemyAnimation : MonoBehaviour
                     character.SetTrigger("StandW");
                     break;
                 }
+
+                if (GetComponent<EnemyMovement>().bMelee == false && GetComponentInChildren<EnemyFiring>().firing == true)
+                {
+                    character.SetTrigger("StandW");
+                    break;
+                }
+
                 character.SetTrigger("WalkW");
                 break;
 
@@ -124,6 +173,13 @@ public class EnemyAnimation : MonoBehaviour
                     character.SetTrigger("StandNW");
                     break;
                 }
+
+                if (GetComponent<EnemyMovement>().bMelee == false && GetComponentInChildren<EnemyFiring>().firing == true)
+                {
+                    character.SetTrigger("StandNW");
+                    break;
+                }
+
                 character.SetTrigger("WalkNW");
                 break;
 
