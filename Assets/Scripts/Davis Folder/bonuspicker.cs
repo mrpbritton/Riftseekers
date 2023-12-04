@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using TMPro;
@@ -44,7 +45,7 @@ public class bonuspicker : MonoBehaviour
     public void bonusCloser()
     {
         AkSoundEngine.PostEvent("Bonus_Menu_Close", gameObject);
-
+        EventSystem.current.SetSelectedGameObject(null);
 
         StartCoroutine(animationPlay("close", 1f));
     }
