@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 282965111988847313}
   - component: {fileID: 2150473090455007405}
   - component: {fileID: 1693859015347450626}
+  - component: {fileID: 551689998357309494}
   m_Layer: 0
   m_Name: tileBlankHoleD
   m_TagString: Untagged
@@ -126,3 +127,24 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 986067080026672646, guid: e096755f2ba711b48aa83aded9af85c1, type: 3}
+--- !u!65 &551689998357309494
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6077742279345475631}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 1, z: 3}
+  m_Center: {x: 0, y: 0.5, z: 3}
