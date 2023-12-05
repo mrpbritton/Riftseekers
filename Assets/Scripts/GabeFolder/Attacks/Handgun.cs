@@ -33,12 +33,13 @@ public class Handgun : Attack
 
     public override void attack()
     {
+        AkSoundEngine.PostEvent("Pistol_Fire_player", gameObject);
+
         Vector3 dir;
         Vector3 direction;
 
         //cooldownBar.updateSlider(getCooldownTime());
 
-        AkSoundEngine.PostEvent("Pistol_Fire_player", gameObject);
         if(!InputManager.isUsingKeyboard())
         {
             dir = new Vector3(pInput.Player.ControllerAim.ReadValue<Vector2>().x, 0, pInput.Player.ControllerAim.ReadValue<Vector2>().y);

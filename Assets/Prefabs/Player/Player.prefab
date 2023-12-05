@@ -318,6 +318,7 @@ MonoBehaviour:
   characterSprite: {fileID: 7141659815347595475}
   transfer: {fileID: 0}
   trueHealth: {fileID: 1065124068231099649}
+  defaultStats: {fileID: 0}
 --- !u!114 &1065124068231099649
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,7 +393,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilType: 4
-  isController: 0
   cooldownBar: {fileID: 0}
   damage: 1
   baseCooldown: 0.4
@@ -428,7 +428,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilType: 3
-  isController: 0
   cooldownBar: {fileID: 0}
   damage: 1.5
   baseCooldown: 1
@@ -864,6 +863,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  extraRunOnHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!54 &5255737075559362343
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1187,6 +1189,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  extraRunOnHit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &8649922539419105296 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5fd60ac9ed52a0942a7ad764c8782fe4,

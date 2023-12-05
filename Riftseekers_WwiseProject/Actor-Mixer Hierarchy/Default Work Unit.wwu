@@ -363,9 +363,16 @@
 								<MediaID ID="165008366"/>
 							</MediaIDList>
 						</AudioFileSource>
+						<AudioFileSource Name="Footstep_Left_V2" ID="{68376062-7167-4C00-9FA8-FCF26D3B09F1}">
+							<Language>SFX</Language>
+							<AudioFile>Footstep_Left_V2.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="671603960"/>
+							</MediaIDList>
+						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="Footstep_Left" ID="{121A0ABC-10EE-420A-8964-EE45482EA62F}" Platform="Linked"/>
+						<ActiveSource Name="Footstep_Left_V2" ID="{68376062-7167-4C00-9FA8-FCF26D3B09F1}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="Step_Right" ID="{3C25F201-6741-44FE-8619-AAF180C291EF}" ShortID="139036123">
@@ -392,9 +399,16 @@
 								<MediaID ID="620325535"/>
 							</MediaIDList>
 						</AudioFileSource>
+						<AudioFileSource Name="Footstep_Right_V2" ID="{B0589A69-9FA5-4762-8DE8-8F1DCFD498CB}">
+							<Language>SFX</Language>
+							<AudioFile>Footstep_Right_V2.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="193276810"/>
+							</MediaIDList>
+						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="Footstep_Right" ID="{2623C9C2-0171-4C08-A804-76F5FC255D24}" Platform="Linked"/>
+						<ActiveSource Name="Footstep_Right_V2" ID="{B0589A69-9FA5-4762-8DE8-8F1DCFD498CB}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="Health_Pickup" ID="{B08D2C5E-50C3-4F58-93C1-823773005CD1}" ShortID="186626665">
@@ -542,9 +556,16 @@
 								<MediaID ID="802630809"/>
 							</MediaIDList>
 						</AudioFileSource>
+						<AudioFileSource Name="Bonus_Menu_Open_V2" ID="{A03BF339-837C-411E-A3C0-B6D0634C0493}">
+							<Language>SFX</Language>
+							<AudioFile>Bonus_Menu_Open_V2.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="532593984"/>
+							</MediaIDList>
+						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="Bonus_Menu_Open" ID="{D23355BC-AFB7-48EA-8222-059AAB93FFDF}" Platform="Linked"/>
+						<ActiveSource Name="Bonus_Menu_Open_V2" ID="{A03BF339-837C-411E-A3C0-B6D0634C0493}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="Bonus_Menu_Close" ID="{A4570CBC-7736-493F-A32E-44E4F36D0808}" ShortID="746814418">
@@ -571,9 +592,16 @@
 								<MediaID ID="554736938"/>
 							</MediaIDList>
 						</AudioFileSource>
+						<AudioFileSource Name="Bonus_Menu_Close_V2" ID="{204901B6-ECA0-4397-B3C2-BC8272BFE90C}">
+							<Language>SFX</Language>
+							<AudioFile>Bonus_Menu_Close_V2.wav</AudioFile>
+							<MediaIDList>
+								<MediaID ID="363797098"/>
+							</MediaIDList>
+						</AudioFileSource>
 					</ChildrenList>
 					<ActiveSourceList>
-						<ActiveSource Name="Bonus_Menu_Close" ID="{97D7BDCD-DDD1-4DD8-A290-4D12A81C0315}" Platform="Linked"/>
+						<ActiveSource Name="Bonus_Menu_Close_V2" ID="{204901B6-ECA0-4397-B3C2-BC8272BFE90C}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
 				<Sound Name="Menu_Highlight" ID="{6C8DCDD8-E13A-4A69-87EB-1F2511FF391E}" ShortID="647434107">
@@ -658,6 +686,7 @@
 				</Sound>
 				<Sound Name="LevelMusic1" ID="{61D8D109-46CF-4ACB-B393-E43F4144F6C1}" ShortID="87358991">
 					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
 						<Property Name="Volume" Type="Real64">
 							<ValueList>
 								<Value>-14</Value>
