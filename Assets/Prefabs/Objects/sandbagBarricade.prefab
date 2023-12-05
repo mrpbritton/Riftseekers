@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2919201852171850121}
   - component: {fileID: 4118951353521571132}
   - component: {fileID: 6721528191003688134}
+  - component: {fileID: 642647475910799406}
   m_Layer: 0
   m_Name: sandbagBarricade
   m_TagString: Untagged
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &642647475910799406
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6214093114120501123}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6.5614977, y: 1.5, z: 1.75}
+  m_Center: {x: 0, y: 0.036818832, z: 0}

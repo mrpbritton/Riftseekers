@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8173275617315257658}
   - component: {fileID: 7363888155748249304}
   - component: {fileID: 7499327284922852923}
+  - component: {fileID: 898444049057803579}
   m_Layer: 0
   m_Name: barCounter
   m_TagString: Untagged
@@ -83,3 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &898444049057803579
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6939103144335827032}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 9.285281, y: 2.6499999, z: 4.65}
+  m_Center: {x: 0, y: 1.3249999, z: 1.925}
