@@ -22,7 +22,7 @@
 				<Bus Id="3803692087" Name="Master Audio Bus"/>
 			</Busses>
 		</SoundBank>
-		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{D4979A97-9E32-1BF6-D281-75876A92672D}">
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{C5A89451-1C00-5386-EFA5-0B2C7C4CC2A3}">
 			<ShortName>Main</ShortName>
 			<Path>Main.bnk</Path>
 			<Media>
@@ -72,7 +72,7 @@
 				</File>
 				<File Id="417615081" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>GunshotV2.wav</ShortName>
-					<CachePath>SFX/GunshotV2_08509CE5.wem</CachePath>
+					<CachePath>SFX/GunshotV2_9DA3B392.wem</CachePath>
 				</File>
 				<File Id="425455040" Language="SFX" Streaming="false" Location="Memory">
 					<ShortName>Enemy_Footsteps.wav</ShortName>
@@ -191,7 +191,7 @@
 						<MediaRef Id="748818982"/>
 					</MediaRefs>
 				</Event>
-				<Event Id="1139050097" Name="Pistol_Fire_player" DurationType="OneShot" DurationMin="1.1751323" DurationMax="1.1751323">
+				<Event Id="1139050097" Name="Pistol_Fire_player" DurationType="OneShot" DurationMin="1.0478042" DurationMax="1.0478042">
 					<MediaRefs>
 						<MediaRef Id="417615081"/>
 					</MediaRefs>
@@ -229,5 +229,5 @@
 			</Events>
 		</SoundBank>
 	</SoundBanks>
-	<FileHash>{934F7BDB-3B9F-110F-D6E3-5EAA18DFE113}</FileHash>
+	<FileHash>{B4CCAD25-ADA8-F374-1D88-60B3A03541FF}</FileHash>
 </SoundBanksInfo>
