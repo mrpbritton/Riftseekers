@@ -344,7 +344,7 @@ Transform:
   - {fileID: 5701483791246596465}
   - {fileID: 4124214301755376211}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 153
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4865779752117141236
 MonoBehaviour:
@@ -715,6 +715,12 @@ PrefabInstance:
       propertyPath: character
       value: 
       objectReference: {fileID: 4807824780061092648}
+    - target: {fileID: 1486973088829066078, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
+      propertyPath: defaultStats
+      value: 
+      objectReference: {fileID: 11400000, guid: d093f209e85069143b3341cf8898a80e,
+        type: 2}
     - target: {fileID: 2755336133540598544, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
       propertyPath: cooldownBar
