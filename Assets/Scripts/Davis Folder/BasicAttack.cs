@@ -18,7 +18,7 @@ public class BasicAttack : Attack
         Debug.Log("Basic Attack Performed");
     }*/
 
-    public override void anim()
+    public override void anim(Animator anim, bool reset)
     {
     }
     public override void attack()

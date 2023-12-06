@@ -63,7 +63,7 @@ public class Sword : Attack
     public override void reset()
     {
     }
-    public override void anim()
+    public override void anim(Animator anim, bool reset)
     {
     }
     public override attackType getAttackType()

@@ -25,7 +25,7 @@ public class DashAttack : Attack {
     {
     }
 
-    public override void anim()
+    public override void anim(Animator anim, bool reset)
     {
     }
     public override attackType getAttackType() {

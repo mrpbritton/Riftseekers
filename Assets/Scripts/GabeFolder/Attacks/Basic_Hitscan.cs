@@ -69,7 +69,7 @@ public class Basic_Hitscan : Attack {
     {
     }
 
-    public override void anim()
+    public override void anim(Animator anim, bool reset)
     {
     }
     protected override float getCooldownTime() 

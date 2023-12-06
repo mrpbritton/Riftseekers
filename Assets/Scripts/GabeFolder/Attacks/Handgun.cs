@@ -31,7 +31,7 @@ public class Handgun : Attack
         return damage * frame.attackDamage;
     }
 
-    public override void anim()
+    public override void anim(Animator anim, bool reset)
     {
     }
     public override void attack()

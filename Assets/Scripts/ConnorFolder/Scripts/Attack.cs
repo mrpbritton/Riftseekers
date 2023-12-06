@@ -46,7 +46,12 @@ public abstract class Attack : MonoBehaviour {
 
     public abstract attackType getAttackType();
     public abstract void attack();
-    public abstract void anim();
+    /// <summary>
+    /// This is called in an attack to execute the correct animation.
+    /// </summary>
+    /// <param name="anim">The animator of the character</param>
+    /// <param name="reset">If true, the triggers will be set to go back to normal</param>
+    public abstract void anim(Animator anim, bool reset);
     public abstract void reset();
     protected abstract float getDamage();
     protected abstract float getCooldownTime();   //  NOTE: this does nothing atm

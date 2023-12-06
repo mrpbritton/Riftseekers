@@ -18,7 +18,7 @@ public class GSword : Attack
     private DoDamage damScript;
     private Vector3 direction; //what the direction currently is
     private Vector3 cachedDir; //filtered direction; cannot be zero
-    private CardinalDirection cardDir;
+    private CardinalDirection cardDir = CardinalDirection.east;
     protected override void Start()
     {
         base.Start();
@@ -36,9 +36,72 @@ public class GSword : Attack
         return damage * frame.attackDamage;
     }
 
-    public override void anim()
+    public override void anim(Animator anim, bool reset)
     {
-        
+        if(reset)
+        {
+            switch (cardDir)
+            {
+                case CardinalDirection.east:
+                    anim.SetTrigger("MeleeEStop");
+                    break;
+                case CardinalDirection.north:
+                    anim.SetTrigger("MeleeNStop");
+                    break;
+                case CardinalDirection.south:
+                    anim.SetTrigger("MeleeSStop");
+                    break;
+                case CardinalDirection.west:
+                    anim.SetTrigger("MeleeWStop");
+                    break;
+                case CardinalDirection.northEast:
+                    anim.SetTrigger("MeleeNEStop");
+                    break;
+                case CardinalDirection.northWest:
+                    anim.SetTrigger("MeleeNWStop");
+                    break;
+                case CardinalDirection.southEast:
+                    anim.SetTrigger("MeleeSEStop");
+                    break;
+                case CardinalDirection.southWest:
+                    anim.SetTrigger("MeleeSWStop");
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            switch (cardDir)
+            {
+                case CardinalDirection.east:
+                    anim.SetTrigger("MeleeE");
+                    break;
+                case CardinalDirection.north:
+                    anim.SetTrigger("MeleeN");
+                    break;
+                case CardinalDirection.south:
+                    anim.SetTrigger("MeleeS");
+                    break;
+                case CardinalDirection.west:
+                    anim.SetTrigger("MeleeW");
+                    break;
+                case CardinalDirection.northEast:
+                    anim.SetTrigger("MeleeNE");
+                    break;
+                case CardinalDirection.northWest:
+                    anim.SetTrigger("MeleeNW");
+                    break;
+                case CardinalDirection.southEast:
+                    anim.SetTrigger("MeleeSE");
+                    break;
+                case CardinalDirection.southWest:
+                    anim.SetTrigger("MeleeSW");
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     public override void attack()
@@ -153,6 +216,8 @@ public class GSword : Attack
     {
         if(hitbox.gameObject.activeSelf == true)
             hitbox.gameObject.SetActive(false);
+        frame.UpdateSprite(origin.forward);
+        frame.UpdateSprite(cardDir);
     }
 
 

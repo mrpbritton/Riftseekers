@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
 using UnityEngine;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 /***********************************************************************
  * NOTE: if you add any stats in the enum, it should be added into the 
@@ -124,7 +125,7 @@ public class CharacterFrame : MonoBehaviour
     {
         do{
             curAttack.attack();
-            curAttack.anim();
+            curAttack.anim(character, false);
             yield return new WaitForSeconds(curAttack.getRealCooldownTime());
             curAttack.reset();
         } while (bIsPressed);

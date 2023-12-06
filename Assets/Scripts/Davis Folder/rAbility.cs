@@ -27,7 +27,7 @@ public class coneSlice : Attack
     public override void reset()
     {
     }
-    public override void anim()
+    public override void anim(Animator anim, bool reset)
     {
     }
     private IEnumerator inBetween()
