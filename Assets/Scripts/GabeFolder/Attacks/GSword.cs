@@ -35,6 +35,11 @@ public class GSword : Attack
         return damage * frame.attackDamage;
     }
 
+    public override void anim()
+    {
+
+    }
+
     public override void attack()
     {
         Vector3 dir;
@@ -61,6 +66,7 @@ public class GSword : Attack
                                             dir.z - origin.position.z + origin.localPosition.z);
         }
         origin.forward = direction;
+        Debug.Log(Mathf.Atan2(origin.forward.z, origin.forward.x) * Mathf.Rad2Deg);
 
         if (damScript.damage != damage)
         {

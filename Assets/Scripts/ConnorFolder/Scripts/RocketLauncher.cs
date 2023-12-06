@@ -18,6 +18,9 @@ public class RocketLauncher : Attack {
         Destroy(curRocket.gameObject, maxTravelTime + .1f);
     }
 
+    public override void anim()
+    {
+    }
     public override void reset()
     {
     }

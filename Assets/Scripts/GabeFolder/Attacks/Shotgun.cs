@@ -35,6 +35,9 @@ public class Shotgun : Attack
         return attackType.Secondary;
     }
 
+    public override void anim()
+    {
+    }
     protected override float getDamage()
     {
         return damage * frame.attackDamage;

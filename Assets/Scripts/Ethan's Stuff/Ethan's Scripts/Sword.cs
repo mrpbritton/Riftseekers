@@ -63,6 +63,9 @@ public class Sword : Attack
     public override void reset()
     {
     }
+    public override void anim()
+    {
+    }
     public override attackType getAttackType()
     {
         return attackType.Basic;

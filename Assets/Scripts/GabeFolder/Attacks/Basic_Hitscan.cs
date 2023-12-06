@@ -69,6 +69,9 @@ public class Basic_Hitscan : Attack {
     {
     }
 
+    public override void anim()
+    {
+    }
     protected override float getCooldownTime() 
     {
         return baseCooldown / frame.attackSpeed;

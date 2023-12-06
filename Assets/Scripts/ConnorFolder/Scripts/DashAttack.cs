@@ -25,6 +25,9 @@ public class DashAttack : Attack {
     {
     }
 
+    public override void anim()
+    {
+    }
     public override attackType getAttackType() {
         return attackType.EAbility;
     }

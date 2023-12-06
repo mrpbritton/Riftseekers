@@ -24,7 +24,9 @@ public class DrawLine : Attack
         lr.SetPosition(0, gameObject.transform.position);
         lr.SetPosition(lr.positionCount-1, new Vector3(point.x, gameObject.transform.position.y, point.z));
     }
-
+    public override void anim()
+    {
+    }
     public override void reset()
     {
     }

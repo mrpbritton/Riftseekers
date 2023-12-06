@@ -18,6 +18,9 @@ public class BasicAttack : Attack
         Debug.Log("Basic Attack Performed");
     }*/
 
+    public override void anim()
+    {
+    }
     public override void attack()
     {
         throw new System.NotImplementedException();

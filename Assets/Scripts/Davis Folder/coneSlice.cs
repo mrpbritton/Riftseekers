@@ -28,6 +28,9 @@ public class qAbility : Attack
     {
     }
 
+    public override void anim()
+    {
+    }
     protected override float getCooldownTime() {
         return 1f;
     }

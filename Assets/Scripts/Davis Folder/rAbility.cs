@@ -27,7 +27,9 @@ public class coneSlice : Attack
     public override void reset()
     {
     }
-
+    public override void anim()
+    {
+    }
     private IEnumerator inBetween()
     {
         yield return new WaitForSeconds(100000f);

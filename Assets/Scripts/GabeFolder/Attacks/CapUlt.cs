@@ -27,6 +27,9 @@ public class CapUlt : Attack
         
     }
 
+    public override void anim()
+    {
+    }
     private void ManageCharge()
     {
 

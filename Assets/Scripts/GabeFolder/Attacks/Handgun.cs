@@ -31,6 +31,9 @@ public class Handgun : Attack
         return damage * frame.attackDamage;
     }
 
+    public override void anim()
+    {
+    }
     public override void attack()
     {
         AkSoundEngine.PostEvent("Pistol_Fire_player", gameObject);

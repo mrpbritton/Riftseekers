@@ -124,6 +124,7 @@ public class CharacterFrame : MonoBehaviour
     {
         do{
             curAttack.attack();
+            curAttack.anim();
             yield return new WaitForSeconds(curAttack.getRealCooldownTime());
             curAttack.reset();
         } while (bIsPressed);
