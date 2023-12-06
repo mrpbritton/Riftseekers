@@ -36,16 +36,21 @@ public class PlayerMovement : MonoBehaviour
 
     private CharacterController player;
     private CharacterFrame frame;
+    private Animator character;
     private Vector3 cachedDirection;
+    private Vector3 dashDirection;
+    public static Transform playerTrans;
 
     //<--- Click on the plus sign to expand
     #region Setup
     private void OnEnable()
     {
+        playerTrans = transform;
         pInput = new PInput();
         pInput.Enable();
-        player = GetComponent<CharacterController>();
-        frame = GetComponent<CharacterFrame>();
+        player = gameObject.GetComponent<CharacterController>();
+        frame = gameObject.GetComponent<CharacterFrame>();
+        character = gameObject.GetComponentInChildren<Animator>();
         speed = frame.movementSpeed;
         dashSpeed = frame.dashSpeed;
         pInput.Player.Dash.started += DashPress;
@@ -110,12 +115,68 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator Dash()
     {
+        AkSoundEngine.PostEvent("Dash", gameObject);
+
         cantDash = true;
+        bool isDefDash = false; //is default dash
         float dTimeRemaining = dashTime;
 
-        if (direction == Vector3.zero) //if no movement, dash right
-            direction.x = 1;
+        dashDirection = direction;
 
+        #region Sprite Setting
+        if (direction.x > 0)
+        {
+
+            if (direction.z < 0) // SOUTHEAST
+            {
+                //characterSprite.sprite = southEast;
+                character.SetTrigger("DashSE");
+            }
+            else if (direction.z == 0) // EAST
+            {
+                character.SetTrigger("DashE");
+            }
+            else // direction.z == 1 *** NORTHEAST
+            {
+                character.SetTrigger("DashNE");
+            }
+        }
+        else if (direction.x < 0)
+        {
+            if (direction.z < 0) // SOUTHWEST
+            {
+                //characterSprite.sprite = southWest;
+                character.SetTrigger("DashSW");
+            }
+            else if (direction.z == 0) // WEST
+            {
+                character.SetTrigger("DashW");
+            }
+            else // direction.z == 1 *** NORTHWEST
+            {
+                //characterSprite.sprite = northWest;
+                character.SetTrigger("DashNW");
+            }
+        }
+        else //direction.x == 0
+        {
+            if (direction.z < 0) // SOUTH
+            {
+                character.SetTrigger("DashS");
+            }
+            else if (direction.z == 0) // NO INPUT
+            {
+                //EAST BY DEFAULT
+                character.SetTrigger("DashDef");
+                dashDirection = Vector3.right;
+                isDefDash = true;
+            }
+            else // direction.z == 1 *** NORTH
+            {
+                character.SetTrigger("DashN");
+            }
+        }
+        #endregion
         /* The loop below ends up being a pseudo-update function. This is able to 
          * happen because of the yield return null; at the end of this while loop.
          * Every iteration makes the dTimeRemaining decrease until it is zero (or 
@@ -125,13 +186,20 @@ public class PlayerMovement : MonoBehaviour
         while (dTimeRemaining > 0)
         {
             dTimeRemaining -= Time.deltaTime;
-            player.Move(direction.normalized * dashSpeed * Time.deltaTime * dashDistance);
+            player.Move(dashDistance * dashSpeed * Time.deltaTime * dashDirection.normalized);
             yield return null;
         }
 
         yield return new WaitForSeconds(dashCooldown);
         remainingCharges--; //since dash was performed, subtract a dash
         cantDash = false;
+        if(isDefDash)
+        {
+            character.SetTrigger("WalkE");
+            frame.UpdateSprite(CardinalDirection.east);
+        }
+
+        frame.UpdateSprite(dashDirection);
     }
 
     public IEnumerator RechargeDash()

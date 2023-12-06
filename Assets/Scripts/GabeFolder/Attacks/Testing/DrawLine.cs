@@ -14,7 +14,7 @@ public class DrawLine : Attack
     }
     public override void attack() 
     {
-        Vector3 point = Attack.GetPoint();
+        Vector3 point = GetPoint();
         if(lr == null)
         {
             lr = GetComponent<LineRenderer>();

@@ -16,8 +16,8 @@ public class Interact : MonoBehaviour
 
     InteractUI helperUI;
 
-    protected virtual void Start() { }
-    protected void Awake()
+    protected virtual void Awake() { }
+    protected void Start()
     {
         pInput = new();
         pInput.Enable();

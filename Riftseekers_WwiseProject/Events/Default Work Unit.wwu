@@ -14,6 +14,237 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Enemy_Hit" ID="{997054EC-98BF-4010-90B1-5E643044AFEF}">
+					<ChildrenList>
+						<Action Name="" ID="{65395FB3-A6F6-4A89-BCDE-5171DCE04FD5}" ShortID="799595416">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Hit" ID="{A9432198-26D8-4BA3-899E-A7E4015ABD8F}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="PLayer_Hit" ID="{C447D052-5C80-4CB3-AB66-22259D00C066}">
+					<ChildrenList>
+						<Action Name="" ID="{09EA580A-C0EA-4ACB-B555-23909C62C67E}" ShortID="680250478">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Hit" ID="{B71BA39C-19C2-4B33-9283-90A0B27F716F}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Sword_Swing" ID="{F0B15155-20E2-4F26-9D93-A588F7337EE3}">
+					<ChildrenList>
+						<Action Name="" ID="{E841DC10-0A2B-4143-8380-EEA198058DCE}" ShortID="1009186802">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Sword_Swing" ID="{100FF889-1D47-4E24-9E42-EFD19C49BB37}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Item_Pickup" ID="{117FD6AE-50D6-4154-90B6-A28E6FFFB7B7}">
+					<ChildrenList>
+						<Action Name="" ID="{EDEA7A83-AFB1-4A85-999D-AE5BFAB3B72A}" ShortID="569708794">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Item_Pickup" ID="{477CF5B8-8BF2-42B2-A793-050FED322B21}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Health_Pickup" ID="{A1068C8B-E608-4743-A14B-6EA5F4EFCC0A}">
+					<ChildrenList>
+						<Action Name="" ID="{668F25B8-2673-42DE-9FDE-FD9CC58BCB1B}" ShortID="63561702">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Health_Pickup" ID="{B08D2C5E-50C3-4F58-93C1-823773005CD1}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Chest_Open" ID="{BAC505D4-3D27-4339-B5BE-5EA791073F0B}">
+					<ChildrenList>
+						<Action Name="" ID="{BCAFA5D8-E933-41AA-A40E-8DA4D76ABE4F}" ShortID="589068287">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Chest_Open" ID="{F5F220D1-25C9-4B0B-83B7-1F7BAA9229A6}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Step_Left" ID="{B69E0162-4502-4BC7-B0DF-DA8450FE731E}">
+					<ChildrenList>
+						<Action Name="" ID="{D45838CE-5796-4297-913A-E85E24743A45}" ShortID="72653079">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Step_Left" ID="{A85F7CDA-C05C-4BBA-ABF0-C6F6A4F405F2}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Step_Right" ID="{2A94EB61-1AB0-4F71-9AB2-E668F579402B}">
+					<ChildrenList>
+						<Action Name="" ID="{65E1334C-0218-47D0-9272-2E4BCE076F5C}" ShortID="959505758">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Step_Right" ID="{3C25F201-6741-44FE-8619-AAF180C291EF}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Player_Death" ID="{993C6F47-D6E1-4C95-A647-9C61F48C6D83}">
+					<ChildrenList>
+						<Action Name="" ID="{66AB32A4-6686-453E-BEF7-77B79F81F5DF}" ShortID="736266155">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Player_Death" ID="{5E3D172B-F7C5-42F4-88F4-39B2FF607203}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Object_Hit" ID="{E9CCDBEC-ACAD-400D-AB22-867F9AD38051}">
+					<ChildrenList>
+						<Action Name="" ID="{D50959CD-B56A-413F-B07D-D9595FE820E1}" ShortID="864078895">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Object_Hit" ID="{4EA632B9-0493-4E3D-AED5-9DC69A4C39B2}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Death" ID="{66B96486-613A-4CF0-9D8C-C4B0F67651D2}">
+					<ChildrenList>
+						<Action Name="" ID="{17084CF8-5287-498D-9253-7020082DD758}" ShortID="487439096">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Death" ID="{80E06CD0-58E2-4BB5-A4D7-473659363B45}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Dash" ID="{80E3CD04-C75C-472C-8985-34DD17847154}">
+					<ChildrenList>
+						<Action Name="" ID="{C06246A2-B84D-4370-8AA5-D211F6D800BF}" ShortID="697731437">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Dash" ID="{B2044A95-3890-4CAA-AD32-4AA3DD41AE8F}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Shotgun_Fire" ID="{2DB531AA-1E49-4BFE-8E0F-538012C36D4E}">
+					<ChildrenList>
+						<Action Name="" ID="{0EBB279D-3D20-4E49-AA17-72A1E581908A}" ShortID="746569034">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Shotgun_Fire" ID="{1551C548-59BF-4079-9380-38436FC07650}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Melee" ID="{B3CA5815-8C95-4B01-88B2-EC4AA34AF1EE}">
+					<ChildrenList>
+						<Action Name="" ID="{76152F07-483E-4520-B715-CCB4CB34CF05}" ShortID="441003228">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Melee" ID="{339FBBC1-5048-40D4-8166-8573F2652205}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Bonus_Menu_Open" ID="{CE4DE75B-9EEF-4F65-A362-EBBD7E99146F}">
+					<ChildrenList>
+						<Action Name="" ID="{6CCE340E-497B-400C-80F8-763D509B6CB7}" ShortID="610837107">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Bonus_Menu_Open" ID="{B7A673EE-EE8D-47A8-957A-B6255B26C3DC}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Bonus_Menu_Close" ID="{7E8ABC8A-753E-446D-9431-12F8787FFEDE}">
+					<ChildrenList>
+						<Action Name="" ID="{E079191E-D572-435E-8B35-332C4969C7F5}" ShortID="43694958">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Bonus_Menu_Close" ID="{A4570CBC-7736-493F-A32E-44E4F36D0808}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Menu_Highlight" ID="{DFC473BF-F873-4C4D-9BBE-E1C2E710574E}">
+					<ChildrenList>
+						<Action Name="" ID="{A8F15FFD-9C1C-4600-A641-CBAD31C0122B}" ShortID="699448207">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Menu_Highlight" ID="{6C8DCDD8-E13A-4A69-87EB-1F2511FF391E}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Menu_Select" ID="{C2A9DDD7-7B44-4E13-9991-7D5A96FA9544}">
+					<ChildrenList>
+						<Action Name="" ID="{64C0C5D1-51D2-4D97-8BC5-8AF68AA50E89}" ShortID="193903168">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Menu_Select" ID="{01624E4E-21F3-4009-90AA-A4D96AD02F84}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Fire" ID="{8932C78A-7096-438B-9C94-B4A2FC38DE55}">
+					<ChildrenList>
+						<Action Name="" ID="{F7CF2F86-B459-4B39-BCBD-2A161991B29A}" ShortID="719641607">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Fire" ID="{ADFD6553-CBF8-4D6F-ACEF-F6C659BF2B38}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Enemy_Footsteps" ID="{59788EFE-C9C5-4954-B352-4B6CB50CE1DA}">
+					<ChildrenList>
+						<Action Name="" ID="{982DAA09-2116-4CD6-9F84-85F3EAEFB114}" ShortID="379280658">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Enemy_Footsteps" ID="{27C86173-D52D-4F34-B5D6-304F07A48D82}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="LevelMusic1" ID="{0725C0EA-E27C-4896-AF24-46BF3E19EAC5}">
+					<ChildrenList>
+						<Action Name="" ID="{B599FA87-BF2D-49F0-B8BB-F925C71247C3}" ShortID="234615020">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="LevelMusic1" ID="{61D8D109-46CF-4ACB-B393-E43F4144F6C1}" WorkUnitID="{1A018C5F-1555-4FAB-8FE1-9D42209D8B2E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

@@ -6,9 +6,9 @@ using System;
 public class AddScript_GA : GameAction
 {
     [SerializeField]
-    private AttackType aType;
+    private AttackScript aType;
 
-    public static Action<AttackType> ChangeAttackType = delegate { };
+    public static Action<AttackScript> ChangeAttackType = delegate { };
     public override void Action()
     {
         ChangeAttackType(aType);

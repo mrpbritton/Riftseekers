@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SoundBanksInfo Platform="Windows" BasePlatform="Windows" SchemaVersion="16" SoundBankVersion="145">
+	<RootPaths>
+		<ProjectRoot>../../Riftseekers_WwiseProject</ProjectRoot>
+		<SourceFilesRoot>../../Riftseekers_WwiseProject/.cache/Windows</SourceFilesRoot>
+		<SoundBanksRoot>.</SoundBanksRoot>
+		<ExternalSourcesInputFile></ExternalSourcesInputFile>
+		<ExternalSourcesOutputRoot>../../Riftseekers_WwiseProject/GeneratedSoundBanks/Windows</ExternalSourcesOutputRoot>
+	</RootPaths>
+	<DialogueEvents/>
+	<SoundBanks>
+		<SoundBank Id="1355168291" Type="User" Language="SFX" Hash="{986487A9-2683-E47A-8688-3D0FE6FDB954}">
+			<ShortName>Init</ShortName>
+			<Path>Init.bnk</Path>
+			<Plugins>
+				<AudioDevices>
+					<Plugin Id="2317455096" Name="No_Output" LibName="No Output" LibId="11862023"/>
+					<Plugin Id="3859886410" Name="System" LibName="System" LibId="11403271"/>
+				</AudioDevices>
+			</Plugins>
+			<Busses>
+				<Bus Id="3803692087" Name="Master Audio Bus"/>
+			</Busses>
+		</SoundBank>
+		<SoundBank Id="3161908922" Type="User" Language="SFX" Hash="{653CEFC6-1FFD-AB67-CAB7-74DAADCEA63E}">
+			<ShortName>Main</ShortName>
+			<Path>Main.bnk</Path>
+			<Media>
+				<File Id="368981843" Language="SFX" Streaming="false" Location="Memory">
+					<ShortName>Gunshot.wav</ShortName>
+					<CachePath>SFX/Gunshot_283DA874.wem</CachePath>
+				</File>
+			</Media>
+			<Events>
+				<Event Id="1139050097" Name="Pistol_Fire_Player" DurationType="OneShot" DurationMin="0.99104095" DurationMax="0.99104095">
+					<MediaRefs>
+						<MediaRef Id="368981843"/>
+					</MediaRefs>
+				</Event>
+			</Events>
+		</SoundBank>
+	</SoundBanks>
+	<FileHash>{EE28F3F0-0941-3BEE-6D75-EA0DA473E0A1}</FileHash>
+</SoundBanksInfo>
