@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,17 +10,20 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     private float rotationSpeed = 2f;
     [SerializeField]
-    private NavMeshAgent agent;
-    public bool bMelee, bCover, bClose;
+    public NavMeshAgent agent;
+    public bool bMelee, bCover, bClose, bDash, bCanHit = true, bAttacking;
     [SerializeField]
-    private GameObject target = null, Gun, Player, meleeHit;
+    private GameObject Player, meleeHit;
     private RaycastHit hitInfo;
     [SerializeField]
     private List<GameObject> cover = new List<GameObject>();
     private float close = 9999;
     public LayerMask enemy;
     [SerializeField]
-    private int coverTime = 10, hitCooldown = 1;
+    private int coverTime = 10;
+    [SerializeField]
+    public float hitCooldown = 1, enemySpeed;
+    public GameObject target = null;
 
 
 
@@ -28,7 +32,7 @@ public class EnemyMovement : MonoBehaviour
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         cover.AddRange(GameObject.FindGameObjectsWithTag("Cover"));
-        meleeAttack();
+        enemySpeed = agent.speed;
     }
 
     void Update()
@@ -57,9 +61,17 @@ public class EnemyMovement : MonoBehaviour
 
             agent.SetDestination(target.transform.position);
         }
+
+        if (Vector3.Distance(gameObject.transform.position, Player.transform.position) <= 5 && bMelee && bCanHit && !bAttacking)
+        {
+            AkSoundEngine.PostEvent("Enemy_Melee", gameObject);
+            bAttacking = true;
+            StartCoroutine(nameof(attackCooldown));
+        }
+
     }
 
-        //change target position to cover
+    //change target position to cover
     public void lookForCover()
     {
         if (!bMelee)
@@ -103,25 +115,19 @@ public class EnemyMovement : MonoBehaviour
     private void meleeAttack()
     {
         if (!bMelee) return;
-        if (Vector3.Distance(gameObject.transform.position, Player.transform.position) <= 3)
-        {
-            bClose = true;
-        }
-        else { bClose= false; }
-
         StartCoroutine(nameof(attackCooldown));
+
     }
 
     IEnumerator attackCooldown()
     {
-        if (bClose)
-        {
-            meleeHit.GetComponent<Collider>().enabled = true;
-            yield return new WaitForSeconds(0.5f);
-            meleeHit.GetComponent<Collider>().enabled = false;
-        }
+        agent.speed = 0;
         yield return new WaitForSeconds(hitCooldown);
-        meleeAttack();
+        meleeHit.GetComponent<Collider>().enabled = true;
+        yield return new WaitForSeconds(0.25f);
+        meleeHit.GetComponent<Collider>().enabled = false;
+        agent.speed = enemySpeed;
+        bAttacking = false;
     }
 
 }

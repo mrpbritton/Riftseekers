@@ -23,10 +23,15 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        enemySlider = FindObjectOfType<PlayerUICanvas>();
+        foreach(var i in FindObjectsOfType<PlayerUICanvas>())
+            if(i.transform.position.y > enemySlider.transform.position.y)
+                enemySlider = i;
         enemies.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
         loot = UnityEngine.Random.Range(0, enemies.Count);
         enemies[loot].GetComponent<EnemyHealth>().hasItem = true;
         total = enemies.Count;
+        enemySlider.updateSlider(total, enemies.Count);
     }
 
     private void OnEnable()
@@ -49,7 +54,7 @@ public class EnemyController : MonoBehaviour
     {
         if (deadEnemy.GetComponent<EnemyHealth>().hasItem)
         {
-            GameObject go = PrefabUtility.InstantiatePrefab(Item) as GameObject;
+            GameObject go = Instantiate(Item);
             go.transform.position = deadEnemy.transform.position;
         }
         enemies.Remove(deadEnemy);

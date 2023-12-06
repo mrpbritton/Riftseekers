@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using TMPro;
@@ -36,11 +37,16 @@ public class bonuspicker : MonoBehaviour
 
     public void bonusOpener()
     {
+        AkSoundEngine.PostEvent("Bonus_Menu_Open", gameObject);
+
         StartCoroutine(animationPlay("open", 1f));
     }
 
     public void bonusCloser()
     {
+        AkSoundEngine.PostEvent("Bonus_Menu_Close", gameObject);
+        EventSystem.current.SetSelectedGameObject(null);
+
         StartCoroutine(animationPlay("close", 1f));
     }
 
@@ -50,43 +56,46 @@ public class bonuspicker : MonoBehaviour
         return randomNumber;
     }
 
-    private int verifyNumber(int number)
+    private void validateBonuses(int bonus)
     {
-        if(number == bonus1 || number == bonus2)
+        if(bonus == 1)
         {
-            return 1;
-        }
-        else
-        {
-            return 0;
-        }
-    }
-
-    private void generateBonuses()
-    {
-        int buffer, verify = 10;
-        int picked = 0;
-        while (picked < 3)
-        {
-            buffer = randomPicker();
-            verify = verifyNumber(buffer);
-            if (verify == 0 && bonus1 == 10)
+            if(bonus1 != bonus2 && bonus1 != bonus3)
             {
-                bonus1 = buffer;
-                picked++;
+                Debug.Log("Validated bonus 1");
+            } else
+            {
+                bonus1 = randomPicker();
+                validateBonuses(1);
             }
-            else if (verify == 0 && bonus2 == 10)
+        } else if(bonus == 2)
+        {
+            if (bonus2 != bonus1 && bonus2 != bonus3)
             {
-                bonus2 = buffer;
-                picked++;
+                Debug.Log("Validated bonus 2");
             }
-            else if (verify == 0 && bonus3 == 10)
+            else
             {
-                bonus3 = buffer;
-                picked++;
+                bonus2 = randomPicker();
+                validateBonuses(2);
             }
         }
-        Debug.Log("Bonuses are: " + bonus1 + bonus2 + bonus3);
+        else if(bonus == 3)
+        {
+            if (bonus3 != bonus1 && bonus3 != bonus2)
+            {
+                Debug.Log("Validated bonus 3");
+            }
+            else
+            {
+                bonus3 = randomPicker();
+                validateBonuses(3);
+            }
+        } else
+        {
+            Debug.LogError("Not a valid bonus!");
+        }
+       
     }
 
     public void setup()
@@ -94,10 +103,14 @@ public class bonuspicker : MonoBehaviour
         bonus1 = randomPicker();
         bonus2 = randomPicker();
         bonus3 = randomPicker();
-        //generateBonuses();
+        for(int c = 1; c < 4; c++)
+        {
+            validateBonuses(c);
+        }
         button1.text = descriptions[bonus1];
         button2.text = descriptions[bonus2];
         button3.text = descriptions[bonus3];
+        Character.gameObject.GetComponent<PlayerMovement>().enabled = false;
         bonusOpener();
     }
 
@@ -114,6 +127,10 @@ public class bonuspicker : MonoBehaviour
             applyBonus(bonus3);
         }
         bonusCloser();
+        //Character.enabled = true;
+        Character.gameObject.GetComponent<PlayerMovement>().enabled = true;
+        //Character.gameObject.GetComponent<Basic_Proj>().enabled = true;
+        //Character.gameObject.GetComponent<GSword>().enabled = true;
     }
 
     public void applyBonus(int choice)
@@ -123,34 +140,42 @@ public class bonuspicker : MonoBehaviour
             case 0:
                 stat.stat = CharStats.attackDamage;
                 stat.modifier *= 1.2f;
+                Character.UpdateStats();
                 break;
             case 1:
                 stat.stat = CharStats.attackSpeed;
                 stat.modifier *= 1.1f;
+                Character.UpdateStats();
                 break;
             case 2:
                 stat.stat = CharStats.cooldownMod;
                 stat.modifier *= 1.3f;
+                Character.UpdateStats();
                 break;
             case 3:
                 stat.stat = CharStats.dashCharges;
                 stat.modifier = 1f;
+                Character.UpdateStats();
                 break;
             case 4:
                 stat.stat = CharStats.dashDistance;
                 stat.modifier = 1.1f;
+                Character.UpdateStats();
                 break;
             case 5:
                 stat.stat = CharStats.dashSpeed;
                 stat.modifier = 1.15f;
+                Character.UpdateStats();
                 break;
             case 6:
                 stat.stat = CharStats.maxHealth;
                 stat.modifier = 1.1f;
+                Character.UpdateStats();
                 break;
             case 7:
                 stat.stat = CharStats.moveSpeed;
                 stat.modifier = 1.2f;
+                Character.UpdateStats();
                 break;
             default:
                 break;

@@ -29,8 +29,13 @@ public class SpawnCam : MonoBehaviour
     [SerializeField, Tooltip("Dampening of the Camera")]
     private Vector3 dampening = new(0.3f, 0.3f, 0.3f);
 
-    //  called from the player manager
-    public void manageCamera() {
+
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.I))
+            thing();
+    }
+
+    public void thing() {
         if(Camera.main != null && !Camera.main.TryGetComponent(out CinemachineBrain brain)) {
             DestroyImmediate(Camera.main.gameObject);
         }

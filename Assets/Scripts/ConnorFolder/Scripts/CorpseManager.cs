@@ -10,7 +10,7 @@ public class CorpseManager : MonoBehaviour {
 
 
 
-    private void Awake() {
+    private void Start() {
         playerTrans = FindObjectOfType<PlayerMovement>().transform;
     }
 

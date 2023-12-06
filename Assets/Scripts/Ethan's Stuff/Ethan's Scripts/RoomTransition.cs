@@ -7,9 +7,12 @@ public class RoomTransition : MonoBehaviour
 {
     public LevelManager sceneGuy;
     int[] scenes = new int[4];
+    bool checker = true;
+
     // Start is called before the first frame update
     void Start()
     {
+        sceneGuy = FindObjectOfType<LevelManager>();
         scenes = RoomSaver.loadroom();
     }
 
@@ -60,9 +63,10 @@ public class RoomTransition : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && checker == true)
         {
             sceneGuy.loadNextScene();
+            checker = false;
             //RoomTransitionz();
         }
     }
