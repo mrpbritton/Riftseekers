@@ -13,4 +13,10 @@ public class EventCollider : MonoBehaviour {
             ev.Invoke();
         }
     }
+
+    private void OnCollisionEnter(Collision col) {
+        if(checkedTags.Contains(col.gameObject.tag)) {
+            ev.Invoke();
+        }
+    }
 }

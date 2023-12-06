@@ -32,7 +32,7 @@ Transform:
   - {fileID: 1634231503805718177}
   - {fileID: 6471705533155748516}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7219115847487336413
 MonoBehaviour:
@@ -47,9 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 3
-  radius: 5
+  radius: 3
   dmg: 5
-  maxKnockback: 20
+  maxKnockback: 10
   explosionEvent:
     m_PersistentCalls:
       m_Calls:
@@ -178,7 +178,7 @@ PrefabInstance:
     - target: {fileID: 1873918082356215387, guid: 9117d3ffd9b83b24b96de65026384720,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4366704268168203058, guid: 9117d3ffd9b83b24b96de65026384720,
         type: 3}
