@@ -15,7 +15,7 @@ public class EnemyFiring : MonoBehaviour
     [SerializeField]
     private float reloadTime = 2f;
     private Quaternion rotation = Quaternion.identity;
-    public bool bSeePlayer, bStunned, firing;
+    private bool bSeePlayer = false;
     private RaycastHit hitInfo;
     [SerializeField]
     private GameObject Player;
@@ -35,9 +35,8 @@ public class EnemyFiring : MonoBehaviour
     private void FireShot()
     {
         lookForPlayer();
-        if (bSeePlayer && !bStunned)
+        if (bSeePlayer)
         {
-            AkSoundEngine.PostEvent("Enemy_Fire", gameObject);
             rotation = gameObject.transform.rotation;
             Projectile project = Instantiate(projectile, transform.position, rotation).GetComponent<Projectile>();
             project.Direction = transform.forward;
@@ -46,12 +45,7 @@ public class EnemyFiring : MonoBehaviour
     }
     IEnumerator Reloading()
     {
-        yield return new WaitForSeconds(reloadTime * (1f/4f));
-        firing = false;
-        yield return new WaitForSeconds(reloadTime * (2f/4f));
-        firing = true;
-        yield return new WaitForSeconds(reloadTime * (1f/4f));
-
+        yield return new WaitForSeconds(reloadTime);
         FireShot();
     }
 

@@ -56,9 +56,6 @@ public class Health : MonoBehaviour
         if(isPlayer)
             SaveData.setFloat(playerHealthTag, health);
 
-        AkSoundEngine.PostEvent("PLayer_Hit", gameObject);
-
-
     }
 
     //  use this when healing
@@ -73,9 +70,5 @@ public class Health : MonoBehaviour
         //  saves
         if(isPlayer)
             SaveData.setFloat(playerHealthTag, health);
-
-        AkSoundEngine.PostEvent("Health_Pickup", gameObject);
-
     }
-
 }

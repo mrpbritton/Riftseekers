@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using System.Net.Http.Headers;
 using UnityEngine;
 
@@ -23,13 +22,14 @@ public enum CharStats
     cooldownMod,
     chargeLimit
 }
+public enum AttackType
+{
+    handgun, shotgun, laser
+}
 
 public class CharacterFrame : MonoBehaviour
 {
     private PInput pInput;
-    
-    [Tooltip("If true, the player is using controller. False, K&M.")]
-    private static bool isController;
     [Header("Attacks and Abilities")]
     public Attack basicAttack;
     public Attack secondAttack;
@@ -68,15 +68,19 @@ public class CharacterFrame : MonoBehaviour
     public float charge;
 
     [Header("Sprites")]
-    public Animator character;
     public SpriteRenderer characterSprite;
-    private CardinalDirection cachedDir;
+    public Sprite north;
+    public Sprite northEast;
+    public Sprite east;
+    public Sprite southEast;
+    public Sprite south;
+    public Sprite southWest;
+    public Sprite west;
+    public Sprite northWest;
 
     [Header("Managers")]
     public LevelManager transfer;
     public Health trueHealth;
-    [SerializeField, Tooltip("The scriptable object of the default stats")]
-    private DefaultStats_SO defaultStats;
 
     Coroutine attacker = null;
     bool bIsPressed;
@@ -84,16 +88,11 @@ public class CharacterFrame : MonoBehaviour
     //more options to come in the future
     private void Start()
     {
-        health_s = GetComponent<Health>();
-        move_s = GetComponent<PlayerMovement>();
-
-        //SaveData.wipe();
-    }
-
-    private void OnEnable()
-    {
         pInput = new PInput();
         pInput.Enable();
+
+        health_s = GetComponent<Health>();
+        move_s = GetComponent<PlayerMovement>();
 
         #region Started Subscriptions
         pInput.Player.BasicAttack.started += ctx => performAttack(basicAttack);
@@ -113,12 +112,9 @@ public class CharacterFrame : MonoBehaviour
         pInput.Player.Ult.canceled += ctx => NotPressed();
         #endregion
 
-        //pInput.Player.AnyController.performed += ctxt => 
-
-        //AddScript_GA.ChangeAttackType += ReplaceAttack;
+        AddScript_GA.ChangeAttackType += ReplaceAttack;
     }
 
-    #region Attacks
     //  waits for the attack cooldown to finish
     IEnumerator attackWaiter(Attack curAttack) 
     {
@@ -129,152 +125,17 @@ public class CharacterFrame : MonoBehaviour
         } while (bIsPressed);
         attacker = null;
     }
-
-    public void UpdateAttack()
+    private void ReplaceAttack(AttackType aType)
     {
-        List<ConItem> activeItems = new();
-
-        for(int i = 0; i < 3; i++)
-        {
-            activeItems.Add(Inventory.getActiveItem(i, FindFirstObjectByType<ItemLibrary>()));
-        }
-
-
-        foreach(ConItem item in activeItems)
-        {
-            if(item != null)
-            {
-                if(item.overrideAbil != Attack.attackType.None) //if it isn't a passive item
-                {
-                    ReplaceAttack(item.overrideAbil, item.attackScript);
-                }
-                else //if it is a passive item
-                {
-                    ReplacePassive(item.passiveScript);
-                }
-            }
-            else
-            {
-                FixAbility();
-            }
-        }
-    }
-
-    /// <summary>
-    /// If any abilities are null, this will set them to the base ability
-    /// </summary>
-    private void FixAbility()
-    {
-        if(basicAttack == null)
-        {
-            gameObject.AddComponent<GSword>();
-            basicAttack = GetComponent<GSword>();
-        }
-        if(secondAttack == null)
-        {
-            gameObject.AddComponent<Handgun>();
-            secondAttack = GetComponent<Handgun>();
-        }
-        if(eAbility == null)
-        {
-
-        }
-        if(fAbility == null)
-        {
-
-        }
-        if (rAbility == null)
-        {
-
-        }
-        if (qAbility == null)
-        {
-
-        }
-    }
-
-    public void RemoveAbility(ConItem item)
-    {
-        switch (item.overrideAbil)
-        {
-            case Attack.attackType.Basic:
-                Destroy(basicAttack);
-                basicAttack = null;
-                break;
-            case Attack.attackType.Secondary:
-                Destroy(secondAttack);
-                secondAttack = null;
-                break;
-            case Attack.attackType.EAbility:
-                Destroy(eAbility);
-                eAbility = null;
-                break;
-            case Attack.attackType.FAbility:
-                Destroy(fAbility);
-                fAbility = null;
-                break;
-            case Attack.attackType.RAbility:
-                Destroy(rAbility);
-                rAbility = null;
-                break;
-            case Attack.attackType.QAbility:
-                Destroy(qAbility);
-                qAbility = null;
-                break;
-            default: //this will also be none, cause this shouldn't happen
-                break;
-        }
-        FixAbility();
-    }
-
-    private void ReplacePassive(PassiveScript pScript)
-    {
-        switch (pScript)
-        {
-            case PassiveScript.combatBoots:
-                Debug.Log("combatBoots");
-                var script = gameObject.AddComponent<CombatBoots>();
-                script.Equip(this);
-                break;
-            default:
-                Debug.LogError("Passive could not be added.");
-                break;
-        }
-    }
-
-    private void ReplaceAttack(Attack.attackType aType, AttackScript aScript)
-    {
+        bIsPressed = false;
+        Destroy(secondAttack);
         switch(aType)
         {
-            case Attack.attackType.Basic:
-                Destroy(basicAttack);
+            case AttackType.handgun:
+                gameObject.AddComponent<Basic_Proj>();
+                secondAttack = GetComponent<Basic_Proj>();
                 break;
-            case Attack.attackType.Secondary:
-                Destroy(secondAttack);
-                break;
-            case Attack.attackType.EAbility:
-                Destroy(eAbility);
-                break;
-            case Attack.attackType.FAbility:
-                Destroy(fAbility);
-                break;
-            case Attack.attackType.RAbility:
-                Destroy(rAbility);
-                break;
-            case Attack.attackType.QAbility:
-                Destroy(qAbility);
-                break;
-            default: //this will also be none, cause this shouldn't happen
-                break;
-        }
-
-        switch(aScript)
-        {
-            case AttackScript.handgun:
-                gameObject.AddComponent<Handgun>();
-                secondAttack = GetComponent<Handgun>();
-                break;
-            case AttackScript.shotgun:
+            case AttackType.shotgun:
                 gameObject.AddComponent<Shotgun>();
                 secondAttack = GetComponent<Shotgun>();
                 break;
@@ -283,13 +144,13 @@ public class CharacterFrame : MonoBehaviour
                 break;
         }
     }
-
     void performAttack(Attack curAttack) 
     {
         if(attacker != null) return;
         IsPressed();
             attacker = StartCoroutine(attackWaiter(curAttack));
     }
+
     void IsPressed()
     {
         bIsPressed = true;
@@ -299,146 +160,57 @@ public class CharacterFrame : MonoBehaviour
     {
         bIsPressed = false;
     }
-    #endregion
 
-    #region Sprites
     public void UpdateSprite(Vector3 direction)
     {
         #region Sprite Setting
         if (direction.x > 0)
         {
-            
             if (direction.z < 0) // SOUTHEAST
             {
-                //characterSprite.sprite = southEast;
-                character.SetTrigger("WalkSE");
-                cachedDir = CardinalDirection.southEast;
+                characterSprite.sprite = southEast;
             }
             else if (direction.z == 0) // EAST
             {
-                character.SetTrigger("WalkE");
-                cachedDir = CardinalDirection.east;
+                characterSprite.sprite = east;
             }
             else // direction.z == 1 *** NORTHEAST
             {
-                character.SetTrigger("WalkNE");
-                cachedDir = CardinalDirection.northEast;
+                characterSprite.sprite = northEast;
             }
         }
         else if (direction.x < 0)
         {
             if (direction.z < 0) // SOUTHWEST
             {
-                //characterSprite.sprite = southWest;
-                character.SetTrigger("WalkSW");
-                cachedDir = CardinalDirection.southWest;
+                characterSprite.sprite = southWest;
             }
             else if (direction.z == 0) // WEST
             {
-                character.SetTrigger("WalkW");
-                cachedDir = CardinalDirection.west;
+                characterSprite.sprite = west;
             }
             else // direction.z == 1 *** NORTHWEST
             {
-                //characterSprite.sprite = northWest;
-                character.SetTrigger("WalkNW");
-                cachedDir = CardinalDirection.northWest;
+                characterSprite.sprite = northWest;
             }
         }
         else //direction.x == 0
         {
             if (direction.z < 0) // SOUTH
             {
-                character.SetTrigger("WalkS");
-                cachedDir = CardinalDirection.south;
+                characterSprite.sprite = south;
             }
             else if (direction.z == 0) // NO INPUT
             {
-                switch(cachedDir.ToString())
-                {
-                    case "north":
-                        character.SetTrigger("WalkNStop");
-                        break;
-                    case "northEast":
-                        character.SetTrigger("WalkNEStop");
-                        break;
-                    case "northWest":
-                        character.SetTrigger("WalkNWStop");
-                        break;
-                    case "south":
-                        character.SetTrigger("WalkSStop");
-                        break;
-                    case "southEast":
-                        character.SetTrigger("WalkSEStop");
-                        break;
-                    case "southWest":
-                        character.SetTrigger("WalkSWStop");
-                        break;
-                    case "east":
-                        character.SetTrigger("WalkEStop");
-                        break;
-                    case "west":
-                        character.SetTrigger("WalkWStop");
-                        break;
-                    default:
-                        break;
-                }
+                //last input entered
             }
             else // direction.z == 1 *** NORTH
             {
-                character.SetTrigger("WalkN");
-                cachedDir = CardinalDirection.north;
+                characterSprite.sprite = north;
             }
         }
         #endregion
     }
-
-    /// <summary>
-    /// Only use this for the default direction.
-    /// </summary>
-    /// <param name="cachedDir">Should be CardinalDirection.east</param>
-    public void UpdateSprite(CardinalDirection cachedDir)
-    {
-        switch (cachedDir.ToString())
-        {
-            case "north":
-                character.SetTrigger("WalkNStop");
-                break;
-            case "northEast":
-                character.SetTrigger("WalkNEStop");
-                break;
-            case "northWest":
-                character.SetTrigger("WalkNWStop");
-                break;
-            case "south":
-                character.SetTrigger("WalkSStop");
-                break;
-            case "southEast":
-                character.SetTrigger("WalkSEStop");
-                break;
-            case "southWest":
-                character.SetTrigger("WalkSWStop");
-                break;
-            case "east":
-                character.SetTrigger("WalkEStop");
-                break;
-            case "west":
-                character.SetTrigger("WalkWStop");
-                break;
-            default:
-                break;
-        }
-    }
-    #endregion
-
-    #region Controller Setting
-
-    private void ChangeMediums()
-    {
-
-    }
-
-    #endregion
 
     private void OnDisable()
     {
@@ -463,10 +235,9 @@ public class CharacterFrame : MonoBehaviour
         pInput.Player.Ult.canceled -= ctx => NotPressed();
         #endregion
 
-        //AddScript_GA.ChangeAttackType -= ReplaceAttack;
+        AddScript_GA.ChangeAttackType -= ReplaceAttack;
     }
     //tree to execute each respective attack
-
 
     public void UpdateStats()
     {
@@ -478,22 +249,12 @@ public class CharacterFrame : MonoBehaviour
     {
         atk.updateStats(attackDamage, cooldownMod);
     }
-
-    bool dumbo = true;
     public void Update()
-    {       
+    {
         if(trueHealth.health <= 0)
         {
-            if (dumbo)
-            {
-                AkSoundEngine.PostEvent("Player_Death", gameObject);
-                transfer.playerDeath();
-                dumbo = false;
-            }
+            transfer.playerDeath();
         }
     }
-}
-public enum CardinalDirection
-{
-    north, south, east, west, northEast, northWest, southEast, southWest
+
 }

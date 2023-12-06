@@ -3,29 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RocketInstance : MonoBehaviour {
-    Coroutine expCo;
-    ExplosionManager em;
-    float expSize;
-    float dmg;
-    float knockback;
+    Attack parentAttack;
 
+    RocketBlast rb;
 
-    private void OnTriggerEnter(Collider col) {
-        if(!col.gameObject.CompareTag("Player") && !col.gameObject.CompareTag("Bullet")) {
-            if(!col.gameObject.CompareTag("Enemy")) {
-                AkSoundEngine.PostEvent("Object_Hit", gameObject);
-            }
-            StopCoroutine(expCo);
-            em.explode(transform.position, expSize, dmg, knockback, ExplosionManager.explosionState.HurtsEnemies);
-            Destroy(gameObject, 0.0001f);
+    bool exploded = false;
+
+    private void Start() {
+        rb = GetComponentInChildren<RocketBlast>();
+    }
+
+    private void OnCollisionEnter(Collision col) {
+        switch(LayerMask.LayerToName(col.gameObject.layer)) {
+            case "Enemy":
+                //case "Other tag that would cause this to explode here":
+                col.gameObject.GetComponent<EnemyHealth>().damageTaken(parentAttack.getRealDamage(), transform.position);
+                rb.explode();
+                break;
         }
     }
 
-    public void setup(Coroutine ex, ExplosionManager e, float expS, float expD, float expKn) {
-        expCo = ex;
-        em = e;
-        expSize = expS;
-        dmg = expD;
-        knockback = expKn;
+    public void setParentAttack(Attack at, float maxTimeAlive) {
+        parentAttack = at;
+        Invoke("forceExplosion", maxTimeAlive);
+    }
+    public void forceExplosion() {
+        if(exploded)
+            return;
+        exploded = true;
+        rb.explode();
     }
 }

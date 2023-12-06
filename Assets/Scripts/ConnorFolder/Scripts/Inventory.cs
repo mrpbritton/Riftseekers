@@ -6,6 +6,8 @@ public static class Inventory {
     static int maxItemCount = 9;  //  this number is the max number of items the player can hold
     static Bag itemBag = new Bag(maxItemCount);
 
+    static PlayerManager curPlayerManager;
+
     static string bagTag = "BagTag";
 
     //  saves the indexes of active items
@@ -39,7 +41,6 @@ public static class Inventory {
         }
     }
     public static void removeActiveItem(int slotInd) {
-        
         switch(slotInd) {
             case 0:
                 itemBag.activeItem1 = null;
@@ -51,6 +52,18 @@ public static class Inventory {
                 itemBag.activeItem3 = null;
                 break;
         }
+    }
+
+    public static void setPlayerManager(PlayerManager pm) {
+        curPlayerManager = pm;
+    }
+    public static PlayerManager getPlayerManager() {
+        return curPlayerManager;
+    }
+    public static void overridePlayerManagersTransform(PlayerManager outdated) {
+        curPlayerManager.transform.position = outdated.transform.position;
+        curPlayerManager.transform.localScale = outdated.transform.localScale;
+        curPlayerManager.transform.rotation = outdated.transform.rotation;
     }
 
     //  Item saving things
@@ -77,9 +90,9 @@ public static class Inventory {
         itemBag.items.Clear();
     }
 
-    public static ConItem getItem(int index, ItemLibrary il) {
-        if(index < itemBag.items.Count)
-            return getItem(itemBag.items[index].toItem(il), il);
+    public static ConItem getItem(int i, ItemLibrary il) {
+        if(i < itemBag.items.Count)
+            return getItem(itemBag.items[i].toItem(il), il);
         return null;
     }
     public static ConItem getItem(ConItem i, ItemLibrary il) {
@@ -146,7 +159,7 @@ public class ItemSaveData {
     public string description;
     public int value;
     public Sprite image;
-    public Attack.attackType overrideAbil;
+    public AbilityLibrary.abilType overrideAbil;
 
     public ItemSaveData(ConItem i) {
         title = i.title;

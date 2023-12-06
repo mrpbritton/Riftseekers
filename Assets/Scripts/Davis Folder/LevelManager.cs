@@ -23,13 +23,6 @@ public class LevelManager : MonoBehaviour
     
     public void loadSpecific(int index)
     {
-        if(index == 1)
-        {
-            StartCoroutine(levelTransition(index, "death"));
-        } else if(index == 3)
-        {
-            StartCoroutine(levelTransition(index, "alive"));
-        }
         StartCoroutine(levelTransition(index, "none"));
     }
 

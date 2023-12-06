@@ -204,8 +204,6 @@ GameObject:
   - component: {fileID: 1005440842170521024}
   - component: {fileID: 6854085199888981998}
   - component: {fileID: 5676950591752172731}
-  - component: {fileID: 52529612864127189}
-  - component: {fileID: 1679344165736758150}
   m_Layer: 0
   m_Name: chest
   m_TagString: Untagged
@@ -282,7 +280,6 @@ MonoBehaviour:
   actionList:
   - {fileID: 6854085199888981998}
   - {fileID: 5676950591752172731}
-  - {fileID: 1679344165736758150}
 --- !u!114 &6854085199888981998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,36 +311,6 @@ MonoBehaviour:
   delay: 0
   go: {fileID: 6183051943068497198}
   bEnableState: 0
---- !u!114 &52529612864127189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8804089556939858010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4818b928bb8f0214686dcf0ec3bf8572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
-  eventName: Chest_Open
-  eventName2: Item_Pickup
---- !u!114 &1679344165736758150
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8804089556939858010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4818b928bb8f0214686dcf0ec3bf8572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
-  eventName: Chest_Open
-  eventName2: Item_Pickup
 --- !u!1001 &800779604177373336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -352,27 +319,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8744664660840836694}
     m_Modifications:
-    - target: {fileID: 4046893905827859892, guid: 1ffe39b1af514c24db7f7f8df3761668,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 8ae15f1d481b9c14fbd647711283fe24,
-        type: 3}
     - target: {fileID: 6832642559768804790, guid: 1ffe39b1af514c24db7f7f8df3761668,
         type: 3}
       propertyPath: m_Name
       value: BaseItem
       objectReference: {fileID: 0}
-    - target: {fileID: 7980214661142494641, guid: 1ffe39b1af514c24db7f7f8df3761668,
-        type: 3}
-      propertyPath: actionList.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7980214661142494641, guid: 1ffe39b1af514c24db7f7f8df3761668,
-        type: 3}
-      propertyPath: actionList.Array.data[1]
-      value: 
-      objectReference: {fileID: 6333936171235118718}
     - target: {fileID: 8652027635649660205, guid: 1ffe39b1af514c24db7f7f8df3761668,
         type: 3}
       propertyPath: m_RootOrder
@@ -428,8 +379,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 9211515255636103888, guid: 1ffe39b1af514c24db7f7f8df3761668, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
@@ -440,18 +390,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 800779604177373336}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6333936171235118718 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6699765996139923174, guid: 1ffe39b1af514c24db7f7f8df3761668,
-    type: 3}
-  m_PrefabInstance: {fileID: 800779604177373336}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6183051943068497198}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c2065eb3dc731a46b9e95eac1467c07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &8290807531557359029 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8652027635649660205, guid: 1ffe39b1af514c24db7f7f8df3761668,

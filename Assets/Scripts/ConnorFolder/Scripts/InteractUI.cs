@@ -20,12 +20,10 @@ public class InteractUI : MonoBehaviour {
 
     bool initted = false;
     bool shown = false;
-    bool able = false;
 
-    private void Start() {
+    private void Awake() {
         shownScale = background.transform.localScale.x;
         background.transform.localScale = new Vector3(background.transform.localScale.x, 0f, 0f);
-        able = true;
     }
 
     private void OnDisable() {
@@ -34,10 +32,6 @@ public class InteractUI : MonoBehaviour {
     }
 
     public void addInteractable(Transform ting) {
-        if(!able) {
-            StartCoroutine(waiter(ting));
-            return;
-        }
         if(!initted || playerTrans == null) {
             DOTween.Init();
             playerTrans = FindObjectOfType<PlayerMovement>().transform;
@@ -49,12 +43,6 @@ public class InteractUI : MonoBehaviour {
         closestInteractable = interactables.FindClosest(playerTrans.position);
         if(checker == null)
             checker = StartCoroutine(interactableChecker());
-    }
-
-    IEnumerator waiter(Transform ting) {
-        while(!able)
-            yield return new WaitForEndOfFrame();
-        addInteractable(ting);
     }
 
 
