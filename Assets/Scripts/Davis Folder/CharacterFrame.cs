@@ -223,7 +223,11 @@ public class CharacterFrame : MonoBehaviour
                 Destroy(qAbility);
                 qAbility = null;
                 break;
-            default: //this will also be none, cause this shouldn't happen
+            case Attack.attackType.None:
+                RemovePassive(item.passiveScript);
+                break;
+            default: //this should not happen
+                Debug.LogError("Something real bad happened when removing an item.");
                 break;
         }
         FixAbility();
@@ -234,12 +238,25 @@ public class CharacterFrame : MonoBehaviour
         switch (pScript)
         {
             case PassiveScript.combatBoots:
-                Debug.Log("combatBoots");
                 var script = gameObject.AddComponent<CombatBoots>();
                 script.Equip(this);
                 break;
             default:
                 Debug.LogError("Passive could not be added.");
+                break;
+        }
+    }
+
+    private void RemovePassive(PassiveScript pScript)
+    {
+        switch (pScript)
+        {
+            case PassiveScript.combatBoots:
+                var script = gameObject.GetComponent<CombatBoots>();
+                script.UnEquip(this);
+                break;
+            default:
+                Debug.LogError("Passive could not be removed.");
                 break;
         }
     }

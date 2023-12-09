@@ -135,7 +135,7 @@ public class bonuspicker : MonoBehaviour
 
     public void applyBonus(int choice)
     {
-        switch(choice)
+        switch (choice)
         {
             case 0:
                 stat.stat = CharStats.attackDamage;
@@ -182,7 +182,7 @@ public class bonuspicker : MonoBehaviour
         }
         Debug.Log("Bonus Applied! " + choice);
         #region Saving
-        var temp = new StateSaveData();
+        StateSaveData temp = new StateSaveData();
         temp.bonuses.Add(stat.stat);
         temp.mods.Add(stat.modifier);
         var data = JsonUtility.ToJson(temp);
@@ -201,6 +201,6 @@ public class bonuspicker : MonoBehaviour
 [System.Serializable]
 public class StateSaveData
 {
-    public List<CharStats> bonuses;
-    public List<float> mods;
+    public List<CharStats> bonuses = new();
+    public List<float> mods = new();
 }
