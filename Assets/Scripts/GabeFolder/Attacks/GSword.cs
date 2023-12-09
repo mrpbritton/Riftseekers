@@ -147,8 +147,8 @@ public class GSword : Attack
         }
         origin.forward = direction;
         //Debug.Log(origin.forward);
-        //float angle = Mathf.Atan2(origin.forward.z, origin.forward.x) * Mathf.Rad2Deg;
-        //origin.forward = constrictDirection(angle);
+        float angle = Mathf.Atan2(origin.forward.z, origin.forward.x) * Mathf.Rad2Deg;
+        constrictDirection(angle);
         //Debug.Log(Mathf.Atan2(origin.forward.z, origin.forward.x) * Mathf.Rad2Deg);
 
         if (damScript.damage != damage)
