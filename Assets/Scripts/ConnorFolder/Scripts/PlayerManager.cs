@@ -3,10 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour {
-    private void Awake() {
-        DontDestroyOnLoad(getTallestParent());
-    }
-
     public GameObject getTallestParent() {
         var tallestParent = gameObject;
         while(tallestParent.transform.parent != null)
