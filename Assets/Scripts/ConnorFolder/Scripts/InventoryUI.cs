@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,6 +37,65 @@ public class InventoryUI : MonoBehaviour {
         controls.UI.Pause.performed += ctx => toggleShown();
 
         InputManager.switchInput += swapState;
+        SceneManager.sceneLoaded += onLoad;
+    }
+
+    private void onLoad(Scene scene, LoadSceneMode mode)
+    {
+        character = FindObjectOfType<CharacterFrame>();
+        character.UpdateAttack();
+        var d = SaveData.getString("Bonuses");
+        StateSaveData temp = JsonUtility.FromJson<StateSaveData>(d);
+        for(int i = 0; i < temp.bonuses.Count; i++)
+        {
+            switch (temp.bonuses[i])
+            {
+                case CharStats.maxHealth:
+                    character.maxHealth += Mathf.FloorToInt(temp.mods[i]);
+                    break;
+
+                case CharStats.health:
+                    character.health += temp.mods[i];
+                    break;
+
+                case CharStats.moveSpeed:
+                    character.movementSpeed += temp.mods[i];
+                    break;
+
+                case CharStats.dashSpeed:
+                    character.dashSpeed += temp.mods[i];
+                    break;
+
+                case CharStats.dashDistance:
+                    character.dashDistance += temp.mods[i];
+                    break;
+
+                case CharStats.dashCharges:
+                    character.dashCharges += Mathf.FloorToInt(temp.mods[i]);
+                    break;
+
+                case CharStats.attackDamage:
+                    character.attackDamage += temp.mods[i];
+                    break;
+
+                case CharStats.attackSpeed:
+                    character.attackSpeed += temp.mods[i];
+                    break;
+
+                case CharStats.cooldownMod:
+                    character.cooldownMod += temp.mods[i];
+                    break;
+
+                case CharStats.chargeLimit:
+                    character.chargeLimit += Mathf.FloorToInt(temp.mods[i]);
+                    break;
+
+                default:
+                    Debug.LogError("Stat could not be changed.");
+                    break;
+            }
+            character.UpdateStats();
+        }
     }
 
     private void LateUpdate() {

@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 using TMPro;
+
 [RequireComponent(typeof(GameActionSequence))]
 [RequireComponent(typeof(UpdateStat_GA))]
 public class bonuspicker : MonoBehaviour
@@ -95,7 +96,6 @@ public class bonuspicker : MonoBehaviour
         {
             Debug.LogError("Not a valid bonus!");
         }
-       
     }
 
     public void setup()
@@ -181,6 +181,13 @@ public class bonuspicker : MonoBehaviour
                 break;
         }
         Debug.Log("Bonus Applied! " + choice);
+        #region Saving
+        var temp = new StateSaveData();
+        temp.bonuses.Add(stat.stat);
+        temp.mods.Add(stat.modifier);
+        var data = JsonUtility.ToJson(temp);
+        SaveData.setString("Bonuses", data);
+        #endregion
         sequence.Play();
     }
 
@@ -189,4 +196,11 @@ public class bonuspicker : MonoBehaviour
         EnemyController.levelComplete += setup;
 
     }
+}
+
+[System.Serializable]
+public class StateSaveData
+{
+    public List<CharStats> bonuses;
+    public List<float> mods;
 }

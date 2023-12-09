@@ -76,8 +76,8 @@ public class CharacterFrame : MonoBehaviour
     [Header("Managers")]
     public LevelManager transfer;
     public Health trueHealth;
-    [SerializeField, Tooltip("The scriptable object of the default stats")]
-    private DefaultStats_SO defaultStats;
+    [Tooltip("The scriptable object of the default stats")]
+    public readonly DefaultStats_SO defaultStats;
 
     Coroutine attacker = null;
     bool bIsPressed;

@@ -23,6 +23,7 @@ public class PlayerSpawnPos : MonoBehaviour {
     }
 
     private void Start() {
-        FindObjectOfType<SpawnCam>().thing();
+        //the function below no longer exists \/
+        //FindObjectOfType<SpawnCam>().thing();
     }
 }

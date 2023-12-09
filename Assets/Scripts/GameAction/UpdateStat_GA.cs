@@ -18,16 +18,16 @@ public class UpdateStat_GA : GameAction
             frame = FindObjectOfType<CharacterFrame>();
         }
 
-        /*    maxHealth,
-    health,
-    moveSpeed,
-    dashSpeed,
-    dashDistance,
-    dashCharges,
-    attackDamage,
-    attackSpeed,
-    cooldownMod,
-    chargeLimit*/
+            /*  maxHealth,
+                health,
+                moveSpeed,
+                dashSpeed,
+                dashDistance,
+                dashCharges,
+                attackDamage,
+                attackSpeed,
+                cooldownMod,
+                chargeLimit */
 
         switch (stat)
         {
