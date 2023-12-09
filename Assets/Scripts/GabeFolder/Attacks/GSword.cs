@@ -15,6 +15,13 @@ public class GSword : Attack
     private Transform origin;
     [SerializeField, Tooltip("Hitbox the Sword uses")]
     private Transform hitbox;
+    [SerializeField, Tooltip("Sprite for the sword when it swings left")]
+    private Sprite leftSwing;
+    [SerializeField, Tooltip("Sprite for the sword when it swings right")]
+    private Sprite rightSwing;
+    [SerializeField, Tooltip("Sprite renderer for the Sword")]
+    public SpriteRenderer sRenderer;
+    private bool swingLeft;
     private DoDamage damScript;
     private Vector3 direction; //what the direction currently is
     private Vector3 cachedDir; //filtered direction; cannot be zero
@@ -34,6 +41,15 @@ public class GSword : Attack
     protected override float getDamage()
     {
         return damage * frame.attackDamage;
+    }
+
+    private void flipSprite()
+    {
+        if(swingLeft) //if swinging left
+            sRenderer.sprite = leftSwing;
+        else
+            sRenderer.sprite = rightSwing;
+        swingLeft = !swingLeft;
     }
 
     public override void anim(Animator anim, bool reset)
@@ -131,8 +147,8 @@ public class GSword : Attack
         }
         origin.forward = direction;
         //Debug.Log(origin.forward);
-        float angle = Mathf.Atan2(origin.forward.z, origin.forward.x) * Mathf.Rad2Deg;
-        origin.forward = constrictDirection(angle);
+        //float angle = Mathf.Atan2(origin.forward.z, origin.forward.x) * Mathf.Rad2Deg;
+        //origin.forward = constrictDirection(angle);
         //Debug.Log(Mathf.Atan2(origin.forward.z, origin.forward.x) * Mathf.Rad2Deg);
 
         if (damScript.damage != damage)
@@ -208,8 +224,11 @@ public class GSword : Attack
         AkSoundEngine.PostEvent("Sword_Swing", gameObject);
 
         hitbox.gameObject.SetActive(true);
+        sRenderer.gameObject.SetActive(true);
         yield return new WaitForSeconds(hitboxTime);
+        sRenderer.gameObject.SetActive(false);
         hitbox.gameObject.SetActive(false);
+        flipSprite();
     }
 
     public override void reset()
