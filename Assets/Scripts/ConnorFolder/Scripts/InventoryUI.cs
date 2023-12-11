@@ -122,6 +122,8 @@ public class InventoryUI : MonoBehaviour {
             for(int i = 0; i < inactiveSlots.Count; i++)
                 inactiveSlots[i].GetComponent<Image>().color = i == curIndex ? Color.grey : Color.white;
         }
+
+        //Debug.Log(InputManager.isUsingKeyboard());
     }
 
     private void OnDisable() {
@@ -141,6 +143,7 @@ public class InventoryUI : MonoBehaviour {
         shown = true;
         background.gameObject.SetActive(true);
         pm.enabled = false;
+        activeSlots[0].GetComponent<Button>().Select();
         //  active items
         for(int i = 0; i < activeSlots.Count; i++) {
             bool b = Inventory.getActiveItem(i, il) != null;
