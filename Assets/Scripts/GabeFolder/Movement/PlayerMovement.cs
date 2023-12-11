@@ -40,11 +40,16 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 cachedDirection;
     private Vector3 dashDirection;
     public static Transform playerTrans;
-
+    private bool bMove = true;
     //<--- Click on the plus sign to expand
     #region Setup
-    private void OnEnable()
+    private void Awake()
     {
+        bonuspicker.EnablePlayerMovement += EnablePlayerMovement;
+        bonuspicker.DisablePlayerMovement += DisablePlayerMovement;
+    }
+    private void OnEnable()
+    {        
         playerTrans = transform;
         pInput = new PInput();
         pInput.Enable();
@@ -63,9 +68,12 @@ public class PlayerMovement : MonoBehaviour
     {
         pInput.Disable();
         pInput.Player.Dash.started -= DashPress;
+        bonuspicker.EnablePlayerMovement += EnablePlayerMovement;
+        bonuspicker.DisablePlayerMovement += DisablePlayerMovement;
     }
     #endregion
 
+    
     public void UpdateStats()
     {
         speed = frame.movementSpeed;
@@ -75,32 +83,42 @@ public class PlayerMovement : MonoBehaviour
         dashCooldown *= frame.cooldownMod;
         dashChargeCooldown *= frame.cooldownMod;
     }
-
+    private void EnablePlayerMovement()
+    {
+        bMove = true; 
+    }
+    private void DisablePlayerMovement() 
+    { 
+        bMove = false;
+    }
     private void Update()
     {
-        direction.x = pInput.Player.Movement.ReadValue<Vector3>().x;
-        direction.z = pInput.Player.Movement.ReadValue<Vector3>().z;
-
-        direction = direction.normalized;
-
-        if(cachedDirection != direction)
+        if (bMove)
         {
-            cachedDirection = direction;
-            frame.UpdateSprite(cachedDirection);
-        }
+            direction.x = pInput.Player.Movement.ReadValue<Vector3>().x;
+            direction.z = pInput.Player.Movement.ReadValue<Vector3>().z;
 
-        player.Move(speed * Time.deltaTime * direction);
+            direction = direction.normalized;
 
-        //if the player isn't grounded, move them towards the ground.
-        if (player.isGrounded == false)
-            if (player.isGrounded == false)
+            if (cachedDirection != direction)
             {
-                player.Move(fallSpeed * Time.deltaTime * Vector3.down);
+                cachedDirection = direction;
+                frame.UpdateSprite(cachedDirection);
             }
 
-        if (remainingCharges < dashCharges && canRecharge)
-        {
-            StartCoroutine(RechargeDash());
+            player.Move(speed * Time.deltaTime * direction);
+
+            //if the player isn't grounded, move them towards the ground.
+            if (player.isGrounded == false)
+                if (player.isGrounded == false)
+                {
+                    player.Move(fallSpeed * Time.deltaTime * Vector3.down);
+                }
+
+            if (remainingCharges < dashCharges && canRecharge)
+            {
+                StartCoroutine(RechargeDash());
+            }
         }
     }
 

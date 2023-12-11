@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 using TMPro;
+using System;
 
 [RequireComponent(typeof(GameActionSequence))]
 [RequireComponent(typeof(UpdateStat_GA))]
@@ -19,7 +18,8 @@ public class bonuspicker : MonoBehaviour
     public UpdateStat_GA stat;
     private int bonus1, bonus2, bonus3 = 10;
 
-
+    public static Action EnablePlayerMovement = delegate { };
+    public static Action DisablePlayerMovement = delegate { };
     public string[] descriptions = new string[8];
     public int[] bonuses = new int[8];
     //public float transitionTime = 1f;
@@ -53,7 +53,7 @@ public class bonuspicker : MonoBehaviour
 
     public int randomPicker()
     {
-        int randomNumber = Random.Range(0, 8);
+        int randomNumber = UnityEngine.Random.Range(0, 8);
         return randomNumber;
     }
 
@@ -110,7 +110,8 @@ public class bonuspicker : MonoBehaviour
         button1.text = descriptions[bonus1];
         button2.text = descriptions[bonus2];
         button3.text = descriptions[bonus3];
-        Character.gameObject.GetComponent<PlayerMovement>().enabled = false;
+        //Character.gameObject.GetComponent<PlayerMovement>().enabled = false;
+        DisablePlayerMovement();
         bonusOpener();
     }
 
@@ -127,8 +128,9 @@ public class bonuspicker : MonoBehaviour
             applyBonus(bonus3);
         }
         bonusCloser();
+        EnablePlayerMovement();
         //Character.enabled = true;
-        Character.gameObject.GetComponent<PlayerMovement>().enabled = true;
+        //Character.gameObject.GetComponent<PlayerMovement>().enabled = true;
         //Character.gameObject.GetComponent<Basic_Proj>().enabled = true;
         //Character.gameObject.GetComponent<GSword>().enabled = true;
     }
@@ -195,6 +197,10 @@ public class bonuspicker : MonoBehaviour
     {
         EnemyController.levelComplete += setup;
 
+    }
+    private void OnDisable()
+    {
+        EnemyController.levelComplete -= setup;
     }
 }
 
