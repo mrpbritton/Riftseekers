@@ -405,7 +405,6 @@ GameObject:
   - component: {fileID: 1612591787}
   - component: {fileID: 1612591786}
   - component: {fileID: 1612591790}
-  - component: {fileID: 1612591791}
   m_Layer: 5
   m_Name: UI Plate
   m_TagString: Untagged
@@ -511,18 +510,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingButton: {fileID: 1882168485}
---- !u!114 &1612591791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1612591785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b66f1175e52fad41bfcc2d54243d871, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1650652076
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,9 +902,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1612591791}
-        m_TargetAssemblyTypeName: mainMenu, Assembly-CSharp
-        m_MethodName: endGame
+      - m_Target: {fileID: 1882168490}
+        m_TargetAssemblyTypeName: ResetScene, Assembly-CSharp
+        m_MethodName: Activator
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
