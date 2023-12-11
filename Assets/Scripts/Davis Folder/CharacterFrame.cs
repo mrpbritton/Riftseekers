@@ -302,22 +302,28 @@ public class CharacterFrame : MonoBehaviour
         switch(aType)
         {
             case Attack.attackType.Basic:
-                Destroy(basicAttack);
+                if (basicAttack != null)
+                    Destroy(basicAttack);
                 break;
             case Attack.attackType.Secondary:
-                Destroy(secondAttack);
+                if (secondAttack != null)
+                    Destroy(secondAttack);
                 break;
             case Attack.attackType.EAbility:
-                Destroy(eAbility);
+                if (eAbility != null)
+                    Destroy(eAbility);
                 break;
             case Attack.attackType.FAbility:
-                Destroy(fAbility);
+                if (fAbility != null)
+                    Destroy(fAbility);
                 break;
             case Attack.attackType.RAbility:
-                Destroy(rAbility);
+                if (rAbility != null)
+                    Destroy(rAbility);
                 break;
             case Attack.attackType.QAbility:
-                Destroy(qAbility);
+                if (qAbility != null)
+                    Destroy(qAbility);
                 break;
             default: //this will also be none, cause this shouldn't happen
                 break;

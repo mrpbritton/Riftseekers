@@ -37,15 +37,25 @@ public class InventoryUI : MonoBehaviour {
         controls.UI.Pause.performed += ctx => toggleShown();
 
         InputManager.switchInput += swapState;
-        SceneManager.sceneLoaded += onLoad;
+        StartCoroutine(LoadThis());
     }
 
-    private void onLoad(Scene scene, LoadSceneMode mode)
+    IEnumerator LoadThis()
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+        onLoad();
+    }
+
+    private void onLoad()
     {
         character = FindObjectOfType<CharacterFrame>();
         character.ResetAttack();
         character.UpdateAttack();
-/*        for(int i = 0; i < 3; i++)
+        /*for(int i = 0; i < 3; i++)
         {
             if(Inventory.getActiveItem(i, il) != null)
             {
@@ -55,6 +65,8 @@ public class InventoryUI : MonoBehaviour {
         }*/
         var d = SaveData.getString("Bonuses");
         StateSaveData temp = JsonUtility.FromJson<StateSaveData>(d);
+        if (string.IsNullOrEmpty(d))
+            return;
         for(int i = 0; i < temp.bonuses.Count; i++)
         {
             switch (temp.bonuses[i])
