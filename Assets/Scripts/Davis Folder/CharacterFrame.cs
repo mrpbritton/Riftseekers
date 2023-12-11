@@ -195,6 +195,25 @@ public class CharacterFrame : MonoBehaviour
         }
     }
 
+    public void ResetAttack()
+    {
+        List<ConItem> activeItems = new();
+
+        for (int i = 0; i < 3; i++)
+        {
+            activeItems.Add(Inventory.getActiveItem(i, FindFirstObjectByType<ItemLibrary>()));
+        }
+
+
+        foreach (ConItem item in activeItems)
+        {
+            if (item != null)
+            {
+                RemoveAbility(item);
+            }
+        }
+    }
+
     public void RemoveAbility(ConItem item)
     {
         switch (item.overrideAbil)

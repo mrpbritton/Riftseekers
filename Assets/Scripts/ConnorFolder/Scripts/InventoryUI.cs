@@ -43,6 +43,7 @@ public class InventoryUI : MonoBehaviour {
     private void onLoad(Scene scene, LoadSceneMode mode)
     {
         character = FindObjectOfType<CharacterFrame>();
+        character.ResetAttack();
         character.UpdateAttack();
         var d = SaveData.getString("Bonuses");
         StateSaveData temp = JsonUtility.FromJson<StateSaveData>(d);
