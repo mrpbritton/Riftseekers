@@ -162,6 +162,23 @@ public class CharacterFrame : MonoBehaviour
         }
     }
 
+    public void ResetAttack()
+    {
+        List<ConItem> activeItems = new();
+        for (int i = 0; i < 3; i++)
+        {
+            activeItems.Add(Inventory.getActiveItem(i, FindFirstObjectByType<ItemLibrary>()));
+        }
+        foreach (ConItem item in activeItems)
+        {
+            if (item != null)
+            {
+                RemoveAbility(item);
+            }
+        }
+    }
+
+
     /// <summary>
     /// If any abilities are null, this will set them to the base ability
     /// </summary>
@@ -192,25 +209,6 @@ public class CharacterFrame : MonoBehaviour
         if (qAbility == null)
         {
 
-        }
-    }
-
-    public void ResetAttack()
-    {
-        List<ConItem> activeItems = new();
-
-        for (int i = 0; i < 3; i++)
-        {
-            activeItems.Add(Inventory.getActiveItem(i, FindFirstObjectByType<ItemLibrary>()));
-        }
-
-
-        foreach (ConItem item in activeItems)
-        {
-            if (item != null)
-            {
-                RemoveAbility(item);
-            }
         }
     }
 
@@ -527,6 +525,7 @@ public class CharacterFrame : MonoBehaviour
                 AkSoundEngine.PostEvent("Player_Death", gameObject);
                 transfer.playerDeath();
                 dumbo = false;
+                SaveData.wipe();
             }
         }
     }
