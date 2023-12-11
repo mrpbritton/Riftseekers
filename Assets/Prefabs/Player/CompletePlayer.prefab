@@ -428,7 +428,7 @@ Transform:
   - {fileID: 5701483791246596465}
   - {fileID: 4124214301755376211}
   m_Father: {fileID: 0}
-  m_RootOrder: 153
+  m_RootOrder: 231
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4865779752117141236
 MonoBehaviour:
@@ -784,6 +784,11 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 2473559326970361746}
+    - target: {fileID: 1486973088829066078, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
+      propertyPath: move_s
+      value: 
+      objectReference: {fileID: 4940063856459572159}
     - target: {fileID: 1486973088829066078, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
       propertyPath: qAbility
@@ -1205,6 +1210,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4440314752643908563}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4940063856459572159 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8723907174109061228, guid: 66562dc996ca2b5478f1b7f0a538878b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4440314752643908563}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629408075775950726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 818d1f825214c2043b44a61924e1ff6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &7291086632770198049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6390623351485340146, guid: 66562dc996ca2b5478f1b7f0a538878b,

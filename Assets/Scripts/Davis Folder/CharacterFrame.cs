@@ -44,7 +44,6 @@ public class CharacterFrame : MonoBehaviour
     public int maxHealth;
     [Tooltip("Current health of the player")]
     public float health;
-    private Health health_s;
 
     [Tooltip("How fast the player moves")]
     public float movementSpeed;
@@ -54,7 +53,7 @@ public class CharacterFrame : MonoBehaviour
     public float dashDistance;
     [Tooltip("How many charges the dash has")]
     public int dashCharges;
-    private PlayerMovement move_s;
+    public PlayerMovement move_s;
 
     [Tooltip("Base attack damage; each attack derives this for a calculation")]
     public float attackDamage;
@@ -85,10 +84,10 @@ public class CharacterFrame : MonoBehaviour
     //more options to come in the future
     private void Start()
     {
-        health_s = GetComponent<Health>();
+        trueHealth = GetComponent<Health>();
         move_s = GetComponent<PlayerMovement>();
 
-       // SaveData.wipe();
+        //SaveData.wipe();
     }
 
     private void OnEnable()
@@ -507,7 +506,7 @@ public class CharacterFrame : MonoBehaviour
     public void UpdateStats()
     {
         move_s.UpdateStats();
-        health_s.UpdateStats();
+        trueHealth.UpdateStats();
     }
 
     public void UpdateStats(Attack atk)
