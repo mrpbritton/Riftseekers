@@ -8,6 +8,7 @@ public class RoomTransition : MonoBehaviour
     public LevelManager sceneGuy;
     int[] scenes = new int[4];
     bool checker = true;
+    public int Scene;
 
     // Start is called before the first frame update
     void Start()
@@ -15,36 +16,6 @@ public class RoomTransition : MonoBehaviour
         sceneGuy = FindObjectOfType<LevelManager>();
         scenes = RoomSaver.loadroom();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        /*if (Input.GetKeyDown(KeyCode.Space))
-        {
-            RoomTransitionz();
-        }*/
-    }
-    void RoomTransitionz()
-    {
-        /*  int index = SceneManager.GetActiveScene().buildIndex;
-          if(index == 0)
-          {
-              SceneManager.LoadScene(scenes[0]);
-          }
-          else
-          {
-              for(int i = 0; i < 3; i++)
-              {
-                  if(index == scenes[i])
-                  {
-                      SceneManager.LoadScene(scenes[i + 1]);
-                  }
-              }   
-          }
-        */
-        SceneManager.LoadScene(5);
-    }
-
     private void OnEnable()
     {
         EnemyController.levelComplete += levelComplete;
@@ -63,9 +34,10 @@ public class RoomTransition : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Gaming?");
         if (other.tag == "Player" && checker == true)
         {
-            sceneGuy.loadNextScene();
+            sceneGuy.loadSpecific(Scene);
             checker = false;
             //RoomTransitionz();
         }

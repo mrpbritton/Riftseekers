@@ -88,7 +88,7 @@ public class CharacterFrame : MonoBehaviour
         health_s = GetComponent<Health>();
         move_s = GetComponent<PlayerMovement>();
 
-        SaveData.wipe();
+       // SaveData.wipe();
     }
 
     private void OnEnable()
