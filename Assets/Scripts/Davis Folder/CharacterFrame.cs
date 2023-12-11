@@ -161,6 +161,25 @@ public class CharacterFrame : MonoBehaviour
         }
     }
 
+    public void UpdateAttack(ConItem item)
+    {
+        if (item != null)
+        {
+            if (item.overrideAbil != Attack.attackType.None) //if it isn't a passive item
+            {
+                ReplaceAttack(item.overrideAbil, item.attackScript);
+            }
+            else //if it is a passive item
+            {
+                ReplacePassive(item.passiveScript);
+            }
+        }
+        else
+        {
+            FixAbility();
+        }
+    }
+
     public void ResetAttack()
     {
         List<ConItem> activeItems = new();
@@ -270,6 +289,7 @@ public class CharacterFrame : MonoBehaviour
             case PassiveScript.combatBoots:
                 var script = gameObject.GetComponent<CombatBoots>();
                 script.UnEquip(this);
+                Destroy(this);
                 break;
             default:
                 Debug.LogError("Passive could not be removed.");

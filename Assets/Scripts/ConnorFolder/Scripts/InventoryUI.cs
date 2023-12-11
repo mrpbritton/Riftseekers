@@ -43,8 +43,16 @@ public class InventoryUI : MonoBehaviour {
     private void onLoad(Scene scene, LoadSceneMode mode)
     {
         character = FindObjectOfType<CharacterFrame>();
-        //character.ResetAttack();
+        character.ResetAttack();
         character.UpdateAttack();
+/*        for(int i = 0; i < 3; i++)
+        {
+            if(Inventory.getActiveItem(i, il) != null)
+            {
+                //character.RemoveAbility(Inventory.getActiveItem(i, il));
+                character.UpdateAttack(Inventory.getActiveItem(i, il));
+            }
+        }*/
         var d = SaveData.getString("Bonuses");
         StateSaveData temp = JsonUtility.FromJson<StateSaveData>(d);
         for(int i = 0; i < temp.bonuses.Count; i++)
@@ -252,6 +260,6 @@ public class InventoryUI : MonoBehaviour {
         show();
         actIndex = -1;
         curIndex = -1;
-        character.UpdateAttack();
+        character.UpdateAttack(Inventory.getActiveItem(actInd, il));
     }
 }
