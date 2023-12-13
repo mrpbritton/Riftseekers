@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4677750204689010320}
   - component: {fileID: 4467885450747312668}
   - component: {fileID: 889403759856859883}
-  - component: {fileID: 7093111843995717997}
+  - component: {fileID: 6075481220441414379}
   m_Layer: 0
   m_Name: smallTable
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4467885450747312668
 MeshFilter:
@@ -84,7 +84,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7093111843995717997
+--- !u!65 &6075481220441414379
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -103,5 +103,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.91596603, y: 0.64370906, z: 0.9159659}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.3739489, y: 1.2643206, z: 1.3739489}
+  m_Center: {x: 0, y: 0.6321603, z: 0}
