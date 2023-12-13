@@ -95,23 +95,41 @@ public class CharacterFrame : MonoBehaviour
         pInput = new PInput();
         pInput.Enable();
 
-        #region Started Subscriptions
-        pInput.Player.BasicAttack.started += ctx => performAttack(basicAttack);
-        pInput.Player.SecondAttack.started += ctx => performAttack(secondAttack);
-        pInput.Player.Ability1.started += ctx => performAttack(qAbility);
-        pInput.Player.Ability2.started += ctx => performAttack(eAbility);
-        pInput.Player.Ability3.started += ctx => performAttack(rAbility);
-        pInput.Player.Ult.started += ctx => performAttack(fAbility);
-        #endregion
+        //  only subscribes to things if not in tutorial.
+        //  (tutorial uses a custom subscription process)
+        if(FindObjectOfType<TutorialChecker>() == null) {
+            #region Started Subscriptions
+            pInput.Player.BasicAttack.started += ctx => performAttack(basicAttack);
+            pInput.Player.SecondAttack.started += ctx => performAttack(secondAttack);
+            pInput.Player.Ability1.started += ctx => performAttack(qAbility);
+            pInput.Player.Ability2.started += ctx => performAttack(eAbility);
+            pInput.Player.Ability3.started += ctx => performAttack(rAbility);
+            pInput.Player.Ult.started += ctx => performAttack(fAbility);
+            #endregion
 
-        #region Canceled Subscriptions
-        pInput.Player.BasicAttack.canceled += ctx => NotPressed();
-        pInput.Player.SecondAttack.canceled += ctx => NotPressed();
-        pInput.Player.Ability1.canceled += ctx => NotPressed();
-        pInput.Player.Ability2.canceled += ctx => NotPressed();
-        pInput.Player.Ability3.canceled += ctx => NotPressed();
-        pInput.Player.Ult.canceled += ctx => NotPressed();
-        #endregion
+            #region Canceled Subscriptions
+            pInput.Player.BasicAttack.canceled += ctx => NotPressed();
+            pInput.Player.SecondAttack.canceled += ctx => NotPressed();
+            pInput.Player.Ability1.canceled += ctx => NotPressed();
+            pInput.Player.Ability2.canceled += ctx => NotPressed();
+            pInput.Player.Ability3.canceled += ctx => NotPressed();
+            pInput.Player.Ult.canceled += ctx => NotPressed();
+            #endregion
+        }
+        //  subs that the tutorial doesn't handle so just subscribe on start
+        else {
+            #region Started Subscriptions
+            pInput.Player.Ability2.started += ctx => performAttack(eAbility);
+            pInput.Player.Ability3.started += ctx => performAttack(rAbility);
+            pInput.Player.Ult.started += ctx => performAttack(fAbility);
+            #endregion
+
+            #region Canceled Subscriptions
+            pInput.Player.Ability2.canceled += ctx => NotPressed();
+            pInput.Player.Ability3.canceled += ctx => NotPressed();
+            pInput.Player.Ult.canceled += ctx => NotPressed();
+            #endregion
+        }
 
         //pInput.Player.AnyController.performed += ctxt => 
 
@@ -552,6 +570,24 @@ public class CharacterFrame : MonoBehaviour
                 dumbo = false;
                 SaveData.wipe();
             }
+        }
+    }
+
+    //  function for Connor's tutorial
+    public void activateSubscription(TutorialChecker.teachTypes type) {
+        switch(type) {
+            case TutorialChecker.teachTypes.BasicAtt:
+                pInput.Player.BasicAttack.started += ctx => performAttack(basicAttack);
+                pInput.Player.BasicAttack.canceled += ctx => NotPressed();
+                break;
+            case TutorialChecker.teachTypes.SecondAtt:
+                pInput.Player.SecondAttack.started += ctx => performAttack(secondAttack);
+                pInput.Player.SecondAttack.canceled += ctx => NotPressed();
+                break;
+            case TutorialChecker.teachTypes.RocketAtt:
+                pInput.Player.Ability1.started += ctx => performAttack(qAbility);
+                pInput.Player.Ability1.canceled += ctx => NotPressed();
+                break;
         }
     }
 }

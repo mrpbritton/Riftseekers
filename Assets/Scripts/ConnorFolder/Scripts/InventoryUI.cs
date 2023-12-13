@@ -9,7 +9,6 @@ public class InventoryUI : MonoBehaviour {
     [SerializeField] Image dragged;
     [SerializeField] List<Image> activeSlots;
     [SerializeField] List<Image> inactiveSlots;
-    [SerializeField] Sprite emptySlotSprite;
     [SerializeField] GameObject background;
 
     ItemLibrary il;
@@ -130,9 +129,9 @@ public class InventoryUI : MonoBehaviour {
         }
         else {
             for(int i = 0; i < activeSlots.Count; i++)
-                activeSlots[i].GetComponent<Image>().color = i == actIndex ? Color.grey : Color.white;
+                activeSlots[i].color = i == actIndex ? Color.grey : Color.white;
             for(int i = 0; i < inactiveSlots.Count; i++)
-                inactiveSlots[i].GetComponent<Image>().color = i == curIndex ? Color.grey : Color.white;
+                inactiveSlots[i].color = i == curIndex ? Color.grey : Color.white;
         }
 
         //Debug.Log(InputManager.isUsingKeyboard());
@@ -158,14 +157,23 @@ public class InventoryUI : MonoBehaviour {
         activeSlots[0].GetComponent<Button>().Select();
         //  active items
         for(int i = 0; i < activeSlots.Count; i++) {
-            bool b = Inventory.getActiveItem(i, il) != null;
-            activeSlots[i].sprite = b ? Inventory.getActiveItem(i, il).image : emptySlotSprite;
+            if(Inventory.getActiveItem(i, il) != null) {
+                activeSlots[i].transform.GetChild(0).GetComponent<Image>().color = Color.white;
+                activeSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = Inventory.getActiveItem(i, il).image;
+            }
+            else
+                activeSlots[i].transform.GetChild(0).GetComponent<Image>().color = Color.clear;
         }
 
         //  inventory items
         int invCount = Inventory.getItems(il).Count;
         for(int i = 0; i < inactiveSlots.Count; i++) {
-            inactiveSlots[i].sprite = i < invCount ? Inventory.getItems(il)[i].image : emptySlotSprite;
+            if(i < invCount) {
+                inactiveSlots[i].transform.GetChild(0).GetComponent<Image>().color = Color.white;
+                inactiveSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = Inventory.getItems(il)[i].image;
+            }
+            else
+                inactiveSlots[i].transform.GetChild(0).GetComponent<Image>().color = Color.clear;
         }
 
         if(!InputManager.isUsingKeyboard())
@@ -226,19 +234,19 @@ public class InventoryUI : MonoBehaviour {
         actIndex = ind;
         switch(ind) {
             case 0:
-                activeSlots[0].GetComponent<Image>().color = Color.white;
-                activeSlots[1].GetComponent<Image>().color = Color.grey;
-                activeSlots[2].GetComponent<Image>().color = Color.grey;
+                activeSlots[0].color = Color.white;
+                activeSlots[1].color = Color.grey;
+                activeSlots[2].color = Color.grey;
                 break;
             case 1:
-                activeSlots[0].GetComponent<Image>().color = Color.grey;
-                activeSlots[1].GetComponent<Image>().color = Color.white;
-                activeSlots[2].GetComponent<Image>().color = Color.grey;
+                activeSlots[0].color = Color.grey;
+                activeSlots[1].color = Color.white;
+                activeSlots[2].color = Color.grey;
                 break;
             case 2:
-                activeSlots[0].GetComponent<Image>().color = Color.grey;
-                activeSlots[1].GetComponent<Image>().color = Color.grey;
-                activeSlots[2].GetComponent<Image>().color = Color.white;
+                activeSlots[0].color = Color.grey;
+                activeSlots[1].color = Color.grey;
+                activeSlots[2].color = Color.white;
                 break;
         }
     }

@@ -4,6 +4,8 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 using System.Linq;
+using UnityEngine.WSA;
+using UnityEngine.Rendering;
 
 public class TutorialChecker : MonoBehaviour {
 
@@ -22,6 +24,11 @@ public class TutorialChecker : MonoBehaviour {
 
     [SerializeField] List<tutText> texts = new List<tutText>();
     [SerializeField] List<GameObject> blockers = new List<GameObject>();
+    [SerializeField] GameObject meleePref, projectilePref;
+
+    [SerializeField] List<EnemyHealth> r1Enemies, r3Enemies;
+    List<Vector3> r1ESpawns = new List<Vector3>(), r3ESpawns = new List<Vector3>();
+    Transform enemyHolder;
 
     teachTypes curTeaching;
     Coroutine rotator = null;
@@ -29,12 +36,19 @@ public class TutorialChecker : MonoBehaviour {
     List<Vector2> roomPoses = new List<Vector2>();
 
     Transform playerTrans;
-
-    int startingEnemyCount, curEnemyCount;
+    CharacterFrame cf;
 
     private void Awake() {
         SaveData.wipe();    //  THIS LINE MIGHT BREAK THINGS LATER
         playerTrans = FindObjectOfType<PlayerMovement>().transform;
+        cf = FindObjectOfType<CharacterFrame>();
+        foreach(var i in r1Enemies)
+            r1ESpawns.Add(i.transform.position);
+        foreach(var i in r3Enemies)
+            r3ESpawns.Add(i.transform.position);
+        enemyHolder = r1Enemies[0].transform.parent;
+
+
         controls = new PInput();
         controls.Enable();
 
@@ -50,8 +64,6 @@ public class TutorialChecker : MonoBehaviour {
         //  Third Room (pickups / items / new abilities)
         controls.Player.Interact.performed += ctx => { tryRotate(curTeaching == teachTypes.Interact ? teachTypes.Interact : teachTypes.Pickup); };
 
-        //  Fourth Room (putting everything together / advanced combat)
-
 
         //  combines all texts into the tutText
         foreach(var i in texts) {
@@ -64,7 +76,7 @@ public class TutorialChecker : MonoBehaviour {
         curTeaching = teachTypes.Move;
         showCurText();
 
-        StartCoroutine(enemyCounter(FindObjectsOfType<EnemyHealth>().ToList()));
+        StartCoroutine(enemyCounter());
         StartCoroutine(waitForShotgunEquipped());
     }
 
@@ -73,7 +85,7 @@ public class TutorialChecker : MonoBehaviour {
     }
 
     public void tryRotate(teachTypes type) {
-        if(rotator != null || texts.Count == 0 || type != curTeaching) 
+        if(rotator != null || texts.Count == 0 || type != curTeaching)
             return;
         rotator = StartCoroutine(rotate());
     }
@@ -81,7 +93,14 @@ public class TutorialChecker : MonoBehaviour {
     IEnumerator rotate() {
         hideCurText();
         yield return new WaitForSeconds(.16f);
+        //  respawns enemies
+        if(curTeaching != teachTypes.ClearFirstEnemies && curTeaching != teachTypes.ClearSecondEnemies) {
+            respawnEnemies(curTeaching < teachTypes.ClearFirstEnemies ? 1 : 3);
+        }
         curTeaching++;
+        cf.activateSubscription(curTeaching);   //  activate next ability
+
+
         if((int)curTeaching - 1 < texts.Count) {
             //  unblocks
             if(texts[(int)curTeaching - 1].room > 0)
@@ -102,26 +121,51 @@ public class TutorialChecker : MonoBehaviour {
         rotator = null;
     }
 
-    IEnumerator enemyCounter(List<EnemyHealth> enemies) {
-        startingEnemyCount = enemies.Count;
-        curEnemyCount = startingEnemyCount;
-        while(enemies.Count > 0) {
-            for(int i = 0; i < enemies.Count; i++) {
-                //  checks if this enemy no longer exists
-                if(enemies[i] == null || enemies[i].gameObject == null) {
-                    curEnemyCount--;
-                    //  runs the thing
-                    if(startingEnemyCount - curEnemyCount == 2) {
-                        tryRotate(teachTypes.ClearFirstEnemies);
-                    }
-                    enemies.RemoveAt(i);
-                    break;
+    bool enemiesCleared(int r) {
+        foreach(var i in r == 1 ? r1Enemies : r3Enemies)
+            if(i != null && i.gameObject != null)
+                return false;
+        return true;
+    }
+
+    void respawnEnemies(int r) {
+        if(r == 1) {
+            for(int i = 0; i < r1Enemies.Count; i++) {
+                if(r1Enemies[i] == null || r1Enemies[i].gameObject == null) {
+                    r1Enemies[i] = Instantiate(meleePref, r1ESpawns[i], Quaternion.identity, enemyHolder).GetComponent<EnemyHealth>();
+                    r1Enemies[i].gameObject.GetComponent<EnemyMovement>().enabled = false;
                 }
+            }
+        }
+        else {
+            for(int i = 0; i < r3Enemies.Count; i++) {
+                if(r3Enemies[i] == null || r3Enemies[i].gameObject == null)
+                    r3Enemies[i] = Instantiate(i < r3Enemies.Count - 1 ? meleePref : projectilePref, r3ESpawns[i], Quaternion.identity, enemyHolder).GetComponent<EnemyHealth>();
+            }
+        }
+    }
+    IEnumerator enemyCounter() {
+        //  waits for first clear
+        while(curTeaching <= teachTypes.ClearFirstEnemies) {
+            if(curTeaching == teachTypes.ClearFirstEnemies && enemiesCleared(1)) {
                 yield return new WaitForEndOfFrame();
+                yield return new WaitForEndOfFrame();
+                yield return new WaitForEndOfFrame();
+                tryRotate(teachTypes.ClearFirstEnemies);
             }
             yield return new WaitForEndOfFrame();
         }
-        tryRotate(teachTypes.ClearSecondEnemies);
+        
+        //  waits for second clear
+        while(curTeaching <= teachTypes.ClearSecondEnemies) {
+            if(curTeaching == teachTypes.ClearSecondEnemies && enemiesCleared(3)) {
+                yield return new WaitForEndOfFrame();
+                yield return new WaitForEndOfFrame();
+                yield return new WaitForEndOfFrame();
+                tryRotate(teachTypes.ClearSecondEnemies);
+            }
+            yield return new WaitForEndOfFrame();
+        }
     }
 
     IEnumerator waitForShotgunEquipped() {

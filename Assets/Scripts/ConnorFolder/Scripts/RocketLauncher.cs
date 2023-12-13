@@ -12,9 +12,10 @@ public class RocketLauncher : Attack {
         var curRocket = Instantiate(rocketPreset.gameObject);
         var rocketEndExplosion = explosionManager.queueExplode(curRocket.transform, explosionSize, explosionDmg, explosionKnockback, ExplosionManager.explosionState.HurtsEnemies, maxTravelTime);
         curRocket.GetComponent<RocketInstance>().setup(rocketEndExplosion, explosionManager, explosionSize, explosionDmg, explosionKnockback);
-        curRocket.transform.position = transform.position;
-        var dir = GetPoint() - transform.position;
-        curRocket.transform.DOMove(transform.position + (dir.normalized * maxTravelDist), maxTravelTime);
+        var origin = transform.position + new Vector3(0f, 1f, 0f);
+        curRocket.transform.position = origin;
+        var d = InputManager.isUsingKeyboard() ? GetPoint() - origin : new Vector3(pInput.Player.ControllerAim.ReadValue<Vector2>().x, 0, pInput.Player.ControllerAim.ReadValue<Vector2>().y);
+        curRocket.transform.DOMove(origin + (d.normalized * maxTravelDist), maxTravelTime);
         Destroy(curRocket.gameObject, maxTravelTime + .1f);
     }
 
