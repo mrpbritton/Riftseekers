@@ -39,7 +39,7 @@ public class TutorialChecker : MonoBehaviour {
     CharacterFrame cf;
 
     private void Awake() {
-        SaveData.wipe();    //  THIS LINE MIGHT BREAK THINGS LATER
+        SaveData.wipe();
         playerTrans = FindObjectOfType<PlayerMovement>().transform;
         cf = FindObjectOfType<CharacterFrame>();
         foreach(var i in r1Enemies)
