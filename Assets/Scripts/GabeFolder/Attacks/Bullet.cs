@@ -26,7 +26,8 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Bullet"))
+        //dont collide with the player, other bullets, or the hitboxes on VFX
+        if(!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Bullet") && !other.gameObject.CompareTag("FxTemporaire"))
         {
             if (!other.gameObject.CompareTag("Enemy"))
             {
