@@ -179,7 +179,7 @@ public class InventoryUI : MonoBehaviour {
         if(!InputManager.isUsingKeyboard())
             inactiveSlots[0].GetComponent<Button>().Select();
     }
-    void hide() {
+    public void hide() {
         shown = false;
         curIndex = -1;
         actIndex = -1;
