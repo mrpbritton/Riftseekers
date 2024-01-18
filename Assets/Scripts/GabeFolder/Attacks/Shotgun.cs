@@ -40,7 +40,7 @@ public class Shotgun : Attack
     }
     protected override float getDamage()
     {
-        return damage * frame.attackDamage;
+        return damage * PlayerStats.AttackDamage;
     }
 
     public override void attack()
@@ -97,6 +97,6 @@ public class Shotgun : Attack
 
     protected override float getCooldownTime()
     {
-        return baseCooldown / frame.attackSpeed;
+        return baseCooldown / PlayerStats.AttackSpeed;
     }
 }

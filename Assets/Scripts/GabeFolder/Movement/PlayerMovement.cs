@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
-[RequireComponent(typeof(CharacterFrame))]
 public class PlayerMovement : MonoBehaviour
 {
     public PInput pInput;
@@ -16,9 +15,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("How fast the player falls")]
     private float fallSpeed;
 
-    [Header("Dash")]
     [SerializeField, Tooltip("Charges the dash has. Must be at least one.")]
-    private int dashCharges;
+    private int dashCharges => PlayerStats.DashCharges;
+    [Header("Dash")]
     [SerializeField]
     private int remainingCharges; //how many charges the dash has left
     [SerializeField, Tooltip("Time it takes for a whole dash to recharge in seconds")]
@@ -27,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("Time between keypresses of the dash ability in seconds")]
     private float dashCooldown;
     [SerializeField, Tooltip("Distance modifier of the dash. Will multiply against the speed. Must be at least one.")]
-    private float dashDistance;
+    private float dashDistance => PlayerStats.DashDistance;
     [SerializeField, Tooltip("How long the dash takes in seconds")]
     private float dashTime;
     [SerializeField, Tooltip("Speed of the dash")]
@@ -35,7 +34,6 @@ public class PlayerMovement : MonoBehaviour
     private bool cantDash; //whether or not the player can dash
 
     private CharacterController player;
-    private CharacterFrame frame;
     private Animator character;
     private Vector3 cachedDirection;
     private Vector3 dashDirection;
@@ -54,15 +52,10 @@ public class PlayerMovement : MonoBehaviour
         pInput = new PInput();
         pInput.Enable();
         player = gameObject.GetComponent<CharacterController>();
-        frame = gameObject.GetComponent<CharacterFrame>();
         character = gameObject.GetComponentInChildren<Animator>();
-        speed = frame.movementSpeed;
-        dashSpeed = frame.dashSpeed;
         pInput.Player.Dash.started += DashPress;
 
         canRecharge = true;
-        UpdateStats();
-        remainingCharges = frame.dashCharges;
     }
     private void OnDisable()
     {
@@ -73,16 +66,7 @@ public class PlayerMovement : MonoBehaviour
     }
     #endregion
 
-    
-    public void UpdateStats()
-    {
-        speed = frame.movementSpeed;
-        dashSpeed = frame.dashSpeed;
-        dashDistance = frame.dashDistance;
-        dashCharges = frame.dashCharges;
-        dashCooldown *= frame.cooldownMod;
-        dashChargeCooldown *= frame.cooldownMod;
-    }
+
     private void EnablePlayerMovement()
     {
         bMove = true; 
@@ -103,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
             if (cachedDirection != direction)
             {
                 cachedDirection = direction;
-                frame.UpdateSprite(cachedDirection);
+                //frame.UpdateSprite(cachedDirection);
             }
 
             player.Move(speed * Time.deltaTime * direction);
@@ -214,10 +198,10 @@ public class PlayerMovement : MonoBehaviour
         if(isDefDash)
         {
             character.SetTrigger("WalkE");
-            frame.UpdateSprite(CardinalDirection.east);
+            //frame.UpdateSprite(CardinalDirection.east);
         }
 
-        frame.UpdateSprite(dashDirection);
+        //frame.UpdateSprite(dashDirection);
     }
 
     public IEnumerator RechargeDash()

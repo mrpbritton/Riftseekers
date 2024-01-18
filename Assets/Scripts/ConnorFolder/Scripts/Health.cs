@@ -4,57 +4,36 @@ using UnityEngine;
 
 public class Health : MonoBehaviour 
 {
-    [SerializeField] 
-    public int maxHealth;
-    public float health { get; private set; }
-    private CharacterFrame frame;
+    [SerializeField, Tooltip("Any other script that changes values in this script will be shown if this is true")]
+    private bool debugMode;
 
-    bool isPlayer;
+    public int MaxHealth => PlayerStats.MaxHealth;
+    public float CurrentHealth => PlayerStats.Health;
 
     string playerHealthTag = "PlayerHealth";
 
     [SerializeField, Tooltip("Health slider that will be used to represent health")]
     PlayerUICanvas healthSlider;
 
-    public void UpdateStats()
-    {
-        if(isPlayer)
-        {
-            maxHealth = frame.maxHealth;
-            health = frame.health;
-            health = Mathf.Clamp(health, 0, maxHealth);
-            frame.health = health;
-            if (health <= 0)
-                Debug.Log(gameObject.name + " died!");
-        }
-    }
-
     private void Start() 
     {
-        isPlayer = gameObject.tag == "Player";
-
         //  saves if this is on the player object
-        if(isPlayer)
-        {
-            SaveData.setFloat(playerHealthTag, health);
-            frame = GetComponent<CharacterFrame>();
-        }
-        health = isPlayer ? SaveData.getInt(playerHealthTag, -1) == -1 ? frame.health : SaveData.getInt(playerHealthTag) : maxHealth;
-        healthSlider.updateSlider(frame.maxHealth, (int)frame.health);
+        SaveData.setFloat(playerHealthTag, CurrentHealth);
+        PlayerStats.UpdateHealth = SaveData.getInt(playerHealthTag, -1) == -1 ? CurrentHealth : SaveData.getInt(playerHealthTag);
+        healthSlider.updateSlider(MaxHealth, (int)CurrentHealth);
     }
 
     //  use this when taking damage
     public void takeDamage(float dmg) {
-        health -= dmg;
+        PlayerStats.UpdateHealth -= dmg;
 
-        healthSlider.updateSlider(maxHealth, (int)health);
+        healthSlider.updateSlider(MaxHealth, (int)CurrentHealth);
         //  check if dead
-        if(health <= 0)
+        if(CurrentHealth <= 0)
             Debug.Log(gameObject.name + " died!");
 
         //  saves
-        if(isPlayer)
-            SaveData.setFloat(playerHealthTag, health);
+        SaveData.setFloat(playerHealthTag, CurrentHealth);
 
         AkSoundEngine.PostEvent("PLayer_Hit", gameObject);
 
@@ -63,19 +42,17 @@ public class Health : MonoBehaviour
 
     //  use this when healing
     public void heal(float dmg) {
-        health = Mathf.Clamp(health + dmg, 0, maxHealth);
+        PlayerStats.UpdateHealth = Mathf.Clamp(CurrentHealth + dmg, 0, MaxHealth);
 
-        healthSlider.updateSlider(maxHealth, (int)health);
+        healthSlider.updateSlider(MaxHealth, (int)CurrentHealth);
         //  check if dead (just in case)
-        if(health <= 0)
+        if(CurrentHealth <= 0)
             Debug.Log(gameObject.name + " died!");
 
         //  saves
-        if(isPlayer)
-            SaveData.setFloat(playerHealthTag, health);
+        SaveData.setFloat(playerHealthTag, CurrentHealth);
 
         AkSoundEngine.PostEvent("Health_Pickup", gameObject);
-
     }
 
 }

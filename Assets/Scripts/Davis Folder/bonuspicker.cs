@@ -13,7 +13,6 @@ public class bonuspicker : MonoBehaviour
     public TMP_Text button1;
     public TMP_Text button2;
     public TMP_Text button3;
-    public CharacterFrame Character;
     public GameActionSequence sequence;
     public UpdateStat_GA stat;
     private int bonus1, bonus2, bonus3 = 10;
@@ -142,42 +141,34 @@ public class bonuspicker : MonoBehaviour
             case 0:
                 stat.stat = CharStats.attackDamage;
                 stat.modifier *= 1.2f;
-                Character.UpdateStats();
                 break;
             case 1:
                 stat.stat = CharStats.attackSpeed;
                 stat.modifier *= 1.1f;
-                Character.UpdateStats();
                 break;
             case 2:
                 stat.stat = CharStats.cooldownMod;
                 stat.modifier *= 1.3f;
-                Character.UpdateStats();
                 break;
             case 3:
                 stat.stat = CharStats.dashCharges;
                 stat.modifier = 1f;
-                Character.UpdateStats();
                 break;
             case 4:
                 stat.stat = CharStats.dashDistance;
                 stat.modifier = 1.1f;
-                Character.UpdateStats();
                 break;
             case 5:
                 stat.stat = CharStats.dashSpeed;
                 stat.modifier = 1.15f;
-                Character.UpdateStats();
                 break;
             case 6:
                 stat.stat = CharStats.maxHealth;
                 stat.modifier = 1.1f;
-                Character.UpdateStats();
                 break;
             case 7:
                 stat.stat = CharStats.moveSpeed;
                 stat.modifier = 1.2f;
-                Character.UpdateStats();
                 break;
             default:
                 break;

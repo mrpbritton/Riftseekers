@@ -14,7 +14,7 @@ public class InventoryUI : MonoBehaviour {
     ItemLibrary il;
     PInput controls;
     PlayerMovement pm;
-    CharacterFrame character;
+    AttackManager attackManager;
 
     int curIndex = -1;
     int actIndex = 0;
@@ -27,7 +27,7 @@ public class InventoryUI : MonoBehaviour {
     private void Start() {
         il = FindObjectOfType<ItemLibrary>();
         pm = FindObjectOfType<PlayerMovement>();
-        character = FindObjectOfType<CharacterFrame>();
+        attackManager = FindObjectOfType<AttackManager>();
         Inventory.loadInventory();
         hide();
         dragged.gameObject.SetActive(false);
@@ -51,9 +51,9 @@ public class InventoryUI : MonoBehaviour {
 
     private void onLoad()
     {
-        character = FindObjectOfType<CharacterFrame>();
-        character.ResetAttack();
-        character.UpdateAttack();
+        attackManager = FindObjectOfType<AttackManager>();
+        attackManager.ResetAttack();
+        attackManager.UpdateAttack();
         /*for(int i = 0; i < 3; i++)
         {
             if(Inventory.getActiveItem(i, il) != null)
@@ -71,50 +71,49 @@ public class InventoryUI : MonoBehaviour {
             switch (temp.bonuses[i])
             {
                 case CharStats.maxHealth:
-                    character.maxHealth += Mathf.FloorToInt(temp.mods[i]);
+                    PlayerStats.UpdateMaxHealth += Mathf.FloorToInt(temp.mods[i]);
                     break;
 
                 case CharStats.health:
-                    character.health += temp.mods[i];
+                    PlayerStats.UpdateHealth += temp.mods[i];
                     break;
 
                 case CharStats.moveSpeed:
-                    character.movementSpeed += temp.mods[i];
+                    PlayerStats.UpdateMovementSpeed += temp.mods[i];
                     break;
 
                 case CharStats.dashSpeed:
-                    character.dashSpeed += temp.mods[i];
+                    PlayerStats.UpdateDashSpeed += temp.mods[i];
                     break;
 
                 case CharStats.dashDistance:
-                    character.dashDistance += temp.mods[i];
+                    PlayerStats.UpdateDashDistance += temp.mods[i];
                     break;
 
                 case CharStats.dashCharges:
-                    character.dashCharges += Mathf.FloorToInt(temp.mods[i]);
+                    PlayerStats.UpdateDashCharges += Mathf.FloorToInt(temp.mods[i]);
                     break;
 
                 case CharStats.attackDamage:
-                    character.attackDamage += temp.mods[i];
+                    PlayerStats.UpdateAttackDamage += temp.mods[i];
                     break;
 
                 case CharStats.attackSpeed:
-                    character.attackSpeed += temp.mods[i];
+                    PlayerStats.UpdateAttackSpeed += temp.mods[i];
                     break;
 
                 case CharStats.cooldownMod:
-                    character.cooldownMod += temp.mods[i];
+                    PlayerStats.UpdateCooldownMod += temp.mods[i];
                     break;
 
                 case CharStats.chargeLimit:
-                    character.chargeLimit += Mathf.FloorToInt(temp.mods[i]);
+                    PlayerStats.UpdateChargeLimit += Mathf.FloorToInt(temp.mods[i]);
                     break;
 
                 default:
                     Debug.LogError("Stat could not be changed.");
                     break;
             }
-            character.UpdateStats();
         }
     }
 
@@ -270,7 +269,7 @@ public class InventoryUI : MonoBehaviour {
         //  otherwise, just remove the active item
         else
         {
-            character.RemoveAbility(Inventory.getActiveItem(actIndex, il));
+            attackManager.RemoveAbility(Inventory.getActiveItem(actIndex, il));
             Inventory.removeActiveItem(actIndex);
         }
 
@@ -283,6 +282,6 @@ public class InventoryUI : MonoBehaviour {
         show();
         actIndex = -1;
         curIndex = -1;
-        character.UpdateAttack(Inventory.getActiveItem(actInd, il));
+        attackManager.UpdateAttack(Inventory.getActiveItem(actInd, il));
     }
 }

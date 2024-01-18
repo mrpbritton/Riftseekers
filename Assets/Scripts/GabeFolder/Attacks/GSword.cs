@@ -40,7 +40,7 @@ public class GSword : Attack
 
     protected override float getDamage()
     {
-        return damage * frame.attackDamage;
+        return damage * PlayerStats.AttackDamage;
     }
 
     private void flipSprite()
@@ -235,13 +235,13 @@ public class GSword : Attack
     {
         if(hitbox.gameObject.activeSelf == true)
             hitbox.gameObject.SetActive(false);
-        frame.UpdateSprite(origin.forward);
-        frame.UpdateSprite(cardDir);
+        //frame.UpdateSprite(origin.forward);
+        //frame.UpdateSprite(cardDir);
     }
 
 
     protected override float getCooldownTime()
     {
-        return baseCooldown / frame.attackSpeed;
+        return baseCooldown / PlayerStats.AttackDamage;
     }
 }

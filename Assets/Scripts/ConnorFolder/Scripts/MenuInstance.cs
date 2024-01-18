@@ -41,7 +41,7 @@ public abstract class MenuInstance : MonoBehaviour {
                 return;
         }
         //  checks the dist from player
-        var pPos = FindObjectOfType<CharacterFrame>();
+        var pPos = FindObjectOfType<PlayerMovement>(); //finds player based on a script
         if(Vector3.Distance(pPos.transform.position, transform.position) > maxDistFromPlayer)
             return;
 

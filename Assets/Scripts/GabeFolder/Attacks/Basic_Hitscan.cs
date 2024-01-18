@@ -36,7 +36,7 @@ public class Basic_Hitscan : Attack {
 
     protected override float getDamage() 
     {
-        return damage * frame.attackDamage;
+        return damage * PlayerStats.AttackDamage;
     }
 
     public override void attack()
@@ -51,7 +51,7 @@ public class Basic_Hitscan : Attack {
         {
             if (gotHit.collider.gameObject.TryGetComponent(out EnemyHealth enemy))
             {
-                enemy.damageTaken(damage * frame.attackDamage, origin.position);
+                enemy.damageTaken(damage * PlayerStats.AttackDamage, origin.position);
             }
             else /*FindObjectOfType(explode)*/
             {
@@ -74,7 +74,7 @@ public class Basic_Hitscan : Attack {
     }
     protected override float getCooldownTime() 
     {
-        return baseCooldown / frame.attackSpeed;
+        return baseCooldown / PlayerStats.AttackSpeed;
     }
 
 

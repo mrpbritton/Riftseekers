@@ -1,22 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class UpdateStat_GA : GameAction
 {
-    [SerializeField, Tooltip("Player's Frame")]
-    private CharacterFrame frame;
     [Tooltip("Stat to be changed")]
     public CharStats stat;
     [Tooltip("Change in the stat")]
     public float modifier;
+
+    public AttackManager attackManager;
+    public PlayerMovement pMovement;
+    public Health pHealth;
+
     public override void Action()
     {
-        if (frame == null)
-        {
-            //finds the player if the frame isn't set, finds the player, then gets it's frame
-            frame = FindObjectOfType<CharacterFrame>();
-        }
 
             /*  maxHealth,
                 health,
@@ -32,53 +29,43 @@ public class UpdateStat_GA : GameAction
         switch (stat)
         {
             case CharStats.maxHealth:
-                frame.maxHealth += Mathf.FloorToInt(modifier);
-                frame.UpdateStats();
+                PlayerStats.UpdateMaxHealth += Mathf.FloorToInt(modifier);
                 break;
 
             case CharStats.health:
-                frame.health += modifier;
-                frame.UpdateStats();
+                PlayerStats.UpdateHealth += modifier;
                 break;
 
             case CharStats.moveSpeed:
-                frame.movementSpeed += modifier;
-                frame.UpdateStats();
+                PlayerStats.UpdateMovementSpeed += modifier;
                 break;
             
             case CharStats.dashSpeed:
-                frame.dashSpeed += modifier;
-                frame.UpdateStats();
+                PlayerStats.UpdateDashSpeed += modifier;
                 break;
 
             case CharStats.dashDistance:
-                frame.dashDistance += modifier;
-                frame.UpdateStats();
+                PlayerStats.UpdateDashDistance += modifier;
                 break;
 
             case CharStats.dashCharges:
-                frame.dashCharges += Mathf.FloorToInt(modifier);
-                frame.UpdateStats();
+                PlayerStats.UpdateDashCharges += Mathf.FloorToInt(modifier);
                 break;
 
             case CharStats.attackDamage:
-                frame.attackDamage += modifier;
-                frame.UpdateStats();
+                PlayerStats.UpdateAttackDamage += modifier;
                 break;
 
             case CharStats.attackSpeed:
-                frame.attackSpeed += modifier;
-                frame.UpdateStats();
+                PlayerStats.UpdateAttackSpeed += modifier;
                 break;
             
             case CharStats.cooldownMod:
-                frame.cooldownMod += modifier;
-                frame.UpdateStats();
+                PlayerStats.UpdateCooldownMod += modifier;
                 break;
 
             case CharStats.chargeLimit:
-                frame.chargeLimit += Mathf.FloorToInt(modifier);
-                frame.UpdateStats();
+                PlayerStats.UpdateChargeLimit += Mathf.FloorToInt(modifier);
                 break;
 
             default:

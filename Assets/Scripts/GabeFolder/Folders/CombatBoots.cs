@@ -6,13 +6,13 @@ public class CombatBoots : MonoBehaviour
 {
     [SerializeField, Tooltip("How much speed is added to the player")]
     private float speedBuff = 10;
-    public void Equip(CharacterFrame frame)
+    public void Equip()
     {
-        frame.movementSpeed += speedBuff;
+        PlayerStats.UpdateMovementSpeed += speedBuff;
     }
 
-    public void UnEquip(CharacterFrame frame)
+    public void UnEquip()
     {
-        frame.movementSpeed -= speedBuff;
+        PlayerStats.UpdateMovementSpeed -= speedBuff;
     }
 }

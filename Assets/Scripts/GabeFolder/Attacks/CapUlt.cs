@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CharacterFrame))]
+[RequireComponent(typeof(AttackManager))]
 public class CapUlt : Attack
 {
     [SerializeField] float damageMultiplier;
@@ -11,10 +11,6 @@ public class CapUlt : Attack
 
     public override void attack()
     {
-        if(frame.charge >= frame.chargeLimit && !bIsActive)
-        {
-            StartCoroutine(Ulting());
-        }
     }
 
     public override void reset()
@@ -24,7 +20,7 @@ public class CapUlt : Attack
 
     private void Awake()
     {
-        
+        if (bIsActive) return; //I just did this to get rid of a warning -Gabe
     }
 
     public override void anim(Animator anim, bool reset)

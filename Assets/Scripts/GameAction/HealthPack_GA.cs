@@ -14,8 +14,8 @@ public class HealthPack_GA : GameAction
         {
             health = FindObjectOfType<Health>();
         }
-        if (health.health == health.maxHealth) return;
-        healAmount = health.maxHealth * healPercent;
+        if (health.CurrentHealth == health.MaxHealth) return;
+        healAmount = health.MaxHealth * healPercent;
         health.heal(healAmount);
         Destroy(gameObject);
     }

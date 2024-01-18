@@ -10,7 +10,6 @@ public abstract class Attack : MonoBehaviour {
     float dmgMod = 1.0f;
     float cooldownMod = 1.0f;
     public AbilityLibrary.abilType abilType;
-    protected static CharacterFrame frame;
     private static int rayDistance = 100; //how far the ray will cast out
     protected PInput pInput;
     public PlayerUICanvas cooldownBar;
@@ -25,7 +24,6 @@ public abstract class Attack : MonoBehaviour {
     {
         pInput = new PInput();
         pInput.Enable();
-        frame = FindAnyObjectByType<CharacterFrame>();
         explosionManager = FindObjectOfType<ExplosionManager>();
     }
 

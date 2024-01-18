@@ -28,7 +28,7 @@ public class Handgun : Attack
 
     protected override float getDamage() 
     {
-        return damage * frame.attackDamage;
+        return damage * PlayerStats.AttackDamage;
     }
 
     public override void anim(Animator anim, bool reset)
@@ -81,6 +81,6 @@ public class Handgun : Attack
 
     protected override float getCooldownTime() 
     {
-        return baseCooldown / frame.attackSpeed;
+        return baseCooldown / PlayerStats.AttackSpeed;
     }
 }
