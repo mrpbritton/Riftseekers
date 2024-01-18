@@ -11,11 +11,12 @@ public class CorpseManager : MonoBehaviour {
 
 
     private void Start() {
+        this.enabled = false;
         playerTrans = FindObjectOfType<PlayerMovement>().transform;
     }
 
     private void LateUpdate() {
-        if(corpses.Count == 0) return;
+        if(corpses.Count == 0 || true) return;
         closest = corpses.FindClosest(playerTrans.position);
 
         //  changed closests so swap active colliders
