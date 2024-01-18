@@ -66,7 +66,7 @@ public class EnemyHealth : MonoBehaviour
         {
             if(gameObject.TryGetComponent(out EnemyMovement movement))
             {
-                movement.bCover = true;
+                movement.lookForCover();             
                 foundCover = true;
             }
         }
@@ -96,12 +96,12 @@ public class EnemyHealth : MonoBehaviour
 
     IEnumerator stunned()
     {
-        if(!GetComponent<EnemyMovement>().bMelee) GetComponentInChildren<EnemyFiring>().bStunned = true;
-        else GetComponent<EnemyMovement>().bCanHit = false;
+        if(!GetComponent<EnemyMelee>()) GetComponentInChildren<EnemyFiring>().bStunned = true;
+//        else GetComponent<EnemyMovement>().bCanHit = false;
         GetComponent<EnemyMovement>().agent.speed = 0;
         yield return new WaitForSeconds(stunTime);
-        if (!GetComponent<EnemyMovement>().bMelee) GetComponentInChildren<EnemyFiring>().bStunned = false;
-        else GetComponent<EnemyMovement>().bCanHit = true;
+        if (!GetComponent<EnemyMelee>()) GetComponentInChildren<EnemyFiring>().bStunned = false;
+//        else GetComponent<EnemyMovement>().bCanHit = true;
         GetComponent<EnemyMovement>().agent.speed = GetComponent<EnemyMovement>().enemySpeed;
         bStunned = false;
     }

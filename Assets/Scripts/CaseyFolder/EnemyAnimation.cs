@@ -62,7 +62,7 @@ public class EnemyAnimation : MonoBehaviour
                     break;
                 }
 
-                if (GetComponent<EnemyMovement>().bMelee == false && GetComponentInChildren<EnemyFiring>().firing == true)
+                if (!GetComponent<EnemyMelee>() && GetComponentInChildren<EnemyFiring>().firing == true)
                 {
                     character.SetTrigger("StandN");
                     break;
@@ -78,7 +78,7 @@ public class EnemyAnimation : MonoBehaviour
                     break;
                 }
 
-                if (GetComponent<EnemyMovement>().bMelee == false && GetComponentInChildren<EnemyFiring>().firing == true)
+                if (!GetComponent<EnemyMelee>() && GetComponentInChildren<EnemyFiring>().firing == true)
                 {
                     character.SetTrigger("StandNE");
                     break;
@@ -94,7 +94,7 @@ public class EnemyAnimation : MonoBehaviour
                     break;
                 }
 
-                if (GetComponent<EnemyMovement>().bMelee == false && GetComponentInChildren<EnemyFiring>().firing == true)
+                if (!GetComponent<EnemyMelee>() && GetComponentInChildren<EnemyFiring>().firing == true)
                 {
                     character.SetTrigger("StandE");
                     break;
@@ -110,7 +110,7 @@ public class EnemyAnimation : MonoBehaviour
                     break;
                 }
 
-                if (GetComponent<EnemyMovement>().bMelee == false && GetComponentInChildren<EnemyFiring>().firing == true)
+                if (!GetComponent<EnemyMelee>() && GetComponentInChildren<EnemyFiring>().firing == true)
                 {
                     character.SetTrigger("StandSE");
                     break;
@@ -126,7 +126,7 @@ public class EnemyAnimation : MonoBehaviour
                     break;
                 }
 
-                if (GetComponent<EnemyMovement>().bMelee == false && GetComponentInChildren<EnemyFiring>().firing == true)
+                if (!GetComponent<EnemyMelee>() && GetComponentInChildren<EnemyFiring>().firing == true)
                 {
                     character.SetTrigger("StandS");
                     break;
@@ -142,7 +142,7 @@ public class EnemyAnimation : MonoBehaviour
                     break;
                 }
 
-                if (GetComponent<EnemyMovement>().bMelee == false && GetComponentInChildren<EnemyFiring>().firing == true)
+                if (!GetComponent<EnemyMelee>() && GetComponentInChildren<EnemyFiring>().firing == true)
                 {
                     character.SetTrigger("StandSW");
                     break;
@@ -158,7 +158,7 @@ public class EnemyAnimation : MonoBehaviour
                     break;
                 }
 
-                if (GetComponent<EnemyMovement>().bMelee == false && GetComponentInChildren<EnemyFiring>().firing == true)
+                if (!GetComponent<EnemyMelee>() && GetComponentInChildren<EnemyFiring>().firing == true)
                 {
                     character.SetTrigger("StandW");
                     break;
@@ -174,7 +174,7 @@ public class EnemyAnimation : MonoBehaviour
                     break;
                 }
 
-                if (GetComponent<EnemyMovement>().bMelee == false && GetComponentInChildren<EnemyFiring>().firing == true)
+                if (!GetComponent<EnemyMelee>() && GetComponentInChildren<EnemyFiring>().firing == true)
                 {
                     character.SetTrigger("StandNW");
                     break;

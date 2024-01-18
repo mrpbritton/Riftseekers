@@ -11,9 +11,9 @@ public class EnemyMovement : MonoBehaviour
     private float rotationSpeed = 2f;
     [SerializeField]
     public NavMeshAgent agent;
-    public bool bMelee, bCover, bClose, bDash, bCanHit = true, bAttacking;
+    public bool bCover;
     [SerializeField]
-    private GameObject Player, meleeHit;
+    private GameObject Player;
     private RaycastHit hitInfo;
     [SerializeField]
     private List<GameObject> cover = new List<GameObject>();
@@ -31,6 +31,7 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        cover.Clear();
         cover.AddRange(GameObject.FindGameObjectsWithTag("Cover"));
         enemySpeed = agent.speed;
     }
@@ -39,16 +40,10 @@ public class EnemyMovement : MonoBehaviour
     {
         if (Physics.Raycast(transform.position, Player.transform.position - transform.position, out hitInfo, 9999, enemy))
         {
-            if (hitInfo.transform.CompareTag("Player"))
+            if (hitInfo.transform.CompareTag("Player") && !bCover)
             {
                 pSeen();
             }
-        }
-
-        if (bCover && !bMelee)
-        {
-            lookForCover();
-            StartCoroutine(nameof(TimeInCover));
         }
 
         if (target != null)
@@ -61,27 +56,20 @@ public class EnemyMovement : MonoBehaviour
 
             agent.SetDestination(target.transform.position);
         }
-
-        if (Vector3.Distance(gameObject.transform.position, Player.transform.position) <= 5 && bMelee && bCanHit && !bAttacking)
-        {
-            AkSoundEngine.PostEvent("Enemy_Melee", gameObject);
-            bAttacking = true;
-            StartCoroutine(nameof(attackCooldown));
-        }
-
     }
 
     //change target position to cover
     public void lookForCover()
     {
-        if (!bMelee)
-        {
-            agent.stoppingDistance = 0;
-        }
+        bCover = true;
+        StartCoroutine(nameof(TimeInCover));
+
+        agent.stoppingDistance = 0;
 
         close = 9999;
         foreach (GameObject current in cover)
         {
+
             float distance = Vector3.Distance(transform.position, current.transform.position);
 
             if (distance < close && current.activeSelf == true)
@@ -90,6 +78,7 @@ public class EnemyMovement : MonoBehaviour
                 target = current;
             }
         }
+
     }
 
 
@@ -97,6 +86,7 @@ public class EnemyMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(coverTime);
         bCover = false;
+        target = null;
     }
 
     public void pSeen()
@@ -104,30 +94,6 @@ public class EnemyMovement : MonoBehaviour
         if(!bCover)
         {
             target = Player;
-            if (!bMelee)
-            {
-                agent.stoppingDistance = 10;
-            }
-
         }
     }
-
-    private void meleeAttack()
-    {
-        if (!bMelee) return;
-        StartCoroutine(nameof(attackCooldown));
-
-    }
-
-    IEnumerator attackCooldown()
-    {
-        agent.speed = 0;
-        yield return new WaitForSeconds(hitCooldown);
-        meleeHit.GetComponent<Collider>().enabled = true;
-        yield return new WaitForSeconds(0.25f);
-        meleeHit.GetComponent<Collider>().enabled = false;
-        agent.speed = enemySpeed;
-        bAttacking = false;
-    }
-
 }

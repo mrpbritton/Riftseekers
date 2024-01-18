@@ -34,15 +34,19 @@ public class EnemyFiring : MonoBehaviour
 
     private void FireShot()
     {
-        lookForPlayer();
-        if (bSeePlayer && !bStunned)
+        if(!GetComponentInParent<EnemyMovement>().bCover)
         {
-            AkSoundEngine.PostEvent("Enemy_Fire", gameObject);
-            rotation = gameObject.transform.rotation;
-            Projectile project = Instantiate(projectile, transform.position, rotation).GetComponent<Projectile>();
-            project.Direction = transform.forward;
+            lookForPlayer();
+            if (bSeePlayer && !bStunned)
+            {
+                AkSoundEngine.PostEvent("Enemy_Fire", gameObject);
+                rotation = gameObject.transform.rotation;
+                Projectile project = Instantiate(projectile, transform.position, rotation).GetComponent<Projectile>();
+                project.Direction = transform.forward;
+            }
         }
         StartCoroutine(nameof(Reloading));
+
     }
     IEnumerator Reloading()
     {
@@ -52,6 +56,11 @@ public class EnemyFiring : MonoBehaviour
         firing = true;
         yield return new WaitForSeconds(reloadTime * (1f/4f));
 
+        FireShot();
+    }
+    IEnumerator Waiting()
+    {
+        yield return new WaitForSeconds(reloadTime);
         FireShot();
     }
 
