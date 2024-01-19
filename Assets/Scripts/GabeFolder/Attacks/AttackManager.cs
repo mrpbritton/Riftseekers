@@ -277,7 +277,7 @@ public class AttackManager : MonoBehaviour
         {
             case PassiveScript.combatBoots:
                 var script = gameObject.AddComponent<CombatBoots>();
-                //script.Equip(this);
+                script.Equip();
                 break;
             default:
                 Debug.LogError("Passive could not be added.");
@@ -291,7 +291,7 @@ public class AttackManager : MonoBehaviour
         {
             case PassiveScript.combatBoots:
                 var script = gameObject.GetComponent<CombatBoots>();
-                //script.UnEquip(this);
+                script.UnEquip();
                 Destroy(this);
                 break;
             default:
