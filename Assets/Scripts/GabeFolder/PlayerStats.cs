@@ -37,7 +37,6 @@ public class PlayerStats : MonoBehaviour
 
         set
         {
-            Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
             health = value;
         }
 
