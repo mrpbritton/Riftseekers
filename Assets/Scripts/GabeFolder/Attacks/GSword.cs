@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class GSword : Attack
 {
@@ -150,6 +151,10 @@ public class GSword : Attack
         float angle = Mathf.Atan2(origin.forward.z, origin.forward.x) * Mathf.Rad2Deg;
         constrictDirection(angle);
         //Debug.Log(Mathf.Atan2(origin.forward.z, origin.forward.x) * Mathf.Rad2Deg);
+
+        float lungeAmt = 1.5f;
+        transform.DOComplete();
+        transform.DOPunchPosition(direction.normalized * lungeAmt, .25f);
 
         if (damScript.damage != damage)
         {
