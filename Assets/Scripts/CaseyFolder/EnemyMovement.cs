@@ -19,8 +19,7 @@ public class EnemyMovement : MonoBehaviour
     private List<GameObject> cover = new List<GameObject>();
     private float close = 9999;
     public LayerMask enemy;
-    [SerializeField]
-    private int coverTime = 10;
+    public float coverTime = 3f;
     [SerializeField]
     public float hitCooldown = 1, enemySpeed;
     public GameObject target = null;
@@ -64,8 +63,6 @@ public class EnemyMovement : MonoBehaviour
         bCover = true;
         StartCoroutine(nameof(TimeInCover));
 
-        agent.stoppingDistance = 0;
-
         close = 9999;
         foreach (GameObject current in cover)
         {
@@ -74,6 +71,7 @@ public class EnemyMovement : MonoBehaviour
 
             if (distance < close && current.activeSelf == true)
             {
+                agent.stoppingDistance = 0;
                 close = distance;
                 target = current;
             }

@@ -13,7 +13,7 @@ public class EnemyFiring : MonoBehaviour
     [SerializeField]
     private GameObject projectile;
     [SerializeField]
-    private float reloadTime = 2f;
+    private float reloadTime = 2f, coverTime = 3f;
     private Quaternion rotation = Quaternion.identity;
     public bool bSeePlayer, bStunned, firing;
     private RaycastHit hitInfo;
@@ -30,6 +30,7 @@ public class EnemyFiring : MonoBehaviour
     {
         StartCoroutine(nameof(Reloading));
         Player = GameObject.FindGameObjectWithTag("Player");
+        GetComponentInParent<EnemyMovement>().coverTime = coverTime;
     }
 
     private void FireShot()

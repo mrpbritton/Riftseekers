@@ -12,12 +12,13 @@ public class EnemyMelee : MonoBehaviour
     private NavMeshAgent agent;
     public bool bAttacking;
     [SerializeField]
-    public float hitCooldown = 1;
+    public float hitCooldown = 1, coverTime = 3f;
 
 
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        GetComponentInParent<EnemyMovement>().coverTime = coverTime;
     }
 
     void Update()
