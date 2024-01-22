@@ -184,8 +184,8 @@ MonoBehaviour:
   cover: []
   enemy:
     serializedVersion: 2
-    m_Bits: 439
-  coverTime: 1
+    m_Bits: 499
+  coverTime: 5
   hitCooldown: 1
   enemySpeed: 12
   target: {fileID: 0}
@@ -243,6 +243,7 @@ MonoBehaviour:
   agent: {fileID: 956882322456177311}
   bAttacking: 0
   hitCooldown: 1
+  coverTime: 3
 --- !u!1 &5353445435902017515
 GameObject:
   m_ObjectHideFlags: 0

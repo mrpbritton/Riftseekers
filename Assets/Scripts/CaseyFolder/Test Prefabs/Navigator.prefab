@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2502079855477282841}
   - component: {fileID: 7750732156827821421}
-  - component: {fileID: 3060033260870703404}
   - component: {fileID: 2464874774120446858}
   m_Layer: 0
   m_Name: Navigator
@@ -32,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7750732156827821421
 MonoBehaviour:
@@ -65,22 +64,6 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: cb1dda4544f83ea4fb31a4bfe7db8b23, type: 2}
   m_BuildHeightMesh: 0
---- !u!114 &3060033260870703404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4504932776723605752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 358badeb14f0ffe4cb0dde01dd4ebcba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  coverList: []
-  enemy:
-    serializedVersion: 2
-    m_Bits: 439
 --- !u!114 &2464874774120446858
 MonoBehaviour:
   m_ObjectHideFlags: 0

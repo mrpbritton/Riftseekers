@@ -178,18 +178,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 10
   agent: {fileID: 956882322456177311}
-  bMelee: 0
   bCover: 0
-  bClose: 0
-  bDash: 0
-  bCanHit: 1
-  bAttacking: 0
   Player: {fileID: 0}
-  meleeHit: {fileID: 0}
   cover: []
   enemy:
     serializedVersion: 2
-    m_Bits: 439
+    m_Bits: 2547
   coverTime: 5
   hitCooldown: 1
   enemySpeed: 0
@@ -384,6 +378,7 @@ MonoBehaviour:
   projectile: {fileID: 2806661883677591592, guid: 3857254fd8fd16a4b97e304f31d3a168,
     type: 3}
   reloadTime: 2
+  coverTime: 3
   bSeePlayer: 0
   bStunned: 0
   firing: 0

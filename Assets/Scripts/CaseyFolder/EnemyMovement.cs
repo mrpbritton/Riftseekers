@@ -63,20 +63,30 @@ public class EnemyMovement : MonoBehaviour
         bCover = true;
         StartCoroutine(nameof(TimeInCover));
 
+
         close = 9999;
         foreach (GameObject current in cover)
         {
 
             float distance = Vector3.Distance(transform.position, current.transform.position);
 
-            if (distance < close && current.activeSelf == true)
+            if (distance <= 20)
             {
-                agent.stoppingDistance = 0;
-                close = distance;
-                target = current;
+                if (Physics.Raycast(current.transform.position, Player.transform.position - current.transform.position, out hitInfo, 999, enemy))
+                {
+                    if (!hitInfo.transform.CompareTag("Player"))
+                    {
+                        if (distance < close)
+                        {
+                            agent.stoppingDistance = 0;
+                            close = distance;
+                            target = current;
+                        }
+                    }
+                }
             }
-        }
 
+        }
     }
 
 
@@ -89,9 +99,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void pSeen()
     {
-        if(!bCover)
-        {
-            target = Player;
-        }
+        target = Player;
+        agent.speed = enemySpeed;
     }
 }
