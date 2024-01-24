@@ -89,13 +89,11 @@ public class InteractUI : MonoBehaviour {
     IEnumerator interactableChecker() {
         if(interactables.Count > 0 && playerTrans != null) {
             closestInteractable = interactables.FindClosest(playerTrans.position);
-            var d = Vector3.Distance(closestInteractable.transform.position, playerTrans.position);
-            var ir = closestInteractable.GetComponent<Interact>().getInteractRange();
-            var t = Mathf.Abs(ir - d) / 10f + .01f;
+            var t = Vector2.Distance(playerTrans.position, closestInteractable.position) / 20f;
             //  checks if within interact range
-            if(!shown && d < ir)
+            if(!shown && closestInteractable.GetComponent<Interact>().inRange())
                 show(closestInteractable.transform);
-            else if(shown && d > ir)
+            else if(shown && !closestInteractable.GetComponent<Interact>().inRange())
                 hide();
 
             yield return new WaitForSeconds(t);

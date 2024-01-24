@@ -52,4 +52,9 @@ public class Interact : MonoBehaviour
     public float getInteractRange() {
         return interactRange;
     }
+
+    public bool inRange() {
+        var d = Vector3.Distance(transform.position, player.position);
+        return d < getInteractRange();
+    }
 }
