@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 dashDirection;
     public static Transform playerTrans;
     private bool bMove = true;
+    private DashUI dashUI;
     //<--- Click on the plus sign to expand
     #region Setup
     private void Awake()
@@ -54,7 +55,8 @@ public class PlayerMovement : MonoBehaviour
         player = gameObject.GetComponent<CharacterController>();
         characterAnim = gameObject.GetComponent<SpriteManager>();
         pInput.Player.Dash.started += DashPress;
-
+        dashUI = FindFirstObjectByType<DashUI>();
+        dashUI.UpdateDashUI(dashCharges);
         canRecharge = true;
     }
     private void OnDisable()
@@ -152,6 +154,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         characterAnim.UpdateSpriteToDash(dashDirection);
+        dashUI.UpdateDashUI(remainingCharges);
     }
 
     public IEnumerator RechargeDash()
@@ -159,6 +162,7 @@ public class PlayerMovement : MonoBehaviour
         canRecharge = false;
         yield return new WaitForSeconds(dashChargeCooldown);
         remainingCharges = dashCharges;
+        dashUI.UpdateDashUI(remainingCharges);
         canRecharge = true;
     }
 

@@ -27,7 +27,7 @@ public class AttackManager : MonoBehaviour
     private PInput pInput;
     private bool bIsPressed;
 
-    public void Start()
+    public void OnEnable()
     {
         pInput = new PInput();
         pInput.Enable();
@@ -86,17 +86,15 @@ public class AttackManager : MonoBehaviour
     /// <param name="isMainAttack">If True, attack is either basicAttack or secondAttack</param>
     private void PerformAttack(Attack attack, bool isMainAttack)
     {
-        if(isMainAttack && !bIsPressed)
+        if(isMainAttack && !bIsPressed)     //is main attack
         {
             SetPressed(true);
             StartCoroutine( MainAttackWaiter(attack) );
-            SetPressed(false);
         }
-        else if (!bIsPressed)
+        else if (!bIsPressed)               //is an ability attack
         {
             SetPressed(true);
             StartCoroutine( SpecialAttackWaiter(attack) );
-            SetPressed(false);
         }
     }
 
