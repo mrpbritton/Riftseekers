@@ -26,6 +26,8 @@ public class AttackManager : MonoBehaviour
 
     private PInput pInput;
     private bool bIsPressed;
+    private bool bIsMainAttacking; //is true when a main attack is happening
+    private bool bIsAbilAttacking; //is true when an ability is happening
 
     public void OnEnable()
     {
@@ -86,14 +88,16 @@ public class AttackManager : MonoBehaviour
     /// <param name="isMainAttack">If True, attack is either basicAttack or secondAttack</param>
     private void PerformAttack(Attack attack, bool isMainAttack)
     {
-        if(isMainAttack && !bIsPressed)     //is main attack
+        if(isMainAttack && !bIsMainAttacking)     //is main attack
         {
             SetPressed(true);
+            bIsMainAttacking = true;
             StartCoroutine( MainAttackWaiter(attack) );
         }
-        else if (!bIsPressed)               //is an ability attack
+        else if (!isMainAttack && !bIsAbilAttacking)               //is an ability attack
         {
             SetPressed(true);
+            bIsMainAttacking = true;
             StartCoroutine( SpecialAttackWaiter(attack) );
         }
     }
@@ -107,6 +111,7 @@ public class AttackManager : MonoBehaviour
             yield return new WaitForSeconds(curAttack.getRealCooldownTime());
             curAttack.reset();
         } while (bIsPressed);
+        bIsMainAttacking = false;
     }
 
     IEnumerator SpecialAttackWaiter(Attack curAttack)
@@ -118,6 +123,7 @@ public class AttackManager : MonoBehaviour
             yield return new WaitForSeconds(curAttack.getRealCooldownTime());
             curAttack.reset();
         } while (bIsPressed);
+        bIsAbilAttacking = false;
     }
 
     /// <summary>
