@@ -1,5 +1,7 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -11,6 +13,7 @@ public class ShopPrompter : MonoBehaviour {
     List<Image> playerSlots = new List<Image>();
     PInput pInput;
     ItemLibrary it;
+    [SerializeField] TextMeshProUGUI moneyText;
 
     bool shown = false;
 
@@ -54,14 +57,29 @@ public class ShopPrompter : MonoBehaviour {
     }
 
     void reshow() {
+        moneyText.text = "Money: <color=yellow>" + Inventory.getMoney().ToString();
         //  shop
         for(int i = 0; i < shopSlots.Count; i++) {
-            shopSlots[i].sprite = i < reference.items.Count ? reference.items[i].image : null;
+            if(i < reference.items.Count) {
+                shopSlots[i].sprite = reference.items[i].image;
+                shopSlots[i].transform.parent.GetComponentInChildren<TextMeshProUGUI>().text = reference.items[i].value.ToString();
+            }
+            else {
+                shopSlots[i].sprite = null;
+                shopSlots[i].transform.parent.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            }
         }
 
         //  player
         for(int i = 0; i < playerSlots.Count; i++) {
-            playerSlots[i].sprite = i < Inventory.getItems(it).Count ? Inventory.getItem(i, it).image : null;
+            if(i < Inventory.getItems(it).Count) {
+                playerSlots[i].sprite = i < Inventory.getItems(it).Count ? Inventory.getItem(i, it).image : null;
+                playerSlots[i].transform.parent.GetComponentInChildren<TextMeshProUGUI>().text = Inventory.getItem(i, it).value.ToString();
+            }
+            else {
+                playerSlots[i].sprite = null;
+                playerSlots[i].transform.parent.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            }
         }
     }
 
@@ -79,11 +97,13 @@ public class ShopPrompter : MonoBehaviour {
         helperUI.completeInteraction(transform);
         canvas.SetActive(true);
         FindObjectOfType<PlayerMovement>().enabled = false;
+        FindObjectOfType<AttackManager>().enabled = false;
     }
     void hide() {
         shown = false;
         canvas.SetActive(false);
         FindObjectOfType<PlayerMovement>().enabled = true;
+        FindObjectOfType<AttackManager>().enabled = true;
         saveShop();
     }
 
@@ -95,8 +115,16 @@ public class ShopPrompter : MonoBehaviour {
     public void buy(int index) {
         if(index >= reference.items.Count)
             return;
+
         var bought = reference.items[index];
+        //  checks if player has enough money
+        if(Inventory.getMoney() < bought.value) {
+            shopSlots[index].transform.parent.GetComponent<Image>().color = Color.red;
+            shopSlots[index].transform.parent.GetComponent<Image>().DOColor(Color.white, .25f);
+            return;
+        }
         Inventory.addItem(bought);
+        Inventory.changeMoney(-bought.value);
         reference.items.RemoveAt(index);
         reshow();
     }
@@ -106,6 +134,7 @@ public class ShopPrompter : MonoBehaviour {
         var sold = Inventory.getItem(index, it);
         reference.items.Add(sold);
         Inventory.removeItem(index);
+        Inventory.changeMoney(sold.value);
         reshow();
     }
 }

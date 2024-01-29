@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class Inventory {
     static int maxItemCount = 9;  //  this number is the max number of items the player can hold
-    static Bag itemBag = new Bag(maxItemCount);
+    static Bag itemBag = new Bag(250, maxItemCount);
 
     static string bagTag = "BagTag";
 
@@ -39,7 +39,7 @@ public static class Inventory {
         }
     }
     public static void removeActiveItem(int slotInd) {
-        
+
         switch(slotInd) {
             case 0:
                 itemBag.activeItem1 = null;
@@ -60,7 +60,7 @@ public static class Inventory {
     }
     public static void loadInventory() {
         var d = SaveData.getString(bagTag);
-        itemBag = string.IsNullOrEmpty(d) ? new Bag(maxItemCount) : JsonUtility.FromJson<Bag>(d);
+        itemBag = string.IsNullOrEmpty(d) ? new Bag(250, maxItemCount) : JsonUtility.FromJson<Bag>(d);
     }
 
     public static void addItem(ConItem i) {
@@ -75,6 +75,13 @@ public static class Inventory {
     }
     public static void clear() {
         itemBag.items.Clear();
+    }
+
+    public static void changeMoney(int chng) {
+        itemBag.money += chng;
+    }
+    public static int getMoney() {
+        return itemBag.money;
     }
 
     public static ConItem getItem(int index, ItemLibrary il) {
@@ -123,11 +130,13 @@ public static class Inventory {
 public class Bag {
     public int maxCount;
     public List<ItemSaveData> items;
+    public int money;
 
     public ItemSaveData activeItem1 = null, activeItem2 = null, activeItem3 = null;
 
-    public Bag(int max, List<ConItem> i = null, ItemSaveData active1 = null, ItemSaveData active2 = null, ItemSaveData active3 = null) {
+    public Bag(int m, int max, List<ConItem> i = null, ItemSaveData active1 = null, ItemSaveData active2 = null, ItemSaveData active3 = null) {
         maxCount = max;
+        money = m;
         items = new List<ItemSaveData>();
         if(i != null) {
             foreach(var j in i) {
