@@ -70,6 +70,7 @@ public class Handgun : Attack
         b.SetActive(true);
         Bullet bs = b.GetComponent<Bullet>(); //(b)ullet(s)cript
         bs.direction = direction;
+        Debug.Log($"direction: {direction}");
         b.GetComponent<DoDamage>().damage = getDamage();
         bs.lifetime = lifetime;
 
