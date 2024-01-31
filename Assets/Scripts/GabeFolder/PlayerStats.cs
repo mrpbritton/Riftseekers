@@ -47,7 +47,7 @@ public class PlayerStats : MonoBehaviour
 
         set
         {
-            Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
+           // Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
             movementSpeed = value;
         }
 
@@ -58,7 +58,7 @@ public class PlayerStats : MonoBehaviour
 
         set
         {
-            Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
+            //Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
             movementSpeed = value;
         }
 
@@ -69,7 +69,7 @@ public class PlayerStats : MonoBehaviour
 
         set
         {
-            Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
+            //Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
             dashSpeed = value;
         }
 
@@ -80,7 +80,7 @@ public class PlayerStats : MonoBehaviour
 
         set
         {
-            Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
+            //Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
             dashDistance = value;
         }
 
@@ -91,7 +91,7 @@ public class PlayerStats : MonoBehaviour
 
         set
         {
-            Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
+            //Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
             dashCharges = value;
         }
 
@@ -102,7 +102,7 @@ public class PlayerStats : MonoBehaviour
 
         set
         {
-            Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
+            //Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
             attackDamage = value;
         }
 
@@ -113,7 +113,7 @@ public class PlayerStats : MonoBehaviour
 
         set
         {
-            Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
+            //Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
             attackSpeed = value;
         }
 
@@ -124,7 +124,7 @@ public class PlayerStats : MonoBehaviour
 
         set
         {
-            Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
+            //Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
             cooldownMod = value;
         }
 
@@ -135,7 +135,7 @@ public class PlayerStats : MonoBehaviour
 
         set
         {
-            Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
+            //Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
             charge = value;
         }
 
@@ -146,7 +146,7 @@ public class PlayerStats : MonoBehaviour
 
         set
         {
-            Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
+            //Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
             chargeLimit = value;
         }
 

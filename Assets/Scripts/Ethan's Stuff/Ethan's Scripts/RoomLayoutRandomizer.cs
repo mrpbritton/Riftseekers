@@ -11,7 +11,7 @@ public class RoomLayoutRandomizer : MonoBehaviour
     public int tileCount;
     [Tooltip("The concentration that Obstacles will spawn")]
     public int barrelDensity;
-    private bool generating;
+    //private bool generating;
     private bool place;
     [SerializeField]
     private GameObject tile, wall;
@@ -50,7 +50,7 @@ public class RoomLayoutRandomizer : MonoBehaviour
         int randomvar;//Which direction the new room will be placed
         int num; //holds the roomAdj for each number to check which rooms a room is adjacent to
         bool skip;//used if the room decides not to place
-        generating = true;
+        //generating = true;
         roomX.Add(listSize / 2);
         roomY.Add(listSize / 2);
         roomAdj.Add(0);
