@@ -48,15 +48,14 @@ public class PlayerMovement : MonoBehaviour
         bonuspicker.DisablePlayerMovement += DisablePlayerMovement;
     }
     private void OnEnable()
-    {        
+    {
+        DashUI.UpdateDashUI(remainingCharges);
         playerTrans = transform;
         pInput = new PInput();
         pInput.Enable();
         player = gameObject.GetComponent<CharacterController>();
         characterAnim = gameObject.GetComponent<SpriteManager>();
         pInput.Player.Dash.started += DashPress;
-        dashUI = FindFirstObjectByType<DashUI>();
-        dashUI.UpdateDashUI(dashCharges);
         canRecharge = true;
     }
     private void OnDisable()
@@ -122,13 +121,16 @@ public class PlayerMovement : MonoBehaviour
         AkSoundEngine.PostEvent("Dash", gameObject);
 
         cantDash = true;
-        bool isDefDash = false; //is default dash
         float dTimeRemaining = dashTime;
 
         dashDirection = direction;
         if (characterAnim.UpdateSpriteToDash(direction)) //UpdateSpriteToDash returns true if it is the default dash
         {
             dashDirection = Vector3.right;
+        }
+        else
+        {
+            characterAnim.UpdateSpriteToDash(dashDirection);
         }
 
         /* The loop below ends up being a pseudo-update function. This is able to 
@@ -147,14 +149,11 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(dashCooldown);
         remainingCharges--; //since dash was performed, subtract a dash
         cantDash = false;
-        if(isDefDash)
-        {
-            characterAnim.UpdateSpriteToWalk(Vector3.right); //east
-            characterAnim.UpdateSpriteToIdle(CardinalDirection.east);
-        }
 
-        characterAnim.UpdateSpriteToDash(dashDirection);
-        dashUI.UpdateDashUI(remainingCharges);
+        characterAnim.UpdateSpriteToWalk(dashDirection);
+        cachedDirection = characterAnim.CachedDirToVector();
+
+        DashUI.UpdateDashUI(remainingCharges);
     }
 
     public IEnumerator RechargeDash()
@@ -162,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
         canRecharge = false;
         yield return new WaitForSeconds(dashChargeCooldown);
         remainingCharges = dashCharges;
-        dashUI.UpdateDashUI(remainingCharges);
+        DashUI.UpdateDashUI(remainingCharges);
         canRecharge = true;
     }
 

@@ -5,9 +5,14 @@ using TMPro;
 
 public class DashUI : MonoBehaviour
 {
-    public TMP_Text text;
-    
-    public void UpdateDashUI(int currentCharges)
+    private static TMP_Text text;
+
+    private void Awake()
+    {
+        text = GetComponent<TMP_Text>();
+    }
+
+    public static void UpdateDashUI(int currentCharges)
     {
         text.text = currentCharges.ToString();
     }

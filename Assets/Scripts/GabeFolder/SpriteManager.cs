@@ -5,7 +5,33 @@ using UnityEngine;
 public class SpriteManager : MonoBehaviour
 {
     public Animator character;
-    private CardinalDirection cachedDir;
+    public CardinalDirection CachedDir { get; private set; }
+
+    public Vector3 CachedDirToVector()
+    {
+        switch (CachedDir.ToString())
+        {
+            case "north":
+                return new Vector3(0, 0, 1);
+            case "northEast":
+                return new Vector3(1, 0, 1);
+            case "northWest":
+                return new Vector3(-1, 0, 1);
+            case "south":
+                return new Vector3(0, 0, -1);
+            case "southEast":
+                return new Vector3(1, 0, -1);
+            case "southWest":
+                return new Vector3(-1, 0, -1);
+            case "east":
+                return new Vector3(1, 0, 0);
+            case "west":
+                return new Vector3(-1, 0, 0);
+            default:
+                return new Vector3(1, 0, 0);
+        }
+
+    }
 
     #region Sprites
 
@@ -74,17 +100,17 @@ public class SpriteManager : MonoBehaviour
             {
                 //characterSprite.sprite = southEast;
                 character.SetTrigger("WalkSE");
-                cachedDir = CardinalDirection.southEast;
+                CachedDir = CardinalDirection.southEast;
             }
             else if (direction.z == 0) // EAST
             {
                 character.SetTrigger("WalkE");
-                cachedDir = CardinalDirection.east;
+                CachedDir = CardinalDirection.east;
             }
             else // direction.z == 1 *** NORTHEAST
             {
                 character.SetTrigger("WalkNE");
-                cachedDir = CardinalDirection.northEast;
+                CachedDir = CardinalDirection.northEast;
             }
         }
         else if (direction.x < 0)
@@ -93,18 +119,18 @@ public class SpriteManager : MonoBehaviour
             {
                 //characterSprite.sprite = southWest;
                 character.SetTrigger("WalkSW");
-                cachedDir = CardinalDirection.southWest;
+                CachedDir = CardinalDirection.southWest;
             }
             else if (direction.z == 0) // WEST
             {
                 character.SetTrigger("WalkW");
-                cachedDir = CardinalDirection.west;
+                CachedDir = CardinalDirection.west;
             }
             else // direction.z == 1 *** NORTHWEST
             {
                 //characterSprite.sprite = northWest;
                 character.SetTrigger("WalkNW");
-                cachedDir = CardinalDirection.northWest;
+                CachedDir = CardinalDirection.northWest;
             }
         }
         else //direction.x == 0
@@ -112,11 +138,11 @@ public class SpriteManager : MonoBehaviour
             if (direction.z < 0) // SOUTH
             {
                 character.SetTrigger("WalkS");
-                cachedDir = CardinalDirection.south;
+                CachedDir = CardinalDirection.south;
             }
             else if (direction.z == 0) // NO INPUT
             {
-                switch (cachedDir.ToString())
+                switch (CachedDir.ToString())
                 {
                     case "north":
                         character.SetTrigger("WalkNStop");
@@ -149,18 +175,14 @@ public class SpriteManager : MonoBehaviour
             else // direction.z == 1 *** NORTH
             {
                 character.SetTrigger("WalkN");
-                cachedDir = CardinalDirection.north;
+                CachedDir = CardinalDirection.north;
             }
         }
     }
 
-    /// <summary>
-    /// Only use this for the default direction.
-    /// </summary>
-    /// <param name="cachedDir">Should be CardinalDirection.east</param>
-    public void UpdateSpriteToIdle(CardinalDirection cachedDir)
+    public void UpdateSpriteToIdle()
     {
-        switch (cachedDir.ToString())
+        switch (CachedDir.ToString())
         {
             case "north":
                 character.SetTrigger("WalkNStop");
