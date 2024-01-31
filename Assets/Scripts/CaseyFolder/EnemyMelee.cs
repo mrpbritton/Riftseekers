@@ -18,7 +18,8 @@ public class EnemyMelee : MonoBehaviour
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        GetComponentInParent<EnemyMovement>().coverTime = coverTime;
+        GetComponent<EnemyMovement>().coverTime = coverTime;
+        GetComponent<EnemyMovement>().stopDistance = agent.stoppingDistance;
     }
 
     void Update()
@@ -52,7 +53,7 @@ public class EnemyMelee : MonoBehaviour
         bAttacking = false;
         GetComponent<EnemyMovement>().bAttacking = false;
         yield return new WaitForSeconds(hitCooldown);
-        bAttackCooldown = true;
+        bAttackCooldown = false;
     }
 
     IEnumerator dashAttack()

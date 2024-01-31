@@ -31,6 +31,7 @@ public class EnemyFiring : MonoBehaviour
         StartCoroutine(nameof(Reloading));
         Player = GameObject.FindGameObjectWithTag("Player");
         GetComponentInParent<EnemyMovement>().coverTime = coverTime;
+        GetComponentInParent<EnemyMovement>().stopDistance = agent.stoppingDistance;
     }
 
     private void FireShot()

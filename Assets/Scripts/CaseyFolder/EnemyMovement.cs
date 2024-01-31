@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
     public LayerMask enemy;
     public float coverTime = 3f;
     [SerializeField]
-    public float hitCooldown = 1, enemySpeed;
+    public float hitCooldown = 1, enemySpeed, stopDistance;
     public GameObject target = null;
 
 
@@ -101,5 +101,6 @@ public class EnemyMovement : MonoBehaviour
         if (bAttacking) return;
         target = Player;
         agent.speed = enemySpeed;
+        agent.stoppingDistance = stopDistance;
     }
 }
