@@ -11,7 +11,7 @@ public class EnemyMovement : MonoBehaviour
     private float rotationSpeed = 2f;
     [SerializeField]
     public NavMeshAgent agent;
-    public bool bCover;
+    public bool bCover, bAttacking;
     [SerializeField]
     private GameObject Player;
     private RaycastHit hitInfo;
@@ -57,7 +57,6 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    //change target position to cover
     public void lookForCover()
     {
         bCover = true;
@@ -99,6 +98,7 @@ public class EnemyMovement : MonoBehaviour
 
     public void pSeen()
     {
+        if (bAttacking) return;
         target = Player;
         agent.speed = enemySpeed;
     }
