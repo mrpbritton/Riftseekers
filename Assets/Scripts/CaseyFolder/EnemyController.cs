@@ -16,6 +16,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     PlayerUICanvas enemySlider;
     public float total;
+    [SerializeField]
+    private int baseMoney, moneyVariance;
 
 
     public static Action levelComplete = delegate { };
@@ -65,5 +67,6 @@ public class EnemyController : MonoBehaviour
             levelComplete();
         }
         enemySlider.updateSlider(total, enemies.Count);
+        Inventory.changeMoney(UnityEngine.Random.Range(baseMoney-moneyVariance, baseMoney+moneyVariance));
     }
 }

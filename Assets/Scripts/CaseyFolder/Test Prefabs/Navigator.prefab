@@ -31,7 +31,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7750732156827821421
 MonoBehaviour:
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: cb1dda4544f83ea4fb31a4bfe7db8b23, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: b91455a7f64f27f4e9104958823124ce, type: 2}
   m_BuildHeightMesh: 0
 --- !u!114 &2464874774120446858
 MonoBehaviour:
@@ -81,3 +81,5 @@ MonoBehaviour:
   Item: {fileID: 7452127282766360242, guid: a8b25eb4e140b584b99d0338788441bf, type: 3}
   enemySlider: {fileID: 0}
   total: 0
+  baseMoney: 10
+  moneyVariance: 5
