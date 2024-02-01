@@ -25,7 +25,8 @@ public class AttackManager : MonoBehaviour
     public float charge => PlayerStats.Charge;
 
     private PInput pInput;
-    private bool bIsPressed;
+    private bool bIsMainPressed;
+    private bool bIsAbilPressed;
     private bool bIsMainAttacking; //is true when a main attack is happening
     private bool bIsAbilAttacking; //is true when an ability is happening
 
@@ -53,12 +54,12 @@ public class AttackManager : MonoBehaviour
             #endregion
 
             #region Canceled Subscriptions
-            pInput.Player.BasicAttack.canceled += ctx => SetPressed(false);
-            pInput.Player.SecondAttack.canceled += ctx => SetPressed(false);
-            pInput.Player.Ability1.canceled += ctx => SetPressed(false);
-            pInput.Player.Ability2.canceled += ctx => SetPressed(false);
-            pInput.Player.Ability3.canceled += ctx => SetPressed(false);
-            pInput.Player.Ult.canceled += ctx => SetPressed(false);
+            pInput.Player.BasicAttack.canceled += ctx => SetMainPressed(false);
+            pInput.Player.SecondAttack.canceled += ctx => SetMainPressed(false);
+            pInput.Player.Ability1.canceled += ctx => SetAbilPressed(false);
+            pInput.Player.Ability2.canceled += ctx => SetAbilPressed(false);
+            pInput.Player.Ability3.canceled += ctx => SetAbilPressed(false);
+            pInput.Player.Ult.canceled += ctx => SetAbilPressed(false);
             #endregion
         }
         //  subs that the tutorial doesn't handle so just subscribe on start
@@ -71,9 +72,9 @@ public class AttackManager : MonoBehaviour
             #endregion
 
             #region Canceled Subscriptions
-            pInput.Player.Ability2.canceled += ctx => SetPressed(false);
-            pInput.Player.Ability3.canceled += ctx => SetPressed(false);
-            pInput.Player.Ult.canceled += ctx => SetPressed(false);
+            pInput.Player.Ability2.canceled += ctx => SetAbilPressed(false);
+            pInput.Player.Ability3.canceled += ctx => SetAbilPressed(false);
+            pInput.Player.Ult.canceled += ctx => SetAbilPressed(false);
             #endregion
         }
         #endregion
@@ -90,14 +91,14 @@ public class AttackManager : MonoBehaviour
     {
         if(isMainAttack && !bIsMainAttacking)     //is main attack
         {
-            SetPressed(true);
+            SetMainPressed(true);
             bIsMainAttacking = true;
             StartCoroutine( MainAttackWaiter(attack) );
         }
         else if (!isMainAttack && !bIsAbilAttacking)               //is an ability attack
         {
-            SetPressed(true);
-            bIsMainAttacking = true;
+            SetAbilPressed(true);
+            bIsAbilAttacking = true;
             StartCoroutine( SpecialAttackWaiter(attack) );
         }
     }
@@ -110,7 +111,7 @@ public class AttackManager : MonoBehaviour
             //curAttack.anim(character, false); //THIS IS THE ANIMATOR
             yield return new WaitForSeconds(curAttack.getRealCooldownTime());
             curAttack.reset();
-        } while (bIsPressed);
+        } while (bIsMainPressed);
         bIsMainAttacking = false;
     }
 
@@ -122,7 +123,7 @@ public class AttackManager : MonoBehaviour
             //curAttack.anim(character, false); //THIS IS THE ANIMATOR
             yield return new WaitForSeconds(curAttack.getRealCooldownTime());
             curAttack.reset();
-        } while (bIsPressed);
+        } while (bIsAbilPressed);
         bIsAbilAttacking = false;
     }
 
@@ -130,9 +131,14 @@ public class AttackManager : MonoBehaviour
     /// Sets bIsPressed to be either true or false depending on the parameters.
     /// </summary>
     /// <param name="newValue">value that bIsPressed will be set to</param>
-    private void SetPressed(bool newValue)
+    private void SetMainPressed(bool newValue)
     {
-        bIsPressed = newValue;
+        bIsMainPressed = newValue;
+    }
+
+    private void SetAbilPressed(bool newValue)
+    {
+        bIsAbilPressed = newValue;
     }
 
     #endregion
@@ -361,15 +367,15 @@ public class AttackManager : MonoBehaviour
         {
             case TutorialChecker.teachTypes.BasicAtt:
                 pInput.Player.BasicAttack.started += ctx => PerformAttack(basicAttack, true);
-                pInput.Player.BasicAttack.canceled += ctx => SetPressed(false);
+                pInput.Player.BasicAttack.canceled += ctx => SetMainPressed(false);
                 break;
             case TutorialChecker.teachTypes.SecondAtt:
                 pInput.Player.SecondAttack.started += ctx => PerformAttack(secondAttack, true);
-                pInput.Player.SecondAttack.canceled += ctx => SetPressed(false);
+                pInput.Player.SecondAttack.canceled += ctx => SetMainPressed(false);
                 break;
             case TutorialChecker.teachTypes.RocketAtt:
                 pInput.Player.Ability1.started += ctx => PerformAttack(qAbility, false);
-                pInput.Player.Ability1.canceled += ctx => SetPressed(false);
+                pInput.Player.Ability1.canceled += ctx => SetAbilPressed(false);
                 break;
         }
     }
