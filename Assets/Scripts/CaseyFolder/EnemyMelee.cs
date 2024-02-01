@@ -35,7 +35,7 @@ public class EnemyMelee : MonoBehaviour
         }
         if(bDashAttack)
         {
-            transform.position += transform.forward * 10 * Time.deltaTime;
+            transform.position += transform.forward * 20 * Time.deltaTime;
         }
     }
 
@@ -65,9 +65,11 @@ public class EnemyMelee : MonoBehaviour
         yield return new WaitForSeconds(hitCooldown);
         bDashAttack = true;
         meleeHit.GetComponent<Collider>().enabled = true;
+
         yield return new WaitForSeconds(0.25f);
         bDashAttack = false;
         meleeHit.GetComponent<Collider>().enabled = false;
+        yield return new WaitForSeconds(1);
         agent.speed = GetComponent<EnemyMovement>().enemySpeed;
         bAttacking = false;
         GetComponent<EnemyMovement>().bAttacking = false;
