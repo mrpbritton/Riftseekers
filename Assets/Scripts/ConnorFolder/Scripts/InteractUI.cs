@@ -79,7 +79,7 @@ public class InteractUI : MonoBehaviour {
     public void completeInteraction(Transform interactable) {
         interactables.RemoveAll(x => x == interactable);
         closestInteractable = interactables.Count > 0 ? interactables.FindClosest(playerTrans.position) : null;
-        if(interactables.Count <= 0) {
+        if(interactables.Count <= 0 && checker != null) {
             StopCoroutine(checker);
             checker = null;
         }
@@ -91,7 +91,7 @@ public class InteractUI : MonoBehaviour {
             closestInteractable = interactables.FindClosest(playerTrans.position);
             var t = Vector2.Distance(playerTrans.position, closestInteractable.position) / 20f;
             //  checks if within interact range
-            if(!shown && closestInteractable.GetComponent<Interact>().inRange())
+            if(!shown && closestInteractable != null && closestInteractable.GetComponent<Interact>().inRange())
                 show(closestInteractable.transform);
             else if(shown && !closestInteractable.GetComponent<Interact>().inRange())
                 hide();
