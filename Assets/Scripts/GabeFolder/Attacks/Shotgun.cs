@@ -29,6 +29,7 @@ public class Shotgun : Attack
         pInput.Enable();
         origin = GameObject.FindWithTag("GunOrigin").transform;
         bullet = FindFirstObjectByType<Bullet>(FindObjectsInactive.Include).gameObject;
+        cachedDir = origin.forward;
     }
     public override attackType getAttackType()
     {
