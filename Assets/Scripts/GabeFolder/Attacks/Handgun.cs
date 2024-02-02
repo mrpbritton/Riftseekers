@@ -20,6 +20,7 @@ public class Handgun : Attack
         base.Start();
         origin = GameObject.FindWithTag("GunOrigin").transform;
         bullet = FindFirstObjectByType<Bullet>(FindObjectsInactive.Include).gameObject;
+        cachedDir = origin.forward;
     }
     public override attackType getAttackType() 
     {
@@ -70,7 +71,6 @@ public class Handgun : Attack
         b.SetActive(true);
         Bullet bs = b.GetComponent<Bullet>(); //(b)ullet(s)cript
         bs.direction = direction;
-        Debug.Log($"direction: {direction}");
         b.GetComponent<DoDamage>().damage = getDamage();
         bs.lifetime = lifetime;
 

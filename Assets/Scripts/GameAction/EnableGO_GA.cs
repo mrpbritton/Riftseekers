@@ -10,12 +10,14 @@ public class EnableGO_GA : GameAction
     private bool bEnableState;
     public override void Action()
     {
-        go.SetActive(true);
+        if(go != null)
+            go.SetActive(true);
     }
 
     public override void DeAction()
     {
-        go.SetActive(false);
+        if (go != null)
+            go.SetActive(false);
     }
     public override void ResetToDefault()
     {
