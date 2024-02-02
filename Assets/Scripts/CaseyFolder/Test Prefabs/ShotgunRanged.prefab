@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7804190910279747688}
   - component: {fileID: 7103696463469822744}
   m_Layer: 6
-  m_Name: BasicRanged
+  m_Name: ShotgunRanged
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40,7 +40,7 @@ Transform:
   - {fileID: 9141151637567058839}
   - {fileID: 8460495086357275458}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8958742142963517924
 MeshFilter:
@@ -377,14 +377,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecd4f21ed85e0e8429ea9cc1a9c0ebc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 2806661883677591592, guid: 3857254fd8fd16a4b97e304f31d3a168,
+  projectile: {fileID: 2806661883677591592, guid: 6499554d4428bfe40a576590051b54fb,
     type: 3}
   reloadTime: 2
   coverTime: 3
   bSeePlayer: 0
   bStunned: 0
   firing: 0
-  bShotgun: 0
+  bShotgun: 1
   Player: {fileID: 0}
   enemy:
     serializedVersion: 2

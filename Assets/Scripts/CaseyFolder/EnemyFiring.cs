@@ -22,6 +22,9 @@ public class EnemyFiring : MonoBehaviour
     public LayerMask enemy;
     [SerializeField]
     private NavMeshAgent agent;
+    private float spread = 0.3f;
+    private Vector3 cachedDir = new(1, 1, 1);
+
 
 
 
@@ -60,8 +63,13 @@ public class EnemyFiring : MonoBehaviour
             {
                 AkSoundEngine.PostEvent("Enemy_Fire", gameObject);
                 rotation = gameObject.transform.rotation;
-                Projectile project = Instantiate(projectile, transform.position, rotation).GetComponent<Projectile>();
-                project.Direction = transform.forward;
+                for (int i = 0; i < 4; i++)
+                {
+                    float zRand = UnityEngine.Random.Range(-spread, spread);
+                    float xRand = UnityEngine.Random.Range(-spread, spread);
+                    Projectile project = Instantiate(projectile, transform.position, rotation).GetComponent<Projectile>();
+                    project.Direction = new Vector3(transform.forward.x + xRand, transform.forward.y, transform.forward.z + zRand);
+                }
             }
         }
         StartCoroutine(nameof(Reloading));
