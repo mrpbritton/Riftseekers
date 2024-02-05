@@ -9,6 +9,8 @@ public class RocketLauncher : Attack {
     [SerializeField] float maxTravelDist, maxTravelTime, explosionSize, explosionDmg, explosionKnockback;
 
     public override void attack() {
+
+        cooldownBar.updateSlider(getCooldownTime());
         var curRocket = Instantiate(rocketPreset.gameObject);
         var rocketEndExplosion = explosionManager.queueExplode(curRocket.transform, explosionSize, explosionDmg, explosionKnockback, ExplosionManager.explosionState.HurtsEnemies, maxTravelTime);
         curRocket.GetComponent<RocketInstance>().setup(rocketEndExplosion, explosionManager, explosionSize, explosionDmg, explosionKnockback);
@@ -32,6 +34,6 @@ public class RocketLauncher : Attack {
         return 30f;
     }
     protected override float getCooldownTime() {
-        return 3f;
+        return 3f / PlayerStats.CooldownMod;
     }
 }
