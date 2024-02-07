@@ -160,7 +160,7 @@ public class GSword : Attack
             damScript.damage = damage;
         }
 
-        cooldownBar.updateSlider(getCooldownTime());
+        //cooldownBar.updateSlider(getCooldownTime());
         StartCoroutine(Swing());
     }
 

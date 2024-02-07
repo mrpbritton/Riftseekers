@@ -10,13 +10,14 @@ public class RocketLauncher : Attack {
 
     public override void attack() {
 
-        cooldownBar.updateSlider(getCooldownTime());
         var curRocket = Instantiate(rocketPreset.gameObject);
         var rocketEndExplosion = explosionManager.queueExplode(curRocket.transform, explosionSize, explosionDmg, explosionKnockback, ExplosionManager.explosionState.HurtsEnemies, maxTravelTime);
         curRocket.GetComponent<RocketInstance>().setup(rocketEndExplosion, explosionManager, explosionSize, explosionDmg, explosionKnockback);
         var origin = transform.position + new Vector3(0f, 1f, 0f);
         curRocket.transform.position = origin;
         var d = InputManager.isUsingKeyboard() ? GetPoint() - origin : new Vector3(pInput.Player.ControllerAim.ReadValue<Vector2>().x, 0, pInput.Player.ControllerAim.ReadValue<Vector2>().y);
+        if (d.x == 0 && d.z == 0)
+            d = Vector3.forward;
         curRocket.transform.DOMove(origin + (d.normalized * maxTravelDist), maxTravelTime);
         Destroy(curRocket.gameObject, maxTravelTime + .1f);
     }

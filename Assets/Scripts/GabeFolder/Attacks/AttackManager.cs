@@ -12,6 +12,9 @@ public class AttackManager : MonoBehaviour
     public Attack rAbility;
     public Attack fAbility;
 
+    [Header("Player UI Canvases (DO NOT CHANGE)")]
+    public List<PlayerUICanvas> puiCanvases;
+
     [Tooltip("Base attack damage; each attack derives this for a calculation")]
     public float attackDamage => PlayerStats.AttackDamage;
     [Tooltip("Base attack speed; each attack derives this for a calculation")]
@@ -103,10 +106,27 @@ public class AttackManager : MonoBehaviour
         }
     }
 
+    private void ActivatePUI(Attack attack)
+    {
+        switch(attack.abilType)
+        {
+            case AbilityLibrary.abilType.Sword:
+                puiCanvases[0].updateSlider(attack.getRealCooldownTime());
+                break;
+            case AbilityLibrary.abilType.Pistol:
+                puiCanvases[1].updateSlider(attack.getRealCooldownTime());
+                break;
+            case AbilityLibrary.abilType.Rocket:
+                puiCanvases[2].updateSlider(attack.getRealCooldownTime());
+                break;
+        }
+    }
+
     IEnumerator MainAttackWaiter(Attack curAttack)
     {
         do
         {
+            ActivatePUI(curAttack);
             curAttack.attack();
             //curAttack.anim(character, false); //THIS IS THE ANIMATOR
             yield return new WaitForSeconds(curAttack.getRealCooldownTime());
@@ -119,6 +139,7 @@ public class AttackManager : MonoBehaviour
     {
         do
         {
+            ActivatePUI(curAttack);
             curAttack.attack();
             //curAttack.anim(character, false); //THIS IS THE ANIMATOR
             yield return new WaitForSeconds(curAttack.getRealCooldownTime());
