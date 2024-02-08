@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine.UIElements;
 public class Fog : MonoBehaviour {
     [SerializeField] SpriteRenderer fog;
     [SerializeField] int res, distToClear;
+    List<Vector2Int> activeCoords = new List<Vector2Int>();
 
     Transform playerTrans;
 
@@ -19,6 +21,7 @@ public class Fog : MonoBehaviour {
         for(int x = 0; x < res; x++) {
             for(int y = 0; y < res; y++) {
                 tex.SetPixel(x, y, Color.grey);
+                activeCoords.Add(new Vector2Int(x, y));
             }
         }
         tex.Apply();
@@ -32,7 +35,7 @@ public class Fog : MonoBehaviour {
     }
 
     private void LateUpdate() {
-        clearFog(2, getPlayerPoint());
+        clearFog(4, getPlayerPoint());
     }
 
     void clearFog(int radius, Vector2Int point) {
@@ -48,6 +51,13 @@ public class Fog : MonoBehaviour {
         var s = fog.transform.localScale.x / 2f;
         var step = s / res;
         var offset = playerTrans.position - pStart;
+        offset /= 4f;
+        return new Vector2Int((res / 2) + (int)(offset.x / step), (res / 2) + (int)(offset.z / step));
+    }
+    Vector2Int getWorldPoint(Vector3 pos) {
+        var s = fog.transform.localScale.x / 2f;
+        var step = s / res;
+        var offset = pos - pStart;
         offset /= 4f;
         return new Vector2Int((res / 2) + (int)(offset.x / step), (res / 2) + (int)(offset.z / step));
     }

@@ -84,8 +84,10 @@ public class TutorialChecker : MonoBehaviour {
     }
 
     public void tryRotate(teachTypes type) {
-        if(rotator != null || texts.Count == 0 || type != curTeaching)
+        if(texts.Count == 0 || type != curTeaching)
             return;
+        if(rotator != null)
+            StopCoroutine(rotator);
         rotator = StartCoroutine(rotate());
     }
 
@@ -104,11 +106,6 @@ public class TutorialChecker : MonoBehaviour {
             //  unblocks
             if(texts[(int)curTeaching - 1].room > 0)
                 blockers[texts[(int)curTeaching - 1].room - 1].SetActive(false);
-
-            //  waits for player to move into the correct room
-            do
-                yield return new WaitForEndOfFrame();
-            while(getPlayerRoom() != texts[(int)curTeaching - 1].room);
 
             //  shows the thing
             showCurText();

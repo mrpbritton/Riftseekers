@@ -54,6 +54,7 @@ public class Interact : MonoBehaviour
     }
 
     public bool inRange() {
+        if(player == null) return false;
         var d = Vector3.Distance(transform.position, player.position);
         return d < getInteractRange();
     }

@@ -32,7 +32,7 @@ Transform:
   - {fileID: 1634231503805718177}
   - {fileID: 6471705533155748516}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7219115847487336413
 MonoBehaviour:
@@ -175,6 +175,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2495853869593525658}
     m_Modifications:
+    - target: {fileID: 1873918082356215387, guid: 9117d3ffd9b83b24b96de65026384720,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1873918082356215387, guid: 9117d3ffd9b83b24b96de65026384720,
         type: 3}
       propertyPath: m_IsTrigger

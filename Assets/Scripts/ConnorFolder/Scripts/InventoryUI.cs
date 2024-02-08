@@ -14,7 +14,7 @@ public class InventoryUI : MonoBehaviour {
     ItemLibrary il;
     PInput controls;
     PlayerMovement pm;
-    AttackManager attackManager;
+    AttackManager at;
 
     int curIndex = -1;
     int actIndex = 0;
@@ -27,7 +27,7 @@ public class InventoryUI : MonoBehaviour {
     private void Start() {
         il = FindObjectOfType<ItemLibrary>();
         pm = FindObjectOfType<PlayerMovement>();
-        attackManager = FindObjectOfType<AttackManager>();
+        at = FindObjectOfType<AttackManager>();
         Inventory.loadInventory();
         hide();
         dragged.gameObject.SetActive(false);
@@ -51,9 +51,9 @@ public class InventoryUI : MonoBehaviour {
 
     private void onLoad()
     {
-        attackManager = FindObjectOfType<AttackManager>();
-        attackManager.ResetAttack();
-        attackManager.UpdateAttack();
+        at = FindObjectOfType<AttackManager>();
+        at.ResetAttack();
+        at.UpdateAttack();
         /*for(int i = 0; i < 3; i++)
         {
             if(Inventory.getActiveItem(i, il) != null)
@@ -153,6 +153,7 @@ public class InventoryUI : MonoBehaviour {
         shown = true;
         background.gameObject.SetActive(true);
         pm.enabled = false;
+        at.canAttack = false;
         activeSlots[0].GetComponent<Button>().Select();
         //  active items
         for(int i = 0; i < activeSlots.Count; i++) {
@@ -183,6 +184,7 @@ public class InventoryUI : MonoBehaviour {
         curIndex = -1;
         actIndex = -1;
         pm.enabled = true;
+        at.canAttack = true;
         background.gameObject.SetActive(false);
     }
 
@@ -269,7 +271,7 @@ public class InventoryUI : MonoBehaviour {
         //  otherwise, just remove the active item
         else
         {
-            attackManager.RemoveAbility(Inventory.getActiveItem(actIndex, il));
+            at.RemoveAbility(Inventory.getActiveItem(actIndex, il));
             Inventory.removeActiveItem(actIndex);
         }
 
@@ -282,6 +284,6 @@ public class InventoryUI : MonoBehaviour {
         show();
         actIndex = -1;
         curIndex = -1;
-        attackManager.UpdateAttack(Inventory.getActiveItem(actInd, il));
+        at.UpdateAttack(Inventory.getActiveItem(actInd, il));
     }
 }

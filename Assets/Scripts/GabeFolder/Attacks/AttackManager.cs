@@ -33,6 +33,8 @@ public class AttackManager : MonoBehaviour
     private bool bIsMainAttacking; //is true when a main attack is happening
     private bool bIsAbilAttacking; //is true when an ability is happening
 
+    public bool canAttack = true;
+
     public void OnEnable()
     {
         pInput = new PInput();
@@ -92,6 +94,7 @@ public class AttackManager : MonoBehaviour
     /// <param name="isMainAttack">If True, attack is either basicAttack or secondAttack</param>
     private void PerformAttack(Attack attack, bool isMainAttack)
     {
+        if(!canAttack) return;
         if(isMainAttack && !bIsMainAttacking)     //is main attack
         {
             SetMainPressed(true);
