@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
 public class Fog : MonoBehaviour {
@@ -16,6 +17,8 @@ public class Fog : MonoBehaviour {
     Vector3 pStart;
 
     private void Start() {
+        if(SceneManager.GetActiveScene().name == "The Hub")
+            Destroy(gameObject);
         playerTrans = FindObjectOfType<PlayerMovement>().transform;
         Texture2D tex = new Texture2D(res, res);
         for(int x = 0; x < res; x++) {
@@ -35,7 +38,7 @@ public class Fog : MonoBehaviour {
     }
 
     private void LateUpdate() {
-        clearFog(4, getPlayerPoint());
+        clearFog(distToClear, getPlayerPoint());
     }
 
     void clearFog(int radius, Vector2Int point) {
