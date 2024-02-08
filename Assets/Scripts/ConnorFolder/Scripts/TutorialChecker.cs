@@ -104,8 +104,10 @@ public class TutorialChecker : MonoBehaviour {
 
         if((int)curTeaching - 1 < texts.Count) {
             //  unblocks
-            if(texts[(int)curTeaching - 1].room > 0)
+            if(texts[(int)curTeaching - 1].room > 0) {
                 blockers[texts[(int)curTeaching - 1].room - 1].SetActive(false);
+                Debug.Log(texts[(int)curTeaching - 1].room - 1);
+            }
 
             //  shows the thing
             showCurText();
