@@ -16,6 +16,7 @@ public class bonuspicker : MonoBehaviour
     public GameActionSequence sequence;
     public UpdateStat_GA stat;
     private int bonus1, bonus2, bonus3 = 10;
+    public bool picked = false;
 
     public static Action EnablePlayerMovement = delegate { };
     public static Action DisablePlayerMovement = delegate { };
@@ -99,6 +100,7 @@ public class bonuspicker : MonoBehaviour
 
     public void setup()
     {
+        picked = false;
         bonus1 = randomPicker();
         bonus2 = randomPicker();
         bonus3 = randomPicker();
@@ -128,6 +130,7 @@ public class bonuspicker : MonoBehaviour
         }
         bonusCloser();
         EnablePlayerMovement();
+        picked = true;
         //Character.enabled = true;
         //Character.gameObject.GetComponent<PlayerMovement>().enabled = true;
         //Character.gameObject.GetComponent<Basic_Proj>().enabled = true;
@@ -186,12 +189,12 @@ public class bonuspicker : MonoBehaviour
 
     private void OnEnable()
     {
-        EnemyController.levelComplete += setup;
+        // EnemyController.levelComplete += setup;
 
     }
     private void OnDisable()
     {
-        EnemyController.levelComplete -= setup;
+        //EnemyController.levelComplete -= setup;
     }
 }
 

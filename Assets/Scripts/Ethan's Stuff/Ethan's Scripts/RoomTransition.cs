@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class RoomTransition : MonoBehaviour
 {
     public LevelManager sceneGuy;
+    public bonuspicker manager;
     int[] scenes = new int[4];
     bool checker = true;
     public int Scene;
@@ -14,6 +15,7 @@ public class RoomTransition : MonoBehaviour
     void Start()
     {
         sceneGuy = FindObjectOfType<LevelManager>();
+        manager = FindObjectOfType<bonuspicker>();
         scenes = RoomSaver.loadroom();
     }
     private void OnEnable()
@@ -32,12 +34,19 @@ public class RoomTransition : MonoBehaviour
         gameObject.GetComponent<Collider>().enabled = true;
     }
 
+    private void Update()
+    {
+        if (manager.picked == true)
+        {
+            sceneGuy.loadSpecific(Scene);
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Gaming?");
         if (other.tag == "Player" && checker == true)
         {
-            sceneGuy.loadSpecific(Scene);
+            manager.setup();
             checker = false;
             //RoomTransitionz();
         }
