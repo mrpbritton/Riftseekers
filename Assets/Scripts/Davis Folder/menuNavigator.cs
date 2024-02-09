@@ -16,7 +16,7 @@ public class menuNavigator : MonoBehaviour
 
     private void OnEnable()
     {
-        EnemyController.levelComplete += startNavigation;
+        //EnemyController.levelComplete += startNavigation;
 
     }
 
