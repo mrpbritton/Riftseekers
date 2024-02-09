@@ -34,6 +34,7 @@ public abstract class Attack : MonoBehaviour {
         RaycastHit hit;
         //Debug.DrawRay(cursorPos, Camera.main.transform.forward * rayDistance, Color.red, 10);
         Physics.Raycast(cursorPos, Camera.main.transform.forward, out hit, rayDistance, LayerMask.GetMask("AllButCam"));
+        hit.point = new Vector3(hit.point.x, Vector3.forward.y, hit.point.z);
         return hit.point;
     }    
 

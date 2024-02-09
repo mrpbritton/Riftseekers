@@ -6,8 +6,8 @@ public class PlayerStats : MonoBehaviour
 {
     [Tooltip("The stats that the player will start out with")]
     public DefaultStats_SO startingStats;
-    private static float health, movementSpeed, dashSpeed, dashDistance, attackDamage, attackSpeed, cooldownMod, charge;
-    private static int maxHealth, dashCharges, chargeLimit;
+    private static float maxHealth, health, movementSpeed, dashSpeed, dashDistance, attackDamage, attackSpeed, cooldownMod, charge;
+    private static int dashCharges, chargeLimit;
 
     /*** "READ-ONLY" FIELDS ***/
     /*  These fields are designed to be accessed, but not changed. Whenever you need
@@ -15,7 +15,7 @@ public class PlayerStats : MonoBehaviour
      *  the actual scripts that touch them.
      */
     public static float Health => health;
-    public static int   MaxHealth => maxHealth;
+    public static float MaxHealth => maxHealth;
     public static float MovementSpeed => movementSpeed;
     public static float DashSpeed => dashSpeed;
     public static float DashDistance => dashDistance;
@@ -41,7 +41,7 @@ public class PlayerStats : MonoBehaviour
         }
 
     }
-    public static int UpdateMaxHealth
+    public static float UpdateMaxHealth
     {
         get { return maxHealth; }
 

@@ -63,7 +63,7 @@ public class Handgun : Attack
         {
             dir = GetPoint();
             direction = new Vector3(dir.x - origin.position.x + origin.localPosition.x,
-                                            dir.y - origin.position.y + origin.localPosition.y,
+                                            dir.y,
                                             dir.z - origin.position.z + origin.localPosition.z);
         }
 

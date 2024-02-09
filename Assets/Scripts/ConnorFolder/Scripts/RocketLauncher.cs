@@ -7,7 +7,6 @@ public class RocketLauncher : Attack {
 
     [SerializeField] GameObject rocketPreset;
     [SerializeField] float maxTravelDist, maxTravelTime, explosionSize, explosionDmg, explosionKnockback;
-
     public override void attack() {
 
         var curRocket = Instantiate(rocketPreset.gameObject);

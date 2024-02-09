@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
     [SerializeField, Tooltip("Any other script that changes values in this script will be shown if this is true")]
     private bool debugMode;
 
-    public int MaxHealth => PlayerStats.MaxHealth;
+    public float MaxHealth => PlayerStats.MaxHealth;
     public float CurrentHealth => PlayerStats.Health;
 
     string playerHealthTag = "PlayerHealth";
@@ -20,14 +20,14 @@ public class Health : MonoBehaviour
         //  saves if this is on the player object
         SaveData.setFloat(playerHealthTag, CurrentHealth);
         PlayerStats.UpdateHealth = SaveData.getInt(playerHealthTag, -1) == -1 ? CurrentHealth : SaveData.getInt(playerHealthTag);
-        healthSlider.updateSlider(MaxHealth, (int)CurrentHealth);
+        healthSlider.updateSlider(MaxHealth, CurrentHealth);
     }
 
     //  use this when taking damage
     public void takeDamage(float dmg) {
         PlayerStats.UpdateHealth -= dmg;
 
-        healthSlider.updateSlider(MaxHealth, (int)CurrentHealth);
+        healthSlider.updateSlider(MaxHealth, CurrentHealth);
         //  check if dead
         if(CurrentHealth <= 0)
             Debug.Log(gameObject.name + " died!");

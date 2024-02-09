@@ -35,7 +35,7 @@ public class GSword : Attack
     }
     public override attackType getAttackType()
     {
-        return attackType.Secondary;
+        return attackType.Basic;
     }
 
     protected override float getDamage()
@@ -142,7 +142,7 @@ public class GSword : Attack
         {
             dir = GetPoint();
             direction = new Vector3(dir.x - origin.position.x + origin.localPosition.x,
-                                            dir.y - origin.position.y + origin.localPosition.y,
+                                            dir.y,
                                             dir.z - origin.position.z + origin.localPosition.z);
         }
         origin.forward = direction;

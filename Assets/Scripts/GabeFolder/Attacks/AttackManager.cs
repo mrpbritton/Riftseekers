@@ -8,9 +8,9 @@ public class AttackManager : MonoBehaviour
     public Attack basicAttack;
     public Attack secondAttack;
     public Attack qAbility;
-    public Attack eAbility;
-    public Attack rAbility;
-    public Attack fAbility;
+    //public Attack eAbility;
+    //public Attack rAbility;
+    //public Attack fAbility;
 
     [Header("Player UI Canvases (DO NOT CHANGE)")]
     public List<PlayerUICanvas> puiCanvases;
@@ -37,6 +37,7 @@ public class AttackManager : MonoBehaviour
 
     public void OnEnable()
     {
+        //SaveData.wipe(); //this is for debugging purposes, DO NOT HAVE THIS ON AT ALL TIMES
         pInput = new PInput();
         pInput.Enable();
 
@@ -53,9 +54,9 @@ public class AttackManager : MonoBehaviour
             pInput.Player.BasicAttack.started += ctx => PerformAttack(basicAttack, true);
             pInput.Player.SecondAttack.started += ctx => PerformAttack(secondAttack, true);
             pInput.Player.Ability1.started += ctx => PerformAttack(qAbility, false);
-            pInput.Player.Ability2.started += ctx => PerformAttack(eAbility, false);
-            pInput.Player.Ability3.started += ctx => PerformAttack(rAbility, false);
-            pInput.Player.Ult.started += ctx => PerformAttack(fAbility, false);
+            //pInput.Player.Ability2.started += ctx => PerformAttack(eAbility, false);
+            //pInput.Player.Ability3.started += ctx => PerformAttack(rAbility, false);
+            //pInput.Player.Ult.started += ctx => PerformAttack(fAbility, false);
             #endregion
 
             #region Canceled Subscriptions
@@ -71,15 +72,15 @@ public class AttackManager : MonoBehaviour
         else
         {
             #region Started Subscriptions
-            pInput.Player.Ability2.started += ctx => PerformAttack(eAbility, false);
-            pInput.Player.Ability3.started += ctx => PerformAttack(rAbility, false);
-            pInput.Player.Ult.started += ctx => PerformAttack(fAbility, false);
+            //pInput.Player.Ability2.started += ctx => PerformAttack(eAbility, false);
+            //pInput.Player.Ability3.started += ctx => PerformAttack(rAbility, false);
+            //pInput.Player.Ult.started += ctx => PerformAttack(fAbility, false);
             #endregion
 
             #region Canceled Subscriptions
-            pInput.Player.Ability2.canceled += ctx => SetAbilPressed(false);
-            pInput.Player.Ability3.canceled += ctx => SetAbilPressed(false);
-            pInput.Player.Ult.canceled += ctx => SetAbilPressed(false);
+            //pInput.Player.Ability2.canceled += ctx => SetAbilPressed(false);
+            //pInput.Player.Ability3.canceled += ctx => SetAbilPressed(false);
+            //pInput.Player.Ult.canceled += ctx => SetAbilPressed(false);
             #endregion
         }
         #endregion
@@ -111,16 +112,19 @@ public class AttackManager : MonoBehaviour
 
     private void ActivatePUI(Attack attack)
     {
-        switch(attack.abilType)
+        switch(attack.getAttackType())
         {
-            case AbilityLibrary.abilType.Sword:
+            case Attack.attackType.Basic: //sword
                 puiCanvases[0].updateSlider(attack.getRealCooldownTime());
                 break;
-            case AbilityLibrary.abilType.Pistol:
+            case Attack.attackType.Secondary: //gun
                 puiCanvases[1].updateSlider(attack.getRealCooldownTime());
                 break;
-            case AbilityLibrary.abilType.Rocket:
+            case Attack.attackType.QAbility: //rocket
                 puiCanvases[2].updateSlider(attack.getRealCooldownTime());
+                break;
+            default:
+                Debug.Log($"aType of attack is not a sword, pistol, or rocket.");
                 break;
         }
     }
@@ -248,7 +252,7 @@ public class AttackManager : MonoBehaviour
         {
             gameObject.AddComponent<Handgun>();
             secondAttack = GetComponent<Handgun>();
-        }
+        }/*
         if (eAbility == null)
         {
 
@@ -260,7 +264,7 @@ public class AttackManager : MonoBehaviour
         if (rAbility == null)
         {
 
-        }
+        }*/
         if (qAbility == null)
         {
 
@@ -279,7 +283,7 @@ public class AttackManager : MonoBehaviour
                 Destroy(secondAttack);
                 secondAttack = null;
                 break;
-            case Attack.attackType.EAbility:
+/*            case Attack.attackType.EAbility:
                 Destroy(eAbility);
                 eAbility = null;
                 break;
@@ -290,7 +294,7 @@ public class AttackManager : MonoBehaviour
             case Attack.attackType.RAbility:
                 Destroy(rAbility);
                 rAbility = null;
-                break;
+                break;*/
             case Attack.attackType.QAbility:
                 Destroy(qAbility);
                 qAbility = null;
@@ -299,7 +303,7 @@ public class AttackManager : MonoBehaviour
                 RemovePassive(item.passiveScript);
                 break;
             default: //this should not happen
-                Debug.LogError("Something real bad happened when removing an item.");
+                Debug.LogError("Accessed a bad attack reference");
                 break;
         }
         FixAbility();
@@ -346,7 +350,7 @@ public class AttackManager : MonoBehaviour
                 if (secondAttack != null)
                     Destroy(secondAttack);
                 break;
-            case Attack.attackType.EAbility:
+/*            case Attack.attackType.EAbility:
                 if (eAbility != null)
                     Destroy(eAbility);
                 break;
@@ -357,7 +361,7 @@ public class AttackManager : MonoBehaviour
             case Attack.attackType.RAbility:
                 if (rAbility != null)
                     Destroy(rAbility);
-                break;
+                break;*/
             case Attack.attackType.QAbility:
                 if (qAbility != null)
                     Destroy(qAbility);
