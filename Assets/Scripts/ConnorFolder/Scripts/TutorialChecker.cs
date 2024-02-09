@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 using System.Linq;
-using UnityEngine.WSA;
+//using UnityEngine.WSA;
 using UnityEngine.Rendering;
 
 public class TutorialChecker : MonoBehaviour {
