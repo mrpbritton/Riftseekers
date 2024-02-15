@@ -18,7 +18,7 @@ public static class RoomSaver
     {
         var d = SaveData.getString(roomOrder);
         if(string.IsNullOrEmpty(d)) {
-            Debug.LogError("No Room Saved");
+            //Debug.LogError("No Room Saved");
             return null;
         }
         return JsonUtility.FromJson<RoomOrder>(d).roomOrder;
