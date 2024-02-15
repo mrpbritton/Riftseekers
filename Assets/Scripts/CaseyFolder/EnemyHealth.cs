@@ -22,7 +22,7 @@ public class EnemyHealth : MonoBehaviour
     [SerializeField] Slider healthSlider;
 
     public static Action<GameObject> onEnemyDeath = delegate { };
-    public static Action<Transform, Vector3> onEnemyHit = delegate { };
+    public static Action<Transform, Vector3, float> onEnemyHit = delegate { };
 
     private void Start()
     {
@@ -46,7 +46,7 @@ public class EnemyHealth : MonoBehaviour
         currentHealth -= damage;
 
         healthSlider.value = currentHealth;
-        onEnemyHit(transform, attackPoint);
+        onEnemyHit(transform, attackPoint, damage);
 
         if(currentHealth <= 0)
         {

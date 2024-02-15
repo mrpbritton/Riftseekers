@@ -25,7 +25,7 @@ public class VisualFX : MonoBehaviour {
         EnemyHealth.onEnemyHit -= hitFX;
     }
 
-    public void hitFX(Transform defender, Vector3 attackPoint) {
+    public void hitFX(Transform defender, Vector3 attackPoint, float damage) {
         var dir = defender.transform.position - attackPoint;
         var p = Instantiate(hitParticles);
         p.transform.position = defender.position;

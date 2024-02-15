@@ -11,20 +11,20 @@ public class DamageNumbersCanvas : MonoBehaviour {
     [SerializeField] Color lowColor, medColor, highColor;
 
     private void Start() {
-        MonsterHealth.runOnHurt += showText;
+        EnemyHealth.onEnemyHit += showText;
     }
 
     private void OnDisable() {
-        MonsterHealth.runOnHurt -= showText;
+        EnemyHealth.onEnemyHit -= showText;
     }
 
-    void showText(int dmg, Transform trans) {
+    void showText(Transform trans, Vector3 pos, float dmg) {
         var obj = Instantiate(textPrefab, transform);
         obj.GetComponentInChildren<TextMeshProUGUI>().text = dmg.ToString();
         StartCoroutine(textAnim(dmg, obj, trans, obj.GetComponentInChildren<TextMeshProUGUI>()));
     }
 
-    IEnumerator textAnim(int dmg, GameObject obj, Transform trans, TextMeshProUGUI text) {
+    IEnumerator textAnim(float dmg, GameObject obj, Transform trans, TextMeshProUGUI text) {
         obj.transform.position = trans.position;
         obj.transform.localScale = Vector3.zero;
         obj.transform.DOMoveY(trans.position.y + offset, .15f);
@@ -38,7 +38,7 @@ public class DamageNumbersCanvas : MonoBehaviour {
         Destroy(obj, .26f);
     }
 
-    Color getRelevantColor(int dmg) {
+    Color getRelevantColor(float dmg) {
         if(dmg < 2)
             return lowColor;
         if(dmg < 3)
