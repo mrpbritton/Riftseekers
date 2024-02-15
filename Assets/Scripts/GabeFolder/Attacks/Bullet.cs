@@ -12,7 +12,11 @@ public class Bullet : MonoBehaviour
     [Tooltip("Time in seconds it takes for bullet to die")]
     public float lifetime;
     Transform playerTrans;
-
+    [Tooltip("Does the bullet pierce?")]
+    public bool bCanPierce = false;
+    [Tooltip("How many times does the bullet pierce?")]
+    public int pierceCount = 0;
+    private int currentPierceCount;
     private void OnEnable()
     {
         playerTrans = FindObjectOfType<PlayerManager>().transform;
@@ -26,16 +30,32 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        bool bTagIsEnemy = false;
         //dont collide with the player, other bullets, or the hitboxes on VFX
         if(!other.gameObject.CompareTag("Player") && !other.gameObject.CompareTag("Bullet") && !other.gameObject.CompareTag("FxTemporaire"))
         {
+            if(other.gameObject.CompareTag("Enemy"))
+            {
+                bTagIsEnemy = true;
+            }
+
             if (!other.gameObject.CompareTag("Enemy"))
             {
                 AkSoundEngine.PostEvent("Object_Hit", gameObject);
             }
             var hitOffset = (transform.position - playerTrans.position).normalized * 1f;
             FindObjectOfType<ExplosionManager>().explodeWithColor(transform.position - hitOffset, .25f, 0f, 0f, ExplosionManager.explosionState.None, GetComponent<MeshRenderer>().material.color);
-            Destroy(gameObject, 0.0001f);
+
+            if (bCanPierce && bTagIsEnemy)
+            {
+                currentPierceCount++;
+            }
+
+            if (!bCanPierce || currentPierceCount >= pierceCount || !bTagIsEnemy)
+            {
+                Debug.Log($"{!bCanPierce}, {currentPierceCount >= pierceCount}, {!bTagIsEnemy}");
+                Destroy(gameObject, 0.0001f);
+            }
         }
     }
 }

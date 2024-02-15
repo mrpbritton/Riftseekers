@@ -5,7 +5,7 @@ using UnityEngine;
 public class Handgun : Attack 
 {
     [SerializeField, Tooltip("Used in a calculation to see how much damage dealt")]
-    float damage = 1f;
+    float damage = 2f;
     [SerializeField, Tooltip("Used in a calculation to see how long the cooldown is in seconds")]
     float baseCooldown = 0.4f;
     [SerializeField, Tooltip("Where the bullet instantiates")]
@@ -71,6 +71,8 @@ public class Handgun : Attack
         b.SetActive(true);
         Bullet bs = b.GetComponent<Bullet>(); //(b)ullet(s)cript
         bs.direction = direction;
+        bs.bCanPierce = true;
+        bs.pierceCount = 3;
         b.GetComponent<DoDamage>().damage = getDamage();
         bs.lifetime = lifetime;
 
