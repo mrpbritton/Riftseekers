@@ -8,9 +8,6 @@ public class AttackManager : MonoBehaviour
     public Attack basicAttack;
     public Attack secondAttack;
     public Attack qAbility;
-    //public Attack eAbility;
-    //public Attack rAbility;
-    //public Attack fAbility;
 
     [Header("Player UI Canvases (DO NOT CHANGE)")]
     public List<PlayerUICanvas> puiCanvases;
@@ -54,9 +51,6 @@ public class AttackManager : MonoBehaviour
             pInput.Player.BasicAttack.started += ctx => PerformAttack(basicAttack, true);
             pInput.Player.SecondAttack.started += ctx => PerformAttack(secondAttack, true);
             pInput.Player.Ability1.started += ctx => PerformAttack(qAbility, false);
-            //pInput.Player.Ability2.started += ctx => PerformAttack(eAbility, false);
-            //pInput.Player.Ability3.started += ctx => PerformAttack(rAbility, false);
-            //pInput.Player.Ult.started += ctx => PerformAttack(fAbility, false);
             #endregion
 
             #region Canceled Subscriptions
@@ -72,15 +66,9 @@ public class AttackManager : MonoBehaviour
         else
         {
             #region Started Subscriptions
-            //pInput.Player.Ability2.started += ctx => PerformAttack(eAbility, false);
-            //pInput.Player.Ability3.started += ctx => PerformAttack(rAbility, false);
-            //pInput.Player.Ult.started += ctx => PerformAttack(fAbility, false);
             #endregion
 
             #region Canceled Subscriptions
-            //pInput.Player.Ability2.canceled += ctx => SetAbilPressed(false);
-            //pInput.Player.Ability3.canceled += ctx => SetAbilPressed(false);
-            //pInput.Player.Ult.canceled += ctx => SetAbilPressed(false);
             #endregion
         }
         #endregion

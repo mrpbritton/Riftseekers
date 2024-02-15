@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityLibrary : MonoBehaviour {
+public class AttackLibrary : MonoBehaviour {
     public enum abilType {
-        None, Rocket, Dash, Sword, Pistol
+        Melee, Ranged, Special, Movement, None
     }
 
     [SerializeField] List<Attack> abs = new List<Attack>();
     [SerializeField] Dictionary<abilType, Attack> abils = new Dictionary<abilType, Attack>();
-
 
     private void Awake() {
         if(abs.Count == 0)
