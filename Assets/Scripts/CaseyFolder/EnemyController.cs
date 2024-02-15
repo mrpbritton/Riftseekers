@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour
     public List<GameObject> enemies = new List<GameObject>();
     [SerializeField]
     public float difficulty = 1;
-    private int loot;
+    private int loot, dropChance;
     [SerializeField]
     private GameObject Item;
     [SerializeField]
@@ -54,6 +54,14 @@ public class EnemyController : MonoBehaviour
 
     private void onEnemyDeath(GameObject deadEnemy)
     {
+/*
+        if(UnityEngine.Random.Range(0, 100) < dropChance)
+        {
+            Item = itemLibrary[UnityEngine.Random.Range(0, itemLibrary.count)];
+            GameObject go = Instantiate(Item);
+            go.transform.position = deadEnemy.transform.position;
+        }
+*/
         if (deadEnemy.GetComponent<EnemyHealth>().hasItem)
         {
             GameObject go = Instantiate(Item);
