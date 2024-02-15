@@ -9,5 +9,6 @@ public enum CharStats
     attackDamage,
     attackSpeed,
     cooldownMod,
-    chargeLimit
+    chargeLimit,
+    none
 }
