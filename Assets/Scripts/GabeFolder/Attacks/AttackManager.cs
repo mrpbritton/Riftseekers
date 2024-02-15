@@ -178,7 +178,7 @@ public class AttackManager : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            activeItems.Add(Inventory.getActiveItem(i, FindFirstObjectByType<ItemLibrary>()));
+            activeItems.Add(Inventory.getActiveItem(i, FindFirstObjectByType<AugmentLibrary>()));
         }
 
 
@@ -226,7 +226,7 @@ public class AttackManager : MonoBehaviour
         List<ConItem> activeItems = new();
         for (int i = 0; i < 3; i++)
         {
-            activeItems.Add(Inventory.getActiveItem(i, FindFirstObjectByType<ItemLibrary>()));
+            activeItems.Add(Inventory.getActiveItem(i, FindFirstObjectByType<AugmentLibrary>()));
         }
         foreach (ConItem item in activeItems)
         {

@@ -166,7 +166,7 @@ public class TutorialChecker : MonoBehaviour {
     }
 
     IEnumerator waitForShotgunEquipped() {
-        var it = FindObjectOfType<ItemLibrary>();
+        var it = FindObjectOfType<AugmentLibrary>();
         while(true) {
             yield return new WaitForEndOfFrame();
             bool hasShotty = Inventory.getActiveItem(0, it) != null ||

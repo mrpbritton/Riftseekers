@@ -11,7 +11,7 @@ public class InventoryUI : MonoBehaviour {
     [SerializeField] List<Image> inactiveSlots;
     [SerializeField] GameObject background;
 
-    ItemLibrary il;
+    AugmentLibrary il;
     PInput controls;
     PlayerMovement pm;
     AttackManager at;
@@ -25,7 +25,7 @@ public class InventoryUI : MonoBehaviour {
     public static Action<List<ConItem>> applyActiveItemEffect = delegate { };
 
     private void Start() {
-        il = FindObjectOfType<ItemLibrary>();
+        il = FindObjectOfType<AugmentLibrary>();
         pm = FindObjectOfType<PlayerMovement>();
         at = FindObjectOfType<AttackManager>();
         Inventory.loadInventory();

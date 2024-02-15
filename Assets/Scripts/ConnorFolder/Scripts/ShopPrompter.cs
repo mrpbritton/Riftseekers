@@ -12,7 +12,7 @@ public class ShopPrompter : MonoBehaviour {
     List<Image> shopSlots = new List<Image>();
     List<Image> playerSlots = new List<Image>();
     PInput pInput;
-    ItemLibrary it;
+    AugmentLibrary it;
     [SerializeField] TextMeshProUGUI moneyText;
 
     bool shown = false;
@@ -30,7 +30,7 @@ public class ShopPrompter : MonoBehaviour {
         pInput.Player.Interact.performed += ctx => toggleShownState();
 
         interact = GetComponent<Interact>();
-        it = FindObjectOfType<ItemLibrary>();
+        it = FindObjectOfType<AugmentLibrary>();
 
         helperUI = FindObjectOfType<InteractUI>();
         helperUI.addInteractable(transform);
@@ -44,7 +44,7 @@ public class ShopPrompter : MonoBehaviour {
 
         //  populates items
         var data = SaveData.getString(shopTag());
-        reference = string.IsNullOrEmpty(data) ? new ShopData(FindObjectOfType<ItemLibrary>()) : JsonUtility.FromJson<ShopData>(data);
+        reference = string.IsNullOrEmpty(data) ? new ShopData(FindObjectOfType<AugmentLibrary>()) : JsonUtility.FromJson<ShopData>(data);
         SaveData.setString(shopTag(), JsonUtility.ToJson(reference));
         Inventory.loadInventory();
         reshow();
@@ -143,10 +143,10 @@ public class ShopPrompter : MonoBehaviour {
 public class ShopData {
     public List<ConItem> items = new List<ConItem>();
 
-    public ShopData(ItemLibrary it) {
+    public ShopData(AugmentLibrary it) {
         int count = Random.Range(3, 15);
         int itCount = it.getItems().Count;
         for(int i = 0; i < count; i++)
-            items.Add(it.getItem(Random.Range(0, itCount)));
+            items.Add(it.getAugment(Random.Range(0, itCount)));
     }
 }
