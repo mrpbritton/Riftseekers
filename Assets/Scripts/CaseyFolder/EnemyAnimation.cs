@@ -56,7 +56,7 @@ public class EnemyAnimation : MonoBehaviour
         switch (cachedDir.ToString())
         {
             case "north":
-                if(agent.speed == 0 | !GetComponent<EnemyMovement>().target)
+                if(agent.velocity.magnitude < 0.5 || !GetComponent<EnemyMovement>().target)
                 {
                     character.SetTrigger("StandN");
                     break;
@@ -72,7 +72,7 @@ public class EnemyAnimation : MonoBehaviour
                 break;
 
             case "northEast":
-                if (agent.speed == 0 | !GetComponent<EnemyMovement>().target)
+                if (agent.velocity.magnitude < 0.5)
                 {
                     character.SetTrigger("StandNE");
                     break;
@@ -88,7 +88,7 @@ public class EnemyAnimation : MonoBehaviour
                 break;
 
             case "east":
-                if (agent.speed == 0 | !GetComponent<EnemyMovement>().target)
+                if (agent.velocity.magnitude < 0.5)
                 {
                     character.SetTrigger("StandE");
                     break;
@@ -104,7 +104,7 @@ public class EnemyAnimation : MonoBehaviour
                 break;
 
             case "southEast":
-                if (agent.speed == 0 | !GetComponent<EnemyMovement>().target)
+                if (agent.velocity.magnitude < 0.5)
                 {
                     character.SetTrigger("StandSE");
                     break;
@@ -120,7 +120,7 @@ public class EnemyAnimation : MonoBehaviour
                 break;
 
             case "south":
-                if (agent.speed == 0 | !GetComponent<EnemyMovement>().target)
+                if (agent.velocity.magnitude < 0.5)
                 {
                     character.SetTrigger("StandS");
                     break;
@@ -136,7 +136,7 @@ public class EnemyAnimation : MonoBehaviour
                 break;
 
             case "southWest":
-                if (agent.speed == 0 | !GetComponent<EnemyMovement>().target)
+                if (agent.velocity.magnitude < 0.5)
                 {
                     character.SetTrigger("StandSW");
                     break;
@@ -152,7 +152,7 @@ public class EnemyAnimation : MonoBehaviour
                 break;
 
             case "west":
-                if (agent.speed == 0 | !GetComponent<EnemyMovement>().target)
+                if (agent.velocity.magnitude < 0.5)
                 {
                     character.SetTrigger("StandW");
                     break;
@@ -168,7 +168,7 @@ public class EnemyAnimation : MonoBehaviour
                 break;
 
             case "northWest":
-                if (agent.speed == 0 | !GetComponent<EnemyMovement>().target)
+                if (agent.velocity.magnitude < 0.5)
                 {
                     character.SetTrigger("StandNW");
                     break;

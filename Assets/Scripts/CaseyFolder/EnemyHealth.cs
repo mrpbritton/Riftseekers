@@ -64,6 +64,8 @@ public class EnemyHealth : MonoBehaviour
 
         if (currentHealth <= critHealth && !foundCover && UnityEngine.Random.Range(0, 1) < 1)
         {
+            if (GetComponent<EnemyMelee>())
+                return;
             if(gameObject.TryGetComponent(out EnemyMovement movement))
             {
                 movement.lookForCover();             
