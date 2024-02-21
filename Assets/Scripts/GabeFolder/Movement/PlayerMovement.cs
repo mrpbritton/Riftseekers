@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -171,4 +172,14 @@ public class PlayerMovement : MonoBehaviour
         return dashTime;
     }
     #endregion
+
+    public void slide(Vector3 dir, float force, float time) {
+        bMove = false;
+        transform.DOMove(transform.position + dir.normalized * force, time);
+        Invoke("reSlide", .1f);
+    }
+
+    void reSlide() {
+        bMove = true;
+    }
 }

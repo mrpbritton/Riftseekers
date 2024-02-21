@@ -70,10 +70,9 @@ public class Handgun : Attack
         }
 
 
-        Debug.Log(Time.time + " " + dir.normalized);
-        float lungeAmt = -10.5f;
+        float lungeAmt = -1.5f;
         //transform.DOComplete();
-        transform.DOMove(transform.position + dir.normalized * lungeAmt, .25f);
+        FindObjectOfType<PlayerMovement>().slide(direction, lungeAmt, .25f);
 
         GameObject b = Instantiate(bullet, origin.position, bullet.transform.rotation);
         b.SetActive(true);
@@ -83,7 +82,6 @@ public class Handgun : Attack
         bs.pierceCount = 3;
         b.GetComponent<DoDamage>().damage = getDamage();
         bs.lifetime = lifetime;
-
     }
 
     public override void reset()
