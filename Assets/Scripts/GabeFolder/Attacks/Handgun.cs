@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,6 +19,7 @@ public class Handgun : Attack
     protected override void Start()
     {
         base.Start();
+        DOTween.Init();
         origin = GameObject.FindWithTag("GunOrigin").transform;
         bullet = FindFirstObjectByType<Bullet>(FindObjectsInactive.Include).gameObject;
         cachedDir = origin.forward;
@@ -66,6 +68,12 @@ public class Handgun : Attack
                                             dir.y,
                                             dir.z - origin.position.z + origin.localPosition.z);
         }
+
+
+        Debug.Log(Time.time + " " + dir.normalized);
+        float lungeAmt = -10.5f;
+        //transform.DOComplete();
+        transform.DOMove(transform.position + dir.normalized * lungeAmt, .25f);
 
         GameObject b = Instantiate(bullet, origin.position, bullet.transform.rotation);
         b.SetActive(true);

@@ -29,7 +29,7 @@ public class GSword : Attack
     protected override void Start()
     {
         base.Start();
-
+        DOTween.Init();
         damScript = hitbox.GetComponent<DoDamage>();
         damScript.damage = damage;
     }
@@ -151,10 +151,6 @@ public class GSword : Attack
         constrictDirection(angle);
         //Debug.Log(Mathf.Atan2(origin.forward.z, origin.forward.x) * Mathf.Rad2Deg);
 
-        float lungeAmt = 1.5f;
-        transform.DOComplete();
-        transform.DOPunchPosition(direction.normalized * lungeAmt, .25f);
-
         if (damScript.damage != damage)
         {
             damScript.damage = damage;
@@ -162,6 +158,13 @@ public class GSword : Attack
 
         //cooldownBar.updateSlider(getCooldownTime());
         StartCoroutine(Swing());
+    }
+
+    IEnumerator doThing() {
+        yield return new WaitForEndOfFrame();
+        float lungeAmt = 1000.5f;
+        Debug.Log(Time.time + " " + direction.normalized * lungeAmt);
+        transform.parent.DOPunchPosition(transform.position + direction.normalized * lungeAmt, .5f);
     }
 
     private Vector3 constrictDirection(float angle)
