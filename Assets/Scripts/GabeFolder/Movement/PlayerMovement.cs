@@ -34,6 +34,8 @@ public class PlayerMovement : MonoBehaviour
     private float dashSpeed;
     private bool cantDash; //whether or not the player can dash
 
+    Coroutine slider = null;
+
     private CharacterController player;
     private SpriteManager characterAnim;
     private Vector3 cachedDirection;
@@ -174,12 +176,21 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     public void slide(Vector3 dir, float force, float time) {
-        bMove = false;
-        transform.DOMove(transform.position + dir.normalized * force, time);
-        Invoke("reSlide", .1f);
+        if(slider != null)
+            return;
+        slider = StartCoroutine(slideWaiter(dir, force, time));
     }
+    IEnumerator slideWaiter(Vector3 dir, float force, float time) {
+        cantDash = true;
+        float dTimeRemaining = time;
 
-    void reSlide() {
-        bMove = true;
+        while(dTimeRemaining > 0) {
+            dTimeRemaining -= Time.deltaTime;
+            player.Move(force * Time.deltaTime * dir.normalized);
+            yield return null;
+        }
+
+        cantDash = false;
+        slider = null;
     }
 }

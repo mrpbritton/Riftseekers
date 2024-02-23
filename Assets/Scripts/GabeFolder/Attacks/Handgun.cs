@@ -70,7 +70,7 @@ public class Handgun : Attack
         }
 
 
-        float lungeAmt = -1.5f;
+        float lungeAmt = -6f;
         //transform.DOComplete();
         FindObjectOfType<PlayerMovement>().slide(direction, lungeAmt, .25f);
 

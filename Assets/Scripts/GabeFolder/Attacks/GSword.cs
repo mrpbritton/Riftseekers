@@ -151,7 +151,7 @@ public class GSword : Attack
         constrictDirection(angle);
         //Debug.Log(Mathf.Atan2(origin.forward.z, origin.forward.x) * Mathf.Rad2Deg);
 
-        float lungeAmt = 3f;
+        float lungeAmt = 6f;
         FindObjectOfType<PlayerMovement>().slide(direction, lungeAmt, .25f);
 
         if (damScript.damage != damage)
