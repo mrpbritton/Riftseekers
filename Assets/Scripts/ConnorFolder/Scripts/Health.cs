@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour 
 {
@@ -30,7 +31,11 @@ public class Health : MonoBehaviour
         healthSlider.updateSlider(MaxHealth, CurrentHealth);
         //  check if dead
         if(CurrentHealth <= 0)
+        {
             Debug.Log(gameObject.name + " died!");
+            SceneManager.LoadScene("Death");
+        }
+            
 
         //  saves
         SaveData.setFloat(playerHealthTag, CurrentHealth);
