@@ -33,7 +33,7 @@ public class Shotgun : Attack
     }
     public override attackType getAttackType()
     {
-        return attackType.Secondary;
+        return attackType.Ranged;
     }
 
     public override void anim(Animator anim, bool reset)

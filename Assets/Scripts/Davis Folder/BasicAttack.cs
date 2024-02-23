@@ -11,7 +11,7 @@ public class BasicAttack : Attack
     }
     public override attackType getAttackType()
     {
-        return attackType.Basic;
+        return attackType.None;
     }
     /*public override void attack(InputAction.CallbackContext c)
     {

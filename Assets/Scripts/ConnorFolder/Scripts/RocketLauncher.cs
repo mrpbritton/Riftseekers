@@ -31,7 +31,7 @@ public class RocketLauncher : Attack {
     {
     }
     public override attackType getAttackType() {
-        return attackType.QAbility;
+        return attackType.Special;
     }
     protected override float getDamage() {
         return 30f;

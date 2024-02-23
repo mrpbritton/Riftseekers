@@ -26,7 +26,7 @@ public class Handgun : Attack
     }
     public override attackType getAttackType() 
     {
-        return attackType.Secondary;
+        return attackType.Ranged;
     }
 
     protected override float getDamage() 

@@ -33,7 +33,7 @@ public class CapUlt : Attack
 
     public override attackType getAttackType()
     {
-        return attackType.FAbility;
+        return attackType.None;
     }
     protected override float getDamage()
     {

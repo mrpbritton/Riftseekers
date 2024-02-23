@@ -12,7 +12,7 @@ public class coneSlice : Attack
     }
     public override attackType getAttackType()
     {
-        return attackType.FAbility;
+        return attackType.None;
     }
 
     public override void attack()

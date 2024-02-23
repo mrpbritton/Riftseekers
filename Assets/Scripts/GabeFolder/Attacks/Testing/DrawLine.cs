@@ -10,7 +10,7 @@ public class DrawLine : Attack
     private LineRenderer lr;
     public override attackType getAttackType()
     {
-        return attackType.Secondary;
+        return attackType.Ranged;
     }
     public override void attack() 
     {

@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DashAttack : Attack {
+public class DashAttack : Attack 
+{
 
     PlayerMovement pm;
     Coroutine attacker = null;
@@ -29,7 +30,7 @@ public class DashAttack : Attack {
     {
     }
     public override attackType getAttackType() {
-        return attackType.EAbility;
+        return attackType.Movement;
     }
 
     protected override float getDamage() {

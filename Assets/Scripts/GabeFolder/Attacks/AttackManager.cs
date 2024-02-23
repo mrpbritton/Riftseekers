@@ -102,13 +102,13 @@ public class AttackManager : MonoBehaviour
     {
         switch(attack.getAttackType())
         {
-            case Attack.attackType.Basic: //sword
+            case Attack.attackType.Melee: //sword
                 puiCanvases[0].updateSlider(attack.getRealCooldownTime());
                 break;
-            case Attack.attackType.Secondary: //gun
+            case Attack.attackType.Ranged: //gun
                 puiCanvases[1].updateSlider(attack.getRealCooldownTime());
                 break;
-            case Attack.attackType.QAbility: //rocket
+            case Attack.attackType.Special: //rocket
                 puiCanvases[2].updateSlider(attack.getRealCooldownTime());
                 break;
             default:
@@ -263,11 +263,11 @@ public class AttackManager : MonoBehaviour
     {
         switch (item.overrideAbil)
         {
-            case Attack.attackType.Basic:
+            case Attack.attackType.Melee:
                 Destroy(basicAttack);
                 basicAttack = null;
                 break;
-            case Attack.attackType.Secondary:
+            case Attack.attackType.Ranged:
                 Destroy(secondAttack);
                 secondAttack = null;
                 break;
@@ -283,7 +283,7 @@ public class AttackManager : MonoBehaviour
                 Destroy(rAbility);
                 rAbility = null;
                 break;*/
-            case Attack.attackType.QAbility:
+            case Attack.attackType.Special:
                 Destroy(qAbility);
                 qAbility = null;
                 break;
@@ -330,11 +330,11 @@ public class AttackManager : MonoBehaviour
     {
         switch (aType)
         {
-            case Attack.attackType.Basic:
+            case Attack.attackType.Melee:
                 if (basicAttack != null)
                     Destroy(basicAttack);
                 break;
-            case Attack.attackType.Secondary:
+            case Attack.attackType.Ranged:
                 if (secondAttack != null)
                     Destroy(secondAttack);
                 break;
@@ -350,7 +350,7 @@ public class AttackManager : MonoBehaviour
                 if (rAbility != null)
                     Destroy(rAbility);
                 break;*/
-            case Attack.attackType.QAbility:
+            case Attack.attackType.Special:
                 if (qAbility != null)
                     Destroy(qAbility);
                 break;

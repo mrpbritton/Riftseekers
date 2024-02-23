@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Attack : MonoBehaviour {
     public enum attackType
     {
-        None, Basic, Secondary, QAbility, EAbility, RAbility, FAbility
+        Melee, Ranged, Special, Movement, None
     }
     float dmgMod = 1.0f;
     float cooldownMod = 1.0f;

@@ -35,7 +35,7 @@ public class GSword : Attack
     }
     public override attackType getAttackType()
     {
-        return attackType.Basic;
+        return attackType.Melee;
     }
 
     protected override float getDamage()

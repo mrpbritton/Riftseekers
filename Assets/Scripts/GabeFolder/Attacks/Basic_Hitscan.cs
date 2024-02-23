@@ -31,7 +31,7 @@ public class Basic_Hitscan : Attack {
 
     public override attackType getAttackType() 
     {
-        return attackType.Secondary;
+        return attackType.Ranged;
     }
 
     protected override float getDamage() 
