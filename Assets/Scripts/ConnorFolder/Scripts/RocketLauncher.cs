@@ -16,8 +16,6 @@ public class RocketLauncher : Attack {
         var origin = transform.position + new Vector3(0f, height, 0f);
         curRocket.transform.position = origin;
         var d = InputManager.isUsingKeyboard() ? GetPoint() : new Vector3(pInput.Player.ControllerAim.ReadValue<Vector2>().x, 0, pInput.Player.ControllerAim.ReadValue<Vector2>().y);
-        if (d.x == 0 && d.z == 0 && false)
-            d = Vector3.forward;
         curRocket.transform.LookAt(d);
         var off = d - origin;
         off.y = 0f;
