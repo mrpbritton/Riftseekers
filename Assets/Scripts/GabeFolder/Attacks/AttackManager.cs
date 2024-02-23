@@ -5,9 +5,9 @@ using UnityEngine;
 public class AttackManager : MonoBehaviour
 {
     [Header("Attacks and Abilities")]
-    public Attack basicAttack;
-    public Attack secondAttack;
-    public Attack qAbility;
+    public Attack meleeAttack;
+    public Attack rangedAttack;
+    public Attack specialAttack;
 
     [Header("Player UI Canvases (DO NOT CHANGE)")]
     public List<PlayerUICanvas> puiCanvases;
@@ -48,9 +48,9 @@ public class AttackManager : MonoBehaviour
         if (FindObjectOfType<TutorialChecker>() == null)
         {
             #region Started Subscriptions
-            pInput.Player.BasicAttack.started += ctx => PerformAttack(basicAttack, true);
-            pInput.Player.SecondAttack.started += ctx => PerformAttack(secondAttack, true);
-            pInput.Player.Ability1.started += ctx => PerformAttack(qAbility, false);
+            pInput.Player.BasicAttack.started += ctx => PerformAttack(meleeAttack, true);
+            pInput.Player.SecondAttack.started += ctx => PerformAttack(rangedAttack, true);
+            pInput.Player.Ability1.started += ctx => PerformAttack(specialAttack, false);
             #endregion
 
             #region Canceled Subscriptions
@@ -169,7 +169,6 @@ public class AttackManager : MonoBehaviour
             activeItems.Add(Inventory.getActiveItem(i, FindFirstObjectByType<AugmentLibrary>()));
         }
 
-
         foreach (ConItem item in activeItems)
         {
             if (item != null)
@@ -178,9 +177,9 @@ public class AttackManager : MonoBehaviour
                 {
                     ReplaceAttack(item.overrideAbil, item.attackScript);
                 }
-                else //if it is a passive item
+                else //if it is an augment
                 {
-                    ReplacePassive(item.passiveScript);
+                    ReplaceAugment(item.passiveScript);
                 }
             }
             else
@@ -200,7 +199,7 @@ public class AttackManager : MonoBehaviour
             }
             else //if it is a passive item
             {
-                ReplacePassive(item.passiveScript);
+                ReplaceAugment(item.passiveScript);
             }
         }
         else
@@ -231,29 +230,17 @@ public class AttackManager : MonoBehaviour
     /// </summary>
     private void FixAbility()
     {
-        if (basicAttack == null)
+        if (meleeAttack == null)
         {
             gameObject.AddComponent<GSword>();
-            basicAttack = GetComponent<GSword>();
+            meleeAttack = GetComponent<GSword>();
         }
-        if (secondAttack == null)
+        if (rangedAttack == null)
         {
             gameObject.AddComponent<Handgun>();
-            secondAttack = GetComponent<Handgun>();
-        }/*
-        if (eAbility == null)
-        {
-
+            rangedAttack = GetComponent<Handgun>();
         }
-        if (fAbility == null)
-        {
-
-        }
-        if (rAbility == null)
-        {
-
-        }*/
-        if (qAbility == null)
+        if (specialAttack == null)
         {
 
         }
@@ -264,28 +251,16 @@ public class AttackManager : MonoBehaviour
         switch (item.overrideAbil)
         {
             case Attack.attackType.Melee:
-                Destroy(basicAttack);
-                basicAttack = null;
+                Destroy(meleeAttack);
+                meleeAttack = null;
                 break;
             case Attack.attackType.Ranged:
-                Destroy(secondAttack);
-                secondAttack = null;
+                Destroy(rangedAttack);
+                rangedAttack = null;
                 break;
-/*            case Attack.attackType.EAbility:
-                Destroy(eAbility);
-                eAbility = null;
-                break;
-            case Attack.attackType.FAbility:
-                Destroy(fAbility);
-                fAbility = null;
-                break;
-            case Attack.attackType.RAbility:
-                Destroy(rAbility);
-                rAbility = null;
-                break;*/
             case Attack.attackType.Special:
-                Destroy(qAbility);
-                qAbility = null;
+                Destroy(specialAttack);
+                specialAttack = null;
                 break;
             case Attack.attackType.None:
                 RemovePassive(item.passiveScript);
@@ -297,7 +272,7 @@ public class AttackManager : MonoBehaviour
         FixAbility();
     }
 
-    private void ReplacePassive(PassiveScript pScript)
+    private void ReplaceAugment(PassiveScript pScript)
     {
         switch (pScript)
         {
@@ -318,7 +293,6 @@ public class AttackManager : MonoBehaviour
             case PassiveScript.combatBoots:
                 var script = gameObject.GetComponent<CombatBoots>();
                 script.UnEquip();
-                Destroy(this);
                 break;
             default:
                 Debug.LogError("Passive could not be removed.");
@@ -328,45 +302,15 @@ public class AttackManager : MonoBehaviour
 
     private void ReplaceAttack(Attack.attackType aType, AttackScript aScript)
     {
-        switch (aType)
-        {
-            case Attack.attackType.Melee:
-                if (basicAttack != null)
-                    Destroy(basicAttack);
-                break;
-            case Attack.attackType.Ranged:
-                if (secondAttack != null)
-                    Destroy(secondAttack);
-                break;
-/*            case Attack.attackType.EAbility:
-                if (eAbility != null)
-                    Destroy(eAbility);
-                break;
-            case Attack.attackType.FAbility:
-                if (fAbility != null)
-                    Destroy(fAbility);
-                break;
-            case Attack.attackType.RAbility:
-                if (rAbility != null)
-                    Destroy(rAbility);
-                break;*/
-            case Attack.attackType.Special:
-                if (qAbility != null)
-                    Destroy(qAbility);
-                break;
-            default: //this will also be none, cause this shouldn't happen
-                break;
-        }
-
         switch (aScript)
         {
             case AttackScript.handgun:
                 gameObject.AddComponent<Handgun>();
-                secondAttack = GetComponent<Handgun>();
+                rangedAttack = GetComponent<Handgun>();
                 break;
             case AttackScript.shotgun:
                 gameObject.AddComponent<Shotgun>();
-                secondAttack = GetComponent<Shotgun>();
+                rangedAttack = GetComponent<Shotgun>();
                 break;
             default:
                 Debug.LogError("Attack could not be replaced.");
@@ -382,15 +326,15 @@ public class AttackManager : MonoBehaviour
         switch (type)
         {
             case TutorialChecker.teachTypes.BasicAtt:
-                pInput.Player.BasicAttack.started += ctx => PerformAttack(basicAttack, true);
+                pInput.Player.BasicAttack.started += ctx => PerformAttack(meleeAttack, true);
                 pInput.Player.BasicAttack.canceled += ctx => SetMainPressed(false);
                 break;
             case TutorialChecker.teachTypes.SecondAtt:
-                pInput.Player.SecondAttack.started += ctx => PerformAttack(secondAttack, true);
+                pInput.Player.SecondAttack.started += ctx => PerformAttack(rangedAttack, true);
                 pInput.Player.SecondAttack.canceled += ctx => SetMainPressed(false);
                 break;
             case TutorialChecker.teachTypes.RocketAtt:
-                pInput.Player.Ability1.started += ctx => PerformAttack(qAbility, false);
+                pInput.Player.Ability1.started += ctx => PerformAttack(specialAttack, false);
                 pInput.Player.Ability1.canceled += ctx => SetAbilPressed(false);
                 break;
         }
