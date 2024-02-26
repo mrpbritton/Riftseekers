@@ -9,10 +9,14 @@ public class VisualFX : MonoBehaviour {
     [SerializeField] GameObject bPool;
     [SerializeField] float minPoolSize, maxPoolSize, poolTime, poolColorTime;
     [SerializeField] float poolEndAlpha;
-
+    float lowest;
 
     private void Awake() {
         DOTween.Init();
+
+        lowest = FindObjectOfType<PlayerMovement>().transform.position.y;
+        lowest -= FindObjectOfType<PlayerMovement>().transform.lossyScale.y / 6f;
+        Debug.Log(lowest);
     }
 
     private void OnEnable() {
@@ -34,14 +38,15 @@ public class VisualFX : MonoBehaviour {
     }
     public void enemyDeathFX(GameObject obj) {
         //  corpse
-        var peeta = Instantiate(enemyCorpse);
+        var c = Instantiate(enemyCorpse);
         //GetComponent<CorpseManager>().addCorpse(peeta);
-        peeta.transform.position = obj.transform.position;
-        StartCoroutine(corpseClear(peeta.transform));
+        c.transform.position = obj.transform.position;
+        StartCoroutine(corpseClear(c.transform));
 
         //  blood pool
         var p = Instantiate(bPool);
-        p.transform.position = peeta.transform.position + new Vector3(0f, -peeta.transform.lossyScale.y, 0f);
+        p.transform.position = c.transform.position;
+        p.transform.position = new Vector3(p.transform.position.x, lowest, p.transform.position.z);
         var dp = p.GetComponent<DecalProjector>();
         dp.size = new Vector3(0f, dp.size.y, dp.size.z);
         StartCoroutine(bloodPoolClear(p.transform));

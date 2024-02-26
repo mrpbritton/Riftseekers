@@ -3,8 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemyHealth : MonoBehaviour
-{
+public class EnemyHealth : MonoBehaviour {
     public float maxhealth;
     public float currentHealth;
     private float critHealth;
@@ -15,8 +14,8 @@ public class EnemyHealth : MonoBehaviour
     private float timeStunned = 0;
     private Transform stunStart, stunEnd;
 
-/*    Coroutine invincTimer = null;
-    float invincTime = .5f;*/
+    /*    Coroutine invincTimer = null;
+        float invincTime = .5f;*/
 
     [SerializeField] Collider usedCollider;
     [SerializeField] Slider healthSlider;

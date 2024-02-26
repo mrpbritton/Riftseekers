@@ -14,6 +14,7 @@ public class DoDamage : MonoBehaviour
         if (other.TryGetComponent(out EnemyHealth enemy))
         {
             enemy.damageTaken(damage, transform.position);
+            enemy.GetComponent<EnemyMovement>().slide(transform.position - enemy.transform.position, 10f, .25f);
             if(extraRunOnHit != null && extraRunOnHit.GetPersistentEventCount() > 0)
                 extraRunOnHit.Invoke();
         }
