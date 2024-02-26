@@ -16,7 +16,6 @@ public class VisualFX : MonoBehaviour {
 
         lowest = FindObjectOfType<PlayerMovement>().transform.position.y;
         lowest -= FindObjectOfType<PlayerMovement>().transform.lossyScale.y / 6f;
-        Debug.Log(lowest);
     }
 
     private void OnEnable() {
