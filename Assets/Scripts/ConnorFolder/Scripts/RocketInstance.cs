@@ -19,7 +19,7 @@ public class RocketInstance : MonoBehaviour {
                 StopCoroutine(expCo);
                 expCo = null;
             }
-            em.explode(transform.position, expSize, dmg, knockback, ExplosionManager.explosionState.HurtsEnemies);
+            em.explode(transform.position, expSize, dmg, knockback, ExplosionManager.explosionState.HurtsAll);
             Destroy(gameObject, 0.0001f);
         }
     }

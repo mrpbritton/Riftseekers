@@ -88,7 +88,11 @@ public class Shotgun : Attack
             bScript.lifetime = lifetime;
         }
 
-/*        frame.gameObject.GetComponent<CharacterController>().Move(-direction * knockback);*/
+        float lungeAmt = -6f;
+        //transform.DOComplete();
+        FindObjectOfType<PlayerMovement>().slide(direction, lungeAmt, .25f);
+
+        /*        frame.gameObject.GetComponent<CharacterController>().Move(-direction * knockback);*/
     }
 
     public override void reset()

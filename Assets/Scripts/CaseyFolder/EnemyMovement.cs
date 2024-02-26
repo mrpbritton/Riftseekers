@@ -24,7 +24,8 @@ public class EnemyMovement : MonoBehaviour
     public float hitCooldown = 1, enemySpeed, stopDistance;
     public GameObject target = null;
 
-
+    bool canMove = true;
+    Coroutine slider = null;
 
 
     private void Start()
@@ -37,6 +38,7 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
+        if(!canMove) return;
         if (Physics.Raycast(transform.position, Player.transform.position - transform.position, out hitInfo, 9999, enemy))
         {
             if (hitInfo.transform.CompareTag("Player") && !bCover)
@@ -102,5 +104,24 @@ public class EnemyMovement : MonoBehaviour
         target = Player;
         agent.speed = enemySpeed;
         agent.stoppingDistance = stopDistance;
+    }
+
+    public void slide(Vector3 dir, float force, float time) {
+        if(slider != null)
+            return;
+        slider = StartCoroutine(slideWaiter(dir, force, time));
+    }
+    IEnumerator slideWaiter(Vector3 dir, float force, float time) {
+        canMove = false;
+        float dTimeRemaining = time;
+
+        while(dTimeRemaining > 0) {
+            dTimeRemaining -= Time.deltaTime;
+            agent.Move(force * Time.deltaTime * dir.normalized);
+            yield return null;
+        }
+
+        canMove = true;
+        slider = null;
     }
 }
