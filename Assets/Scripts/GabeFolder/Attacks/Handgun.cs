@@ -16,6 +16,8 @@ public class Handgun : Attack
     [SerializeField, Tooltip("Time in seconds it takes for bullet to die")]
     private float lifetime;
     private Vector3 cachedDir = new(1, 1, 1);
+    [SerializeField, Tooltip("How many times a bullet will pierce an enemy")]
+    private int pierceCount;
     protected override void Start()
     {
         base.Start();
@@ -79,7 +81,7 @@ public class Handgun : Attack
         Bullet bs = b.GetComponent<Bullet>(); //(b)ullet(s)cript
         bs.direction = direction;
         bs.bCanPierce = true;
-        bs.pierceCount = 3;
+        bs.pierceCount = pierceCount;
         b.GetComponent<DoDamage>().damage = getDamage();
         bs.lifetime = lifetime;
     }
