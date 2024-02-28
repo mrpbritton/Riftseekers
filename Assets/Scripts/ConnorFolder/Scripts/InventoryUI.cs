@@ -11,7 +11,6 @@ public class InventoryUI : MonoBehaviour {
     [SerializeField] List<Image> inactiveSlots;
     [SerializeField] GameObject background;
 
-    AugmentLibrary il;
     PInput controls;
     PlayerMovement pm;
     AttackManager at;
@@ -25,7 +24,6 @@ public class InventoryUI : MonoBehaviour {
     public static Action<List<ConItem>> applyActiveItemEffect = delegate { };
 
     private void Start() {
-        il = FindObjectOfType<AugmentLibrary>();
         pm = FindObjectOfType<PlayerMovement>();
         at = FindObjectOfType<AttackManager>();
         Inventory.loadInventory();
@@ -156,20 +154,20 @@ public class InventoryUI : MonoBehaviour {
         activeSlots[0].GetComponent<Button>().Select();
         //  active items
         for(int i = 0; i < activeSlots.Count; i++) {
-            if(Inventory.getActiveItem(i, il) != null) {
+            if(Inventory.getActiveItem(i, AugmentLibrary.I) != null) {
                 activeSlots[i].transform.GetChild(0).GetComponent<Image>().color = Color.white;
-                activeSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = Inventory.getActiveItem(i, il).image;
+                activeSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = Inventory.getActiveItem(i, AugmentLibrary.I).image;
             }
             else
                 activeSlots[i].transform.GetChild(0).GetComponent<Image>().color = Color.clear;
         }
 
         //  inventory items
-        int invCount = Inventory.getItems(il).Count;
+        int invCount = Inventory.getItems(AugmentLibrary.I).Count;
         for(int i = 0; i < inactiveSlots.Count; i++) {
             if(i < invCount) {
                 inactiveSlots[i].transform.GetChild(0).GetComponent<Image>().color = Color.white;
-                inactiveSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = Inventory.getItems(il)[i].image;
+                inactiveSlots[i].transform.GetChild(0).GetComponent<Image>().sprite = Inventory.getItems(AugmentLibrary.I)[i].image;
             }
             else
                 inactiveSlots[i].transform.GetChild(0).GetComponent<Image>().color = Color.clear;
@@ -192,9 +190,9 @@ public class InventoryUI : MonoBehaviour {
             return;
         for(int i = 2; i >= 0; i--) {
             if(i != masterInd) {
-                var it = Inventory.getActiveItem(i, il);
+                var it = Inventory.getActiveItem(i, AugmentLibrary.I);
                 if(it != null && it.overrideAbil == overtype) { // move back to inv
-                    var temp = Inventory.getActiveItem(i, il);
+                    var temp = Inventory.getActiveItem(i, AugmentLibrary.I);
                     Inventory.removeActiveItem(i);
                     Inventory.addItem(temp);
                 }
@@ -214,7 +212,7 @@ public class InventoryUI : MonoBehaviour {
     }
 
     public void setCurIndex(int ind) {
-        if(ind >= Inventory.getItems(il).Count && InputManager.isUsingKeyboard()) {
+        if(ind >= Inventory.getItems(AugmentLibrary.I).Count && InputManager.isUsingKeyboard()) {
             return;
         }
 
@@ -226,7 +224,7 @@ public class InventoryUI : MonoBehaviour {
             dragged.gameObject.SetActive(true);
 
             dragged.gameObject.SetActive(true);
-            dragged.sprite = Inventory.getItems(il)[ind].image;
+            dragged.sprite = Inventory.getItems(AugmentLibrary.I)[ind].image;
         }
     }
 
@@ -256,15 +254,15 @@ public class InventoryUI : MonoBehaviour {
         actIndex = actInd;
         if(!InputManager.isUsingKeyboard() && (curIndex == -1 || actIndex == -1))
             return;
-        ConItem temp = Inventory.getActiveItem(actIndex, il);   //  saves the active item that's being replaced
+        ConItem temp = Inventory.getActiveItem(actIndex, AugmentLibrary.I);   //  saves the active item that's being replaced
 
         //  checks if the items can be swapped (cannot have 2 or more active items with the same ability override type)
         if(temp != null && differentInds && curIndex != -1)
             checkActiveItems(actInd, temp.overrideAbil);
 
         //  overrides the active item if there is a valid overrider
-        if(Inventory.getItems(il).Count > curIndex && curIndex != -1) {
-            Inventory.overrideActiveItem(actIndex, Inventory.getItems(il)[curIndex]);
+        if(Inventory.getItems(AugmentLibrary.I).Count > curIndex && curIndex != -1) {
+            Inventory.overrideActiveItem(actIndex, Inventory.getItems(AugmentLibrary.I)[curIndex]);
             Inventory.removeItem(curIndex); //  removes the inventory item because it's not needed anymore
         }
         //  otherwise, just remove the active item
@@ -279,10 +277,10 @@ public class InventoryUI : MonoBehaviour {
             Inventory.addItem(temp);
 
         Inventory.saveInventory();
-        applyActiveItemEffect(new List<ConItem>() { Inventory.getActiveItem(0, il), Inventory.getActiveItem(1, il), Inventory.getActiveItem(2, il) });
+        applyActiveItemEffect(new List<ConItem>() { Inventory.getActiveItem(0, AugmentLibrary.I), Inventory.getActiveItem(1, AugmentLibrary.I), Inventory.getActiveItem(2, AugmentLibrary.I) });
         show();
         actIndex = -1;
         curIndex = -1;
-        at.UpdateAttack(Inventory.getActiveItem(actInd, il));
+        at.UpdateAttack(Inventory.getActiveItem(actInd, AugmentLibrary.I));
     }
 }
