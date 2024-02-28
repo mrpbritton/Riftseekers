@@ -71,7 +71,7 @@ public class ShopPrompter : MonoBehaviour {
         //  player
         for(int i = 0; i < playerSlots.Count; i++) {
             if(i < Inventory.getItems(AugmentLibrary.I).Count) {
-                playerSlots[i].sprite = i < Inventory.getItems(it).Count ? Inventory.getItem(i, AugmentLibrary.I).image : null;
+                playerSlots[i].sprite = i < Inventory.getItems(AugmentLibrary.I).Count ? Inventory.getItem(i, AugmentLibrary.I).image : null;
                 playerSlots[i].transform.parent.GetComponentInChildren<TextMeshProUGUI>().text = Inventory.getItem(i, AugmentLibrary.I).value.ToString();
             }
             else {
