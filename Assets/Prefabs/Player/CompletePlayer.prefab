@@ -691,7 +691,7 @@ Transform:
   - {fileID: 4124214301755376211}
   - {fileID: 2698874868069975713}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4865779752117141236
 MonoBehaviour:
@@ -1191,6 +1191,11 @@ PrefabInstance:
       propertyPath: cooldownBar
       value: 
       objectReference: {fileID: 4370656158545140831}
+    - target: {fileID: 2755336133540598544, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
+      propertyPath: pierceCount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3828959025880857685, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
       propertyPath: m_Name
@@ -1445,9 +1450,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 607127751fe36f947a71e226a500a689, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  basicAttack: {fileID: 6138402521130430680}
-  secondAttack: {fileID: 1991647805931262147}
-  qAbility: {fileID: 3840245540853374335}
+  meleeAttack: {fileID: 6138402521130430680}
+  rangedAttack: {fileID: 1991647805931262147}
+  specialAttack: {fileID: 3840245540853374335}
   puiCanvases:
   - {fileID: 4362324172312041736}
   - {fileID: 4370656158545140831}

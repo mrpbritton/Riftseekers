@@ -52,7 +52,6 @@ public class InventoryUI : MonoBehaviour {
     private void onLoad()
     {
         at = FindObjectOfType<AttackManager>();
-        at.ResetAttack();
         at.UpdateAttack();
         /*for(int i = 0; i < 3; i++)
         {
@@ -271,7 +270,7 @@ public class InventoryUI : MonoBehaviour {
         //  otherwise, just remove the active item
         else
         {
-            at.RemoveAbility(Inventory.getActiveItem(actIndex, il));
+            //at.RemoveAbility(Inventory.getActiveItem(actIndex, il));
             Inventory.removeActiveItem(actIndex);
         }
 

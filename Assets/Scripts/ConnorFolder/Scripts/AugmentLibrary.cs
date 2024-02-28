@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AugmentLibrary : MonoBehaviour {
+public class AugmentLibrary : Singleton<AugmentLibrary>
+{
     [SerializeField] List<ConItem> items = new List<ConItem>();
     [SerializeField] List<ConItem> augments = new List<ConItem>();
     

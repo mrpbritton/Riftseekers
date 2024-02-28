@@ -12,7 +12,6 @@ public class ShopPrompter : MonoBehaviour {
     List<Image> shopSlots = new List<Image>();
     List<Image> playerSlots = new List<Image>();
     PInput pInput;
-    AugmentLibrary it;
     [SerializeField] TextMeshProUGUI moneyText;
 
     bool shown = false;
@@ -30,7 +29,6 @@ public class ShopPrompter : MonoBehaviour {
         pInput.Player.Interact.performed += ctx => toggleShownState();
 
         interact = GetComponent<Interact>();
-        it = FindObjectOfType<AugmentLibrary>();
 
         helperUI = FindObjectOfType<InteractUI>();
         helperUI.addInteractable(transform);
@@ -72,9 +70,9 @@ public class ShopPrompter : MonoBehaviour {
 
         //  player
         for(int i = 0; i < playerSlots.Count; i++) {
-            if(i < Inventory.getItems(it).Count) {
-                playerSlots[i].sprite = i < Inventory.getItems(it).Count ? Inventory.getItem(i, it).image : null;
-                playerSlots[i].transform.parent.GetComponentInChildren<TextMeshProUGUI>().text = Inventory.getItem(i, it).value.ToString();
+            if(i < Inventory.getItems(AugmentLibrary.I).Count) {
+                playerSlots[i].sprite = i < Inventory.getItems(it).Count ? Inventory.getItem(i, AugmentLibrary.I).image : null;
+                playerSlots[i].transform.parent.GetComponentInChildren<TextMeshProUGUI>().text = Inventory.getItem(i, AugmentLibrary.I).value.ToString();
             }
             else {
                 playerSlots[i].sprite = null;
@@ -129,9 +127,9 @@ public class ShopPrompter : MonoBehaviour {
         reshow();
     }
     public void sell(int index) {
-        if(index >= Inventory.getItems(it).Count)
+        if(index >= Inventory.getItems(AugmentLibrary.I).Count)
             return;
-        var sold = Inventory.getItem(index, it);
+        var sold = Inventory.getItem(index, AugmentLibrary.I);
         reference.items.Add(sold);
         Inventory.removeItem(index);
         Inventory.changeMoney(sold.value);

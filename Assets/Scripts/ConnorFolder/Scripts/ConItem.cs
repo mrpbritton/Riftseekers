@@ -30,6 +30,8 @@ public class ConItem : ScriptableObject {
     public AttackScript attackScript;
     [Tooltip("What the type of passive script this will give the player, if any")]
     public PassiveScript passiveScript;
+    [Tooltip("Item drop associated with this item")]
+    public GameObject item;
 
     public ConItem(ItemSaveData saveData) {
         title = saveData.title;

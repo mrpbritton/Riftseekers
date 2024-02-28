@@ -208,22 +208,6 @@ public class AttackManager : MonoBehaviour
         }
     }
 
-    public void ResetAttack()
-    {
-        List<ConItem> activeItems = new();
-        for (int i = 0; i < 3; i++)
-        {
-            activeItems.Add(Inventory.getActiveItem(i, FindFirstObjectByType<AugmentLibrary>()));
-        }
-        foreach (ConItem item in activeItems)
-        {
-            if (item != null)
-            {
-                RemoveAbility(item);
-            }
-        }
-    }
-
 
     /// <summary>
     /// If any abilities are null, this will set them to the base ability
@@ -242,34 +226,9 @@ public class AttackManager : MonoBehaviour
         }
         if (specialAttack == null)
         {
-
+            gameObject.AddComponent<Handgun>();
+            rangedAttack = GetComponent<Handgun>();
         }
-    }
-
-    public void RemoveAbility(ConItem item)
-    {
-        switch (item.overrideAbil)
-        {
-            case Attack.attackType.Melee:
-                Destroy(meleeAttack);
-                meleeAttack = null;
-                break;
-            case Attack.attackType.Ranged:
-                Destroy(rangedAttack);
-                rangedAttack = null;
-                break;
-            case Attack.attackType.Special:
-                Destroy(specialAttack);
-                specialAttack = null;
-                break;
-            case Attack.attackType.None:
-                RemovePassive(item.passiveScript);
-                break;
-            default: //this should not happen
-                Debug.LogError("Accessed a bad attack reference");
-                break;
-        }
-        FixAbility();
     }
 
     private void ReplaceAugment(PassiveScript pScript)
@@ -282,20 +241,6 @@ public class AttackManager : MonoBehaviour
                 break;
             default:
                 Debug.LogError("Passive could not be added.");
-                break;
-        }
-    }
-
-    private void RemovePassive(PassiveScript pScript)
-    {
-        switch (pScript)
-        {
-            case PassiveScript.combatBoots:
-                var script = gameObject.GetComponent<CombatBoots>();
-                script.UnEquip();
-                break;
-            default:
-                Debug.LogError("Passive could not be removed.");
                 break;
         }
     }
