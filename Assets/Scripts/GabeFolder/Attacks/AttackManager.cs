@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackManager : MonoBehaviour
+public class AttackManager : Singleton<AttackManager>
 {
     [Header("Attacks and Abilities")]
     public Attack meleeAttack;
@@ -175,11 +175,11 @@ public class AttackManager : MonoBehaviour
             {
                 if (item.overrideAbil != Attack.attackType.None) //if it isn't a passive item
                 {
-                    ReplaceAttack(item.overrideAbil, item.attackScript);
+                    ReplaceAttack(item.attackScript);
                 }
                 else //if it is an augment
                 {
-                    ReplaceAugment(item.passiveScript);
+                    //ReplaceAugment(item.passiveScript);
                 }
             }
             else
@@ -193,13 +193,13 @@ public class AttackManager : MonoBehaviour
     {
         if (item != null)
         {
-            if (item.overrideAbil != Attack.attackType.None) //if it isn't a passive item
+            if (item.overrideAbil != Attack.attackType.None) //if it isn't an augment
             {
-                ReplaceAttack(item.overrideAbil, item.attackScript);
+                ReplaceAttack(item.attackScript);
             }
-            else //if it is a passive item
+            else //if it is an augment
             {
-                ReplaceAugment(item.passiveScript);
+                //ReplaceAugment(item.passiveScript);
             }
         }
         else
@@ -231,7 +231,7 @@ public class AttackManager : MonoBehaviour
         }
     }
 
-    private void ReplaceAugment(PassiveScript pScript)
+/*    private void ReplaceAugment(PassiveScript pScript)
     {
         switch (pScript)
         {
@@ -244,8 +244,8 @@ public class AttackManager : MonoBehaviour
                 break;
         }
     }
-
-    private void ReplaceAttack(Attack.attackType aType, AttackScript aScript)
+*/
+    public void ReplaceAttack(AttackScript aScript)
     {
         switch (aScript)
         {

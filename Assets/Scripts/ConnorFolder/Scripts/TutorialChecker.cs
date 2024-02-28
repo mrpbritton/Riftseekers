@@ -36,7 +36,6 @@ public class TutorialChecker : MonoBehaviour {
     List<Vector2> roomPoses = new List<Vector2>();
 
     Transform playerTrans;
-    AttackManager am;
 
     private void Awake() {
         SaveData.wipe();
@@ -46,7 +45,6 @@ public class TutorialChecker : MonoBehaviour {
         foreach(var i in r3Enemies)
             r3ESpawns.Add(i.transform.position);
         enemyHolder = r1Enemies[0].transform.parent;
-        am = FindObjectOfType<AttackManager>();
 
         controls = new PInput();
         controls.Enable();
@@ -99,7 +97,7 @@ public class TutorialChecker : MonoBehaviour {
             respawnEnemies(curTeaching < teachTypes.ClearFirstEnemies ? 1 : 3);
         }
         curTeaching++;
-        am.activateSubscription(curTeaching);   //  activate next ability
+        AttackManager.I.activateSubscription(curTeaching);   //  activate next ability
 
 
         if((int)curTeaching - 1 < texts.Count) {

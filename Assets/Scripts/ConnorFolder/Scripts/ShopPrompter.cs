@@ -42,7 +42,7 @@ public class ShopPrompter : MonoBehaviour {
 
         //  populates items
         var data = SaveData.getString(shopTag());
-        reference = string.IsNullOrEmpty(data) ? new ShopData(FindObjectOfType<AugmentLibrary>()) : JsonUtility.FromJson<ShopData>(data);
+        reference = string.IsNullOrEmpty(data) ? new ShopData(AugmentLibrary.I) : JsonUtility.FromJson<ShopData>(data);
         SaveData.setString(shopTag(), JsonUtility.ToJson(reference));
         Inventory.loadInventory();
         reshow();
@@ -95,13 +95,13 @@ public class ShopPrompter : MonoBehaviour {
         helperUI.completeInteraction(transform);
         canvas.SetActive(true);
         FindObjectOfType<PlayerMovement>().enabled = false;
-        FindObjectOfType<AttackManager>().enabled = false;
+        AttackManager.I.enabled = false;
     }
     void hide() {
         shown = false;
         canvas.SetActive(false);
         FindObjectOfType<PlayerMovement>().enabled = true;
-        FindObjectOfType<AttackManager>().enabled = true;
+        AttackManager.I.enabled = true;
         saveShop();
     }
 

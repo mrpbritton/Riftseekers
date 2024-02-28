@@ -5,13 +5,13 @@ using System;
 
 public class AddScript_GA : GameAction
 {
-    [SerializeField]
-    private AttackScript aType;
+    [Tooltip("Script that would be added")]
+    public AttackScript ability;
 
     public static Action<AttackScript> ChangeAttackType = delegate { };
     public override void Action()
     {
-        ChangeAttackType(aType);
+        AttackManager.I.ReplaceAttack(ability);    
     }
 
     public override void DeAction()

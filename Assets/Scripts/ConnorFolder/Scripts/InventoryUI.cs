@@ -13,7 +13,6 @@ public class InventoryUI : MonoBehaviour {
 
     PInput controls;
     PlayerMovement pm;
-    AttackManager at;
 
     int curIndex = -1;
     int actIndex = 0;
@@ -25,7 +24,6 @@ public class InventoryUI : MonoBehaviour {
 
     private void Start() {
         pm = FindObjectOfType<PlayerMovement>();
-        at = FindObjectOfType<AttackManager>();
         Inventory.loadInventory();
         hide();
         dragged.gameObject.SetActive(false);
@@ -49,8 +47,7 @@ public class InventoryUI : MonoBehaviour {
 
     private void onLoad()
     {
-        at = FindObjectOfType<AttackManager>();
-        at.UpdateAttack();
+        AttackManager.I.UpdateAttack();
         /*for(int i = 0; i < 3; i++)
         {
             if(Inventory.getActiveItem(i, il) != null)
@@ -150,7 +147,7 @@ public class InventoryUI : MonoBehaviour {
         shown = true;
         background.gameObject.SetActive(true);
         pm.enabled = false;
-        at.canAttack = false;
+        AttackManager.I.canAttack = false;
         activeSlots[0].GetComponent<Button>().Select();
         //  active items
         for(int i = 0; i < activeSlots.Count; i++) {
@@ -181,7 +178,7 @@ public class InventoryUI : MonoBehaviour {
         curIndex = -1;
         actIndex = -1;
         pm.enabled = true;
-        at.canAttack = true;
+        AttackManager.I.canAttack = true;
         background.gameObject.SetActive(false);
     }
 
@@ -268,7 +265,7 @@ public class InventoryUI : MonoBehaviour {
         //  otherwise, just remove the active item
         else
         {
-            //at.RemoveAbility(Inventory.getActiveItem(actIndex, il));
+            //AttackManager.IRemoveAbility(Inventory.getActiveItem(actIndex, il));
             Inventory.removeActiveItem(actIndex);
         }
 
@@ -281,6 +278,6 @@ public class InventoryUI : MonoBehaviour {
         show();
         actIndex = -1;
         curIndex = -1;
-        at.UpdateAttack(Inventory.getActiveItem(actInd, AugmentLibrary.I));
+        AttackManager.I.UpdateAttack(Inventory.getActiveItem(actInd, AugmentLibrary.I));
     }
 }

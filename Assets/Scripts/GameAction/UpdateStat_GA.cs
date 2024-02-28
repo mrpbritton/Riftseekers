@@ -8,7 +8,6 @@ public class UpdateStat_GA : GameAction
     [Tooltip("Change in the stat")]
     public float modifier;
 
-    public AttackManager attackManager;
     public PlayerMovement pMovement;
     public Health pHealth;
 
