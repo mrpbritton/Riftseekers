@@ -1,5 +1,6 @@
 public enum CharStats
 {
+    none,
     maxHealth,
     health,
     moveSpeed,
@@ -9,6 +10,5 @@ public enum CharStats
     attackDamage,
     attackSpeed,
     cooldownMod,
-    chargeLimit,
-    none
+    chargeLimit
 }

@@ -38,7 +38,6 @@ public class TutorialChecker : MonoBehaviour {
     Transform playerTrans;
 
     private void Awake() {
-        SaveData.wipe();
         playerTrans = FindObjectOfType<PlayerMovement>().transform;
         foreach(var i in r1Enemies)
             r1ESpawns.Add(i.transform.position);

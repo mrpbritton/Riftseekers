@@ -6,19 +6,19 @@ using UnityEngine;
 [System.Serializable]
 public class Augment_SO : ScriptableObject
 {
-    public string augName;
+    public enum augmentType {
+        None, Augment1, Augment2, Augment3
+    }
+    public augmentType type;
     public string description;
     public Sprite sprite;
-    public CharStats statOne;
+    public List<StatAugment> mods = new List<StatAugment>();
+}
+
+[System.Serializable]
+public class StatAugment {
+    public CharStats stat;
     [Tooltip("Percentage modifier")]
-    [Range(0,1)]
-    public float oneMod; 
-    public CharStats statTwo;
-    [Tooltip("Percentage modifier")]
-    [Range(0, 1)] 
-    public float twoMod; 
-    public CharStats statThree;
-    [Tooltip("Percentage modifier")]
-    [Range(0, 1)] 
-    public float threeMod;
+    [Range(0, 3)]
+    public float mod;
 }

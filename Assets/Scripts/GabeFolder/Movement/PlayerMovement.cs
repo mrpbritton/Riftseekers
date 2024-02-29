@@ -9,9 +9,9 @@ public class PlayerMovement : MonoBehaviour
 {
     public PInput pInput;
 
-    [Header("Regular Movement")]
+    //[Header("Regular Movement")]
     [SerializeField, Tooltip("How fast the player moves")]
-    private float speed;
+    private float speed => PlayerStats.MovementSpeed;
     private Vector3 direction;
     [SerializeField, Tooltip("How fast the player falls")]
     private float fallSpeed;
@@ -31,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField, Tooltip("How long the dash takes in seconds")]
     private float dashTime;
     [SerializeField, Tooltip("Speed of the dash")]
-    private float dashSpeed;
+    private float dashSpeed => PlayerStats.DashSpeed;
     private bool cantDash; //whether or not the player can dash
 
     Coroutine slider = null;
