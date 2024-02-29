@@ -8,11 +8,6 @@ public enum AttackScript
     none, sword, handgun, shotgun, laser
 }
 
-public enum PassiveScript
-{
-    none, combatBoots
-}
-
 [CreateAssetMenu]
 [System.Serializable]
 public class ConItem : ScriptableObject {
@@ -28,8 +23,6 @@ public class ConItem : ScriptableObject {
     public Attack.attackType overrideAbil = Attack.attackType.None;
     [Tooltip("What the type of attack script this will give the player, if any")]
     public AttackScript attackScript;
-    [Tooltip("What the type of passive script this will give the player, if any")]
-    public PassiveScript passiveScript;
     [Tooltip("Item drop associated with this item")]
     public GameObject item;
 

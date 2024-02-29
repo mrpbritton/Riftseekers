@@ -23,7 +23,6 @@ public class EnemyMelee : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(agent.velocity.magnitude);
         if (Vector3.Distance(gameObject.transform.position, Player.transform.position) <= 5 && !bAttacking && !bAttackCooldown)
         {
             AkSoundEngine.PostEvent("Enemy_Melee", gameObject);

@@ -37,6 +37,7 @@ public class EnemyManager : MonoBehaviour
     {
         GameObject enemy = Instantiate(Enemies[eIndex], spawnPos[sIndex]);
         enemy.SetActive(true);
+        GetComponent<EnemyController>().enemies.Add(enemy);
         yield return new WaitForSeconds(spawnCooldown);
         bHasSpawned = false;
     }

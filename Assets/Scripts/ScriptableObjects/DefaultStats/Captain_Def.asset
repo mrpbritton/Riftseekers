@@ -18,14 +18,15 @@ MonoBehaviour:
   eAbility: 0
   rAbility: 0
   fAbility: 0
-  maxHealth: 20
-  health: 20
-  movementSpeed: 10
-  dashSpeed: 25
-  dashDistance: 1
-  dashCharges: 3
-  attackDamage: 1
-  attackSpeed: 1
-  cooldownMod: 1
-  chargeLimit: 100
-  charge: 0
+  stats:
+    health: 20
+    movementSpeed: 20
+    dashSpeed: 10
+    dashDistance: 25
+    attackDamage: 1
+    attackSpeed: 3
+    cooldownMod: 1
+    charge: 1
+    maxHealth: 1
+    dashCharges: 3
+    chargeLimit: 0

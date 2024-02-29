@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 2502079855477282841}
   - component: {fileID: 7750732156827821421}
   - component: {fileID: 2464874774120446858}
+  - component: {fileID: 1534090378777859385}
   m_Layer: 0
   m_Name: Navigator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &2502079855477282841
 Transform:
@@ -31,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7750732156827821421
 MonoBehaviour:
@@ -62,7 +63,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: b91455a7f64f27f4e9104958823124ce, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 9109a11f4cf403549bd2190d1feb170c, type: 2}
   m_BuildHeightMesh: 0
 --- !u!114 &2464874774120446858
 MonoBehaviour:
@@ -78,8 +79,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies: []
   difficulty: 1
-  Item: {fileID: 7452127282766360242, guid: a8b25eb4e140b584b99d0338788441bf, type: 3}
+  healthItem: {fileID: 7452127282766360242, guid: a8b25eb4e140b584b99d0338788441bf,
+    type: 3}
+  augmentItem: {fileID: 1042051823612733527, guid: eb39bcd91d540b6408c4a0f58eaa99a8,
+    type: 3}
   enemySlider: {fileID: 0}
   total: 0
   baseMoney: 10
   moneyVariance: 5
+  dropChance: 10
+  healthChance: 0
+  augmentChance: 0
+  loreChance: 0
+  abilityChance: 0
+--- !u!114 &1534090378777859385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4504932776723605752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53f7abaec63c38b4e8aa4ed85e59c367, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Enemies:
+  - {fileID: 0}
+  - {fileID: 0}
+  spawnPos:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spawnCooldown: 0.75
+  enemyAmount: 50
