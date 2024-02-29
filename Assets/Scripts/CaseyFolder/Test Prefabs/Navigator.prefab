@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7750732156827821421
 MonoBehaviour:
@@ -80,6 +80,8 @@ MonoBehaviour:
   enemies: []
   difficulty: 1
   healthItem: {fileID: 7452127282766360242, guid: a8b25eb4e140b584b99d0338788441bf,
+    type: 3}
+  augmentItem: {fileID: 1042051823612733527, guid: eb39bcd91d540b6408c4a0f58eaa99a8,
     type: 3}
   enemySlider: {fileID: 0}
   total: 0

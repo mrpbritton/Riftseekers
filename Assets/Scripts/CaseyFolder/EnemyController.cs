@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     public float difficulty = 1;
     [SerializeField]
-    private GameObject healthItem;
+    private GameObject healthItem, augmentItem;
     [SerializeField]
     PlayerUICanvas enemySlider;
     public float total;
@@ -68,9 +68,10 @@ public class EnemyController : MonoBehaviour
                 case int n when (n >= healthChance && n < healthChance + augmentChance):
                     Debug.Log("augment");
 
-//                    int a = UnityEngine.Random.Range(0, AugmentLibrary.I.getAugments().Count);
-//                    GameObject aug = Instantiate(augment[a]);
-//                    aug.transform.position = deadEnemy.transform.position;
+                    int a = UnityEngine.Random.Range(0, AugmentLibrary.I.getAugments().Count);
+                    GameObject aug = Instantiate(augmentItem);
+                    aug.GetComponent<AddAugment_GA>().refType = AugmentLibrary.I.getAugment(a).type;
+                    aug.transform.position = deadEnemy.transform.position;
                     
                     break;
 
