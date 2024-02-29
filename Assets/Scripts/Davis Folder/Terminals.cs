@@ -1,19 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Terminals : MonoBehaviour
 {
-    [SerializeField] private Transform interactionPoint;
-    [SerializeField] private float interactionPointRadius = 0.5f;
-    [SerializeField] private LayerMask interactableMask;
+    public GameObject screen;
+    public TextMeshProUGUI text;
+    int randVal;
 
-    private readonly Collider[] colliders = new Collider[3];
-    [SerializeField] private int numFound;
-
-    private void Update()
+    public string[] logs;
+    private void Start()
     {
-        numFound = Physics.OverlapSphereNonAlloc(interactionPoint.position, interactionPointRadius, colliders, interactableMask);
-
+        screen.SetActive(false);
     }
+
+    public void powerOn()
+    {
+        randVal = Random.Range(0, logs.Length);
+        Debug.Log(randVal);
+        screen.SetActive(true);
+    } 
+
 }
