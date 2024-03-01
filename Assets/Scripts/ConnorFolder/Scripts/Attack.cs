@@ -9,7 +9,8 @@ public abstract class Attack : MonoBehaviour {
     }
     float dmgMod = 1.0f;
     float cooldownMod = 1.0f;
-    public AttackLibrary.abilType abilType;
+    public attackType aType;
+    public virtual AttackScript AScript { get; private set; }
     private readonly int rayDistance = 100; //how far the ray will cast out
     protected PInput pInput;
     public PlayerUICanvas cooldownBar;

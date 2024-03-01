@@ -8,7 +8,6 @@ public class AddScript_GA : GameAction
     [Tooltip("Script that would be added")]
     public AttackScript ability;
 
-    public static Action<AttackScript> ChangeAttackType = delegate { };
     public override void Action()
     {
         AttackManager.I.ReplaceAttack(ability);    

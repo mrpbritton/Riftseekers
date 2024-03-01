@@ -18,6 +18,8 @@ public class Handgun : Attack
     private Vector3 cachedDir = new(1, 1, 1);
     [SerializeField, Tooltip("How many times a bullet will pierce an enemy")]
     private int pierceCount;
+    public override AttackScript AScript { get { return AttackScript.Handgun; }}
+
     protected override void Start()
     {
         base.Start();

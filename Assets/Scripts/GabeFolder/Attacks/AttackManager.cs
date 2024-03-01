@@ -32,6 +32,18 @@ public class AttackManager : Singleton<AttackManager>
 
     public bool canAttack = true;
 
+    //this dictionary is used to store which attackType each AttackScript is. This is so I don't have to make
+    //  a massive switch statement for every single attack script in a function down below.
+    private readonly Dictionary<AttackScript, Attack.attackType> attackTypeDict = new()
+    {
+        { AttackScript.Handgun, Attack.attackType.Ranged },
+        { AttackScript.Shotgun, Attack.attackType.Ranged },
+        { AttackScript.Sword, Attack.attackType.Melee },
+        { AttackScript.Rocket, Attack.attackType.Special },
+        { AttackScript.None, Attack.attackType.None}
+
+    };
+    
     public void OnEnable()
     {
         //SaveData.wipe(); //this is for debugging purposes, DO NOT HAVE THIS ON AT ALL TIMES
@@ -189,6 +201,34 @@ public class AttackManager : Singleton<AttackManager>
         }
     }
 
+    public Attack.attackType GetAttackType(AttackScript aScript)
+    {
+        return attackTypeDict[aScript];
+    }
+
+    public AttackScript GetAttackScript(Attack.attackType aType)
+    {
+        switch(aType)
+        {
+            case Attack.attackType.Melee:
+                return meleeAttack.AScript;
+
+            case Attack.attackType.Ranged:
+                return rangedAttack.AScript;
+
+            case Attack.attackType.Special:
+                return specialAttack.AScript;
+
+            case Attack.attackType.Movement:
+                Debug.LogError("Tried to query an ability slot that doesn't exist (Movement)");
+                return AttackScript.None;
+
+            default: //Attack.attackType.None
+                Debug.LogError("Tried to query an ability slot that doesn't exist (None)");
+                return AttackScript.None;
+        }
+    }
+
     public void UpdateAttack(ConItem item)
     {
         if (item != null)
@@ -245,15 +285,17 @@ public class AttackManager : Singleton<AttackManager>
         }
     }
 */
+
+
     public void ReplaceAttack(AttackScript aScript)
     {
         switch (aScript)
         {
-            case AttackScript.handgun:
+            case AttackScript.Handgun:
                 gameObject.AddComponent<Handgun>();
                 rangedAttack = GetComponent<Handgun>();
                 break;
-            case AttackScript.shotgun:
+            case AttackScript.Shotgun:
                 gameObject.AddComponent<Shotgun>();
                 rangedAttack = GetComponent<Shotgun>();
                 break;

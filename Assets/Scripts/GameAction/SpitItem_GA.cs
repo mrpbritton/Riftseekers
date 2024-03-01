@@ -1,0 +1,57 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+[Tooltip("Spits the item currently applied")]
+public class SpitItem_GA : GameAction
+{
+    [Tooltip("Script that would be added")]
+    public AttackScript ability;
+    [SerializeField, Tooltip("Strength of the force")]
+    private float forceStrength;
+
+    public override void Action()
+    {
+        /*
+         read what attackType is being picked up
+         get current attackType
+         set itemDrop to the attackType that corresponds with it
+         give a velocity of player.forward
+        */
+
+        Transform player = AttackManager.I.transform;
+        //The line below is messy, so let me explain it.
+        #region Explanation
+        /* This will set the Augment Library's item drop to what is currently applied.
+         * however, to do this, we need to know what slot is being changed, so...
+
+            var theAttackTypeWeNeed = AttackManager.I.GetAttackType(ability);
+
+         * then, what we need to do, is get the script that is currently in there
+         
+            var currentAttackScript = AttackManager.I.GetAttackScript(theAttackTypeWeNeed);
+
+         * lastly, put that in the ItemDrop
+         
+            Augment.I.SetItemDrop(attackScript);
+
+         * What this all does is automatically find what slot needs to replaced, gets what is currently in there, then spits it out.
+         */
+        #endregion
+        AugmentLibrary.I.SetItemDrop(AttackManager.I.GetAttackScript(AttackManager.I.GetAttackType(ability)));
+        GameObject go = Instantiate(AugmentLibrary.I.itemDrop, player.position, Quaternion.identity);
+        go.SetActive(true);
+        AttackManager.I.ReplaceAttack(ability);
+        go.GetComponentInChildren<Rigidbody>().AddForce(player.forward * forceStrength, ForceMode.Impulse);
+    }
+
+    public override void DeAction()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void ResetToDefault()
+    {
+        throw new System.NotImplementedException();
+    }
+}

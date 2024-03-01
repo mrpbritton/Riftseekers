@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 926862369923086332}
   - component: {fileID: 9131264499686526837}
   - component: {fileID: 7852978385617654549}
-  - component: {fileID: 4242865313059869825}
-  - component: {fileID: 2986784773709688225}
+  - component: {fileID: 7813278822047084696}
+  - component: {fileID: 336714753592710647}
   m_Layer: 0
   m_Name: Base_Ability_Item
   m_TagString: Untagged
@@ -50,8 +50,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   actionList:
-  - {fileID: 4242865313059869825}
-  - {fileID: 2986784773709688225}
+  - {fileID: 7813278822047084696}
+  - {fileID: 336714753592710647}
 --- !u!114 &7852978385617654549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRange: 5
   interactSequence: {fileID: 9131264499686526837}
---- !u!114 &4242865313059869825
+--- !u!114 &7813278822047084696
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -75,12 +75,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 237051754313004310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa5505b45ece8f4986643d11aa06db4, type: 3}
+  m_Script: {fileID: 11500000, guid: f86f8ea1316f43645928edb2b5b49e92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
   ability: 3
---- !u!114 &2986784773709688225
+--- !u!114 &336714753592710647
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -89,12 +89,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 237051754313004310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 247da35d62d8ad647aeeb543849ac7ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c2065eb3dc731a46b9e95eac1467c07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  go: {fileID: 237051754313004310}
-  position: {x: 0, y: 0, z: 0}
 --- !u!1 &950214892605299165
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,8 +103,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4119728680997736018}
   - component: {fileID: 5203713860059401553}
+  - component: {fileID: 4963763839776299628}
+  - component: {fileID: 1480320021403212165}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -179,3 +179,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!54 &4963763839776299628
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950214892605299165}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!135 &1480320021403212165
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950214892605299165}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}

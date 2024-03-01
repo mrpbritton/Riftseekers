@@ -22,6 +22,7 @@ public class Shotgun : Attack
 /*    [SerializeField, Tooltip("How strong the knockback is")]
     private float knockback = 1f;*/
     private Vector3 cachedDir = new(1, 1, 1);
+    public override AttackScript AScript { get { return AttackScript.Shotgun; } }
 
     protected override void Start()
     {

@@ -25,7 +25,9 @@ public class GSword : Attack
     private DoDamage damScript;
     private Vector3 direction; //what the direction currently is
     private Vector3 cachedDir; //filtered direction; cannot be zero
-    private CardinalDirection cardDir = CardinalDirection.east;
+    private CardinalDirection cardDir = CardinalDirection.east; 
+    public override AttackScript AScript { get { return AttackScript.Sword; } }
+
     protected override void Start()
     {
         base.Start();

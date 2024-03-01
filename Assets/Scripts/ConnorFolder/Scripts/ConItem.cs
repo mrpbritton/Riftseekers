@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum AttackScript
 {
-    none, sword, handgun, shotgun, laser
+    None, Sword, Handgun, Shotgun, Rocket
 }
 
 [CreateAssetMenu]
@@ -23,8 +23,8 @@ public class ConItem : ScriptableObject {
     public Attack.attackType overrideAbil = Attack.attackType.None;
     [Tooltip("What the type of attack script this will give the player, if any")]
     public AttackScript attackScript;
-    [Tooltip("Item drop associated with this item")]
-    public GameObject item;
+/*    [Tooltip("Item drop associated with this item")]
+    public GameObject item;*/
 
     public ConItem(ItemSaveData saveData) {
         title = saveData.title;
