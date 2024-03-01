@@ -8,6 +8,7 @@ public class AddAugment_GA : GameAction {
 
     public override void Action() {
         FindObjectOfType<PlayerStats>().getAugmented(refType);
+        FindObjectOfType<PlayerStats>().save();
     }
 
     public override void DeAction() {

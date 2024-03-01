@@ -133,19 +133,15 @@ public class PlayerStats : MonoBehaviour {
 
     private void Awake() {
         load();
-    }
-
-    private void Update() {
         save();
-        //Debug.Log(SaveData.getString(statsTag));
     }
 
     public void save() {
-        SaveData.setString(statsTag, JsonUtility.ToJson(stats));
+        var data = JsonUtility.ToJson(stats);
+        SaveData.setString(statsTag, data);
     }
     public void load() {
         var data = SaveData.getString(statsTag);
-        Debug.Log(data);
         stats = string.IsNullOrEmpty(data) ? new PlayerStatSaveData(startingStats.stats) : JsonUtility.FromJson<PlayerStatSaveData>(data);
     }
 
