@@ -133,7 +133,7 @@ public class PlayerStats : MonoBehaviour {
 
     private void Awake() {
         load();
-        save();
+        Debug.Log(stats.health + " " + stats.maxHealth);
     }
 
     public void save() {
@@ -143,6 +143,7 @@ public class PlayerStats : MonoBehaviour {
     public void load() {
         var data = SaveData.getString(statsTag);
         stats = string.IsNullOrEmpty(data) ? new PlayerStatSaveData(startingStats.stats) : JsonUtility.FromJson<PlayerStatSaveData>(data);
+        save();
     }
 
     public void getAugmented(Augment_SO.augmentType type) {
