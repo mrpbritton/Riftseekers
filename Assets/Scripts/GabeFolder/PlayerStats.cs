@@ -133,9 +133,6 @@ public class PlayerStats : MonoBehaviour {
 
     private void Awake() {
         load();
-    }
-
-    private void OnDisable() {
         save();
     }
 
@@ -145,7 +142,6 @@ public class PlayerStats : MonoBehaviour {
     }
     public void load() {
         var data = SaveData.getString(statsTag);
-        Debug.Log(data);
         stats = string.IsNullOrEmpty(data) ? new PlayerStatSaveData(startingStats.stats) : JsonUtility.FromJson<PlayerStatSaveData>(data);
     }
 
