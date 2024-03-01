@@ -135,13 +135,13 @@ public class PlayerStats : MonoBehaviour {
         load();
     }
 
-    private void Update() {
+    private void OnDisable() {
         save();
-        //Debug.Log(SaveData.getString(statsTag));
     }
 
     public void save() {
-        SaveData.setString(statsTag, JsonUtility.ToJson(stats));
+        var data = JsonUtility.ToJson(stats);
+        SaveData.setString(statsTag, data);
     }
     public void load() {
         var data = SaveData.getString(statsTag);
