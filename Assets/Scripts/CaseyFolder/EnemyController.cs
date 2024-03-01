@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     public float difficulty = 1;
     [SerializeField]
-    private GameObject healthItem, augmentItem;
+    private GameObject healthItem, augmentItem, abilityItem, loreItem;
     [SerializeField]
     PlayerUICanvas enemySlider;
     public float total;
@@ -66,7 +66,6 @@ public class EnemyController : MonoBehaviour
                     break;
 
                 case int n when (n >= healthChance && n < healthChance + augmentChance):
-                    Debug.Log("augment");
 
                     int a = UnityEngine.Random.Range(0, AugmentLibrary.I.getAugments().Count);
                     GameObject aug = Instantiate(augmentItem);
@@ -86,21 +85,22 @@ public class EnemyController : MonoBehaviour
 
                 case int n when (n >= healthChance + augmentChance + loreChance && n < healthChance + augmentChance + loreChance + abilityChance):
                     Debug.Log("ability");
-
-//                    int i = UnityEngine.Random.Range(0, AugmentLibrary.I.getItems().Count);
-//                    GameObject abil = Instantiate(AugmentLibrary.I.getItem[i]);
-//                    abil.transform.position = deadEnemy.transform.position;
+/*
+                    int i = UnityEngine.Random.Range(0, AugmentLibrary.I.getItems().Count);
+                    GameObject abil = Instantiate(abilityItem);
+                    abil.transform.position = deadEnemy.transform.position;
+*/
                     break;
             }
         }
         enemies.Remove(deadEnemy);
-/*        if(enemies.Count == 0)
+        if(enemies.Count == 0)
         {
             //activate level complete sequence.
             Debug.Log("you win");
             levelComplete();
         }
-*/
+
         enemySlider.updateSlider(total, enemies.Count);
         Inventory.changeMoney(UnityEngine.Random.Range(baseMoney-moneyVariance, baseMoney+moneyVariance));
     }
