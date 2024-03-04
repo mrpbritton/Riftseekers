@@ -10,14 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc1b888a49b96fb49a13e662a81dcc58, type: 3}
-  m_Name: Aug2
+  m_Name: DamageBuff
   m_EditorClassIdentifier: 
-  type: 2
+  type: 3
   description: 
   sprite: {fileID: 0}
-  statOne: 0
-  oneMod: 0
-  statTwo: 0
-  twoMod: 0
-  statThree: 0
-  threeMod: 0
+  mods:
+  - stat: 7
+    mod: 1

@@ -152,6 +152,8 @@ public class PlayerStats : MonoBehaviour {
         foreach(var i in aug.mods) {
             singleStatMod(i.stat, i.mod);
         }
+
+        save();
     }
 
     void singleStatMod(CharStats stat, float mod) {

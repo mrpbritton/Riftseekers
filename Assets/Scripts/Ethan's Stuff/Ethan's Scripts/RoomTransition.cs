@@ -32,6 +32,7 @@ public class RoomTransition : MonoBehaviour
     {
         gameObject.GetComponent<MeshRenderer>().enabled = true;
         gameObject.GetComponent<Collider>().enabled = true;
+        FindObjectOfType<PlayerStats>().save();
     }
 
     private void Update()

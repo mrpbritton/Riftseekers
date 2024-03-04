@@ -24,6 +24,8 @@ public static class Inventory {
                 Debug.LogError("Trying to save an active item in an invalid slot");
                 break;
         }
+
+        saveInventory();
     }
     public static ConItem getActiveItem(int slotInd, AugmentLibrary il) {
         switch(slotInd) {
@@ -39,7 +41,6 @@ public static class Inventory {
         }
     }
     public static void removeActiveItem(int slotInd) {
-
         switch(slotInd) {
             case 0:
                 itemBag.activeItem1 = null;
@@ -51,12 +52,16 @@ public static class Inventory {
                 itemBag.activeItem3 = null;
                 break;
         }
+
+        saveInventory();
     }
 
     //  Item saving things
     public static void saveInventory() {
         var d = JsonUtility.ToJson(itemBag);
         SaveData.setString(bagTag, d);
+
+        
     }
     public static void loadInventory() {
         var d = SaveData.getString(bagTag);
@@ -65,20 +70,30 @@ public static class Inventory {
 
     public static void addItem(ConItem i) {
         itemBag.items.Add(new ItemSaveData(i));
+
+        saveInventory();
     }
     public static void overrideItem(int ind, ConItem i) {
         itemBag.items[ind] = new ItemSaveData(i);
+
+        saveInventory();
     }
     public static void removeItem(int i) {
         if(i < itemBag.items.Count)
             itemBag.items.RemoveAt(i);
+
+        saveInventory();
     }
     public static void clear() {
         itemBag.items.Clear();
+
+        saveInventory();
     }
 
     public static void changeMoney(int chng) {
         itemBag.money += chng;
+
+        saveInventory();
     }
     public static int getMoney() {
         return itemBag.money;

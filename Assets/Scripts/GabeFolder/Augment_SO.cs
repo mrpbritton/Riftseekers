@@ -7,7 +7,7 @@ using UnityEngine;
 public class Augment_SO : ScriptableObject
 {
     public enum augmentType {
-        None, Augment1, Augment2, Augment3
+        None, SpeedBuff, DashChargeBuff, DamageBuff
     }
     public augmentType type;
     public string description;
