@@ -41,7 +41,7 @@ public class SpitItem_GA : GameAction
         AugmentLibrary.I.SetItemDrop(AttackManager.I.GetAttackScript(AttackManager.I.GetAttackType(ability)));
         GameObject go = Instantiate(AugmentLibrary.I.itemDrop, player.position, Quaternion.identity);
         go.SetActive(true);
-        go.GetComponentInChildren<Rigidbody>().AddForce(player.forward * forceStrength, ForceMode.Impulse);
+        go.GetComponent<Rigidbody>().AddForce((transform.position - player.position) * forceStrength, ForceMode.Impulse);
         AttackManager.I.ReplaceAttack(ability);
     }
 
