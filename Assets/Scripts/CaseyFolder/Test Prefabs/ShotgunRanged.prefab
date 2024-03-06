@@ -40,7 +40,7 @@ Transform:
   - {fileID: 9141151637567058839}
   - {fileID: 8460495086357275458}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8958742142963517924
 MeshFilter:
@@ -176,15 +176,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 404a335b218b6dc42845f44ef83039cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 10
   agent: {fileID: 956882322456177311}
   bCover: 0
   bAttacking: 0
-  Player: {fileID: 0}
   cover: []
   enemy:
     serializedVersion: 2
-    m_Bits: 2547
+    m_Bits: 6643
   coverTime: 5
   hitCooldown: 1
   enemySpeed: 0
@@ -388,7 +386,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   enemy:
     serializedVersion: 2
-    m_Bits: 439
+    m_Bits: 4535
   agent: {fileID: 956882322456177311}
 --- !u!1001 &9063129239472623483
 PrefabInstance:
