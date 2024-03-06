@@ -7,12 +7,10 @@ using UnityEngine.AI;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField]
     private float rotationSpeed = 2f;
     [SerializeField]
     public NavMeshAgent agent;
     public bool bCover, bAttacking;
-    [SerializeField]
     private GameObject Player;
     private RaycastHit hitInfo;
     [SerializeField]
