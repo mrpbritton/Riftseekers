@@ -5,8 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyMelee : MonoBehaviour
 {
+    private GameObject Player;
     [SerializeField]
-    private GameObject Player, meleeHit;
+    private GameObject meleeHit;
     [SerializeField]
     private NavMeshAgent agent;
     public bool bAttacking, bDashAttack, bAttackCooldown;

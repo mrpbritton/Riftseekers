@@ -83,15 +83,18 @@ MonoBehaviour:
     type: 3}
   augmentItem: {fileID: 1042051823612733527, guid: eb39bcd91d540b6408c4a0f58eaa99a8,
     type: 3}
+  loreItem: {fileID: 0}
+  abilityItem: {fileID: 237051754313004310, guid: 30ddc45d9d724bc47bd916510716dfd7,
+    type: 3}
   enemySlider: {fileID: 0}
   total: 0
   baseMoney: 10
   moneyVariance: 5
   dropChance: 10
-  healthChance: 0
-  augmentChance: 0
-  loreChance: 0
-  abilityChance: 0
+  healthChance: 50
+  augmentChance: 20
+  loreChance: 20
+  abilityChance: 10
 --- !u!114 &1534090378777859385
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     public float difficulty = 1;
     [SerializeField]
-    private GameObject healthItem, augmentItem;
+    private GameObject healthItem, augmentItem, loreItem, abilityItem;
     [SerializeField]
     PlayerUICanvas enemySlider;
     public float total;
@@ -47,14 +47,6 @@ public class EnemyController : MonoBehaviour
 
     private void onEnemyDeath(GameObject deadEnemy)
     {
-    /*
-            if(UnityEngine.Random.Range(0, 100) < dropChance)
-            {
-                Item = itemLibrary[UnityEngine.Random.Range(0, itemLibrary.count)];
-                GameObject go = Instantiate(Item);
-                go.transform.position = deadEnemy.transform.position;
-            }
-    */
 
         if(UnityEngine.Random.Range(0, 100) < dropChance)
         {
@@ -66,8 +58,18 @@ public class EnemyController : MonoBehaviour
                     break;
 
                 case int n when (n >= healthChance && n < healthChance + augmentChance):
-                    Debug.Log("augment");
-
+/*
+                    //drop chance per rarity of augments
+                    switch(UnityEngine.Random.Range(0, 100))
+                    {
+                        case int m when (m >= 0 && m < 60):
+                            break;
+                        case int m when (m >= 60 && m < 90):
+                            break;
+                        case int m when (m >= 90 && m <= 100):
+                            break;
+                    }
+*/
                     int a = UnityEngine.Random.Range(0, AugmentLibrary.I.getAugments().Count);
                     GameObject aug = Instantiate(augmentItem);
                     aug.GetComponent<AddAugment_GA>().refType = AugmentLibrary.I.getAugment(a).type;
@@ -85,11 +87,11 @@ public class EnemyController : MonoBehaviour
                     break;
 
                 case int n when (n >= healthChance + augmentChance + loreChance && n < healthChance + augmentChance + loreChance + abilityChance):
-                    Debug.Log("ability");
 
-//                    int i = UnityEngine.Random.Range(0, AugmentLibrary.I.getItems().Count);
-//                    GameObject abil = Instantiate(AugmentLibrary.I.getItem[i]);
-//                    abil.transform.position = deadEnemy.transform.position;
+//                    int i = UnityEngine.Random.Range(0, AttackLibrary.I.getItems().Count);
+                    GameObject abil = Instantiate(abilityItem);
+//                    abil.GetComponent<AddItem_GA>().refType = AttackLibrary.I.getItem(i).type;
+                    abil.transform.position = deadEnemy.transform.position;
                     break;
             }
         }
