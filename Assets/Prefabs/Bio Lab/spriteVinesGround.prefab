@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8886865136374926565}
   - component: {fileID: 1289387397791328041}
   m_Layer: 0
-  m_Name: spriteVinesDepth
+  m_Name: spriteVinesGroundDepth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 6974160855367133594}
   - component: {fileID: 3975953475314161816}
   m_Layer: 0
-  m_Name: spriteVines
+  m_Name: spriteVinesGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +108,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4090367186024061972}
-  m_LocalRotation: {x: 0, y: -0.38268343, z: 0, w: 0.92387956}
+  m_LocalRotation: {x: 0.92387944, y: -0.00000004671944, z: 0.38268375, w: -0.000000008285619}
   m_LocalPosition: {x: -17.194536, y: 1.2500004, z: -27.886934}
   m_LocalScale: {x: 4, y: 4, z: 4}
   m_ConstrainProportionsScale: 1
@@ -116,7 +116,7 @@ Transform:
   - {fileID: 8886865136374926565}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -45, z: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: -45, z: 0}
 --- !u!212 &3975953475314161816
 SpriteRenderer:
   m_ObjectHideFlags: 0
