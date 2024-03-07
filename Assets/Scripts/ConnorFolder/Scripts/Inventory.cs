@@ -170,7 +170,7 @@ public class ItemSaveData {
     public string description;
     public int value;
     public Sprite image;
-    public Attack.attackType overrideAbil;
+    public Attack.AttackType overrideAbil;
 
     public ItemSaveData(ConItem i) {
         title = i.title;

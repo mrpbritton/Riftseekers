@@ -9,10 +9,10 @@ public class qAbility : Attack
     {
         return 12f;
     }
-    public override attackType getAttackType()
-    {
-        return attackType.Special;
-    }
+
+    public override AttackType AType => throw new System.NotImplementedException();
+    public override AttackScript AScript => throw new System.NotImplementedException();
+
 
     /*public override void attack(InputAction.CallbackContext c)
     {

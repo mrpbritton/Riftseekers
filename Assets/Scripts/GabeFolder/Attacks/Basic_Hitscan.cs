@@ -20,6 +20,9 @@ public class Basic_Hitscan : Attack {
     Transform origin;
     LineRenderer line;
 
+    public override AttackType AType => throw new System.NotImplementedException();
+    public override AttackScript AScript => throw new System.NotImplementedException();
+
     new private void Start()
     {
         //start and end point
@@ -27,11 +30,6 @@ public class Basic_Hitscan : Attack {
         line = GetComponent<LineRenderer>();
         line.positionCount = 2;
         line.enabled = false;
-    }
-
-    public override attackType getAttackType() 
-    {
-        return attackType.Ranged;
     }
 
     protected override float getDamage() 

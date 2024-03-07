@@ -20,7 +20,7 @@ public class ConItem : ScriptableObject {
     [Tooltip("What this item looks like")]
     public Sprite image;
     [Tooltip("What type of ability does this give the player")]
-    public Attack.attackType overrideAbil = Attack.attackType.None;
+    public Attack.AttackType overrideAbil = Attack.AttackType.None;
     [Tooltip("What the type of attack script this will give the player, if any")]
     public AttackScript attackScript;
 /*    [Tooltip("Item drop associated with this item")]

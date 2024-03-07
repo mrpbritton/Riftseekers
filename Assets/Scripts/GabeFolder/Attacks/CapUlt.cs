@@ -8,6 +8,8 @@ public class CapUlt : Attack
     [SerializeField] float damageMultiplier;
     [SerializeField] float duration;
     [SerializeField] bool bIsActive;
+    public override AttackType AType => throw new System.NotImplementedException();
+    public override AttackScript AScript => throw new System.NotImplementedException();
 
     public override void attack()
     {
@@ -31,10 +33,6 @@ public class CapUlt : Attack
 
     }
 
-    public override attackType getAttackType()
-    {
-        return attackType.None;
-    }
     protected override float getDamage()
     {
         return 30f;

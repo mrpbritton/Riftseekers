@@ -18,7 +18,8 @@ public class Handgun : Attack
     private Vector3 cachedDir = new(1, 1, 1);
     [SerializeField, Tooltip("How many times a bullet will pierce an enemy")]
     private int pierceCount;
-    public override AttackScript AScript { get { return AttackScript.Handgun; }}
+    public override AttackType AType => AttackType.Ranged;
+    public override AttackScript AScript => AttackScript.Handgun;
 
     protected override void Start()
     {
@@ -27,10 +28,6 @@ public class Handgun : Attack
         origin = GameObject.FindWithTag("GunOrigin").transform;
         bullet = FindFirstObjectByType<Bullet>(FindObjectsInactive.Include).gameObject;
         cachedDir = origin.forward;
-    }
-    public override attackType getAttackType() 
-    {
-        return attackType.Ranged;
     }
 
     protected override float getDamage() 

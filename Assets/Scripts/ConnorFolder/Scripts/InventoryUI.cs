@@ -182,8 +182,8 @@ public class InventoryUI : MonoBehaviour {
         background.gameObject.SetActive(false);
     }
 
-    void checkActiveItems(int masterInd, Attack.attackType overtype) {
-        if(overtype == Attack.attackType.None)
+    void checkActiveItems(int masterInd, Attack.AttackType overtype) {
+        if(overtype == Attack.AttackType.None)
             return;
         for(int i = 2; i >= 0; i--) {
             if(i != masterInd) {

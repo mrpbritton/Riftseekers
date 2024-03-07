@@ -8,6 +8,8 @@ public class RocketLauncher : Attack {
     [SerializeField] GameObject rocketPreset;
     [SerializeField] float maxTravelDist, maxTravelTime, explosionSize, explosionDmg, explosionKnockback;
     float height = 2f;
+    public override AttackType AType => AttackType.Special;
+    public override AttackScript AScript => AttackScript.Rocket;
 
     public override void attack() {
         var curRocket = Instantiate(rocketPreset.gameObject);
@@ -35,9 +37,6 @@ public class RocketLauncher : Attack {
     }
     public override void reset()
     {
-    }
-    public override attackType getAttackType() {
-        return attackType.Special;
     }
     protected override float getDamage() {
         return 30f;

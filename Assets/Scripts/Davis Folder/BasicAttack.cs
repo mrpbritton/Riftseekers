@@ -9,10 +9,11 @@ public class BasicAttack : Attack
     {
         return 12f;
     }
-    public override attackType getAttackType()
-    {
-        return attackType.None;
-    }
+
+    public override AttackType AType => throw new System.NotImplementedException();
+    public override AttackScript AScript => throw new System.NotImplementedException();
+
+
     /*public override void attack(InputAction.CallbackContext c)
     {
         Debug.Log("Basic Attack Performed");

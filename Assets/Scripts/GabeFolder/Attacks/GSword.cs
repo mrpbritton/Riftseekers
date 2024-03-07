@@ -25,8 +25,9 @@ public class GSword : Attack
     private DoDamage damScript;
     private Vector3 direction; //what the direction currently is
     private Vector3 cachedDir; //filtered direction; cannot be zero
-    private CardinalDirection cardDir = CardinalDirection.east; 
-    public override AttackScript AScript { get { return AttackScript.Sword; } }
+    private CardinalDirection cardDir = CardinalDirection.east;
+    public override AttackType AType => AttackType.Melee;
+    public override AttackScript AScript => AttackScript.Sword;
 
     protected override void Start()
     {
@@ -34,10 +35,6 @@ public class GSword : Attack
         DOTween.Init();
         damScript = hitbox.GetComponent<DoDamage>();
         damScript.damage = damage;
-    }
-    public override attackType getAttackType()
-    {
-        return attackType.Melee;
     }
 
     protected override float getDamage()

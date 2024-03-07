@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Attack : MonoBehaviour {
-    public enum attackType
+    public enum AttackType
     {
         Melee, Ranged, Special, Movement, None
     }
     float dmgMod = 1.0f;
     float cooldownMod = 1.0f;
-    public attackType aType;
-    public virtual AttackScript AScript { get; private set; }
+    public abstract AttackType AType { get; }
+    public abstract AttackScript AScript { get; }
     private readonly int rayDistance = 100; //how far the ray will cast out
     protected PInput pInput;
     public PlayerUICanvas cooldownBar;
@@ -39,7 +39,6 @@ public abstract class Attack : MonoBehaviour {
         return hit.point;
     }    
 
-    public abstract attackType getAttackType();
     public abstract void attack();
     /// <summary>
     /// This is called in an attack to execute the correct animation.

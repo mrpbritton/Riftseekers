@@ -34,13 +34,13 @@ public class AttackManager : Singleton<AttackManager>
 
     //this dictionary is used to store which attackType each AttackScript is. This is so I don't have to make
     //  a massive switch statement for every single attack script in a function down below.
-    private readonly Dictionary<AttackScript, Attack.attackType> attackTypeDict = new()
+    private readonly Dictionary<AttackScript, Attack.AttackType> attackTypeDict = new()
     {
-        { AttackScript.Handgun, Attack.attackType.Ranged },
-        { AttackScript.Shotgun, Attack.attackType.Ranged },
-        { AttackScript.Sword, Attack.attackType.Melee },
-        { AttackScript.Rocket, Attack.attackType.Special },
-        { AttackScript.None, Attack.attackType.None}
+        { AttackScript.Handgun, Attack.AttackType.Ranged },
+        { AttackScript.Shotgun, Attack.AttackType.Ranged },
+        { AttackScript.Sword, Attack.AttackType.Melee },
+        { AttackScript.Rocket, Attack.AttackType.Special },
+        { AttackScript.None, Attack.AttackType.None}
 
     };
     
@@ -112,15 +112,15 @@ public class AttackManager : Singleton<AttackManager>
 
     private void ActivatePUI(Attack attack)
     {
-        switch(attack.getAttackType())
+        switch(attack.AType)
         {
-            case Attack.attackType.Melee: //sword
+            case Attack.AttackType.Melee: //sword
                 puiCanvases[0].updateSlider(attack.getRealCooldownTime());
                 break;
-            case Attack.attackType.Ranged: //gun
+            case Attack.AttackType.Ranged: //gun
                 puiCanvases[1].updateSlider(attack.getRealCooldownTime());
                 break;
-            case Attack.attackType.Special: //rocket
+            case Attack.AttackType.Special: //rocket
                 puiCanvases[2].updateSlider(attack.getRealCooldownTime());
                 break;
             default:
@@ -185,7 +185,7 @@ public class AttackManager : Singleton<AttackManager>
         {
             if (item != null)
             {
-                if (item.overrideAbil != Attack.attackType.None) //if it isn't a passive item
+                if (item.overrideAbil != Attack.AttackType.None) //if it isn't a passive item
                 {
                     ReplaceAttack(item.attackScript);
                 }
@@ -201,25 +201,25 @@ public class AttackManager : Singleton<AttackManager>
         }
     }
 
-    public Attack.attackType GetAttackType(AttackScript aScript)
+    public Attack.AttackType GetAttackType(AttackScript aScript)
     {
         return attackTypeDict[aScript];
     }
 
-    public AttackScript GetAttackScript(Attack.attackType aType)
+    public AttackScript GetAttackScript(Attack.AttackType aType)
     {
         switch(aType)
         {
-            case Attack.attackType.Melee:
+            case Attack.AttackType.Melee:
                 return meleeAttack.AScript;
 
-            case Attack.attackType.Ranged:
+            case Attack.AttackType.Ranged:
                 return rangedAttack.AScript;
 
-            case Attack.attackType.Special:
+            case Attack.AttackType.Special:
                 return specialAttack.AScript;
 
-            case Attack.attackType.Movement:
+            case Attack.AttackType.Movement:
                 Debug.LogError("Tried to query an ability slot that doesn't exist (Movement)");
                 return AttackScript.None;
 
@@ -233,7 +233,7 @@ public class AttackManager : Singleton<AttackManager>
     {
         if (item != null)
         {
-            if (item.overrideAbil != Attack.attackType.None) //if it isn't an augment
+            if (item.overrideAbil != Attack.AttackType.None) //if it isn't an augment
             {
                 ReplaceAttack(item.attackScript);
             }

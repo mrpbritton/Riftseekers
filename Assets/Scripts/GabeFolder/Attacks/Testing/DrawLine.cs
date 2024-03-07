@@ -8,10 +8,10 @@ public class DrawLine : Attack
     public GameObject go;
     private readonly int posCount = 2;
     private LineRenderer lr;
-    public override attackType getAttackType()
-    {
-        return attackType.Ranged;
-    }
+
+    public override AttackType AType => throw new System.NotImplementedException();
+    public override AttackScript AScript => throw new System.NotImplementedException();
+
     public override void attack() 
     {
         Vector3 point = GetPoint();

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4499655804943918822}
   - component: {fileID: 7735796372695827815}
-  m_Layer: 12
+  m_Layer: 10
   m_Name: Cursor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1483,7 +1483,7 @@ PrefabInstance:
     - target: {fileID: 5468476014619769451, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
       propertyPath: m_Layer
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5468476014619769451, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
@@ -1792,7 +1792,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc7744011dc28a40ad8f734e58319cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aType: 0
   cooldownBar: {fileID: 487474561200515510}
   rocketPreset: {fileID: 1383134052721241191, guid: f3fd3bc21ee36cf488f78da048a01b23,
     type: 3}

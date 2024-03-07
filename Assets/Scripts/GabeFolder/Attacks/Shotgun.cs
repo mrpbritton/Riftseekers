@@ -22,7 +22,8 @@ public class Shotgun : Attack
 /*    [SerializeField, Tooltip("How strong the knockback is")]
     private float knockback = 1f;*/
     private Vector3 cachedDir = new(1, 1, 1);
-    public override AttackScript AScript { get { return AttackScript.Shotgun; } }
+    public override AttackType AType => AttackType.Ranged;
+    public override AttackScript AScript => AttackScript.Shotgun;
 
     protected override void Start()
     {
@@ -31,10 +32,6 @@ public class Shotgun : Attack
         origin = GameObject.FindWithTag("GunOrigin").transform;
         bullet = FindFirstObjectByType<Bullet>(FindObjectsInactive.Include).gameObject;
         cachedDir = origin.forward;
-    }
-    public override attackType getAttackType()
-    {
-        return attackType.Ranged;
     }
 
     public override void anim(Animator anim, bool reset)

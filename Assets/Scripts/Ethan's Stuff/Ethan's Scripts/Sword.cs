@@ -11,6 +11,9 @@ public class Sword : Attack
     private float angle = 0;
     private bool slice, direction; //If the attack is happening
     public Collider attacking;
+    public override AttackType AType => throw new System.NotImplementedException();
+    public override AttackScript AScript => throw new System.NotImplementedException();
+
     new private void Start()
     {
         attacking.enabled = false;
@@ -65,10 +68,6 @@ public class Sword : Attack
     }
     public override void anim(Animator anim, bool reset)
     {
-    }
-    public override attackType getAttackType()
-    {
-        return attackType.Melee;
     }
     protected override float getDamage()
     {

@@ -10,10 +10,9 @@ public class coneSlice : Attack
     {
         //hurtbox.active = false;
     }
-    public override attackType getAttackType()
-    {
-        return attackType.None;
-    }
+    public override AttackType AType => throw new System.NotImplementedException();
+    public override AttackScript AScript => throw new System.NotImplementedException();
+
 
     public override void attack()
     {

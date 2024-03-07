@@ -10,6 +10,8 @@ public class DashAttack : Attack
 
     //  the radius of the sphere collider that is used to check for collided enemies
     [SerializeField] float radius;
+    public override AttackType AType => throw new System.NotImplementedException();
+    public override AttackScript AScript => throw new System.NotImplementedException();
 
     new private void Start() {
         pm = FindObjectOfType<PlayerMovement>();
@@ -28,9 +30,6 @@ public class DashAttack : Attack
 
     public override void anim(Animator anim, bool reset)
     {
-    }
-    public override attackType getAttackType() {
-        return attackType.Movement;
     }
 
     protected override float getDamage() {
