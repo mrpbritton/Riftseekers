@@ -20,10 +20,10 @@ public class EnemyManager : Singleton<EnemyManager>
         enemy.SetActive(true);
     }
 
-    public GameObject SpawnEnemy(int eIndex, int sIndex)
+    public GameObject SpawnEnemy()
     {
-        eIndex = UnityEngine.Random.Range(0, Enemies.Count);
-        sIndex = UnityEngine.Random.Range(0, Enemies.Count);
+        int eIndex = UnityEngine.Random.Range(0, Enemies.Count);
+        int sIndex = UnityEngine.Random.Range(0, Enemies.Count);
         GameObject enemy = Instantiate(Enemies[eIndex], spawnPos[sIndex]);
         GetComponent<EnemyController>().enemies.Add(enemy);
         return enemy;
