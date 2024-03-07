@@ -6,11 +6,13 @@ using DG.Tweening;
 
 public class InteractUI : MonoBehaviour {
     [SerializeField] Transform background;
+    [SerializeField] TextMeshProUGUI infoText;
     [SerializeField] string helpText;
     [SerializeField] float yOffset;
     float shownScale;
 
     KdTree<Transform> interactables = new KdTree<Transform>();
+    List<InteractInfo> infos = new List<InteractInfo>();
 
     Transform closestInteractable;
     Transform playerTrans;
@@ -33,9 +35,9 @@ public class InteractUI : MonoBehaviour {
             StopCoroutine(checker);
     }
 
-    public void addInteractable(Transform ting) {
+    public void addInteractable(Transform ting, InteractInfo info) {
         if(!able) {
-            StartCoroutine(waiter(ting));
+            StartCoroutine(waiter(ting, info));
             return;
         }
         if(!initted || playerTrans == null) {
@@ -46,19 +48,20 @@ public class InteractUI : MonoBehaviour {
             initted = true;
         }
         interactables.Add(ting);
+        infos.Add(info);
         closestInteractable = interactables.FindClosest(playerTrans.position);
         if(checker == null)
-            checker = StartCoroutine(interactableChecker());
+            checker = StartCoroutine(interactableChecker(info));
     }
 
-    IEnumerator waiter(Transform ting) {
+    IEnumerator waiter(Transform ting, InteractInfo info) {
         while(!able)
             yield return new WaitForEndOfFrame();
-        addInteractable(ting);
+        addInteractable(ting, info);
     }
 
 
-    void show(Transform interactable) {
+    void show(Transform interactable, InteractInfo info) {
         shown = true;
         fc.enabled = true;
         background.DOComplete();
@@ -66,6 +69,14 @@ public class InteractUI : MonoBehaviour {
         background.localScale = Vector3.zero;
         background.DOLocalMoveY(background.localPosition.y + yOffset, .15f);
         background.DOScale(shownScale, .15f);
+
+        //  Do stuff with info
+        for(int i = 0; i < interactables.Count; i++) {
+            if(interactables[i] == interactable) {
+                infoText.text = "<color=yellow>" + infos[i].type.ToString() + "<color=white>: " + infos[i].title;
+                break;
+            }
+        }
     }
 
     void hide() {
@@ -77,7 +88,12 @@ public class InteractUI : MonoBehaviour {
     }
 
     public void completeInteraction(Transform interactable) {
-        interactables.RemoveAll(x => x == interactable);
+        for(int i = 0; i < interactables.Count; i++) {
+            if(interactables[i] == interactable) {
+                infos.RemoveAt(i);
+                interactables.RemoveAt(i);
+            }
+        }
         closestInteractable = interactables.Count > 0 ? interactables.FindClosest(playerTrans.position) : null;
         if(interactables.Count <= 0 && checker != null) {
             StopCoroutine(checker);
@@ -86,20 +102,33 @@ public class InteractUI : MonoBehaviour {
         hide();
     }
 
-    IEnumerator interactableChecker() {
+    IEnumerator interactableChecker(InteractInfo info) {
         if(interactables.Count > 0 && playerTrans != null) {
             closestInteractable = interactables.FindClosest(playerTrans.position);
-            var t = Vector2.Distance(playerTrans.position, closestInteractable.position) / 20f;
             //  checks if within interact range
             if(!shown && closestInteractable != null && closestInteractable.GetComponent<Interact>().inRange())
-                show(closestInteractable.transform);
+                show(closestInteractable.transform, info);
             else if(shown && !closestInteractable.GetComponent<Interact>().inRange())
                 hide();
 
-            yield return new WaitForSeconds(t);
-            checker = StartCoroutine(interactableChecker());
+            yield return new WaitForFixedUpdate();
+            checker = StartCoroutine(interactableChecker(info));
         }
         else
             checker = null;
+    }
+}
+
+[System.Serializable]
+public class InteractInfo {
+    public enum interactType {
+        None, Item, Augment, Chest, Shop
+    }
+    public string title;
+    public interactType type;
+
+    public InteractInfo(string title, interactType type) {
+        this.title = title;
+        this.type = type;
     }
 }

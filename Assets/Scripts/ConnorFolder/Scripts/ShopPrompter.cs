@@ -31,7 +31,7 @@ public class ShopPrompter : MonoBehaviour {
         interact = GetComponent<Interact>();
 
         helperUI = FindObjectOfType<InteractUI>();
-        helperUI.addInteractable(transform);
+        helperUI.addInteractable(transform, new InteractInfo(shopName, InteractInfo.interactType.Shop));
 
         foreach(var i in shopHolder.GetComponentsInChildren<Button>()) {
             shopSlots.Add(i.transform.GetChild(0).GetComponent<Image>());

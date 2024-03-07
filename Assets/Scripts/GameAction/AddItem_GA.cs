@@ -5,7 +5,7 @@ using UnityEngine;
 public class AddItem_GA : GameAction
 {
     [SerializeField, Tooltip("The item that will be added to the inventory")]
-    private ConItem item;
+    public ConItem item;
 
     /// <summary>
     /// Adds an item defined in the inspector to the inventory.

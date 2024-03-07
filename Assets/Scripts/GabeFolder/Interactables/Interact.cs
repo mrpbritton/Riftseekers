@@ -24,9 +24,14 @@ public class Interact : MonoBehaviour
         pInput.Player.Interact.performed += ctxt => Interacted();
 
         if(FindObjectOfType<InteractUI>() == null)
-            Debug.LogError("Add InteractableUI Prefab to scene (under connor's folder in scripts)");
+            Debug.LogError("Add InteractableUI Prefab to scene");
         helperUI = FindObjectOfType<InteractUI>();
-        helperUI.addInteractable(transform);
+
+        //  gets info
+        if(TryGetComponent<AddItem_GA>(out var it))
+            helperUI.addInteractable(transform, new InteractInfo(it.item.title, InteractInfo.interactType.Item));
+        else if(TryGetComponent<AddAugment_GA>(out var aa))
+            helperUI.addInteractable(transform, new InteractInfo(aa.refType.ToString(), InteractInfo.interactType.Augment));
 
         if (player == null)
         {
