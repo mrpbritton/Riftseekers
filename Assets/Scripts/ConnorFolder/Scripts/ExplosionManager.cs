@@ -9,7 +9,7 @@ public class ExplosionManager : MonoBehaviour {
         None, HurtsEnemies, HurtsPlayer, HurtsAll
     }
 
-    [SerializeField] GameObject explosionPrefab;
+    [SerializeField] GameObject redExplosionPref, blueExplosionPref;
     [SerializeField] float holdTime, disappearTime, growTime;
 
     private void Start() {
@@ -17,19 +17,16 @@ public class ExplosionManager : MonoBehaviour {
     }
 
     public void explode(Vector3 pos, float scale, float dmg, float knockback, explosionState state) {
-        explodeWithColor(pos, scale, dmg, knockback, state, Color.white);
-    }
-    public void explodeWithColor(Vector3 pos, float scale, float dmg, float knockback, explosionState state, Color c) {
-        var obj = Instantiate(explosionPrefab.gameObject, pos, Quaternion.identity, null);
+        var obj = Instantiate(redExplosionPref.gameObject, pos, Quaternion.identity, null);
         obj.GetComponent<ExplosionCollider>().enableColliding(scale, dmg, knockback, state);
 
-        //  sets color if there is a custom color
-        if(c != Color.white) {
-            var m = obj.GetComponent<ParticleSystemRenderer>().material.color = c;
-            foreach(var i in obj.GetComponentsInChildren<ParticleSystemRenderer>()) {
-                i.material.color = c;
-            }
-        }
+        //  pos / scale
+        obj.transform.position = pos;
+        obj.transform.localScale = new Vector3(scale, scale, scale);
+    }
+    public void blueExplode(Vector3 pos, float scale, float dmg, float knockback, explosionState state) {
+        var obj = Instantiate(blueExplosionPref.gameObject, pos, Quaternion.identity, null);
+        obj.GetComponent<ExplosionCollider>().enableColliding(scale, dmg, knockback, state);
 
         //  pos / scale
         obj.transform.position = pos;

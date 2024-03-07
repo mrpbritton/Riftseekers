@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17f98d9c1d37e9041a423482293aa91b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56,
+  redExplosionPref: {fileID: 1892078723244562, guid: 46876a2780737ec45a19d62f88e5ce56,
+    type: 3}
+  blueExplosionPref: {fileID: 1892078723244562, guid: 8259b7b24b3b08c40b711f0375987f1b,
     type: 3}
   holdTime: 0.35
   disappearTime: 0.15
   growTime: 0.15
-  smoothScale: 0
