@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManager : Singleton<EnemyManager>
 {
     [Tooltip("Enemies that will be spawned")]
     public List<GameObject> Enemies;
@@ -14,8 +13,6 @@ public class EnemyManager : MonoBehaviour
     private float spawnCooldown;
     [SerializeField, Tooltip("How many enemies will spawn")]
     private int enemyAmount;
-    private int currentEnemyCount;
-    private bool bHasSpawned;
 
     public void Start()
     {
@@ -23,22 +20,12 @@ public class EnemyManager : MonoBehaviour
         enemy.SetActive(true);
     }
 
-    private void Update()
+    public GameObject SpawnEnemy(int eIndex, int sIndex)
     {
-        if (bHasSpawned || currentEnemyCount >= enemyAmount-1) return;
-        bHasSpawned = true;
-        currentEnemyCount++;
-        int eIndex = UnityEngine.Random.Range(0, Enemies.Count);
-        int sIndex = UnityEngine.Random.Range(0, Enemies.Count);
-        StartCoroutine(SpawnEnemy(eIndex, sIndex));
-    }
-
-    private IEnumerator SpawnEnemy(int eIndex, int sIndex)
-    {
+        eIndex = UnityEngine.Random.Range(0, Enemies.Count);
+        sIndex = UnityEngine.Random.Range(0, Enemies.Count);
         GameObject enemy = Instantiate(Enemies[eIndex], spawnPos[sIndex]);
-        enemy.SetActive(true);
         GetComponent<EnemyController>().enemies.Add(enemy);
-        yield return new WaitForSeconds(spawnCooldown);
-        bHasSpawned = false;
+        return enemy;
     }
 }
