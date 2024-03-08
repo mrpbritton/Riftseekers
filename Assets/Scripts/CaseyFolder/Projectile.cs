@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     [SerializeField]
     private Vector3 direction = new Vector3(0, 1, 0);
     [SerializeField]
-    private float speed = 10;
+    private float speed = 10, lifeSpan = 3;
 
     public Vector3 Direction { get { return direction; } set { direction = value; } }
 
@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour
 
     IEnumerator WaitToDie()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(lifeSpan);
         Destroy(this.gameObject);
     }
 
