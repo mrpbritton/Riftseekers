@@ -10,13 +10,14 @@ public class WaveSpawner : Singleton<WaveSpawner> {
     [SerializeField] float timeBtwWaves = 10f;
     [Tooltip("How long it takes for an enemy to spawn")]
     [SerializeField] float minSpawnTime = .15f, maxSpawntime = .35f;
+    [SerializeField] int enemyNumberIncrease = 10;
     bool waveDone = false;
 
     [Tooltip("Enemies that will be spawned")]
-    public List<GameObject> enemies = new List<GameObject>();
+    [SerializeField] List<GameObject> enemies = new List<GameObject>();
 
     [Tooltip("Positions that enemies will spawn from")]
-    public List<Transform> spawnPos = new List<Transform>();
+    [SerializeField] List<Transform> spawnPos = new List<Transform>();
 
     EnemyController ec;
 
@@ -35,10 +36,11 @@ public class WaveSpawner : Singleton<WaveSpawner> {
             waveDone = false;
             for(int i = 0; i < monstersPerWave; i++) {
                 ec.enemies.Add(Instantiate(enemies[Random.Range(0, enemies.Count)], spawnPos[Random.Range(0, spawnPos.Count)]));
-                yield return new WaitForSeconds(Random.Range(.15f, .35f));
+                yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawntime));
             }
             while(!waveDone)
                 yield return new WaitForSeconds(1);
+            monstersPerWave += enemyNumberIncrease;
             yield return new WaitForSeconds(timeBtwWaves);    //  TIME BTW WAVES
         }
     }
