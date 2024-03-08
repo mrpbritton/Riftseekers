@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.Intrinsics;
 using UnityEditor;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     private int baseMoney, moneyVariance;
     [SerializeField]
+    [Range(0, 100)]
     private float dropChance, healthChance, augmentChance, loreChance, abilityChance;
 
 
@@ -58,18 +60,19 @@ public class EnemyController : MonoBehaviour
                     break;
 
                 case int n when (n >= healthChance && n < healthChance + augmentChance):
-/*
                     //drop chance per rarity of augments
                     switch(UnityEngine.Random.Range(0, 100))
                     {
                         case int m when (m >= 0 && m < 60):
+                            Debug.Log("common augment");
                             break;
                         case int m when (m >= 60 && m < 90):
+                            Debug.Log("uncommon augment");
                             break;
                         case int m when (m >= 90 && m <= 100):
+                            Debug.Log("rare augment");
                             break;
                     }
-*/
                     int a = UnityEngine.Random.Range(0, AugmentLibrary.I.getAugments().Count);
                     GameObject aug = Instantiate(augmentItem);
                     aug.GetComponent<AddAugment_GA>().refType = AugmentLibrary.I.getAugment(a).type;
@@ -96,14 +99,14 @@ public class EnemyController : MonoBehaviour
             }
         }
         enemies.Remove(deadEnemy);
-/*        if(enemies.Count == 0)
+        if(enemies.Count == 0)
         {
             //activate level complete sequence.
             Debug.Log("you win");
             levelComplete();
         }
-*/
-        enemySlider.updateSlider(total, enemies.Count);
+
+        enemySlider.enemyBar(total, enemies.Count);
         Inventory.changeMoney(UnityEngine.Random.Range(baseMoney-moneyVariance, baseMoney+moneyVariance));
     }
 }
