@@ -65,11 +65,13 @@ public class EnemyHealth : MonoBehaviour {
         {
             if (GetComponent<EnemyMelee>())
                 return;
+/*
             if(gameObject.TryGetComponent(out EnemyMovement movement))
             {
                 movement.lookForCover();             
                 foundCover = true;
             }
+*/
         }
 
         if (!bStunned)

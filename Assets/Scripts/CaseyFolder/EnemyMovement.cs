@@ -32,18 +32,12 @@ public class EnemyMovement : MonoBehaviour
         cover.Clear();
         cover.AddRange(GameObject.FindGameObjectsWithTag("Cover"));
         enemySpeed = agent.speed;
+        target = Player;
     }
 
     void Update()
     {
         if(!canMove) return;
-        if (Physics.Raycast(transform.position, Player.transform.position - transform.position, out hitInfo, 9999, enemy))
-        {
-            if (hitInfo.transform.CompareTag("Player") && !bCover)
-            {
-                pSeen();
-            }
-        }
 
         if (target != null)
         {
@@ -93,16 +87,9 @@ public class EnemyMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(coverTime);
         bCover = false;
-        target = null;
+        target = Player;
     }
 
-    public void pSeen()
-    {
-        if (bAttacking) return;
-        target = Player;
-        agent.speed = enemySpeed;
-        agent.stoppingDistance = stopDistance;
-    }
 
     public void slide(Vector3 dir, float force, float time) {
         if(slider != null)
