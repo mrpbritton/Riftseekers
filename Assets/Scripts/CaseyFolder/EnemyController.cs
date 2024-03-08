@@ -47,7 +47,7 @@ public class EnemyController : MonoBehaviour
         EnemyHealth.onEnemyDeath -= onEnemyDeath;
     }
 
-    private void onEnemyDeath(GameObject deadEnemy)
+    private void onEnemyDeath(Transform deadEnemy)
     {
 
         if(UnityEngine.Random.Range(0, 100) < dropChance)
@@ -98,7 +98,7 @@ public class EnemyController : MonoBehaviour
                     break;
             }
         }
-        enemies.Remove(deadEnemy);
+        enemies.Remove(deadEnemy.gameObject);
         if(enemies.Count == 0)
         {
             //activate level complete sequence.

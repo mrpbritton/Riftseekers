@@ -35,11 +35,11 @@ public class VisualFX : MonoBehaviour {
         dir.Normalize();
         p.transform.rotation = Quaternion.LookRotation(dir);
     }
-    public void enemyDeathFX(GameObject obj) {
+    public void enemyDeathFX(Transform obj) {
         //  corpse
         var c = Instantiate(enemyCorpse);
         //GetComponent<CorpseManager>().addCorpse(peeta);
-        c.transform.position = obj.transform.position;
+        c.transform.position = obj.position;
         StartCoroutine(corpseClear(c.transform));
 
         //  blood pool

@@ -20,7 +20,7 @@ public class EnemyHealth : MonoBehaviour {
     [SerializeField] Collider usedCollider;
     [SerializeField] Slider healthSlider;
 
-    public static Action<GameObject> onEnemyDeath = delegate { };
+    public static Action<Transform> onEnemyDeath = delegate { };
     public static Action<Transform, Vector3, float> onEnemyHit = delegate { };
 
     private void Start()
@@ -91,7 +91,7 @@ public class EnemyHealth : MonoBehaviour {
     }
     private void deathAnimation()
     {
-        onEnemyDeath(gameObject);
+        onEnemyDeath(transform);
         Destroy(gameObject);
     }
 
