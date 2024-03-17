@@ -8,10 +8,9 @@ public class Basic_Hitscan : Attack {
     [Header("Gun Attributes")]
     [SerializeField, Tooltip("How far the bullet's raycast goes")] 
     float range = 10f;
-    [SerializeField, Tooltip("Used in a calculation to see how much damage dealt")]
-    float damage = 1f;
-    [SerializeField, Tooltip("Used in a calculation to see how long the cooldown is in seconds")]
-    float baseCooldown = 3f;
+    protected override float SetDamage => 1f;
+
+    protected override float SetCooldownTime => 3f;
     
     [Header("Trail Attributes")]
     [SerializeField, Tooltip("How fast the bullet trail disappears")]
@@ -31,13 +30,7 @@ public class Basic_Hitscan : Attack {
         line.positionCount = 2;
         line.enabled = false;
     }
-
-    protected override float getDamage() 
-    {
-        return damage * PlayerStats.AttackDamage;
-    }
-
-    public override void attack()
+    public override void DoAttack()
     {
         Vector3 dir = GetPoint();
         Vector3 direction = new Vector3(dir.x - origin.position.x + origin.localPosition.x, 
@@ -49,7 +42,7 @@ public class Basic_Hitscan : Attack {
         {
             if (gotHit.collider.gameObject.TryGetComponent(out EnemyHealth enemy))
             {
-                enemy.damageTaken(damage * PlayerStats.AttackDamage, origin.position);
+                enemy.damageTaken(GetDamage(), origin.position);
             }
             else /*FindObjectOfType(explode)*/
             {
@@ -63,18 +56,13 @@ public class Basic_Hitscan : Attack {
         }
     }
 
-    public override void reset()
+    public override void ResetAttack()
     {
     }
 
-    public override void anim(Animator anim, bool reset)
+    public override void Anim(Animator anim, bool reset)
     {
     }
-    protected override float getCooldownTime() 
-    {
-        return baseCooldown / PlayerStats.AttackSpeed;
-    }
-
 
     private IEnumerator DrawLine(Vector3 origin, Vector3 point)
     {

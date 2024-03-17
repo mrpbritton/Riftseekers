@@ -5,10 +5,7 @@ using UnityEngine.InputSystem;
 
 public class qAbility : Attack
 {
-    protected override float getDamage()
-    {
-        return 12f;
-    }
+    protected override float SetDamage => 12f;
 
     public override AttackType AType => throw new System.NotImplementedException();
     public override AttackScript AScript => throw new System.NotImplementedException();
@@ -19,20 +16,18 @@ public class qAbility : Attack
         Debug.Log("Basic Attack Performed");
     }*/
 
-    public override void attack()
+    public override void DoAttack()
     {
         Debug.Log("Q ability activated");
     }
 
-    public override void reset()
+    public override void ResetAttack()
     {
     }
 
-    public override void anim(Animator anim, bool reset)
+    public override void Anim(Animator anim, bool reset)
     {
     }
-    protected override float getCooldownTime() {
-        return 1f;
-    }
+    protected override float SetCooldownTime => 1f;
 
 }

@@ -6,7 +6,7 @@ public class DashAttack : Attack
 {
 
     PlayerMovement pm;
-    Coroutine attacker = null;
+    //Coroutine attacker = null;
 
     //  the radius of the sphere collider that is used to check for collided enemies
     [SerializeField] float radius;
@@ -19,29 +19,24 @@ public class DashAttack : Attack
             transform.parent = pm.gameObject.transform;
     }
 
-    public override void attack() {
-        StartCoroutine(pm.Dash());
-        attacker = StartCoroutine(checkForHits());
+    public override void DoAttack() {
+        //attacker = StartCoroutine(checkForHits());
     }
 
-    public override void reset()
+    public override void ResetAttack()
     {
     }
 
-    public override void anim(Animator anim, bool reset)
+    public override void Anim(Animator anim, bool reset)
     {
     }
 
-    protected override float getDamage() {
-        return 10f;
-    }
+    protected override float SetDamage => 10f;
 
-    protected override float getCooldownTime() {
-        return 1f;
-    }
+    protected override float SetCooldownTime => 1f;
+    
 
-    IEnumerator checkForHits() {
-        float t = pm.getDashTime();
+/*    IEnumerator checkForHits() {
         float s = Time.time, e = Time.time;
         while(t > 0f) {
             e = Time.time;
@@ -51,11 +46,11 @@ public class DashAttack : Attack
             //  checks for monsters hit
             if(col.Length > 0) {
                 foreach(var i in col)
-                    i.gameObject.GetComponent<EnemyHealth>().damageTaken(getDamage(), pm.transform.position);
+                    i.gameObject.GetComponent<EnemyHealth>().damageTaken(etDamage(), pm.transform.position);
             }
             yield return new WaitForEndOfFrame();
         }
 
         attacker = null;
-    }
+    }*/
 }

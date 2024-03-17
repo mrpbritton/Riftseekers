@@ -5,7 +5,7 @@ using UnityEngine;
 public class Sword : Attack
 {
     // Start is called before the first frame update
-    [SerializeField] float damage = 12;
+    protected override float SetDamage => 12f;
     [SerializeField] GameObject hurtBox, aimRotation;
     [SerializeField] float swingSpeed;
     private float angle = 0;
@@ -24,7 +24,7 @@ public class Sword : Attack
         if (Input.GetMouseButtonDown(0))
         {
             if(!slice)
-                attack();
+                DoAttack();
         }
         if (slice)
         {
@@ -63,22 +63,16 @@ public class Sword : Attack
         }
     }
 
-    public override void reset()
+    public override void ResetAttack()
     {
     }
-    public override void anim(Animator anim, bool reset)
+    public override void Anim(Animator anim, bool reset)
     {
     }
-    protected override float getDamage()
-    {
-        return damage;
-    }
-    public override void attack()
+    public override void DoAttack()
     {
         attacking.enabled = true;
         slice = true;
     }
-    protected override float getCooldownTime() {
-        return 1f;
-    }
+    protected override float SetCooldownTime => 1f;
 }

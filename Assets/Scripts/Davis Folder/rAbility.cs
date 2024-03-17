@@ -14,33 +14,27 @@ public class coneSlice : Attack
     public override AttackScript AScript => throw new System.NotImplementedException();
 
 
-    public override void attack()
+    public override void DoAttack()
     {
         hurtbox.SetActive(true);
         Debug.LogError("Before");
-        inBetween();
+        InBetween();
         Debug.LogError("After");
         hurtbox.SetActive(false);
     }
 
-    public override void reset()
+    public override void ResetAttack()
     {
     }
-    public override void anim(Animator anim, bool reset)
+    public override void Anim(Animator anim, bool reset)
     {
     }
-    private IEnumerator inBetween()
+    private IEnumerator InBetween()
     {
         yield return new WaitForSeconds(100000f);
     }
 
-    protected override float getDamage()
-    {
-        return 5f;
-    }
+    protected override float SetDamage => 5f;
 
-    protected override float getCooldownTime()
-    {
-        return 2f;
-    }
+    protected override float SetCooldownTime => 2f;
 }

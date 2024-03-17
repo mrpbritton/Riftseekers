@@ -5,7 +5,7 @@ using UnityEngine;
 
 public enum AttackScript
 {
-    None, Sword, Handgun, Shotgun, Rocket
+    None, Sword, Handgun, Shotgun, Rocket, Dash
 }
 
 [CreateAssetMenu]

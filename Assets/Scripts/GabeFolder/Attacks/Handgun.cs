@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class Handgun : Attack 
 {
-    [SerializeField, Tooltip("Used in a calculation to see how much damage dealt")]
-    float damage = 2f;
-    [SerializeField, Tooltip("Used in a calculation to see how long the cooldown is in seconds")]
-    float baseCooldown = 0.4f;
+    protected override float SetDamage => 2f;
+    protected override float SetCooldownTime => 0.4f;
     [SerializeField, Tooltip("Where the bullet instantiates")]
     private Transform origin;
     [SerializeField, Tooltip("Bullet that gets spawned")]
@@ -30,15 +28,10 @@ public class Handgun : Attack
         cachedDir = origin.forward;
     }
 
-    protected override float getDamage() 
-    {
-        return damage * PlayerStats.AttackDamage;
-    }
-
-    public override void anim(Animator anim, bool reset)
+    public override void Anim(Animator anim, bool reset)
     {
     }
-    public override void attack()
+    public override void DoAttack()
     {
         AkSoundEngine.PostEvent("Pistol_Fire_player", gameObject);
 
@@ -81,16 +74,11 @@ public class Handgun : Attack
         bs.direction = direction;
         bs.bCanPierce = true;
         bs.pierceCount = pierceCount;
-        b.GetComponent<DoDamage>().damage = getDamage();
+        b.GetComponent<DoDamage>().damage = GetDamage();
         bs.lifetime = lifetime;
     }
 
-    public override void reset()
+    public override void ResetAttack()
     {
-    }
-
-    protected override float getCooldownTime() 
-    {
-        return baseCooldown / PlayerStats.AttackSpeed;
     }
 }

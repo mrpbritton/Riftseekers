@@ -11,7 +11,7 @@ public class RocketLauncher : Attack {
     public override AttackType AType => AttackType.Special;
     public override AttackScript AScript => AttackScript.Rocket;
 
-    public override void attack() {
+    public override void DoAttack() {
         var curRocket = Instantiate(rocketPreset.gameObject);
         var rocketEndExplosion = explosionManager.queueExplode(curRocket.transform, explosionSize, explosionDmg, explosionKnockback, ExplosionManager.explosionState.HurtsEnemies, maxTravelTime);
         curRocket.GetComponentInChildren<RocketInstance>().setup(rocketEndExplosion, explosionManager, explosionSize, explosionDmg, explosionKnockback);
@@ -32,16 +32,12 @@ public class RocketLauncher : Attack {
         FindObjectOfType<PlayerMovement>().slide(direction, -12f, .25f);
     }
 
-    public override void anim(Animator anim, bool reset)
+    public override void Anim(Animator anim, bool reset)
     {
     }
-    public override void reset()
+    public override void ResetAttack()
     {
     }
-    protected override float getDamage() {
-        return 30f;
-    }
-    protected override float getCooldownTime() {
-        return 3f / PlayerStats.CooldownMod;
-    }
+    protected override float SetDamage => 30f;
+    protected override float SetCooldownTime => 3f;
 }

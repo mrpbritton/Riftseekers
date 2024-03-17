@@ -12,7 +12,7 @@ public class DrawLine : Attack
     public override AttackType AType => throw new System.NotImplementedException();
     public override AttackScript AScript => throw new System.NotImplementedException();
 
-    public override void attack() 
+    public override void DoAttack() 
     {
         Vector3 point = GetPoint();
         if(lr == null)
@@ -24,12 +24,12 @@ public class DrawLine : Attack
         lr.SetPosition(0, gameObject.transform.position);
         lr.SetPosition(lr.positionCount-1, new Vector3(point.x, gameObject.transform.position.y, point.z));
     }
-    public override void anim(Animator anim, bool reset)
+    public override void Anim(Animator anim, bool reset)
     {
     }
-    public override void reset()
+    public override void ResetAttack()
     {
     }
-    protected override float getDamage() { return 3f; }
-    protected override float getCooldownTime() { return 3f; }   //  NOTE: this does nothing atm
+    protected override float SetDamage => 3f;
+    protected override float SetCooldownTime => 3f;   //  NOTE: this does nothing atm
 }

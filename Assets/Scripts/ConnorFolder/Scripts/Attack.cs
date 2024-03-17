@@ -7,10 +7,10 @@ public abstract class Attack : MonoBehaviour {
     {
         Melee, Ranged, Special, Movement, None
     }
-    float dmgMod = 1.0f;
-    float cooldownMod = 1.0f;
     public abstract AttackType AType { get; }
     public abstract AttackScript AScript { get; }
+    protected abstract float SetDamage { get; }
+    protected abstract float SetCooldownTime { get; }   //  NOTE: this does nothing atm
     private readonly int rayDistance = 100; //how far the ray will cast out
     protected PInput pInput;
     public PlayerUICanvas cooldownBar;
@@ -39,21 +39,22 @@ public abstract class Attack : MonoBehaviour {
         return hit.point;
     }    
 
-    public abstract void attack();
+    public float GetDamage()
+    {
+        return SetDamage * PlayerStats.AttackDamage;
+    }
+
+    public float GetCooldownTime()
+    {
+        return SetCooldownTime * PlayerStats.CooldownMod;
+    }
+
+    public abstract void DoAttack();
     /// <summary>
     /// This is called in an attack to execute the correct animation.
     /// </summary>
     /// <param name="anim">The animator of the character</param>
     /// <param name="reset">If true, the triggers will be set to go back to normal</param>
-    public abstract void anim(Animator anim, bool reset);
-    public abstract void reset();
-    protected abstract float getDamage();
-    protected abstract float getCooldownTime();   //  NOTE: this does nothing atm
-
-    public float getRealDamage() {
-        return getDamage() * dmgMod;
-    }
-    public float getRealCooldownTime() {
-        return getCooldownTime() * cooldownMod;
-    }
+    public abstract void Anim(Animator anim, bool reset);
+    public abstract void ResetAttack();
 }

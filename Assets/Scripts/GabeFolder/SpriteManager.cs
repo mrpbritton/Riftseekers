@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpriteManager : MonoBehaviour
+public class SpriteManager : Singleton<SpriteManager>
 {
     public Animator character;
     public CardinalDirection CachedDir { get; private set; }

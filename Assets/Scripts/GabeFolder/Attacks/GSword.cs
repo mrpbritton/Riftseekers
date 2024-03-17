@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class GSword : Attack
 {
-    [SerializeField, Tooltip("Used in a calculation to see how much damage dealt")]
-    float damage = 1f;
-    [SerializeField, Tooltip("Used in a calculation to see how long the cooldown is in seconds")]
-    float baseCooldown = .5f;
+    protected override float SetDamage => 1f;
+    protected override float SetCooldownTime => .5f;
     [SerializeField, Tooltip("How long the hitbox stays")]
     float hitboxTime = .05f;
     [SerializeField, Tooltip("The axis that rotates according to the player's movement")]
@@ -34,15 +32,10 @@ public class GSword : Attack
         base.Start();
         DOTween.Init();
         damScript = hitbox.GetComponent<DoDamage>();
-        damScript.damage = damage;
+        damScript.damage = GetDamage();
     }
 
-    protected override float getDamage()
-    {
-        return damage * PlayerStats.AttackDamage;
-    }
-
-    private void flipSprite()
+    private void FlipSprite()
     {
         if(swingLeft) //if swinging left
             sRenderer.sprite = leftSwing;
@@ -51,7 +44,7 @@ public class GSword : Attack
         swingLeft = !swingLeft;
     }
 
-    public override void anim(Animator anim, bool reset)
+    public override void Anim(Animator anim, bool reset)
     {
         if(reset)
         {
@@ -119,7 +112,7 @@ public class GSword : Attack
         }
     }
 
-    public override void attack()
+    public override void DoAttack()
     {
         Vector3 dir;
         if (!InputManager.isUsingKeyboard())
@@ -147,22 +140,22 @@ public class GSword : Attack
         origin.forward = direction;
         //Debug.Log(origin.forward);
         float angle = Mathf.Atan2(origin.forward.z, origin.forward.x) * Mathf.Rad2Deg;
-        constrictDirection(angle);
+        ConstrictDirection(angle);
         //Debug.Log(Mathf.Atan2(origin.forward.z, origin.forward.x) * Mathf.Rad2Deg);
 
         float lungeAmt = 6f;
         FindObjectOfType<PlayerMovement>().slide(direction, lungeAmt, .25f);
 
-        if (damScript.damage != damage)
+        if (damScript.damage != GetDamage())
         {
-            damScript.damage = damage;
+            damScript.damage = GetDamage();
         }
 
         //cooldownBar.updateSlider(getCooldownTime());
         StartCoroutine(Swing());
     }
 
-    private Vector3 constrictDirection(float angle)
+    private Vector3 ConstrictDirection(float angle)
     {
         Vector3 returnVal = Vector3.zero;
 
@@ -230,20 +223,14 @@ public class GSword : Attack
         yield return new WaitForSeconds(hitboxTime);
         sRenderer.gameObject.SetActive(false);
         hitbox.gameObject.SetActive(false);
-        flipSprite();
+        FlipSprite();
     }
 
-    public override void reset()
+    public override void ResetAttack()
     {
         if(hitbox.gameObject.activeSelf == true)
             hitbox.gameObject.SetActive(false);
         //frame.UpdateSprite(origin.forward);
         //frame.UpdateSprite(cardDir);
-    }
-
-
-    protected override float getCooldownTime()
-    {
-        return baseCooldown / PlayerStats.AttackDamage;
     }
 }

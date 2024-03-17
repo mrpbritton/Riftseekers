@@ -8,27 +8,18 @@ public class AttackManager : Singleton<AttackManager>
     public Attack meleeAttack;
     public Attack rangedAttack;
     public Attack specialAttack;
+    public Attack movementAttack;
 
     [Header("Player UI Canvases (DO NOT CHANGE)")]
     public List<PlayerUICanvas> puiCanvases;
 
-    [Tooltip("Base attack damage; each attack derives this for a calculation")]
-    public float attackDamage => PlayerStats.AttackDamage;
-    [Tooltip("Base attack speed; each attack derives this for a calculation")]
-    public float attackSpeed => PlayerStats.AttackSpeed;
-
-    [Tooltip("Base cooldown modifier; each ability uses this for a calculation")]
-    public float cooldownMod => PlayerStats.CooldownMod;
-    [Tooltip("Limit the ultimate ability will charge to")]
-    public int chargeLimit => PlayerStats.ChargeLimit;
-    [Tooltip("Current charge of the ultimate")]
-    public float charge => PlayerStats.Charge;
-
     private PInput pInput;
     private bool bIsMainPressed;
     private bool bIsAbilPressed;
+    private bool bIsMovePressed;
     private bool bIsMainAttacking; //is true when a main attack is happening
-    private bool bIsAbilAttacking; //is true when an ability is happening
+    private bool bIsAbilAttacking; //is true when a special ability is happening
+    private bool bIsMoveAttacking; //is true when a movement ability is happening
 
     public bool canAttack = true;
 
@@ -40,6 +31,7 @@ public class AttackManager : Singleton<AttackManager>
         { AttackScript.Shotgun, Attack.AttackType.Ranged },
         { AttackScript.Sword, Attack.AttackType.Melee },
         { AttackScript.Rocket, Attack.AttackType.Special },
+        { AttackScript.Dash, Attack.AttackType.Movement },
         { AttackScript.None, Attack.AttackType.None}
 
     };
@@ -60,9 +52,10 @@ public class AttackManager : Singleton<AttackManager>
         if (FindObjectOfType<TutorialChecker>() == null)
         {
             #region Started Subscriptions
-            pInput.Player.BasicAttack.started += ctx => PerformAttack(meleeAttack, true);
-            pInput.Player.SecondAttack.started += ctx => PerformAttack(rangedAttack, true);
-            pInput.Player.Ability1.started += ctx => PerformAttack(specialAttack, false);
+            pInput.Player.BasicAttack.started += ctx => PerformAttack(meleeAttack, Attack.AttackType.Melee);
+            pInput.Player.SecondAttack.started += ctx => PerformAttack(rangedAttack, Attack.AttackType.Ranged);
+            pInput.Player.Ability1.started += ctx => PerformAttack(specialAttack, Attack.AttackType.Special);
+            pInput.Player.Dash.started += ctx => PerformAttack(movementAttack, Attack.AttackType.Movement);
             #endregion
 
             #region Canceled Subscriptions
@@ -71,6 +64,7 @@ public class AttackManager : Singleton<AttackManager>
             pInput.Player.Ability1.canceled += ctx => SetAbilPressed(false);
             pInput.Player.Ability2.canceled += ctx => SetAbilPressed(false);
             pInput.Player.Ability3.canceled += ctx => SetAbilPressed(false);
+            pInput.Player.Dash.canceled += ctx => SetMovePressed(false);
             pInput.Player.Ult.canceled += ctx => SetAbilPressed(false);
             #endregion
         }
@@ -92,21 +86,27 @@ public class AttackManager : Singleton<AttackManager>
     /// Used whenever an attack is needed to be performed.
     /// </summary>
     /// <param name="attack">The attack from the AttackManager going to be performed</param>
-    /// <param name="isMainAttack">If True, attack is either basicAttack or secondAttack</param>
-    private void PerformAttack(Attack attack, bool isMainAttack)
+    /// <param name="aType">Which attack is being performed</param>
+    private void PerformAttack(Attack attack, Attack.AttackType aType)
     {
         if(!canAttack) return;
-        if(isMainAttack && !bIsMainAttacking)     //is main attack
+        if((aType == Attack.AttackType.Melee || aType == Attack.AttackType.Ranged) && !bIsMainAttacking)
         {
             SetMainPressed(true);
             bIsMainAttacking = true;
             StartCoroutine( MainAttackWaiter(attack) );
         }
-        else if (!isMainAttack && !bIsAbilAttacking)               //is an ability attack
+        else if (aType == Attack.AttackType.Special && !bIsAbilAttacking)
         {
             SetAbilPressed(true);
             bIsAbilAttacking = true;
             StartCoroutine( SpecialAttackWaiter(attack) );
+        }
+        else if(aType == Attack.AttackType.Movement && !bIsMoveAttacking)
+        {
+            SetMovePressed(true);
+            bIsMoveAttacking = true;
+            StartCoroutine( MovementAttackWaiter(attack) );
         }
     }
 
@@ -115,16 +115,19 @@ public class AttackManager : Singleton<AttackManager>
         switch(attack.AType)
         {
             case Attack.AttackType.Melee: //sword
-                puiCanvases[0].updateSlider(attack.getRealCooldownTime());
+                puiCanvases[0].updateSlider(attack.GetCooldownTime());
                 break;
             case Attack.AttackType.Ranged: //gun
-                puiCanvases[1].updateSlider(attack.getRealCooldownTime());
+                puiCanvases[1].updateSlider(attack.GetCooldownTime());
                 break;
             case Attack.AttackType.Special: //rocket
-                puiCanvases[2].updateSlider(attack.getRealCooldownTime());
+                puiCanvases[2].updateSlider(attack.GetCooldownTime());
+                break;
+            case Attack.AttackType.Movement: //dash
+                puiCanvases[3].updateSlider(attack.GetCooldownTime());
                 break;
             default:
-                Debug.Log($"aType of attack is not a sword, pistol, or rocket.");
+                Debug.Log($"aType of attack is not melee, ranged, special, or movement. Check that it isn't \"None\".");
                 break;
         }
     }
@@ -134,10 +137,10 @@ public class AttackManager : Singleton<AttackManager>
         do
         {
             ActivatePUI(curAttack);
-            curAttack.attack();
-            //curAttack.anim(character, false); //THIS IS THE ANIMATOR
-            yield return new WaitForSeconds(curAttack.getRealCooldownTime());
-            curAttack.reset();
+            curAttack.DoAttack();
+            //curAttack.Anim(character, false); //THIS IS THE ANIMATOR
+            yield return new WaitForSeconds(curAttack.GetCooldownTime());
+            curAttack.ResetAttack();
         } while (bIsMainPressed);
         bIsMainAttacking = false;
     }
@@ -147,12 +150,25 @@ public class AttackManager : Singleton<AttackManager>
         do
         {
             ActivatePUI(curAttack);
-            curAttack.attack();
-            //curAttack.anim(character, false); //THIS IS THE ANIMATOR
-            yield return new WaitForSeconds(curAttack.getRealCooldownTime());
-            curAttack.reset();
+            curAttack.DoAttack();
+            //curAttack.Anim(character, false); //THIS IS THE ANIMATOR
+            yield return new WaitForSeconds(curAttack.GetCooldownTime());
+            curAttack.ResetAttack();
         } while (bIsAbilPressed);
         bIsAbilAttacking = false;
+    }
+
+    IEnumerator MovementAttackWaiter(Attack curAttack)
+    {
+        do
+        {
+            ActivatePUI(curAttack);
+            curAttack.DoAttack();
+            //curAttack.Anim(character, false); //THIS IS THE ANIMATOR
+            yield return new WaitForSeconds(curAttack.GetCooldownTime());
+            curAttack.ResetAttack();
+        } while (bIsMovePressed);
+        bIsMoveAttacking = false;
     }
 
     /// <summary>
@@ -163,8 +179,11 @@ public class AttackManager : Singleton<AttackManager>
     {
         bIsMainPressed = newValue;
     }
-
     private void SetAbilPressed(bool newValue)
+    {
+        bIsAbilPressed = newValue;
+    }
+    private void SetMovePressed(bool newValue)
     {
         bIsAbilPressed = newValue;
     }
@@ -313,15 +332,15 @@ public class AttackManager : Singleton<AttackManager>
         switch (type)
         {
             case TutorialChecker.teachTypes.BasicAtt:
-                pInput.Player.BasicAttack.started += ctx => PerformAttack(meleeAttack, true);
+                pInput.Player.BasicAttack.started += ctx => PerformAttack(meleeAttack, Attack.AttackType.Melee);
                 pInput.Player.BasicAttack.canceled += ctx => SetMainPressed(false);
                 break;
             case TutorialChecker.teachTypes.SecondAtt:
-                pInput.Player.SecondAttack.started += ctx => PerformAttack(rangedAttack, true);
+                pInput.Player.SecondAttack.started += ctx => PerformAttack(rangedAttack, Attack.AttackType.Ranged);
                 pInput.Player.SecondAttack.canceled += ctx => SetMainPressed(false);
                 break;
             case TutorialChecker.teachTypes.RocketAtt:
-                pInput.Player.Ability1.started += ctx => PerformAttack(specialAttack, false);
+                pInput.Player.Ability1.started += ctx => PerformAttack(specialAttack, Attack.AttackType.Special);
                 pInput.Player.Ability1.canceled += ctx => SetAbilPressed(false);
                 break;
         }

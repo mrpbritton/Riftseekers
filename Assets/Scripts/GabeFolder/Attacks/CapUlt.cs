@@ -11,11 +11,11 @@ public class CapUlt : Attack
     public override AttackType AType => throw new System.NotImplementedException();
     public override AttackScript AScript => throw new System.NotImplementedException();
 
-    public override void attack()
+    public override void DoAttack()
     {
     }
 
-    public override void reset()
+    public override void ResetAttack()
     {
         //
     }
@@ -25,7 +25,7 @@ public class CapUlt : Attack
         if (bIsActive) return; //I just did this to get rid of a warning -Gabe
     }
 
-    public override void anim(Animator anim, bool reset)
+    public override void Anim(Animator anim, bool reset)
     {
     }
     private void ManageCharge()
@@ -33,14 +33,9 @@ public class CapUlt : Attack
 
     }
 
-    protected override float getDamage()
-    {
-        return 30f;
-    }
-    protected override float getCooldownTime()
-    {
-        return 3f;
-    }
+    protected override float SetDamage => 30f;
+    protected override float SetCooldownTime => 3f;
+
 
     IEnumerator Ulting()
     {

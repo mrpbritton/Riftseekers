@@ -5,10 +5,8 @@ using UnityEngine.InputSystem;
 
 public class Shotgun : Attack
 {
-    [SerializeField, Tooltip("Used in a calculation to see how much damage dealt")]
-    float damage = 1f;
-    [SerializeField, Tooltip("Used in a calculation to see how long the cooldown is in seconds")]
-    float baseCooldown = 0.75f;
+    protected override float SetDamage => 1f;
+    protected override float SetCooldownTime => 0.75f;
     [SerializeField, Tooltip("Where the bullet instantiates")]
     private Transform origin;
     [SerializeField, Tooltip("Bullet that gets spawned")]
@@ -34,15 +32,11 @@ public class Shotgun : Attack
         cachedDir = origin.forward;
     }
 
-    public override void anim(Animator anim, bool reset)
+    public override void Anim(Animator anim, bool reset)
     {
-    }
-    protected override float getDamage()
-    {
-        return damage * PlayerStats.AttackDamage;
     }
 
-    public override void attack()
+    public override void DoAttack()
     {
         AkSoundEngine.PostEvent("Shotgun_Fire", gameObject);
 
@@ -82,7 +76,7 @@ public class Shotgun : Attack
             Vector3 newDir = new Vector3(direction.x + xRand, direction.y, direction.z + zRand);
             Bullet bScript = b.GetComponent<Bullet>();
             bScript.direction = newDir.normalized;
-            bScript.GetComponent<DoDamage>().damage = getDamage();
+            bScript.GetComponent<DoDamage>().damage = GetDamage();
             bScript.lifetime = lifetime;
         }
 
@@ -93,13 +87,8 @@ public class Shotgun : Attack
         /*        frame.gameObject.GetComponent<CharacterController>().Move(-direction * knockback);*/
     }
 
-    public override void reset()
+    public override void ResetAttack()
     {
         //
-    }
-
-    protected override float getCooldownTime()
-    {
-        return baseCooldown / PlayerStats.AttackSpeed;
     }
 }

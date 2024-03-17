@@ -5,10 +5,7 @@ using UnityEngine.InputSystem;
 
 public class BasicAttack : Attack
 {
-    protected override float getDamage()
-    {
-        return 12f;
-    }
+    protected override float SetDamage => 12f;
 
     public override AttackType AType => throw new System.NotImplementedException();
     public override AttackScript AScript => throw new System.NotImplementedException();
@@ -19,19 +16,17 @@ public class BasicAttack : Attack
         Debug.Log("Basic Attack Performed");
     }*/
 
-    public override void anim(Animator anim, bool reset)
+    public override void Anim(Animator anim, bool reset)
     {
     }
-    public override void attack()
+    public override void DoAttack()
     {
         throw new System.NotImplementedException();
     }
 
-    public override void reset()
+    public override void ResetAttack()
     {
     }
-    protected override float getCooldownTime() {
-        return 1f;
-    }
+    protected override float SetCooldownTime => 1f;
 
 }
