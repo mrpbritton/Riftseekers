@@ -122,7 +122,7 @@ public class InteractUI : MonoBehaviour {
 [System.Serializable]
 public class InteractInfo {
     public enum interactType {
-        None, Item, Augment, Chest, Shop
+        None, Item, Augment, Chest, Shop, Health
     }
     public string title;
     public interactType type;
