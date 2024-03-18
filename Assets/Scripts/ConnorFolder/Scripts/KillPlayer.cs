@@ -5,7 +5,9 @@ using UnityEngine;
 public class KillPlayer : MonoBehaviour {
 
     private void Start() {
-        StartCoroutine(murk());
+        Destroy(gameObject);
+        enabled = false;
+        //StartCoroutine(murk());
     }
 
     IEnumerator murk() {

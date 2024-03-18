@@ -21,11 +21,12 @@ public class PauseUI : MonoBehaviour {
 
     private void OnDisable() {
         controls.UI.Pause.performed -= ctx => toggleShown();
+        controls.Disable();
     }
 
     void toggleShown() {
         shown = !shown;
-        Debug.Log("here");
+        Time.timeScale = shown ? 0f : 1f;
         background.SetActive(shown);
 
         pm.enabled = !shown;
