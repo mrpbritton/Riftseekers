@@ -6,7 +6,7 @@ public class mainMenu : MonoBehaviour
 {
    public void startGame()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(6);
         SaveData.wipe();
     }
 
