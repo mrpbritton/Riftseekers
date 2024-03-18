@@ -17,9 +17,11 @@ public class DebuggerWindow : EditorWindow {
         if(GUILayout.Button("Save")) {
             Inventory.saveInventory();
             FindObjectOfType<PlayerStats>().save();
+            Debug.Log("Saved");
         }
         if(GUILayout.Button("Clear")) {
             SaveData.wipe();
+            Debug.Log("Cleared");
         }
         GUILayout.EndHorizontal();
     }

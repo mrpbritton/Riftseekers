@@ -47,6 +47,9 @@ public class AttackManager : Singleton<AttackManager>
          - rocket could go at anytime
         */
 
+        Inventory.loadInventory();
+        UpdateAttack();
+
         #region Attack Subscriptions
 
         if (FindObjectOfType<TutorialChecker>() == null)
@@ -193,14 +196,7 @@ public class AttackManager : Singleton<AttackManager>
     #region Updating Attacks
     public void UpdateAttack()
     {
-        List<ConItem> activeItems = new();
-
-        for (int i = 0; i < 3; i++)
-        {
-            activeItems.Add(Inventory.getActiveItem(i, FindFirstObjectByType<AugmentLibrary>()));
-        }
-
-        foreach (ConItem item in activeItems)
+        foreach (ConItem item in Inventory.getItems(FindObjectOfType<AugmentLibrary>()))
         {
             if (item != null)
             {
