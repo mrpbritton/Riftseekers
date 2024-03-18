@@ -19,6 +19,7 @@ public class Terminals : MonoBehaviour
     {
         randVal = Random.Range(0, logs.Length);
         Debug.Log(randVal);
+        text.text = logs[randVal];
         screen.SetActive(true);
     } 
 
