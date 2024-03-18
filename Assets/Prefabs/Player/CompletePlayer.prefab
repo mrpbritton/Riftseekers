@@ -737,7 +737,8 @@ MonoBehaviour:
   - {fileID: 4362324172312041736}
   - {fileID: 4370656158545140831}
   - {fileID: 5869231273165467066}
-  - {fileID: 5869231273165467066}
+  - {fileID: 4008781386605652316}
+  character: {fileID: 0}
   canAttack: 1
 --- !u!114 &6347688342931768367
 MonoBehaviour:
@@ -811,11 +812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d1b5c23f063cbd4ca077fdef1a994af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldownBar: {fileID: 0}
-  remainingCharges: 0
-  dashChargeCooldown: 0
-  dashCooldown: 0
-  dashTime: 0
+  cooldownBar: {fileID: 4008781386605652316}
   cantDash: 0
 --- !u!114 &1991647805931262147 stripped
 MonoBehaviour:
@@ -1387,6 +1384,18 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 7023702036529083114}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562bdb6481cecca43b707bb4653ca7a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4008781386605652316 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6258664996244495286, guid: 28cb8f400ceb08a4e912fceb063d32c1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7023702036529083114}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8339713400535238233}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 562bdb6481cecca43b707bb4653ca7a0, type: 3}

@@ -6,35 +6,27 @@ using UnityEngine.InputSystem;
 
 public class Dash : Attack
 {
+    /**Attack Inheritance Properties**/
+    public override AttackScript AScript => AttackScript.Dash;
+    public override AttackType AType => AttackType.Movement;
     protected override float SetDamage => 0f;
-    protected override float SetCooldownTime => 3f;/*
-    [SerializeField]
-    private int remainingCharges; //how many charges the dash has left
-    [SerializeField, Tooltip("Time it takes for a whole dash to recharge in seconds")]
-    private float dashChargeCooldown;
-    private bool canRecharge; //if the dash can recharge*/
+    protected override float SetCooldownTime => 3f;
+    /*********************************/
+    
+    [HideInInspector]
     public bool cantDash; //whether or not the player can dash
-
-    private CharacterController player;
+    private bool isDefDash;
     private Vector3 dashDirection;
     public static Transform playerTrans;
-    //private bool bMove = true;
-    public override AttackScript AScript => AttackScript.Dash; 
-    public override AttackType AType => AttackType.Movement;
+    private CharacterController player;
 
     private void OnEnable()
     {
-        //DashUI.UpdateDashUI(remainingCharges);
         player = gameObject.GetComponent<CharacterController>();
-        //canRecharge = true;
     }
 
     private void Update()
     {
-/*        if (remainingCharges < PlayerStats.DashCharges && canRecharge && bMove)
-        {
-            StartCoroutine(RechargeDash());
-        }*/
     }
 
     public override void DoAttack() //action
@@ -45,15 +37,16 @@ public class Dash : Attack
 
     IEnumerator DoDash()
     {
-        Debug.Log($"{PlayerStats.DashDistance}, {PlayerStats.DashSpeed}");
+        //Debug.Log($"{PlayerStats.DashDistance}, {PlayerStats.DashSpeed}");
         AkSoundEngine.PostEvent("Dash", gameObject);
 
         cantDash = true;
-        float dTimeRemaining = 0;
+
         dashDirection = PlayerMovement.GetDirection();
-        if (SpriteManager.I.UpdateSpriteToDash(PlayerMovement.GetDirection())) //UpdateSpriteToDash returns true if it is the default dash
+        if (SpriteManager.I.UpdateSpriteToDash(dashDirection)) //UpdateSpriteToDash returns true if it is the default dash
         {
             dashDirection = Vector3.right;
+            isDefDash = true;
         }
         else
         {
@@ -66,34 +59,33 @@ public class Dash : Attack
          * until the dash is completed), while the position of the player continues 
          * to move towards the direction */
 
+        //this finds how much time it would take given the current DashDistance and DashSpeed to go that far.
+        float dTimeRemaining = Mathf.Sqrt(2*PlayerStats.DashDistance/PlayerStats.DashSpeed);
+        
         while (dTimeRemaining > 0)
         {
             dTimeRemaining -= Time.deltaTime;
-            player.Move(PlayerStats.DashDistance * PlayerStats.DashSpeed * Time.deltaTime * dashDirection.normalized);
+            player.Move(PlayerStats.DashSpeed * Time.deltaTime * dashDirection.normalized);
             yield return null;
         }
 
-        //remainingCharges--; //since dash was performed, subtract a dash
         cantDash = false;
-
-        SpriteManager.I.UpdateSpriteToWalk(dashDirection);
+        
+        SpriteManager.I.UpdateSpriteToWalk(dashDirection);    
+        if(isDefDash)
+        {
+            SpriteManager.I.UpdateSpriteToIdle(dashDirection);
+            isDefDash = false;
+        }
     }
 
     //cbt otherwise known as cock and ball torture
-
-/*    public IEnumerator RechargeDash()
-    {
-        canRecharge = false;
-        yield return new WaitForSeconds(dashChargeCooldown);
-        remainingCharges = PlayerStats.DashCharges;
-        DashUI.UpdateDashUI(remainingCharges);
-        canRecharge = true;
-    }*/
-
-
     public override void Anim(Animator anim, bool reset)
     {
-        throw new System.NotImplementedException();
+        if(reset)
+        {
+
+        }
     }
 
     public override void ResetAttack()

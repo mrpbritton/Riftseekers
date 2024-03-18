@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
 {
     public PInput pInput;
 
-    //[Header("Regular Movement")]
     private static Vector3 direction;
     [SerializeField, Tooltip("How fast the player falls")]
     private float fallSpeed;

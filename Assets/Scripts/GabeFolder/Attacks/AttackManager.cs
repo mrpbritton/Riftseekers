@@ -12,6 +12,9 @@ public class AttackManager : Singleton<AttackManager>
 
     [Header("Player UI Canvases (DO NOT CHANGE)")]
     public List<PlayerUICanvas> puiCanvases;
+    
+    [Header("Animator used for the Character")]
+    public Animator character;
 
     private PInput pInput;
     private bool bIsMainPressed;
@@ -20,7 +23,7 @@ public class AttackManager : Singleton<AttackManager>
     private bool bIsMainAttacking; //is true when a main attack is happening
     private bool bIsAbilAttacking; //is true when a special ability is happening
     private bool bIsMoveAttacking; //is true when a movement ability is happening
-
+    
     public bool canAttack = true;
 
     //this dictionary is used to store which attackType each AttackScript is. This is so I don't have to make
@@ -41,10 +44,10 @@ public class AttackManager : Singleton<AttackManager>
         //SaveData.wipe(); //this is for debugging purposes, DO NOT HAVE THIS ON AT ALL TIMES
         pInput = new PInput();
         pInput.Enable();
-
         /*
          - gun and sword can't swing together
          - rocket could go at anytime
+         - dash could go at anytime
         */
 
         Inventory.loadInventory();
@@ -145,6 +148,7 @@ public class AttackManager : Singleton<AttackManager>
             yield return new WaitForSeconds(curAttack.GetCooldownTime());
             curAttack.ResetAttack();
         } while (bIsMainPressed);
+        //curAttack.Anim(character, true);
         bIsMainAttacking = false;
     }
 
@@ -158,6 +162,7 @@ public class AttackManager : Singleton<AttackManager>
             yield return new WaitForSeconds(curAttack.GetCooldownTime());
             curAttack.ResetAttack();
         } while (bIsAbilPressed);
+        //curAttack.Anim(character, true);
         bIsAbilAttacking = false;
     }
 
@@ -167,10 +172,11 @@ public class AttackManager : Singleton<AttackManager>
         {
             ActivatePUI(curAttack);
             curAttack.DoAttack();
-            //curAttack.Anim(character, false); //THIS IS THE ANIMATOR
+            curAttack.Anim(character, false); //THIS IS THE ANIMATOR
             yield return new WaitForSeconds(curAttack.GetCooldownTime());
             curAttack.ResetAttack();
         } while (bIsMovePressed);
+        curAttack.Anim(character, true);
         bIsMoveAttacking = false;
     }
 
@@ -188,7 +194,7 @@ public class AttackManager : Singleton<AttackManager>
     }
     private void SetMovePressed(bool newValue)
     {
-        bIsAbilPressed = newValue;
+        bIsMovePressed = newValue;
     }
 
     #endregion

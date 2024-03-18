@@ -7,7 +7,8 @@ public class SpriteManager : Singleton<SpriteManager>
     public Animator character;
     public CardinalDirection CachedDir { get; private set; }
 
-    public Vector3 CachedDirToVector()
+    #region Helper Functions
+    public Vector3 CachedDirToVector3()
     {
         switch (CachedDir.ToString())
         {
@@ -32,6 +33,56 @@ public class SpriteManager : Singleton<SpriteManager>
         }
 
     }
+
+    public CardinalDirection Vector3ToCardinal(Vector3 direction)
+    {
+        if (direction.x > 0)
+        {
+            if (direction.z < 0) // SOUTHEAST
+            {
+                return CardinalDirection.southEast;
+            }
+            else if (direction.z == 0) // EAST
+            {
+                return CardinalDirection.east;
+            }
+            else // direction.z == 1 *** NORTHEAST
+            {
+                return CardinalDirection.northEast;
+            }
+        }
+        else if (direction.x < 0)
+        {
+            if (direction.z < 0) // SOUTHWEST
+            {
+                return CardinalDirection.southWest;
+            }
+            else if (direction.z == 0) // WEST
+            {
+                return CardinalDirection.west;
+            }
+            else // direction.z == 1 *** NORTHWEST
+            {
+                return CardinalDirection.northWest;
+            }
+        }
+        else //direction.x == 0
+        {
+            if (direction.z < 0) // SOUTH
+            {
+                return CardinalDirection.south;
+            }
+            else if (direction.z == 0) // NO INPUT
+            {
+                return CardinalDirection.east;
+            }
+            else // direction.z == 1 *** NORTH
+            {
+                return CardinalDirection.north;
+            }
+        }
+    }
+    #endregion
 
     #region Sprites
 
@@ -182,33 +233,68 @@ public class SpriteManager : Singleton<SpriteManager>
 
     public void UpdateSpriteToIdle()
     {
-        switch (CachedDir.ToString())
+        switch (CachedDir)
         {
-            case "north":
+            case CardinalDirection.north:
                 character.SetTrigger("WalkNStop");
                 break;
-            case "northEast":
+            case CardinalDirection.northEast:
                 character.SetTrigger("WalkNEStop");
                 break;
-            case "northWest":
+            case CardinalDirection.northWest:
                 character.SetTrigger("WalkNWStop");
                 break;
-            case "south":
+            case CardinalDirection.south:
                 character.SetTrigger("WalkSStop");
                 break;
-            case "southEast":
+            case CardinalDirection.southEast:
                 character.SetTrigger("WalkSEStop");
                 break;
-            case "southWest":
+            case CardinalDirection.southWest:
                 character.SetTrigger("WalkSWStop");
                 break;
-            case "east":
+            case CardinalDirection.east:
                 character.SetTrigger("WalkEStop");
                 break;
-            case "west":
+            case CardinalDirection.west:
                 character.SetTrigger("WalkWStop");
                 break;
             default:
+                character.SetTrigger("WalkEStop");
+                break;
+        }
+    }
+
+    public void UpdateSpriteToIdle(Vector3 direction)
+    {
+        switch (Vector3ToCardinal(direction))
+        {
+            case CardinalDirection.north:
+                character.SetTrigger("WalkNStop");
+                break;
+            case CardinalDirection.northEast:
+                character.SetTrigger("WalkNEStop");
+                break;
+            case CardinalDirection.northWest:
+                character.SetTrigger("WalkNWStop");
+                break;
+            case CardinalDirection.south:
+                character.SetTrigger("WalkSStop");
+                break;
+            case CardinalDirection.southEast:
+                character.SetTrigger("WalkSEStop");
+                break;
+            case CardinalDirection.southWest:
+                character.SetTrigger("WalkSWStop");
+                break;
+            case CardinalDirection.east:
+                character.SetTrigger("WalkEStop");
+                break;
+            case CardinalDirection.west:
+                character.SetTrigger("WalkWStop");
+                break;
+            default:
+                character.SetTrigger("WalkEStop");
                 break;
         }
     }
