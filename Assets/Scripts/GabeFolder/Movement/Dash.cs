@@ -10,7 +10,7 @@ public class Dash : Attack
     public override AttackScript AScript => AttackScript.Dash;
     public override AttackType AType => AttackType.Movement;
     protected override float SetDamage => 0f;
-    protected override float SetCooldownTime => 3f;
+    protected override float SetCooldownTime => 1f;
     /*********************************/
     
     [HideInInspector]
