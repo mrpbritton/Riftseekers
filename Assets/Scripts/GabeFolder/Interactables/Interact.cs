@@ -32,6 +32,8 @@ public class Interact : MonoBehaviour
             helperUI.addInteractable(transform, new InteractInfo(it.item.title, InteractInfo.interactType.Item));
         else if(TryGetComponent<AddAugment_GA>(out var aa))
             helperUI.addInteractable(transform, new InteractInfo(aa.refType.ToString(), InteractInfo.interactType.Augment));
+        else if(TryGetComponent<HealthPack_GA>(out var hp))
+            helperUI.addInteractable(transform, new InteractInfo("Health Pack", InteractInfo.interactType.Health));
 
         if (player == null)
         {
