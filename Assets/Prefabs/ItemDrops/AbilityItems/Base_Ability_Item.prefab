@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 7813278822047084696}
   - component: {fileID: 336714753592710647}
   - component: {fileID: 4862014616364019807}
-  - component: {fileID: 8359478316189641550}
   m_Layer: 13
   m_Name: Base_Ability_Item
   m_TagString: Untagged
@@ -81,6 +80,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
+  item: {fileID: 11400000, guid: 5840d634ed5e9a14fa5c3d96ae708b85, type: 2}
   ability: 3
   forceStrength: 4
 --- !u!114 &336714753592710647
@@ -123,20 +123,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &8359478316189641550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 237051754313004310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5874faf00f2ce9448197e7d49d512de, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
-  item: {fileID: 11400000, guid: 5840d634ed5e9a14fa5c3d96ae708b85, type: 2}
 --- !u!1 &950214892605299165
 GameObject:
   m_ObjectHideFlags: 0

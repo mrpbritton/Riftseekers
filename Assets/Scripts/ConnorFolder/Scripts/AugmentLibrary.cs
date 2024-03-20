@@ -6,7 +6,6 @@ public class AugmentLibrary : Singleton<AugmentLibrary>
 {
     [SerializeField] List<ConItem> items = new List<ConItem>();
     [SerializeField] List<Augment_SO> augments = new List<Augment_SO>();
-    
     public GameObject itemDrop;
 
     /// <summary>
@@ -37,6 +36,7 @@ public class AugmentLibrary : Singleton<AugmentLibrary>
             return;
         }
 
+        itemScript.item = items[index];
         itemScript.ability = aScript;
         sprite.sprite = items[index].image;
     }

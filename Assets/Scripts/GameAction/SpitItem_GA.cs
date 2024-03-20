@@ -5,6 +5,8 @@ using UnityEngine;
 [Tooltip("Spits the item currently applied")]
 public class SpitItem_GA : GameAction
 {
+    [Tooltip("ConItem that provides information to be updated")]
+    public ConItem item;
     [Tooltip("Script that would be added")]
     public AttackScript ability;
     [SerializeField, Tooltip("Strength of the force")]
@@ -12,14 +14,10 @@ public class SpitItem_GA : GameAction
 
     public override void Action()
     {
-        /*
-         read what attackType is being picked up
-         get current attackType
-         set itemDrop to the attackType that corresponds with it
-         give a velocity of player.forward
-        */
-
         Transform player = AttackManager.I.transform;
+        //Removes item saving function ---------
+        Inventory.removeItem(Inventory.getItemIndex(item));
+        
         //The line below is messy, so let me explain it.
         #region Explanation
         /* This will set the Augment Library's item drop to what is currently applied.
@@ -39,12 +37,20 @@ public class SpitItem_GA : GameAction
          */
         #endregion
         AugmentLibrary.I.SetItemDrop(AttackManager.I.GetAttackScript(AttackManager.I.GetAttackType(ability)));
+        
+        //Prepating the item --------
         GameObject go = Instantiate(AugmentLibrary.I.itemDrop, player.position, Quaternion.identity);
         go.SetActive(true);
         Vector3 spitDir = (transform.position - player.position);
         spitDir = new Vector3(spitDir.x, 0, spitDir.z);
+        
+        //Spitting item ---------
         go.GetComponent<Rigidbody>().AddForce(spitDir * forceStrength, ForceMode.Impulse);
         AttackManager.I.ReplaceAttack(ability);
+        
+        //Saving item ---------
+        Inventory.addItem(item);
+        Inventory.saveInventory();
     }
 
     public override void DeAction()
