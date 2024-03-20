@@ -28,8 +28,8 @@ public class Interact : MonoBehaviour
         helperUI = FindObjectOfType<InteractUI>();
 
         //  gets info
-        if(TryGetComponent<AddItem_GA>(out var it))
-            helperUI.addInteractable(transform, new InteractInfo(it.item.title, InteractInfo.interactType.Item));
+        if(TryGetComponent<SpitItem_GA>(out var it))
+            helperUI.addInteractable(transform, new InteractInfo(it.ability.ToString(), InteractInfo.interactType.Item));
         else if(TryGetComponent<AddAugment_GA>(out var aa))
             helperUI.addInteractable(transform, new InteractInfo(aa.refType.ToString(), InteractInfo.interactType.Augment));
         else if(TryGetComponent<HealthPack_GA>(out var hp))
