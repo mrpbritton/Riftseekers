@@ -17,7 +17,10 @@ public class SpitItem_GA : GameAction
         Transform player = AttackManager.I.transform;
         //Removes item saving function ---------
         Inventory.loadInventory();
-        Inventory.removeItem(Inventory.getItemIndex(item));
+        foreach(var i in Inventory.getItems(AugmentLibrary.I)) {
+            if(i.overrideAbil == item.overrideAbil)
+                Inventory.removeItem(Inventory.getItemIndex(i));
+        }
         
         //The line below is messy, so let me explain it.
         #region Explanation

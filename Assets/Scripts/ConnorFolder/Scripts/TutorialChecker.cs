@@ -166,13 +166,14 @@ public class TutorialChecker : MonoBehaviour {
         var it = FindObjectOfType<AugmentLibrary>();
         while(true) {
             yield return new WaitForEndOfFrame();
+            /*
             bool hasShotty = Inventory.getActiveItem(0, it) != null ||
                 Inventory.getActiveItem(1, it) != null ||
                 Inventory.getActiveItem(2, it) != null;
             if(hasShotty) {
                 tryRotate(teachTypes.Equip);
                 break;
-            }
+            }*/
         }
     }
 

@@ -53,7 +53,8 @@ public class AttackManager : Singleton<AttackManager>
         Inventory.loadInventory();
         UpdateAttack();
         //Inventory.addItem(AugmentLibrary.I.FindItem(meleeAttack.AScript));
-        Inventory.addItem(AugmentLibrary.I.FindItem(rangedAttack.AScript));
+        if(Inventory.getItems(AugmentLibrary.I).Count == 0)
+            Inventory.addItem(AugmentLibrary.I.FindItem(rangedAttack.AScript));
         //Inventory.addItem(AugmentLibrary.I.FindItem(specialAttack.AScript));
         //Inventory.addItem(AugmentLibrary.I.FindItem(movementAttack.AScript));
         Inventory.saveInventory();
