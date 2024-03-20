@@ -52,7 +52,11 @@ public class AttackManager : Singleton<AttackManager>
 
         Inventory.loadInventory();
         UpdateAttack();
-
+        //Inventory.addItem(AugmentLibrary.I.FindItem(meleeAttack.AScript));
+        Inventory.addItem(AugmentLibrary.I.FindItem(rangedAttack.AScript));
+        //Inventory.addItem(AugmentLibrary.I.FindItem(specialAttack.AScript));
+        //Inventory.addItem(AugmentLibrary.I.FindItem(movementAttack.AScript));
+        Inventory.saveInventory();
         #region Attack Subscriptions
 
         if (FindObjectOfType<TutorialChecker>() == null)

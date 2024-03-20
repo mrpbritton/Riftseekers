@@ -12,7 +12,7 @@ public class AugmentLibrary : Singleton<AugmentLibrary>
     /// Finds an item in the list. Yes, I know this is inefficient. O(n) time complexity.
     /// </summary>
     /// <returns>Index of item if found, -1 if not found</returns>
-    private int FindItem(AttackScript aScript)
+    public int FindIndex(AttackScript aScript)
     {
         for(int i = 0; i < items.Count; i++)
         {
@@ -24,11 +24,23 @@ public class AugmentLibrary : Singleton<AugmentLibrary>
         return -1;
     }
 
+    public ConItem FindItem(AttackScript aScript)
+    {
+        for (int i = 0; i < items.Count; i++)
+        {
+            if (items[i].attackScript == aScript)
+            {
+                return items[i];
+            }
+        }
+        return null;
+    }
+
     public void SetItemDrop(AttackScript aScript)
     {
         var itemScript = itemDrop.GetComponent<SpitItem_GA>();
         var sprite = itemDrop.GetComponentInChildren<SpriteRenderer>();
-        int index = FindItem(aScript);
+        int index = FindIndex(aScript);
 
         if(index < 0)
         {

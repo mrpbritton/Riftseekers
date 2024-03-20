@@ -16,6 +16,7 @@ public class SpitItem_GA : GameAction
     {
         Transform player = AttackManager.I.transform;
         //Removes item saving function ---------
+        Inventory.loadInventory();
         Inventory.removeItem(Inventory.getItemIndex(item));
         
         //The line below is messy, so let me explain it.

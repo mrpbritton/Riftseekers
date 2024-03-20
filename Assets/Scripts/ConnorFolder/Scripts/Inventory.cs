@@ -69,6 +69,7 @@ public static class Inventory {
     }
 
     public static void addItem(ConItem i) {
+        Debug.Log(i);
         itemBag.items.Add(new ItemSaveData(i));
 
         saveInventory();
