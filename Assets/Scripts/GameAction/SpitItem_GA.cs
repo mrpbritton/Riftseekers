@@ -12,6 +12,11 @@ public class SpitItem_GA : GameAction
     [SerializeField, Tooltip("Strength of the force")]
     private float forceStrength;
 
+    private void Start() {
+        GetComponentInChildren<SpriteRenderer>().sprite = AugmentLibrary.I.FindItem(ability).image;
+        transform.GetChild(0).LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward, Camera.main.transform.rotation * Vector3.up);
+    }
+
     public override void Action()
     {
         Transform player = AttackManager.I.transform;
