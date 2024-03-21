@@ -24,7 +24,7 @@ public class PlayerUICanvas : MonoBehaviour {
     }
     public void enemyBar(float total, float current)
     {
-        Debug.Log($"{total} {current}");
+        //Debug.Log($"{total} {current}");
         slider.maxValue = total;
         slider.value = current;
     }

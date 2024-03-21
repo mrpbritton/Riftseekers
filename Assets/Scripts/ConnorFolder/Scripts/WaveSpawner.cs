@@ -10,7 +10,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
     [SerializeField] float timeBtwWaves = 10f;
     [Tooltip("How long it takes for an enemy to spawn")]
     [SerializeField] float minSpawnTime = .15f, maxSpawntime = .35f;
-    [SerializeField] float enemyNumberInc = 1.1f;
+    [SerializeField] float enemyNumberInc = 1.25f;
     [SerializeField] float spawnTimeInc = .9f;
     bool waveDone = false;
 
@@ -22,6 +22,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
     EnemyController ec;
     Transform playerTrans;
 
+    public static System.Action WaveComplete = delegate { };
     private void Start() {
         EnemyController.levelComplete += triggerEndOfWave;
         ec = FindObjectOfType<EnemyController>();
@@ -45,10 +46,12 @@ public class WaveSpawner : Singleton<WaveSpawner> {
             }
             while(!waveDone)
                 yield return new WaitForSeconds(1f);
-            monstersPerWave *= monstersPerWave;
+            
+            monstersPerWave = Mathf.CeilToInt(monstersPerWave * enemyNumberInc);
             minSpawnTime *= spawnTimeInc;
             maxSpawntime *= spawnTimeInc;
             yield return new WaitForSeconds(timeBtwWaves);    //  TIME BTW WAVES
+            WaveComplete();
         }
     }
 
