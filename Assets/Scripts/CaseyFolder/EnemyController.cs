@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        enemies.Clear();
         enemies.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
         total = enemies.Count;
     }
