@@ -55,7 +55,7 @@ public static class Inventory {
         return null;
     }
     public static ConItem getItem(ConItem i, AugmentLibrary il) {
-        foreach(var j in il.getItems()) {
+        foreach(var j in il.getAllItems()) {
             if(j.title == i.title)
                 return j;
         }
@@ -118,7 +118,7 @@ public class ItemSaveData {
         overrideAbil = i.overrideAbil;
     }
     public ConItem toItem(AugmentLibrary il) {
-        foreach(var i in il.getItems()) {
+        foreach(var i in il.getAllItems()) {
             if(i.title == title)
                 return i;
         }

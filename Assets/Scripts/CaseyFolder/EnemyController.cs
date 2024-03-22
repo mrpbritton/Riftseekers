@@ -67,9 +67,8 @@ public class EnemyController : MonoBehaviour
                             Debug.Log("rare augment");
                             break;
                     }
-                    int a = UnityEngine.Random.Range(0, AugmentLibrary.I.getAugments().Count);
                     GameObject aug = Instantiate(augmentItem);
-                    aug.GetComponent<AddAugment_GA>().refType = AugmentLibrary.I.getAugment(a).type;
+                    aug.GetComponent<AddAugment_GA>().refType = AugmentLibrary.I.getRandAugment().type;
                     aug.transform.position = deadEnemy.transform.position;
                     
                     break;

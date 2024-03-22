@@ -143,8 +143,8 @@ public class ShopData {
 
     public ShopData() {
         int count = Random.Range(3, 15);
-        int itCount = AugmentLibrary.I.getItems().Count;
+        int itCount = AugmentLibrary.I.getItemCount();
         for(int i = 0; i < count; i++)
-            items.Add(AugmentLibrary.I.getItem(Random.Range(0, itCount)));
+            items.Add(AugmentLibrary.I.getRandItem());
     }
 }
