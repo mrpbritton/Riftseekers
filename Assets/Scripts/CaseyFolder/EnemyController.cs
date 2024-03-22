@@ -13,8 +13,6 @@ public class EnemyController : MonoBehaviour
     public float difficulty = 1;
     [SerializeField]
     private GameObject healthItem, augmentItem, loreItem, abilityItem;
-    [SerializeField]
-    PlayerUICanvas enemySlider;
     public float total;
     [SerializeField]
     private int baseMoney, moneyVariance;
@@ -28,13 +26,8 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        enemySlider = FindObjectOfType<PlayerUICanvas>();
-        foreach(var i in FindObjectsOfType<PlayerUICanvas>())
-            if(i.transform.position.y > enemySlider.transform.position.y)
-                enemySlider = i;
         enemies.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
         total = enemies.Count;
-        enemySlider.updateSlider(total, enemies.Count);
     }
 
     private void OnEnable()
@@ -106,7 +99,6 @@ public class EnemyController : MonoBehaviour
             levelComplete();
         }
 
-        enemySlider.enemyBar(total, enemies.Count);
         Inventory.changeMoney(UnityEngine.Random.Range(baseMoney-moneyVariance, baseMoney+moneyVariance));
     }
 }

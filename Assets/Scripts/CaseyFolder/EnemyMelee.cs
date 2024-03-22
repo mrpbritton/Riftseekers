@@ -17,6 +17,7 @@ public class EnemyMelee : MonoBehaviour
 
     private void Start()
     {
+        Inventory.clear();
         Player = GameObject.FindGameObjectWithTag("Player");
         GetComponent<EnemyMovement>().coverTime = coverTime;
         GetComponent<EnemyMovement>().stopDistance = agent.stoppingDistance;
@@ -53,6 +54,7 @@ public class EnemyMelee : MonoBehaviour
         bAttacking = false;
         GetComponent<EnemyMovement>().bAttacking = false;
         yield return new WaitForSeconds(hitCooldown);
+        GetComponent<EnemyMovement>().target = Player;
         bAttackCooldown = false;
     }
 
@@ -74,6 +76,7 @@ public class EnemyMelee : MonoBehaviour
         bAttacking = false;
         GetComponent<EnemyMovement>().bAttacking = false;
         yield return new WaitForSeconds(hitCooldown);
+        GetComponent<EnemyMovement>().target = Player;
         bAttackCooldown = false;
     }
 
