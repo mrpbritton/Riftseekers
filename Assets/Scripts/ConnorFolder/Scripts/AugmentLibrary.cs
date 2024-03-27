@@ -16,6 +16,8 @@ public class AugmentLibrary : Singleton<AugmentLibrary> {
     [SerializeField] List<Augment_SO> fabulousAugments = new List<Augment_SO>();
     public GameObject itemDrop;
 
+    [SerializeField] Material mundaneMat, abnormalMat, remarkableMat, fabulousMat;
+
 
     public enum rarity {
         None, Mundane, Abnormal, Remarkable, Fabulous
@@ -119,6 +121,22 @@ public class AugmentLibrary : Singleton<AugmentLibrary> {
     }
     public int getItemCount() {
         return mundaneItems.Count + abnormalItems.Count + remarkableItems.Count + fabulousItems.Count;
+    }
+
+    public rarity getItemRarity(AttackScript aScript) {
+        foreach(var i in mundaneItems) 
+            if(i.attackScript == aScript) return rarity.Mundane;
+        foreach(var i in abnormalItems)
+            if(i.attackScript == aScript) return rarity.Abnormal;
+        foreach(var i in remarkableItems) 
+            if(i.attackScript == aScript) return rarity.Remarkable;
+        foreach(var i in fabulousItems)
+            if(i.attackScript == aScript) return rarity.Fabulous;
+        return rarity.None;
+    }
+    public Material getItemRarityMat(AttackScript aScript) {
+        var rar = getItemRarity(aScript);
+        return rar == rarity.Mundane ? mundaneMat : rar == rarity.Abnormal ? abnormalMat : rar == rarity.Remarkable ? remarkableMat : rar == rarity.Fabulous ? fabulousMat : null;
     }
 
     public List<ConItem> getAllItems() {

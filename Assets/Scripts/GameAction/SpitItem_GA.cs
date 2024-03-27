@@ -14,6 +14,7 @@ public class SpitItem_GA : GameAction
 
     private void Start() {
         GetComponentInChildren<SpriteRenderer>().sprite = AugmentLibrary.I.FindItem(ability).image;
+        GetComponentInChildren<SpriteRenderer>().material = AugmentLibrary.I.getItemRarityMat(ability);
         transform.GetChild(0).LookAt(transform.position + Camera.main.transform.rotation * Vector3.forward, Camera.main.transform.rotation * Vector3.up);
     }
 

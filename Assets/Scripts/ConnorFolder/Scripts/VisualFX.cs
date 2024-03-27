@@ -64,13 +64,13 @@ public class VisualFX : MonoBehaviour {
     }
 
     IEnumerator corpseClear(Transform corpse) {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(2f);
         corpse.DOScale(0f, .25f);
         Destroy(corpse.gameObject, .26f);
     }
 
     IEnumerator bloodPoolClear(Transform b) {
-        yield return new WaitForSeconds(10.5f);
+        yield return new WaitForSeconds(2.5f);
         var dp = b.GetComponent<DecalProjector>();
         float curSize = dp.size.x;
         float targetSize = Random.Range(minPoolSize, maxPoolSize);
