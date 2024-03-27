@@ -143,6 +143,7 @@ public class AttackManager : Singleton<AttackManager>
         }
     }
 
+    #region Attack Waiters
     IEnumerator MainAttackWaiter(Attack curAttack)
     {
         do
@@ -184,11 +185,8 @@ public class AttackManager : Singleton<AttackManager>
         curAttack.Anim(character, true);
         bIsMoveAttacking = false;
     }
-
-    /// <summary>
-    /// Sets bIsPressed to be either true or false depending on the parameters.
-    /// </summary>
-    /// <param name="newValue">value that bIsPressed will be set to</param>
+    #endregion
+    
     private void SetMainPressed(bool newValue)
     {
         bIsMainPressed = newValue;
