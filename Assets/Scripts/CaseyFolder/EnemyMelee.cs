@@ -68,7 +68,7 @@ public class EnemyMelee : MonoBehaviour
         bDashAttack = true;
         meleeHit.GetComponent<Collider>().enabled = true;
 
-        yield return new WaitForSeconds(0.15f);
+        yield return new WaitForSeconds(0.2f);
         bDashAttack = false;
         meleeHit.GetComponent<Collider>().enabled = false;
         yield return new WaitForSeconds(1);

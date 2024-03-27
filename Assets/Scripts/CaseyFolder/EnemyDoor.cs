@@ -42,8 +42,8 @@ public class EnemyDoor : MonoBehaviour
             {
                 if (timeElapsed < doorSpeed)
                 {
-                    section1.position = new Vector3(Mathf.Lerp(endpos1, startpos1, timeElapsed / doorSpeed), 0, 0);
-                    section2.position = new Vector3(Mathf.Lerp(endpos2, startpos2, timeElapsed / doorSpeed), 0, 0);
+                    section1.localPosition = new Vector3(Mathf.Lerp(endpos1, startpos1, timeElapsed / doorSpeed), 0, 0);
+                    section2.localPosition = new Vector3(Mathf.Lerp(endpos2, startpos2, timeElapsed / doorSpeed), 0, 0);
                     timeElapsed += Time.deltaTime;
                 }
                 else
@@ -57,8 +57,8 @@ public class EnemyDoor : MonoBehaviour
             {
                 if (timeElapsed < doorSpeed)
                 {
-                    section1.position = new Vector3(startpos1 + Mathf.Lerp(startpos1, endpos1, timeElapsed / doorSpeed), 0, 0);
-                    section2.position = new Vector3(startpos2 + Mathf.Lerp(startpos2, endpos2, timeElapsed / doorSpeed), 0, 0);
+                    section1.localPosition = new Vector3(startpos1 + Mathf.Lerp(startpos1, endpos1, timeElapsed / doorSpeed), 0, 0);
+                    section2.localPosition = new Vector3(startpos2 + Mathf.Lerp(startpos2, endpos2, timeElapsed / doorSpeed), 0, 0);
                     timeElapsed += Time.deltaTime;
                 }
                 else
