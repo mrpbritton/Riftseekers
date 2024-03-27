@@ -40,6 +40,18 @@ public class EnemyDoor : MonoBehaviour
         {
             if(bOpen)
             {
+                if (timeElapsed < doorSpeed)
+                {
+                    section1.position = new Vector3(Mathf.Lerp(endpos1, startpos1, timeElapsed / doorSpeed), 0, 0);
+                    section2.position = new Vector3(Mathf.Lerp(endpos2, startpos2, timeElapsed / doorSpeed), 0, 0);
+                    timeElapsed += Time.deltaTime;
+                }
+                else
+                {
+                    bMoving = false;
+                    bOpen = false;
+                    timeElapsed = 0;
+                }
             }
             else
             {
@@ -53,6 +65,7 @@ public class EnemyDoor : MonoBehaviour
                 {
                     bMoving = false;
                     bOpen = true;
+                    timeElapsed = 0;
                 }
             }
         }
