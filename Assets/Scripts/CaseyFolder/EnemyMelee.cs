@@ -48,7 +48,7 @@ public class EnemyMelee : MonoBehaviour
         agent.speed = 0;
         yield return new WaitForSeconds(hitCooldown);
         meleeHit.GetComponent<Collider>().enabled = true;
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.15f);
         meleeHit.GetComponent<Collider>().enabled = false;
         agent.speed = GetComponent<EnemyMovement>().enemySpeed;
         bAttacking = false;
@@ -68,7 +68,7 @@ public class EnemyMelee : MonoBehaviour
         bDashAttack = true;
         meleeHit.GetComponent<Collider>().enabled = true;
 
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.15f);
         bDashAttack = false;
         meleeHit.GetComponent<Collider>().enabled = false;
         yield return new WaitForSeconds(1);
