@@ -96,7 +96,7 @@ public class TutorialChecker : MonoBehaviour {
             respawnEnemies(curTeaching < teachTypes.ClearFirstEnemies ? 1 : 3);
         }
         curTeaching++;
-        AttackManager.I.activateSubscription(curTeaching);   //  activate next ability
+        //AttackManager.I.activateSubscription(curTeaching);   //  activate next ability
 
 
         if((int)curTeaching - 1 < texts.Count) {

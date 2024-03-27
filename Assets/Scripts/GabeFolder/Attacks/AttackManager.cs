@@ -17,14 +17,10 @@ public class AttackManager : Singleton<AttackManager>
     public Animator character;
 
     private PInput pInput;
-    private bool bIsMainPressed;
-    private bool bIsAbilPressed;
-    private bool bIsMovePressed;
-    private bool bIsMainAttacking; //is true when a main attack is happening
-    private bool bIsAbilAttacking; //is true when a special ability is happening
-    private bool bIsMoveAttacking; //is true when a movement ability is happening
+    Coroutine bMainAttacker, bSecondaryAttacker, bAbilAttacker, bMoveAttacker;
     
     public bool canAttack = true;
+    bool pauseSecondaryMain = false;
 
     //this dictionary is used to store which attackType each AttackScript is. This is so I don't have to make
     //  a massive switch statement for every single attack script in a function down below.
@@ -70,13 +66,13 @@ public class AttackManager : Singleton<AttackManager>
             #endregion
 
             #region Canceled Subscriptions
-            pInput.Player.BasicAttack.canceled += ctx => SetMainPressed(false);
-            pInput.Player.SecondAttack.canceled += ctx => SetMainPressed(false);
-            pInput.Player.Ability1.canceled += ctx => SetAbilPressed(false);
-            pInput.Player.Ability2.canceled += ctx => SetAbilPressed(false);
-            pInput.Player.Ability3.canceled += ctx => SetAbilPressed(false);
-            pInput.Player.Dash.canceled += ctx => SetMovePressed(false);
-            pInput.Player.Ult.canceled += ctx => SetAbilPressed(false);
+            pInput.Player.BasicAttack.canceled += ctx => { if(bMainAttacker != null) StopCoroutine(bMainAttacker); bMainAttacker = null; };
+            pInput.Player.SecondAttack.canceled += ctx => { if(bSecondaryAttacker != null) StopCoroutine(bSecondaryAttacker); bSecondaryAttacker = null; };
+            pInput.Player.Ability1.canceled += ctx => { if(bAbilAttacker != null) StopCoroutine(bAbilAttacker); bAbilAttacker = null; };
+            pInput.Player.Ability2.canceled += ctx => { if(bAbilAttacker != null) StopCoroutine(bAbilAttacker); bAbilAttacker = null; };
+            pInput.Player.Ability3.canceled += ctx => { if(bAbilAttacker != null) StopCoroutine(bAbilAttacker); bAbilAttacker = null; };
+            pInput.Player.Dash.canceled += ctx => { bMoveAttacker = null; };    //  this one's different
+            pInput.Player.Ult.canceled += ctx => { if(bAbilAttacker != null) StopCoroutine(bAbilAttacker); bAbilAttacker = null; };
             #endregion
         }
         //  subs that the tutorial doesn't handle so just subscribe on start
@@ -101,22 +97,20 @@ public class AttackManager : Singleton<AttackManager>
     private void PerformAttack(Attack attack, Attack.AttackType aType)
     {
         if(!canAttack) return;
-        if((aType == Attack.AttackType.Melee || aType == Attack.AttackType.Ranged) && !bIsMainAttacking)
+        if(aType == Attack.AttackType.Melee && bMainAttacker == null)
         {
-            SetMainPressed(true);
-            bIsMainAttacking = true;
-            StartCoroutine( MainAttackWaiter(attack) );
+            bMainAttacker = StartCoroutine( MainAttackWaiter(attack, aType == Attack.AttackType.Ranged) );
         }
-        else if (aType == Attack.AttackType.Special && !bIsAbilAttacking)
+        if(aType == Attack.AttackType.Ranged && bSecondaryAttacker == null)
         {
-            SetAbilPressed(true);
-            bIsAbilAttacking = true;
+            bSecondaryAttacker = StartCoroutine( MainAttackWaiter(attack, aType == Attack.AttackType.Ranged) );
+        }
+        else if (aType == Attack.AttackType.Special && bAbilAttacker == null)
+        {
             StartCoroutine( SpecialAttackWaiter(attack) );
         }
-        else if(aType == Attack.AttackType.Movement && !bIsMoveAttacking)
+        else if(aType == Attack.AttackType.Movement && bMoveAttacker == null)
         {
-            SetMovePressed(true);
-            bIsMoveAttacking = true;
             StartCoroutine( MovementAttackWaiter(attack) );
         }
     }
@@ -144,18 +138,18 @@ public class AttackManager : Singleton<AttackManager>
     }
 
     #region Attack Waiters
-    IEnumerator MainAttackWaiter(Attack curAttack)
+    IEnumerator MainAttackWaiter(Attack curAttack, bool secondary)
     {
         do
         {
+            while(secondary && bMainAttacker != null)
+                yield return new WaitForFixedUpdate();
             ActivatePUI(curAttack);
             curAttack.DoAttack();
             //curAttack.Anim(character, false); //THIS IS THE ANIMATOR
             yield return new WaitForSeconds(curAttack.GetCooldownTime());
             curAttack.ResetAttack();
-        } while (bIsMainPressed);
-        //curAttack.Anim(character, true);
-        bIsMainAttacking = false;
+        } while (true);
     }
 
     IEnumerator SpecialAttackWaiter(Attack curAttack)
@@ -167,9 +161,7 @@ public class AttackManager : Singleton<AttackManager>
             //curAttack.Anim(character, false); //THIS IS THE ANIMATOR
             yield return new WaitForSeconds(curAttack.GetCooldownTime());
             curAttack.ResetAttack();
-        } while (bIsAbilPressed);
-        //curAttack.Anim(character, true);
-        bIsAbilAttacking = false;
+        } while (true);
     }
 
     IEnumerator MovementAttackWaiter(Attack curAttack)
@@ -181,15 +173,21 @@ public class AttackManager : Singleton<AttackManager>
             curAttack.Anim(character, false); //THIS IS THE ANIMATOR
             yield return new WaitForSeconds(curAttack.GetCooldownTime());
             curAttack.ResetAttack();
-        } while (bIsMovePressed);
+        } while (bMoveAttacker != null);
         curAttack.Anim(character, true);
-        bIsMoveAttacking = false;
     }
     #endregion
     
-    private void SetMainPressed(bool newValue)
+    /*
+    private void SetMainMainPressed(bool newValue)
     {
-        bIsMainPressed = newValue;
+
+        bIsMainPressed = newValue || (!secondary ? bIsMainSecondaryPressed : bIsMainMainPressed);
+        if(pauseSecondaryMain && !newValue && !secondary)
+            pauseSecondaryMain = false;
+    }
+    private void SetMainSecondaryPressed(bool b) {
+
     }
     private void SetAbilPressed(bool newValue)
     {
@@ -198,7 +196,7 @@ public class AttackManager : Singleton<AttackManager>
     private void SetMovePressed(bool newValue)
     {
         bIsMovePressed = newValue;
-    }
+    }*/
 
     #endregion
 
@@ -325,28 +323,6 @@ public class AttackManager : Singleton<AttackManager>
                 break;
             default:
                 Debug.LogError("Attack could not be replaced.");
-                break;
-        }
-    }
-    #endregion
-
-    #region Tutorial-Specific Subscriptions
-    //  function for Connor's tutorial
-    public void activateSubscription(TutorialChecker.teachTypes type)
-    {
-        switch (type)
-        {
-            case TutorialChecker.teachTypes.BasicAtt:
-                pInput.Player.BasicAttack.started += ctx => PerformAttack(meleeAttack, Attack.AttackType.Melee);
-                pInput.Player.BasicAttack.canceled += ctx => SetMainPressed(false);
-                break;
-            case TutorialChecker.teachTypes.SecondAtt:
-                pInput.Player.SecondAttack.started += ctx => PerformAttack(rangedAttack, Attack.AttackType.Ranged);
-                pInput.Player.SecondAttack.canceled += ctx => SetMainPressed(false);
-                break;
-            case TutorialChecker.teachTypes.RocketAtt:
-                pInput.Player.Ability1.started += ctx => PerformAttack(specialAttack, Attack.AttackType.Special);
-                pInput.Player.Ability1.canceled += ctx => SetAbilPressed(false);
                 break;
         }
     }
