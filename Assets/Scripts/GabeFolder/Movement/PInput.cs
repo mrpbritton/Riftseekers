@@ -304,17 +304,6 @@ public partial class @PInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1af8c7d3-3801-49ae-867a-1463eb2b6c2d"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Dash"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""69e89164-4daf-4ea0-88bb-5e6bee99522d"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
@@ -338,7 +327,7 @@ public partial class @PInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""ce53efbf-d343-429e-92e5-dcf59392da55"",
-                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
