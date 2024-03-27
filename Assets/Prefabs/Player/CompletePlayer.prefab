@@ -681,6 +681,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1065124068231099649, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
+      propertyPath: sr
+      value: 
+      objectReference: {fileID: 6810409650387544832}
+    - target: {fileID: 1065124068231099649, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 2473559326970361746}
@@ -1324,6 +1329,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f980c797cf6d90a44945efd700cbcde1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!212 &6810409650387544832 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7141659815347595475, guid: 66562dc996ca2b5478f1b7f0a538878b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4440314752643908563}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7291086632770198049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6390623351485340146, guid: 66562dc996ca2b5478f1b7f0a538878b,
@@ -2212,7 +2223,7 @@ PrefabInstance:
         type: 3}
       propertyPath: fabulousItems.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 289ec14f24600b1438b4cf37dbb8df65,
+      objectReference: {fileID: 11400000, guid: 871986bd2237bb144a73f28eeb669774,
         type: 2}
     - target: {fileID: 1797408621559837982, guid: 1cd3fdeb5684a654d8cca1f875170217,
         type: 3}

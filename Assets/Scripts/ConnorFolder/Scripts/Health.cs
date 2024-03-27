@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,10 +12,14 @@ public class Health : MonoBehaviour
     public float MaxHealth => PlayerStats.MaxHealth;
     public float CurrentHealth => PlayerStats.Health;
 
+    [SerializeField] SpriteRenderer sr;
+
     string playerHealthTag = "PlayerHealth";
 
     [SerializeField, Tooltip("Health slider that will be used to represent health")]
     PlayerUICanvas healthSlider;
+
+    Coroutine invincWaiter = null;
 
     private void Start() 
     {
@@ -26,6 +31,9 @@ public class Health : MonoBehaviour
 
     //  use this when taking damage
     public void takeDamage(float dmg) {
+        if(invincWaiter != null) return;
+        invincWaiter = StartCoroutine(invincTimer(.5f));
+
         PlayerStats.UpdateHealth -= dmg;
 
         healthSlider.updateSlider(MaxHealth, CurrentHealth);
@@ -43,6 +51,14 @@ public class Health : MonoBehaviour
         AkSoundEngine.PostEvent("PLayer_Hit", gameObject);
 
 
+    }
+
+    IEnumerator invincTimer(float t) {
+        sr.color = new Color(1f, 0f, 0f, .5f);
+        sr.DOColor(Color.white, t);
+        yield return new WaitForSeconds(t);
+        sr.color = Color.white;
+        invincWaiter = null;
     }
 
     //  use this when healing
