@@ -72,6 +72,7 @@ public class AugmentLibrary : Singleton<AugmentLibrary> {
 
     public void SetItemDrop(AttackScript aScript) {
         var itemScript = itemDrop.GetComponent<SpitItem_GA>();
+        var itemUI = itemDrop.GetComponent<UpdatePUI_GA>();
         var sprite = itemDrop.GetComponentInChildren<SpriteRenderer>();
         var temp = FindItem(aScript);
 
@@ -82,6 +83,7 @@ public class AugmentLibrary : Singleton<AugmentLibrary> {
 
         itemScript.item = temp;
         itemScript.ability = aScript;
+        itemUI.item = temp;
         sprite.sprite = temp.image;
     }
 

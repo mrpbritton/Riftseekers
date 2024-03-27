@@ -421,7 +421,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aceab1c576a814d4384aeaf3746b30e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 65bab98f33b5235428878a7bc9f1eee7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -469,7 +469,7 @@ Transform:
   - {fileID: 1134619532179757097}
   - {fileID: 5701483791246596465}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4865779752117141236
 MonoBehaviour:
@@ -597,7 +597,7 @@ GameObject:
   - component: {fileID: 5274899750146712111}
   - component: {fileID: 3231828606563396027}
   m_Layer: 5
-  m_Name: SecondarySprite
+  m_Name: MovementSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -651,7 +651,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aceab1c576a814d4384aeaf3746b30e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9429cb3f5b6a8f94b84d700b34f7299c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -813,7 +813,7 @@ PrefabInstance:
     - target: {fileID: 6390623351485340146, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 25.77
       objectReference: {fileID: 0}
     - target: {fileID: 6390623351485340146, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
@@ -1669,6 +1669,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3461721611322056528, guid: 28cb8f400ceb08a4e912fceb063d32c1,
+        type: 3}
+      propertyPath: uiSprite
+      value: 
+      objectReference: {fileID: 2557838101878157393}
     - target: {fileID: 3505809488622290686, guid: 28cb8f400ceb08a4e912fceb063d32c1,
         type: 3}
       propertyPath: m_Name
@@ -1709,6 +1714,11 @@ PrefabInstance:
       propertyPath: m_Type
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6258664996244495286, guid: 28cb8f400ceb08a4e912fceb063d32c1,
+        type: 3}
+      propertyPath: uiSprite
+      value: 
+      objectReference: {fileID: 3231828606563396027}
     - target: {fileID: 6528462811420519414, guid: 28cb8f400ceb08a4e912fceb063d32c1,
         type: 3}
       propertyPath: m_Transition
@@ -1739,6 +1749,16 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 6763988101836844725, guid: 28cb8f400ceb08a4e912fceb063d32c1,
+        type: 3}
+      propertyPath: uiSprite
+      value: 
+      objectReference: {fileID: 3030460086904044219}
+    - target: {fileID: 6769795832704314338, guid: 28cb8f400ceb08a4e912fceb063d32c1,
+        type: 3}
+      propertyPath: uiSprite
+      value: 
+      objectReference: {fileID: 273922516599420556}
     - target: {fileID: 7063026098871960644, guid: 28cb8f400ceb08a4e912fceb063d32c1,
         type: 3}
       propertyPath: m_IsActive
@@ -1752,7 +1772,7 @@ PrefabInstance:
     - target: {fileID: 7472537985129921373, guid: 28cb8f400ceb08a4e912fceb063d32c1,
         type: 3}
       propertyPath: m_Name
-      value: DashIconFill
+      value: MovementFill
       objectReference: {fileID: 0}
     - target: {fileID: 7866538078253034918, guid: 28cb8f400ceb08a4e912fceb063d32c1,
         type: 3}
@@ -1962,7 +1982,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: aceab1c576a814d4384aeaf3746b30e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3b57324f010dad49abbc853a81924cd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

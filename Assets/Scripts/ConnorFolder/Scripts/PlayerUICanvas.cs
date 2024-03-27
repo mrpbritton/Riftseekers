@@ -6,7 +6,9 @@ using DG.Tweening;
 
 public class PlayerUICanvas : MonoBehaviour {
     [SerializeField, Tooltip("Slider this script accesses")]
-    Slider slider;
+    private Slider slider;
+    [SerializeField, Tooltip("Image associated with UI")]
+    private Image uiSprite;
 
     private void Start() {
         DOTween.Init();
@@ -27,5 +29,10 @@ public class PlayerUICanvas : MonoBehaviour {
         //Debug.Log($"{total} {current}");
         slider.maxValue = total;
         slider.value = current;
+    }
+
+    public void UpdateImage(Sprite sprite)
+    {
+        uiSprite.sprite = sprite;
     }
 }
