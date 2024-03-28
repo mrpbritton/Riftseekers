@@ -12,6 +12,7 @@ public class PauseUI : MonoBehaviour {
     bool shown = false;
 
     private void Start() {
+        Time.timeScale = 1.0f;
         pm = FindObjectOfType<PlayerMovement>();
         controls = new PInput();
         controls.Enable();
