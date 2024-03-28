@@ -18,4 +18,8 @@ public class outOfGameMenus : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         EventSystem.current.SetSelectedGameObject(startingButton.gameObject);
     }
+
+    public void restartWipeData() {
+        SaveData.wipe();
+    }
 }
