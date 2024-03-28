@@ -14,10 +14,10 @@ public class AttackManager : Singleton<AttackManager>
     public Animator character;
 
     private PInput pInput;
+    bool mainAttackCooled = true, secondaryAttackCooled = true, abilAttackCooled = true, moveAttackCooled = true;
     Coroutine bMainAttacker, bSecondaryAttacker, bAbilAttacker, bMoveAttacker;
     
     public bool canAttack = true;
-    bool pauseSecondaryMain = false;
 
     //this dictionary is used to store which attackType each AttackScript is. This is so I don't have to make
     //  a massive switch statement for every single attack script in a function down below.
@@ -63,13 +63,13 @@ public class AttackManager : Singleton<AttackManager>
             #endregion
 
             #region Canceled Subscriptions
-            pInput.Player.BasicAttack.canceled += ctx => { if(bMainAttacker != null) StopCoroutine(bMainAttacker); bMainAttacker = null; };
-            pInput.Player.SecondAttack.canceled += ctx => { if(bSecondaryAttacker != null) StopCoroutine(bSecondaryAttacker); bSecondaryAttacker = null; };
-            pInput.Player.Ability1.canceled += ctx => { if(bAbilAttacker != null) StopCoroutine(bAbilAttacker); bAbilAttacker = null; };
-            pInput.Player.Ability2.canceled += ctx => { if(bAbilAttacker != null) StopCoroutine(bAbilAttacker); bAbilAttacker = null; };
-            pInput.Player.Ability3.canceled += ctx => { if(bAbilAttacker != null) StopCoroutine(bAbilAttacker); bAbilAttacker = null; };
+            pInput.Player.BasicAttack.canceled += ctx => { bMainAttacker = null; };
+            pInput.Player.SecondAttack.canceled += ctx => { bSecondaryAttacker = null; };
+            pInput.Player.Ability1.canceled += ctx => { bAbilAttacker = null; };
+            pInput.Player.Ability2.canceled += ctx => { bAbilAttacker = null; };
+            pInput.Player.Ability3.canceled += ctx => { bAbilAttacker = null; };
             pInput.Player.Dash.canceled += ctx => { bMoveAttacker = null; };    //  this one's different
-            pInput.Player.Ult.canceled += ctx => { if(bAbilAttacker != null) StopCoroutine(bAbilAttacker); bAbilAttacker = null; };
+            pInput.Player.Ult.canceled += ctx => { bAbilAttacker = null; };
             #endregion
         }
         //  subs that the tutorial doesn't handle so just subscribe on start
@@ -94,21 +94,21 @@ public class AttackManager : Singleton<AttackManager>
     private void PerformAttack(Attack attack, Attack.AttackType aType)
     {
         if(!canAttack) return;
-        if(aType == Attack.AttackType.Melee && bMainAttacker == null)
+        if(aType == Attack.AttackType.Melee && bMainAttacker == null && mainAttackCooled)
         {
-            bMainAttacker = StartCoroutine( MainAttackWaiter(attack, aType == Attack.AttackType.Ranged) );
+            bMainAttacker = StartCoroutine( MainAttackWaiter(attack, false) );
         }
-        if(aType == Attack.AttackType.Ranged && bSecondaryAttacker == null)
+        if(aType == Attack.AttackType.Ranged && bSecondaryAttacker == null && secondaryAttackCooled)
         {
-            bSecondaryAttacker = StartCoroutine( MainAttackWaiter(attack, aType == Attack.AttackType.Ranged) );
+            bSecondaryAttacker = StartCoroutine( MainAttackWaiter(attack, true) );
         }
-        else if (aType == Attack.AttackType.Special && bAbilAttacker == null)
+        else if (aType == Attack.AttackType.Special && bAbilAttacker == null && abilAttackCooled)
         {
-            StartCoroutine( SpecialAttackWaiter(attack) );
+            bAbilAttacker = StartCoroutine( SpecialAttackWaiter(attack) );
         }
-        else if(aType == Attack.AttackType.Movement && bMoveAttacker == null)
+        else if(aType == Attack.AttackType.Movement && bMoveAttacker == null && moveAttackCooled)
         {
-            StartCoroutine( MovementAttackWaiter(attack) );
+            bMoveAttacker = StartCoroutine( MovementAttackWaiter(attack) );
         }
     }
 
@@ -119,34 +119,47 @@ public class AttackManager : Singleton<AttackManager>
         {
             while(secondary && bMainAttacker != null)
                 yield return new WaitForFixedUpdate();
-            UIManager.I.ActivatePUI(curAttack);
+            if(UIManager.I != null)
+                UIManager.I.ActivatePUI(curAttack);
             curAttack.DoAttack();
+            if(secondary)
+                secondaryAttackCooled = false;
+            else
+                mainAttackCooled = false;
             //curAttack.Anim(character, false); //THIS IS THE ANIMATOR
             yield return new WaitForSeconds(curAttack.GetCooldownTime());
             curAttack.ResetAttack();
-        } while (true);
+            if(secondary)
+                secondaryAttackCooled = true;
+            else
+                mainAttackCooled = true;
+        } while (secondary ? bSecondaryAttacker != null : bMainAttacker != null);
     }
 
     IEnumerator SpecialAttackWaiter(Attack curAttack)
     {
-        do
-        {
-            UIManager.I.ActivatePUI(curAttack);
+        do {
+            if(UIManager.I != null)
+                UIManager.I.ActivatePUI(curAttack);
             curAttack.DoAttack();
+            abilAttackCooled = false;
             //curAttack.Anim(character, false); //THIS IS THE ANIMATOR
             yield return new WaitForSeconds(curAttack.GetCooldownTime());
             curAttack.ResetAttack();
-        } while (true);
+            abilAttackCooled = true;
+        } while (bAbilAttacker != null);
     }
 
     IEnumerator MovementAttackWaiter(Attack curAttack)
     {
-        do
-        {
-            UIManager.I.ActivatePUI(curAttack);
+        do {
+            if(UIManager.I != null)
+                UIManager.I.ActivatePUI(curAttack);
             curAttack.DoAttack();
             curAttack.Anim(character, false); //THIS IS THE ANIMATOR
+            moveAttackCooled = false;
             yield return new WaitForSeconds(curAttack.GetCooldownTime());
+            moveAttackCooled = true;
             curAttack.ResetAttack();
         } while (bMoveAttacker != null);
         curAttack.Anim(character, true);
