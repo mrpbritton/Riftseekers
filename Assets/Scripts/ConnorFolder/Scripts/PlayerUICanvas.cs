@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,5 +35,10 @@ public class PlayerUICanvas : MonoBehaviour {
     public void UpdateImage(Sprite sprite)
     {
         uiSprite.sprite = sprite;
+    }
+    public void UpdateImage(Attack attack)
+    {
+        //Gabe's epic one-line linq statement
+        uiSprite.sprite = AugmentLibrary.I.getAllItems().Where(c => c.attackScript == attack.AScript).First().image;   
     }
 }

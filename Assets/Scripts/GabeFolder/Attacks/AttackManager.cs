@@ -9,9 +9,6 @@ public class AttackManager : Singleton<AttackManager>
     public Attack rangedAttack;
     public Attack specialAttack;
     public Attack movementAttack;
-
-    [Header("Player UI Canvases (DO NOT CHANGE)")]
-    public List<PlayerUICanvas> puiCanvases;
     
     [Header("Animator used for the Character")]
     public Animator character;
@@ -24,7 +21,7 @@ public class AttackManager : Singleton<AttackManager>
 
     //this dictionary is used to store which attackType each AttackScript is. This is so I don't have to make
     //  a massive switch statement for every single attack script in a function down below.
-    private readonly Dictionary<AttackScript, Attack.AttackType> attackTypeDict = new()
+    public readonly Dictionary<AttackScript, Attack.AttackType> attackTypeDict = new()
     {
         { AttackScript.Handgun, Attack.AttackType.Ranged },
         { AttackScript.Shotgun, Attack.AttackType.Ranged },
@@ -115,28 +112,6 @@ public class AttackManager : Singleton<AttackManager>
         }
     }
 
-    private void ActivatePUI(Attack attack)
-    {
-        switch(attack.AType)
-        {
-            case Attack.AttackType.Melee: //sword
-                puiCanvases[0].updateSlider(attack.GetCooldownTime());
-                break;
-            case Attack.AttackType.Ranged: //gun
-                puiCanvases[1].updateSlider(attack.GetCooldownTime());
-                break;
-            case Attack.AttackType.Special: //rocket
-                puiCanvases[2].updateSlider(attack.GetCooldownTime());
-                break;
-            case Attack.AttackType.Movement: //dash
-                puiCanvases[3].updateSlider(attack.GetCooldownTime());
-                break;
-            default:
-                Debug.Log($"aType of attack is not melee, ranged, special, or movement. Check that it isn't \"None\".");
-                break;
-        }
-    }
-
     #region Attack Waiters
     IEnumerator MainAttackWaiter(Attack curAttack, bool secondary)
     {
@@ -144,7 +119,7 @@ public class AttackManager : Singleton<AttackManager>
         {
             while(secondary && bMainAttacker != null)
                 yield return new WaitForFixedUpdate();
-            ActivatePUI(curAttack);
+            UIManager.I.ActivatePUI(curAttack);
             curAttack.DoAttack();
             //curAttack.Anim(character, false); //THIS IS THE ANIMATOR
             yield return new WaitForSeconds(curAttack.GetCooldownTime());
@@ -156,7 +131,7 @@ public class AttackManager : Singleton<AttackManager>
     {
         do
         {
-            ActivatePUI(curAttack);
+            UIManager.I.ActivatePUI(curAttack);
             curAttack.DoAttack();
             //curAttack.Anim(character, false); //THIS IS THE ANIMATOR
             yield return new WaitForSeconds(curAttack.GetCooldownTime());
@@ -168,7 +143,7 @@ public class AttackManager : Singleton<AttackManager>
     {
         do
         {
-            ActivatePUI(curAttack);
+            UIManager.I.ActivatePUI(curAttack);
             curAttack.DoAttack();
             curAttack.Anim(character, false); //THIS IS THE ANIMATOR
             yield return new WaitForSeconds(curAttack.GetCooldownTime());
@@ -177,27 +152,6 @@ public class AttackManager : Singleton<AttackManager>
         curAttack.Anim(character, true);
     }
     #endregion
-    
-    /*
-    private void SetMainMainPressed(bool newValue)
-    {
-
-        bIsMainPressed = newValue || (!secondary ? bIsMainSecondaryPressed : bIsMainMainPressed);
-        if(pauseSecondaryMain && !newValue && !secondary)
-            pauseSecondaryMain = false;
-    }
-    private void SetMainSecondaryPressed(bool b) {
-
-    }
-    private void SetAbilPressed(bool newValue)
-    {
-        bIsAbilPressed = newValue;
-    }
-    private void SetMovePressed(bool newValue)
-    {
-        bIsMovePressed = newValue;
-    }*/
-
     #endregion
 
     #region Updating Attacks

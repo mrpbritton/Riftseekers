@@ -12,16 +12,16 @@ public class UpdatePUI_GA : GameAction
         switch (item.overrideAbil)
         {
             case Attack.AttackType.Melee:
-                AttackManager.I.puiCanvases[0].UpdateImage(item.image);
+                UIManager.I.puiCanvases[0].UpdateImage(item.image);
                 break;
             case Attack.AttackType.Ranged:
-                AttackManager.I.puiCanvases[1].UpdateImage(item.image);
+                UIManager.I.puiCanvases[1].UpdateImage(item.image);
                 break;
             case Attack.AttackType.Special:
-                AttackManager.I.puiCanvases[2].UpdateImage(item.image);
+                UIManager.I.puiCanvases[2].UpdateImage(item.image);
                 break;
             case Attack.AttackType.Movement:
-                AttackManager.I.puiCanvases[3].UpdateImage(item.image);
+                UIManager.I.puiCanvases[3].UpdateImage(item.image);
                 break;
             default:
                 break;
