@@ -6,7 +6,9 @@ using UnityEngine;
 public class WaveSpawner : Singleton<WaveSpawner> {
     [Header("Spawning Information")]
     [Tooltip("How many enemies will spawn")]
-    [SerializeField] int monstersPerWave = 50;
+    [SerializeField] int startingMonstersPerWave = 20;
+    int monstersPerWave;
+    [SerializeField] float roundBase = 1.78f;
     [SerializeField] float timeBtwWaves = 10f;
     [Tooltip("How long it takes for an enemy to spawn")]
     [SerializeField] float minSpawnTime = .15f, maxSpawntime = .35f;
@@ -29,6 +31,17 @@ public class WaveSpawner : Singleton<WaveSpawner> {
         for(int i = 0; i < transform.childCount; i++)
             spawnPoints.Add(transform.GetChild(i));
         playerTrans = FindObjectOfType<PlayerMovement>().transform;
+        monstersPerWave = startingMonstersPerWave;
+
+
+        foreach(var i in enemies) {
+            i.GetComponent<EnemyHealth>().maxhealth = i.GetComponent<EnemyHealth>().baseHealth;
+            i.GetComponent<EnemyHealth>().currentHealth = i.GetComponent<EnemyHealth>().maxhealth;
+            if(i.GetComponentInChildren<Damage_GA>() != null)
+                i.GetComponentInChildren<Damage_GA>().damage = i.GetComponentInChildren<Damage_GA>().originalDamage;
+            i.transform.localScale = Vector3.one;
+        }
+
         StartCoroutine(wave());
     }
 
@@ -46,13 +59,26 @@ public class WaveSpawner : Singleton<WaveSpawner> {
             }
             while(!waveDone)
                 yield return new WaitForSeconds(1f);
-            
-            monstersPerWave = Mathf.CeilToInt(monstersPerWave * enemyNumberInc);
+
+            rampUp();
+            yield return new WaitForSeconds(timeBtwWaves);    //  TIME BTW WAVES
+        }
+    }
+
+    void rampUp() {
+        if(WaveCounter.I.WaveNum < 5) {
+            monstersPerWave += (int)(startingMonstersPerWave * Mathf.Pow(roundBase, WaveCounter.I.WaveNum));
             minSpawnTime *= spawnTimeInc;
             maxSpawntime *= spawnTimeInc;
-            yield return new WaitForSeconds(timeBtwWaves);    //  TIME BTW WAVES
-            WaveComplete();
         }
+        else {
+            foreach(var i in enemies) {
+                i.GetComponent<EnemyHealth>().maxhealth = i.GetComponent<EnemyHealth>().baseHealth + (5 * WaveCounter.I.WaveNum);
+                i.transform.localScale = Vector3.one * (0.25f * WaveCounter.I.WaveNum);
+                i.GetComponentInChildren<Damage_GA>().damage = i.GetComponentInChildren<Damage_GA>().originalDamage * (.5f *  WaveCounter.I.WaveNum);
+            }
+        }
+        WaveComplete();
     }
 
     Transform getRelevantSpawnPoint() {
