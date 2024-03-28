@@ -37,6 +37,8 @@ public class WaveSpawner : Singleton<WaveSpawner> {
         foreach(var i in enemies) {
             i.GetComponent<EnemyHealth>().maxhealth = i.GetComponent<EnemyHealth>().baseHealth;
             i.GetComponent<EnemyHealth>().currentHealth = i.GetComponent<EnemyHealth>().maxhealth;
+            if(i.GetComponentInChildren<Damage_GA>() != null)
+                i.GetComponentInChildren<Damage_GA>().damage = i.GetComponentInChildren<Damage_GA>().originalDamage;
             i.transform.localScale = Vector3.one;
         }
 
@@ -73,6 +75,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
             foreach(var i in enemies) {
                 i.GetComponent<EnemyHealth>().maxhealth = i.GetComponent<EnemyHealth>().baseHealth + (5 * WaveCounter.I.WaveNum);
                 i.transform.localScale = Vector3.one * (0.25f * WaveCounter.I.WaveNum);
+                i.GetComponentInChildren<Damage_GA>().damage = i.GetComponentInChildren<Damage_GA>().originalDamage * (.5f *  WaveCounter.I.WaveNum);
             }
         }
         WaveComplete();

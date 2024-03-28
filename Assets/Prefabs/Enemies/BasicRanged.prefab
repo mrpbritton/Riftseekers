@@ -32,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2302720368536495275}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 1, z: 0}
+  m_LocalPosition: {x: 1, y: 1, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -200,8 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4440539afd1aad946b551b267751b09b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxhealth: 2
-  currentHealth: 2
+  baseHealth: 0
+  maxhealth: 0
+  currentHealth: 0
   hasItem: 0
   firstDamage: 0
   hit: 0
