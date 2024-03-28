@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour {
+    public float baseHealth;
     public float maxhealth;
     public float currentHealth;
     private float critHealth;

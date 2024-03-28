@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class WaveCounter : MonoBehaviour
+public class WaveCounter : Singleton<WaveCounter>
 {
     [SerializeField] private TMP_Text text;
     private Color waveColor = Color.yellow;
