@@ -469,7 +469,7 @@ Transform:
   - {fileID: 1134619532179757097}
   - {fileID: 5701483791246596465}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4865779752117141236
 MonoBehaviour:
@@ -977,6 +977,7 @@ PrefabInstance:
     - {fileID: 5739108942931785653, guid: 66562dc996ca2b5478f1b7f0a538878b, type: 3}
     - {fileID: 7512459809063928703, guid: 66562dc996ca2b5478f1b7f0a538878b, type: 3}
     - {fileID: 1486973088829066078, guid: 66562dc996ca2b5478f1b7f0a538878b, type: 3}
+    - {fileID: 7178965217855365021, guid: 66562dc996ca2b5478f1b7f0a538878b, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7500516432358523321, guid: 66562dc996ca2b5478f1b7f0a538878b, type: 3}
     m_AddedGameObjects:
@@ -1033,6 +1034,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4111246249806096070}
+    - targetCorrespondingSourceObject: {fileID: 1123744075933665958, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8072287415479440245}
     - targetCorrespondingSourceObject: {fileID: 2454600713428121223, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
       insertIndex: -1
@@ -1294,6 +1299,27 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!65 &8072287415479440245
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3604988519602030965}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.25, y: 4, z: 0.75}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &3961268930277825891 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 821462348576595632, guid: 66562dc996ca2b5478f1b7f0a538878b,

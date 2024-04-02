@@ -50,6 +50,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
     }
 
     IEnumerator wave() {
+        yield return new WaitForSeconds(5f);
         while(true) {
             waveDone = false;
             for(int i = 0; i < monstersPerWave; i++) {
