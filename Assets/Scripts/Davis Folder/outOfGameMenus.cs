@@ -11,6 +11,7 @@ public class outOfGameMenus : MonoBehaviour
     private void OnEnable()
     {
         startMenu();
+        Cursor.visible = true;
     }
 
     public void startMenu()
