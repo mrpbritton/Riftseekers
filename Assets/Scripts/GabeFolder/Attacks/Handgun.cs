@@ -68,7 +68,7 @@ public class Handgun : Attack
         //transform.DOComplete();
         FindObjectOfType<PlayerMovement>().slide(direction, lungeAmt, .25f);
 
-        GameObject b = BulletManager.I.GetBullet();
+        GameObject b = BulletManager.I.getBullet();
         Bullet bs = b.GetComponent<Bullet>(); //(b)ullet(s)cript
         bs.direction = direction;
         bs.bCanPierce = true;
