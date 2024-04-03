@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PauseUI : MonoBehaviour {
     [SerializeField] GameObject background;
-
+    [SerializeField] Button button;
     PInput controls;
     PlayerMovement pm;
 
@@ -30,7 +31,7 @@ public class PauseUI : MonoBehaviour {
         shown = !shown;
         Time.timeScale = shown ? 0f : 1f;
         background.SetActive(shown);
-
+        button.Select();
         pm.enabled = !shown;
         AttackManager.I.canAttack = !shown;
     }
