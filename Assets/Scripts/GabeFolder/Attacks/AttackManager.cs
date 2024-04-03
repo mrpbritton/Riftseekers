@@ -13,6 +13,9 @@ public class AttackManager : Singleton<AttackManager>
     [Header("Animator used for the Character")]
     public Animator character;
 
+    [Header("Bullet Prefab"), Tooltip("Prefab used for Ranged Attack")]
+    public GameObject bullet;
+
     private PInput pInput;
     bool mainAttackCooled = true, secondaryAttackCooled = true, abilAttackCooled = true, moveAttackCooled = true;
     Coroutine bMainAttacker, bSecondaryAttacker, bAbilAttacker, bMoveAttacker;
@@ -32,8 +35,9 @@ public class AttackManager : Singleton<AttackManager>
 
     };
     
-    public void OnEnable()
+    public new void Awake()
     {
+        base.Awake();
         //SaveData.wipe(); //this is for debugging purposes, DO NOT HAVE THIS ON AT ALL TIMES
         pInput = new PInput();
         pInput.Enable();

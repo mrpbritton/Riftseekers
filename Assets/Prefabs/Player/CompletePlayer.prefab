@@ -469,7 +469,7 @@ Transform:
   - {fileID: 1134619532179757097}
   - {fileID: 5701483791246596465}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4865779752117141236
 MonoBehaviour:
@@ -1083,6 +1083,7 @@ MonoBehaviour:
   specialAttack: {fileID: 3840245540853374335}
   movementAttack: {fileID: 1032036683423103546}
   character: {fileID: 0}
+  bullet: {fileID: 2959367676716503916}
   canAttack: 1
 --- !u!114 &6347688342931768367
 MonoBehaviour:
@@ -1228,6 +1229,12 @@ MonoBehaviour:
   eventIdInternal: 0
   valueGuidInternal: 
   m_callbackDataInternal: {fileID: 0}
+--- !u!1 &2959367676716503916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1481371488227528895, guid: 66562dc996ca2b5478f1b7f0a538878b,
+    type: 3}
+  m_PrefabInstance: {fileID: 4440314752643908563}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3604988519602030965 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1123744075933665958, guid: 66562dc996ca2b5478f1b7f0a538878b,

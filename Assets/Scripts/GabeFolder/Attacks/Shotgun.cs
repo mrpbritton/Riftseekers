@@ -28,7 +28,7 @@ public class Shotgun : Attack
         base.Start();
         pInput.Enable();
         origin = GameObject.FindWithTag("GunOrigin").transform;
-        bullet = FindFirstObjectByType<Bullet>(FindObjectsInactive.Include).gameObject;
+        bullet = AttackManager.I.bullet;
         cachedDir = origin.forward;
     }
 

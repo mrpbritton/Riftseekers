@@ -24,7 +24,7 @@ public class Handgun : Attack
         base.Start();
         DOTween.Init();
         origin = GameObject.FindWithTag("GunOrigin").transform;
-        bullet = FindFirstObjectByType<Bullet>(FindObjectsInactive.Include).gameObject;
+        bullet = AttackManager.I.bullet;
         cachedDir = origin.forward;
     }
 
