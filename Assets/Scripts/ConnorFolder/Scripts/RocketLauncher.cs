@@ -51,7 +51,7 @@ public class RocketLauncher : Attack {
         }
         FindObjectOfType<PlayerMovement>().slide(direction, -12f, .25f);
         curRocket.transform.DOMove(transform.position + (direction.normalized * maxTravelDist), maxTravelTime);
-        curRocket.transform.LookAt(origin.position);
+        curRocket.transform.LookAt(direction);
     }
 
     public override void Anim(Animator anim, bool reset)

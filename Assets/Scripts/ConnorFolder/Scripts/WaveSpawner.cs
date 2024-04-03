@@ -26,6 +26,8 @@ public class WaveSpawner : Singleton<WaveSpawner> {
     EnemyController ec;
     Transform playerTrans;
 
+    [SerializeField] Transform pParent;
+
     public static System.Action WaveComplete = delegate { };
     private void Start() {
         EnemyController.levelComplete += triggerEndOfWave;
@@ -49,7 +51,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
         foreach(var i in enemies) {
             enemyPools.Add(new List<GameObject>());
             for(int j = 0; j < enemiesInPool; j++) {
-                var temp = Instantiate(i.gameObject);
+                var temp = Instantiate(i.gameObject, pParent);
                 temp.transform.parent = transform;
                 temp.SetActive(false);
                 enemyPools[index].Add(temp);
