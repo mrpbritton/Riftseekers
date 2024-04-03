@@ -29,6 +29,13 @@ public class SpawnCam : MonoBehaviour
     [SerializeField, Tooltip("Dampening of the Camera")]
     private Vector3 dampening = new(0.3f, 0.3f, 0.3f);
 
+    [Header("Clipping Hitbox Settings")]
+    [SerializeField, Tooltip("Size of the collider")]
+    private Vector3 size = new Vector3(20, 20, 20);
+    private bool isTrigger = true;
+    private bool isKinematic = true;
+
+
     public void OnEnable() {
         if(Camera.main != null && !Camera.main.TryGetComponent(out CinemachineBrain brain)) {
             DestroyImmediate(Camera.main.gameObject);
@@ -48,6 +55,11 @@ public class SpawnCam : MonoBehaviour
             //Environment
             mainCam.clearFlags = bType;
             mainCam.backgroundColor = backColor;
+            var collider = go.AddComponent<BoxCollider>();
+            collider.size = size;
+            collider.isTrigger = isTrigger;
+            var rb = go.AddComponent<Rigidbody>();
+            rb.isKinematic = isKinematic;
         }
 
         if(GameObject.FindGameObjectWithTag("VirtCam") == null) {
