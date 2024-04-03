@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
     private void OnEnable()
     {
         playerTrans = FindObjectOfType<PlayerManager>().transform;
-        Destroy(gameObject, lifetime);
+        transform.position = GameObject.FindGameObjectWithTag("GunOrigin").transform.position;
     }
 
     private void FixedUpdate()

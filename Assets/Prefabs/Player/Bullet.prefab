@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1270933574694749143}
   - component: {fileID: 7573617520881116957}
   - component: {fileID: 6781221410255257138}
+  - component: {fileID: 4727712945728158937}
   m_Layer: 11
   m_Name: Bullet
   m_TagString: Bullet
@@ -37,7 +38,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7712018502116877924
 MeshFilter:
@@ -122,9 +123,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d0c1b72c65ce8d419780ea2bf5ee49c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 70
   direction: {x: 0, y: 0, z: 0}
   lifetime: 3
+  bCanPierce: 0
+  pierceCount: 0
 --- !u!96 &4112822344334169323
 TrailRenderer:
   serializedVersion: 3
@@ -350,3 +353,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4727712945728158937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1383134052721241191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2259ea94449e378419342a0b12c8c016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  extraRunOnHit:
+    m_PersistentCalls:
+      m_Calls: []
