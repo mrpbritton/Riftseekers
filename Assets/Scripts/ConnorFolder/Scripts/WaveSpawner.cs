@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class WaveSpawner : Singleton<WaveSpawner> {
@@ -18,6 +17,9 @@ public class WaveSpawner : Singleton<WaveSpawner> {
 
     [Tooltip("Enemies that will be spawned")]
     [SerializeField] List<GameObject> enemies = new List<GameObject>();
+
+    int enemiesInPool = 200;
+    List<List<GameObject>> enemyPools = new List<List<GameObject>>();
 
     KdTree<Transform> spawnPoints = new KdTree<Transform>();
 
@@ -42,6 +44,19 @@ public class WaveSpawner : Singleton<WaveSpawner> {
             i.transform.localScale = Vector3.one;
         }
 
+        //  adds enemies to pools
+        int index = 0;
+        foreach(var i in enemies) {
+            enemyPools.Add(new List<GameObject>());
+            for(int j = 0; j < enemiesInPool; j++) {
+                var temp = Instantiate(i.gameObject);
+                temp.transform.parent = transform;
+                temp.SetActive(false);
+                enemyPools[index].Add(temp);
+            }
+            index++;
+        }
+
         StartCoroutine(wave());
     }
 
@@ -55,7 +70,12 @@ public class WaveSpawner : Singleton<WaveSpawner> {
             waveDone = false;
             for(int i = 0; i < monstersPerWave; i++) {
                 var point = getRelevantSpawnPoint();
-                ec.enemies.Add(Instantiate(enemies[Random.Range(0, enemies.Count)], point.position, Quaternion.identity, getRelevantSpawnPoint()));
+                int rand = Random.Range(0, enemyPools.Count);
+                var temp = enemyPools[rand][0];
+                enemyPools[rand].RemoveAt(0);
+                temp.SetActive(true);
+                temp.transform.position = point.position;
+                ec.enemies.Add(temp);
                 yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawntime));
             }
             while(!waveDone)
@@ -96,5 +116,14 @@ public class WaveSpawner : Singleton<WaveSpawner> {
 
     void triggerEndOfWave() {
         waveDone = true;
+    }
+
+    public void repoolEnemy(GameObject obj) {
+        for(int i = 0; i < enemies.Count; i++) {
+            if(obj.name == enemies[i].name) {
+                enemyPools[i].Add(obj);
+                return;
+            }
+        }
     }
 }

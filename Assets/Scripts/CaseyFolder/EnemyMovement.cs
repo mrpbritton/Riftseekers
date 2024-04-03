@@ -92,7 +92,7 @@ public class EnemyMovement : MonoBehaviour
 
 
     public void slide(Vector3 dir, float force, float time) {
-        if(slider != null)
+        if(slider != null || !gameObject.activeInHierarchy)
             return;
         slider = StartCoroutine(slideWaiter(dir, force, time));
     }

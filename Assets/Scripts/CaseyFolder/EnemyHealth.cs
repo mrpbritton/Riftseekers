@@ -34,6 +34,7 @@ public class EnemyHealth : MonoBehaviour {
 
     public void damageTaken(float damage, Vector3 attackPoint)
     {
+        if(!gameObject.activeInHierarchy) return;
         if(!firstDamage)
         {
             GetComponentInChildren<Canvas>().enabled = true;
@@ -75,7 +76,7 @@ public class EnemyHealth : MonoBehaviour {
 */
         }
 
-        if (!bStunned)
+        if (!bStunned && gameObject.activeInHierarchy)
         {
             StartCoroutine(nameof(stunned));
             bStunned = true;
@@ -85,7 +86,7 @@ public class EnemyHealth : MonoBehaviour {
             timeStunned = 0f;
         }
 
-        if (timeStunned < stunTime)
+        if (timeStunned < stunTime && gameObject.activeInHierarchy)
         {
             transform.position = Vector3.Lerp(stunStart.position, stunEnd.position, timeStunned);
             timeStunned += Time.deltaTime;
@@ -95,7 +96,8 @@ public class EnemyHealth : MonoBehaviour {
     private void deathAnimation()
     {
         onEnemyDeath(transform);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
+        WaveSpawner.I.repoolEnemy(gameObject);
     }
 
     IEnumerator stunned()
