@@ -12,11 +12,14 @@ public class BulletManager : Singleton<BulletManager> {
         for(int i = 0; i < poolCount; i++) {
             var temp = Instantiate(bulletPref);
             temp.SetActive(false);
-
+            bulletPool.Add(temp);
         }
     }
 
     public GameObject getBullet() {
-        return bulletPool[0];
+        var temp = bulletPool[0];
+        temp.SetActive(true);
+        bulletPool.RemoveAt(0);
+        return temp;
     }
 }
