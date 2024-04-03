@@ -23,16 +23,12 @@ public class EnemyController : MonoBehaviour
 
     public static Action levelComplete = delegate { };
 
-
-    void Start()
+    private void OnEnable()
     {
         enemies.Clear();
         enemies.AddRange(GameObject.FindGameObjectsWithTag("Enemy"));
         total = enemies.Count;
-    }
 
-    private void OnEnable()
-    {
         EnemyHealth.onEnemyDeath += onEnemyDeath;
     }
 

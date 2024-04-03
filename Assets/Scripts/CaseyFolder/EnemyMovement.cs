@@ -10,14 +10,12 @@ public class EnemyMovement : MonoBehaviour
     private float rotationSpeed = 2f;
     [SerializeField]
     public NavMeshAgent agent;
-    public bool bCover, bAttacking;
+    public bool bAttacking;
     private GameObject Player;
     private RaycastHit hitInfo;
     [SerializeField]
-    private List<GameObject> cover = new List<GameObject>();
     private float close = 9999;
     public LayerMask enemy;
-    public float coverTime = 3f;
     [SerializeField]
     public float hitCooldown = 1, enemySpeed, stopDistance;
     public GameObject target = null;
@@ -25,12 +23,9 @@ public class EnemyMovement : MonoBehaviour
     bool canMove = true;
     Coroutine slider = null;
 
-
-    private void Start()
+    private void OnEnable()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        cover.Clear();
-        cover.AddRange(GameObject.FindGameObjectsWithTag("Cover"));
         enemySpeed = agent.speed;
         target = Player;
     }
@@ -50,46 +45,6 @@ public class EnemyMovement : MonoBehaviour
             agent.SetDestination(target.transform.position);
         }
     }
-
-    public void lookForCover()
-    {
-        bCover = true;
-        StartCoroutine(nameof(TimeInCover));
-
-
-        close = 9999;
-        foreach (GameObject current in cover)
-        {
-
-            float distance = Vector3.Distance(transform.position, current.transform.position);
-
-            if (distance <= 20)
-            {
-                if (Physics.Raycast(current.transform.position, Player.transform.position - current.transform.position, out hitInfo, 999, enemy))
-                {
-                    if (!hitInfo.transform.CompareTag("Player"))
-                    {
-                        if (distance < close)
-                        {
-                            agent.stoppingDistance = 0;
-                            close = distance;
-                            target = current;
-                        }
-                    }
-                }
-            }
-
-        }
-    }
-
-
-    IEnumerator TimeInCover()
-    {
-        yield return new WaitForSeconds(coverTime);
-        bCover = false;
-        target = Player;
-    }
-
 
     public void slide(Vector3 dir, float force, float time) {
         if(slider != null || !gameObject.activeInHierarchy)

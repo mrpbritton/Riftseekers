@@ -15,11 +15,10 @@ public class EnemyMelee : MonoBehaviour
     public float hitCooldown = 1, coverTime = 3f;
 
 
-    private void Start()
+    private void OnEnable()
     {
         Inventory.clear();
         Player = GameObject.FindGameObjectWithTag("Player");
-        GetComponent<EnemyMovement>().coverTime = coverTime;
         GetComponent<EnemyMovement>().stopDistance = agent.stoppingDistance;
     }
 

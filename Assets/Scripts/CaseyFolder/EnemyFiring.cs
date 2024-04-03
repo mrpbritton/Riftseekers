@@ -27,28 +27,21 @@ public class EnemyFiring : MonoBehaviour
 
 
 
-
-
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine(nameof(Reloading));
         Player = GameObject.FindGameObjectWithTag("Player");
-        GetComponentInParent<EnemyMovement>().coverTime = coverTime;
         GetComponentInParent<EnemyMovement>().stopDistance = agent.stoppingDistance;
     }
-
     private void FireShot()
     {
-        if(!GetComponentInParent<EnemyMovement>().bCover)
+        lookForPlayer();
+        if (bSeePlayer && !bStunned)
         {
-            lookForPlayer();
-            if (bSeePlayer && !bStunned)
-            {
-                AkSoundEngine.PostEvent("Enemy_Fire", gameObject);
-                rotation = gameObject.transform.rotation;
-                Projectile project = Instantiate(projectile, transform.position, rotation).GetComponent<Projectile>();
-                project.Direction = transform.forward;
-            }
+            AkSoundEngine.PostEvent("Enemy_Fire", gameObject);
+            rotation = gameObject.transform.rotation;
+            Projectile project = Instantiate(projectile, transform.position, rotation).GetComponent<Projectile>();
+            project.Direction = transform.forward;
         }
         StartCoroutine(nameof(Reloading));
 
@@ -56,20 +49,17 @@ public class EnemyFiring : MonoBehaviour
 
     private void FireShotgun()
     {
-        if (!GetComponentInParent<EnemyMovement>().bCover)
+        lookForPlayer();
+        if (bSeePlayer && !bStunned)
         {
-            lookForPlayer();
-            if (bSeePlayer && !bStunned)
+            AkSoundEngine.PostEvent("Enemy_Fire", gameObject);
+            rotation = gameObject.transform.rotation;
+            for (int i = 0; i < 4; i++)
             {
-                AkSoundEngine.PostEvent("Enemy_Fire", gameObject);
-                rotation = gameObject.transform.rotation;
-                for (int i = 0; i < 4; i++)
-                {
-                    float zRand = UnityEngine.Random.Range(-spread, spread);
-                    float xRand = UnityEngine.Random.Range(-spread, spread);
-                    Projectile project = Instantiate(projectile, transform.position, rotation).GetComponent<Projectile>();
-                    project.Direction = new Vector3(transform.forward.x + xRand, transform.forward.y, transform.forward.z + zRand);
-                }
+                float zRand = UnityEngine.Random.Range(-spread, spread);
+                float xRand = UnityEngine.Random.Range(-spread, spread);
+                Projectile project = Instantiate(projectile, transform.position, rotation).GetComponent<Projectile>();
+                project.Direction = new Vector3(transform.forward.x + xRand, transform.forward.y, transform.forward.z + zRand);
             }
         }
         StartCoroutine(nameof(Reloading));

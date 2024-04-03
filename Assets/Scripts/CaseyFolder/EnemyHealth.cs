@@ -24,7 +24,7 @@ public class EnemyHealth : MonoBehaviour {
     public static Action<Transform> onEnemyDeath = delegate { };
     public static Action<Transform, Vector3, float> onEnemyHit = delegate { };
 
-    private void Start()
+    private void OnEnable()
     {
         currentHealth = maxhealth;
         critHealth = maxhealth * 0.5f;
