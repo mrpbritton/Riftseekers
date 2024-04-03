@@ -60,6 +60,7 @@ public class SpawnCam : MonoBehaviour
             collider.isTrigger = isTrigger;
             var rb = go.AddComponent<Rigidbody>();
             rb.isKinematic = isKinematic;
+            go.AddComponent<CamThruWall>();
         }
 
         if(GameObject.FindGameObjectWithTag("VirtCam") == null) {
