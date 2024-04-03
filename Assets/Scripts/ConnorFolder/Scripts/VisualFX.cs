@@ -11,11 +11,22 @@ public class VisualFX : MonoBehaviour {
     [SerializeField] float poolEndAlpha;
     float lowest;
 
+    List<GameObject> corpsePool = new List<GameObject>();
+    int corpsePoolCount = 300;
+
     private void Awake() {
         DOTween.Init();
 
         lowest = FindObjectOfType<PlayerMovement>().transform.position.y;
         lowest -= FindObjectOfType<PlayerMovement>().transform.lossyScale.y / 6f;
+    }
+
+    private void Start() {
+        for(int i = 0; i < corpsePoolCount; i++) {
+            var temp = Instantiate(enemyCorpse);
+            temp.SetActive(false);
+            corpsePool.Add(temp);
+        }
     }
 
     private void OnEnable() {

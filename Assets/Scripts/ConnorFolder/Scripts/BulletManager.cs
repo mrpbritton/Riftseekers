@@ -22,4 +22,9 @@ public class BulletManager : Singleton<BulletManager> {
         bulletPool.RemoveAt(0);
         return temp;
     }
+
+    public void repoolBullet(GameObject b) {
+        b.SetActive(false);
+        bulletPool.Add(b);
+    }
 }
