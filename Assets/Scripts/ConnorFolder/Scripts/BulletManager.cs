@@ -6,11 +6,12 @@ public class BulletManager : Singleton<BulletManager> {
     [SerializeField] GameObject bulletPref;
     int poolCount = 100;
 
+    [SerializeField] Transform bParent;
     List<GameObject> bulletPool = new List<GameObject>();
 
     private void Start() {
         for(int i = 0; i < poolCount; i++) {
-            var temp = Instantiate(bulletPref);
+            var temp = Instantiate(bulletPref, bParent);
             temp.SetActive(false);
             bulletPool.Add(temp);
         }

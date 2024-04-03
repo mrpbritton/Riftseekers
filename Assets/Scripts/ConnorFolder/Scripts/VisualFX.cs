@@ -15,6 +15,8 @@ public class VisualFX : MonoBehaviour {
     List<GameObject> poolPool = new List<GameObject>();
     int corpsePoolCount = 300;
 
+    [SerializeField] Transform fxParent;
+
     private void Awake() {
         DOTween.Init();
 
@@ -24,11 +26,11 @@ public class VisualFX : MonoBehaviour {
 
     private void Start() {
         for(int i = 0; i < corpsePoolCount; i++) {
-            var temp = Instantiate(enemyCorpse);
+            var temp = Instantiate(enemyCorpse, fxParent);
             temp.SetActive(false);
             corpsePool.Add(temp);
 
-            var tempP = Instantiate(bPool);
+            var tempP = Instantiate(bPool, fxParent);
             tempP.SetActive(false);
             poolPool.Add(tempP);
         }
