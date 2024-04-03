@@ -69,8 +69,7 @@ public class Shotgun : Attack
         
         for(int i = 0; i < bulletCount; i++)
         {
-            GameObject b = Instantiate(bullet, origin.position, bullet.transform.rotation);
-            b.SetActive(true);
+            GameObject b = BulletManager.I.getBullet();
             float zRand = Random.Range(-spread / 2, spread / 2);
             float xRand = Random.Range(-spread / 2, spread / 2);
             Vector3 newDir = new Vector3(direction.x + xRand, direction.y, direction.z + zRand);
