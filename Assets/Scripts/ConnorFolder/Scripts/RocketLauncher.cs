@@ -11,25 +11,47 @@ public class RocketLauncher : Attack {
     public override AttackType AType => AttackType.Special;
     public override AttackScript AScript => AttackScript.Rocket;
 
+    private Vector3 cachedDir = new(1, 1, 1);
+    private Transform origin;
+
+    protected override void Start() {
+        base.Start();
+        origin = GameObject.FindWithTag("GunOrigin").transform;
+        cachedDir = origin.forward;
+    }
+
     public override void DoAttack() {
         var curRocket = Instantiate(rocketPreset.gameObject);
         var rocketEndExplosion = explosionManager.queueExplode(curRocket.transform, explosionSize, explosionDmg, explosionKnockback, ExplosionManager.explosionState.HurtsEnemies, maxTravelTime);
         curRocket.GetComponentInChildren<RocketInstance>().setup(rocketEndExplosion, explosionManager, explosionSize, explosionDmg, explosionKnockback);
-        var origin = transform.position + new Vector3(0f, height, 0f);
-        curRocket.transform.position = origin;
-        var d = InputManager.isUsingKeyboard() ? GetPoint() : new Vector3(pInput.Player.ControllerAim.ReadValue<Vector2>().x, 0, pInput.Player.ControllerAim.ReadValue<Vector2>().y);
-        curRocket.transform.LookAt(d);
-        var off = d - origin;
-        off.y = 0f;
+        curRocket.transform.position = transform.position + Vector3.up * height;
         curRocket.transform.localEulerAngles = new Vector3(0f, curRocket.transform.eulerAngles.y, curRocket.transform.eulerAngles.z);
-        curRocket.transform.DOMove((off.normalized * maxTravelDist) + origin, maxTravelTime);
         Destroy(curRocket.gameObject, maxTravelTime + .1f);
 
-        var dir = GetPoint();
-        var direction = new Vector3(dir.x - transform.position.x + transform.localPosition.x,
-                                        dir.y,
-                                        dir.z - transform.position.z + transform.localPosition.z);
+
+        Vector3 dir;
+        Vector3 direction;
+        if(!InputManager.isUsingKeyboard()) {
+            dir = new Vector3(pInput.Player.ControllerAim.ReadValue<Vector2>().x, 0, pInput.Player.ControllerAim.ReadValue<Vector2>().y);
+
+            if(dir == Vector3.zero) {
+                dir = cachedDir;
+            }
+            else {
+                cachedDir = dir;
+            }
+
+            direction = dir;
+        }
+        else {
+            dir = GetPoint();
+            direction = new Vector3(dir.x - origin.position.x + origin.localPosition.x,
+                                            dir.y,
+                                            dir.z - origin.position.z + origin.localPosition.z);
+        }
         FindObjectOfType<PlayerMovement>().slide(direction, -12f, .25f);
+        curRocket.transform.DOMove(transform.position + (direction.normalized * maxTravelDist), maxTravelTime);
+        curRocket.transform.LookAt(origin.position);
     }
 
     public override void Anim(Animator anim, bool reset)

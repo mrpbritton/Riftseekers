@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +12,7 @@ public class PauseUI : MonoBehaviour {
 
     bool shown = false;
 
-    private void Start() {
+    private void OnEnable() {
         Time.timeScale = 1.0f;
         pm = FindObjectOfType<PlayerMovement>();
         controls = new PInput();
