@@ -54,7 +54,7 @@ public class Bullet : MonoBehaviour
             if (!bCanPierce || currentPierceCount >= pierceCount || !bTagIsEnemy)
             {
                 //Debug.Log($"{!bCanPierce}, {currentPierceCount >= pierceCount}, {!bTagIsEnemy}");
-                Destroy(gameObject, 0.0001f);
+                BulletManager.I.repoolBullet(gameObject);
             }
         }
     }
