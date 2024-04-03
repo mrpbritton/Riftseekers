@@ -12,6 +12,7 @@ public class VisualFX : MonoBehaviour {
     float lowest;
 
     List<GameObject> corpsePool = new List<GameObject>();
+    List<GameObject> poolPool = new List<GameObject>();
     int corpsePoolCount = 300;
 
     private void Awake() {
@@ -26,6 +27,10 @@ public class VisualFX : MonoBehaviour {
             var temp = Instantiate(enemyCorpse);
             temp.SetActive(false);
             corpsePool.Add(temp);
+
+            var tempP = Instantiate(bPool);
+            tempP.SetActive(false);
+            poolPool.Add(tempP);
         }
     }
 
@@ -48,13 +53,13 @@ public class VisualFX : MonoBehaviour {
     }
     public void enemyDeathFX(Transform obj) {
         //  corpse
-        var c = Instantiate(enemyCorpse);
+        var c = getCorpse();
         //GetComponent<CorpseManager>().addCorpse(peeta);
         c.transform.position = obj.position;
         StartCoroutine(corpseClear(c.transform));
 
         //  blood pool
-        var p = Instantiate(bPool);
+        var p = getPool();
         p.transform.position = c.transform.position;
         p.transform.position = new Vector3(p.transform.position.x, lowest, p.transform.position.z);
         var dp = p.GetComponent<DecalProjector>();
@@ -74,10 +79,27 @@ public class VisualFX : MonoBehaviour {
         });
     }
 
+    GameObject getCorpse() {
+        var temp = corpsePool[0];
+        temp.SetActive(true);
+        corpsePool.RemoveAt(0);
+        temp.transform.localScale = Vector3.one * .75f;
+        return temp;
+    }
+    GameObject getPool() {
+        var temp = poolPool[0];
+        temp.SetActive(true);
+        poolPool.RemoveAt(0);
+        temp.transform.localScale = Vector3.one;
+        return temp;
+    }
+
     IEnumerator corpseClear(Transform corpse) {
         yield return new WaitForSeconds(2f);
         corpse.DOScale(0f, .25f);
-        Destroy(corpse.gameObject, .26f);
+        yield return new WaitForSeconds(.26f);
+        corpse.gameObject.SetActive(false);
+        corpsePool.Add(corpse.gameObject);
     }
 
     IEnumerator bloodPoolClear(Transform b) {
@@ -88,6 +110,8 @@ public class VisualFX : MonoBehaviour {
         DOTween.To(() => curSize, x => curSize = x, 0f, .25f).OnUpdate(() => {
             dp.size = new Vector3(curSize, curSize, .2f);
         });
-        Destroy(b.gameObject, .26f);
+        yield return new WaitForSeconds(.26f);
+        b.gameObject.SetActive(false);
+        poolPool.Add(b.gameObject);
     }
 }
