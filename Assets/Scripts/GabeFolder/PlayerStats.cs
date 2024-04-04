@@ -37,6 +37,7 @@ public class PlayerStats : MonoBehaviour {
 
         set {
             stats.health = value;
+            stats.health = Mathf.Clamp(stats.health, 0, MaxHealth);
         }
 
     }
@@ -45,7 +46,8 @@ public class PlayerStats : MonoBehaviour {
 
         set {
             // Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
-            stats.movementSpeed = value;
+            stats.maxHealth = value;
+            stats.maxHealth = Mathf.Clamp(stats.maxHealth, 0, stats.maxHealth*3);
         }
 
     }
@@ -55,6 +57,7 @@ public class PlayerStats : MonoBehaviour {
         set {
             //Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
             stats.movementSpeed = value;
+            stats.movementSpeed = Mathf.Clamp(stats.movementSpeed, 0, stats.movementSpeed * 2);
         }
 
     }
@@ -118,6 +121,7 @@ public class PlayerStats : MonoBehaviour {
         set {
             //Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
             stats.charge = value;
+            Mathf.Clamp(stats.charge, 0, ChargeLimit);
         }
 
     }
