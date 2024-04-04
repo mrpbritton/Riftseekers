@@ -22,6 +22,8 @@ public class SpawnCam : MonoBehaviour
     private Quaternion rotation = Quaternion.Euler(45, 0, 0);
     [SerializeField, Tooltip("How far back the camera is for orthographic on the Virtual Camera.")]
     private float vOrthoSize = 14.75f;
+    [SerializeField, Tooltip("How close the clipping for the camera will occur")]
+    private float nearClipPane = -20;
     [SerializeField, Tooltip("How far the clipping for the camera will occur")]
     private float farClipPane = 5000;
     [SerializeField, Tooltip("Offset of the Camera")]
@@ -73,6 +75,7 @@ public class SpawnCam : MonoBehaviour
             virtCam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
             virtCam.m_Lens.Orthographic = true;
             virtCam.m_Lens.OrthographicSize = vOrthoSize;
+            virtCam.m_Lens.NearClipPlane = nearClipPane;
             virtCam.m_Lens.FarClipPlane = farClipPane;
             transposer = virtCam.AddCinemachineComponent<CinemachineTransposer>();
             transposer.m_BindingMode = CinemachineTransposer.BindingMode.WorldSpace;
