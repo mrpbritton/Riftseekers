@@ -4599,10 +4599,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orthoSize: 14.75
-  bType: 0
-  backColor: {r: 0, g: 0, b: 0, a: 1}
+  bType: 1
   rotation: {x: 0.38268346, y: 0, z: 0, w: 0.9238795}
   vOrthoSize: 14.75
+  nearClipPane: -20
   farClipPane: 5000
   offset: {x: 0, y: 20, z: -20}
   dampening: {x: 0.3, y: 0.3, z: 0.3}
@@ -5867,6 +5867,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPref: {fileID: 1383134052721241191, guid: de448d4ae90ab924599af64112244d19,
     type: 3}
+  bParent: {fileID: 0}
 --- !u!114 &1991647805931262147 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2755336133540598544, guid: 66562dc996ca2b5478f1b7f0a538878b,
