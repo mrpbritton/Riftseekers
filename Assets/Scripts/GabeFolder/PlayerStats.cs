@@ -8,6 +8,9 @@ public class PlayerStats : MonoBehaviour {
     [SerializeField] DefaultStats_SO startingStats;
     static PlayerStatSaveData stats;
 
+    private static float maxHealth = 20;
+    private static float movementSpeed = 10;
+
     /*** "READ-ONLY" FIELDS ***/
     /*  These fields are designed to be accessed, but not changed. Whenever you need
      *  to access the values of a player in any way, use these. These are connected to
@@ -47,7 +50,7 @@ public class PlayerStats : MonoBehaviour {
         set {
             // Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
             stats.maxHealth = value;
-            stats.maxHealth = Mathf.Clamp(stats.maxHealth, 0, stats.maxHealth*3);
+            stats.maxHealth = Mathf.Clamp(stats.maxHealth, 0, maxHealth*3);
         }
 
     }
@@ -57,7 +60,7 @@ public class PlayerStats : MonoBehaviour {
         set {
             //Debug.Log("Who the hell is changing this"); //words by Peter Britton, everybody
             stats.movementSpeed = value;
-            stats.movementSpeed = Mathf.Clamp(stats.movementSpeed, 0, stats.movementSpeed * 2);
+            stats.movementSpeed = Mathf.Clamp(stats.movementSpeed, 0, movementSpeed * 2);
         }
 
     }
