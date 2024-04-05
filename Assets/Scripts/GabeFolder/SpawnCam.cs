@@ -11,9 +11,7 @@ public class SpawnCam : MonoBehaviour
     [SerializeField, Tooltip("How far back the camera is for orthographic.")]
     private float orthoSize = 14.75f;
     [SerializeField, Tooltip("Type of Background")]
-    private CameraClearFlags bType;
-    [SerializeField, Tooltip("Background Color of the level")]
-    private Color backColor = Color.black;
+    private CameraClearFlags bType = CameraClearFlags.Skybox;
 
     private CinemachineVirtualCamera virtCam;
     private CinemachineTransposer transposer;
@@ -56,7 +54,6 @@ public class SpawnCam : MonoBehaviour
             mainCam.orthographicSize = orthoSize;
             //Environment
             mainCam.clearFlags = bType;
-            mainCam.backgroundColor = backColor;
             var collider = go.AddComponent<BoxCollider>();
             collider.size = size;
             collider.isTrigger = isTrigger;
