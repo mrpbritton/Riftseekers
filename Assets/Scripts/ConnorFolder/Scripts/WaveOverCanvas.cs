@@ -16,7 +16,8 @@ public class WaveOverCanvas : MonoBehaviour {
     }
 
     void runAnim() {
+        text.color = Color.clear;
         text.transform.position = startPos.position;
-        text.transform.DOMove(endPos.position, .5f);
+        text.transform.DOMove(endPos.position, 1f);
     }
 }
