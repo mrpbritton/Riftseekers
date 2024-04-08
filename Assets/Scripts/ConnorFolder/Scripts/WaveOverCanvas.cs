@@ -10,14 +10,29 @@ public class WaveOverCanvas : MonoBehaviour {
     [SerializeField] Transform startPos, endPos;
 
 
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.U))
-            runAnim();
+    private void Start() {
+        WaveSpawner.WaveComplete += runAnim;
+    }
+    private void OnDisable() {
+        WaveSpawner.WaveComplete -= runAnim;
     }
 
     void runAnim() {
-        text.color = Color.clear;
+        StartCoroutine(animWaiter());
+    }
+
+    IEnumerator animWaiter() {
+        float stepTime = .35f;
+        text.text = waveOverTexts[Random.Range(0, waveOverTexts.Count)];
         text.transform.position = startPos.position;
-        text.transform.DOMove(endPos.position, 1f);
+        text.transform.DOMove(endPos.position, 2f);
+
+        text.transform.localScale = Vector3.zero;
+        text.transform.DOScale(1f, stepTime);
+        text.color = Color.clear;
+        text.DOColor(Color.white, stepTime);
+        yield return new WaitForSeconds(2f - stepTime);
+        text.DOColor(Color.clear, stepTime);
+        text.transform.DOScale(0f, stepTime);
     }
 }
