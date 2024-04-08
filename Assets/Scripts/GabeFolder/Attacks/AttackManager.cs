@@ -57,7 +57,7 @@ public class AttackManager : Singleton<AttackManager>
         Inventory.saveInventory();
         #region Attack Subscriptions
 
-        if (FindObjectOfType<TutorialChecker>() == null)
+        if (FindObjectOfType<TutorialChecker>() == null || true)
         {
             #region Started Subscriptions
             pInput.Player.BasicAttack.started += ctx => PerformAttack(meleeAttack, Attack.AttackType.Melee);
