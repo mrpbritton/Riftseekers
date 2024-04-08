@@ -14,7 +14,6 @@ public class EnemyMovement : MonoBehaviour
     private GameObject Player;
     private RaycastHit hitInfo;
     [SerializeField]
-    private float close = 9999;
     public LayerMask enemy;
     [SerializeField]
     public float hitCooldown = 1, enemySpeed, stopDistance;

@@ -86,11 +86,10 @@ MonoBehaviour:
   loreItem: {fileID: 0}
   abilityItem: {fileID: 237051754313004310, guid: 30ddc45d9d724bc47bd916510716dfd7,
     type: 3}
-  enemySlider: {fileID: 0}
   total: 0
   baseMoney: 10
   moneyVariance: 5
-  dropChance: 10
+  dropChance: 2
   healthChance: 50
   augmentChance: 20
   loreChance: 20
@@ -107,12 +106,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53f7abaec63c38b4e8aa4ed85e59c367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemies:
-  - {fileID: 0}
-  - {fileID: 0}
-  spawnPos:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  spawnCooldown: 0.75
-  enemyAmount: 50
