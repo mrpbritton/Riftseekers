@@ -49,7 +49,7 @@ public class SpitItem_GA : GameAction
         AugmentLibrary.I.SetItemDrop(AttackManager.I.GetAttackScript(AttackManager.I.GetAttackType(ability)));
         
         //Prepating the item --------
-        GameObject go = Instantiate(AugmentLibrary.I.itemDrop, player.position, Quaternion.identity);
+        GameObject go = Instantiate(AugmentLibrary.I.GetItemDrop(), player.position, Quaternion.identity);
         go.SetActive(true);
         Vector3 spitDir = (transform.position - player.position);
         spitDir = new Vector3(spitDir.x, 0, spitDir.z);

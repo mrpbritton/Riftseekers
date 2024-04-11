@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class AugmentLibrary : Singleton<AugmentLibrary> {
@@ -14,11 +15,13 @@ public class AugmentLibrary : Singleton<AugmentLibrary> {
     [SerializeField] List<Augment_SO> abnormalAugments = new List<Augment_SO>();
     [SerializeField] List<Augment_SO> remarkableAugments = new List<Augment_SO>();
     [SerializeField] List<Augment_SO> fabulousAugments = new List<Augment_SO>();
-    public GameObject itemDrop;
+    [SerializeField] GameObject itemDrop;
 
     [SerializeField] Material mundaneMat, abnormalMat, remarkableMat, fabulousMat;
 
-
+    [Header("Lore Drops")]
+    [SerializeField] List<LorePiece_SO> remainingLore = new();
+    [SerializeField] GameObject loreDrop;
     public enum rarity {
         None, Mundane, Abnormal, Remarkable, Fabulous
     }
@@ -48,6 +51,11 @@ public class AugmentLibrary : Singleton<AugmentLibrary> {
                 return i;
         }
         return -1;
+    }
+    
+    public GameObject GetItemDrop()
+    {
+        return itemDrop;
     }
 
     public ConItem FindItem(AttackScript aScript) {
@@ -156,5 +164,15 @@ public class AugmentLibrary : Singleton<AugmentLibrary> {
         temp.AddRange(remarkableAugments);
         temp.AddRange(fabulousAugments);
         return temp;
+    }
+
+    public LorePiece_SO GetRandLore()
+    {
+        return remainingLore[Random.Range(0, remainingLore.Count)];
+    }
+
+    public void RemoveLore(LorePiece_SO tmp)
+    {
+        remainingLore.Remove(tmp);
     }
 }
