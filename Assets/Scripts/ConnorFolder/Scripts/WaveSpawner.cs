@@ -14,6 +14,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
     [SerializeField] float enemyNumberInc = 1.25f;
     [SerializeField] float spawnTimeInc = .9f;
     bool waveDone = false;
+    bool waveTriggered = false;
 
     [Tooltip("Enemies that will be spawned")]
     [SerializeField] List<GameObject> enemies = new List<GameObject>();
@@ -27,9 +28,21 @@ public class WaveSpawner : Singleton<WaveSpawner> {
     Transform playerTrans;
 
     [SerializeField] Transform pParent;
+    [SerializeField] CircularSlider waveTriggerSlider;
+    [SerializeField] Transform nextWaveText;
+
+    PInput pInput;
 
     public static System.Action WaveComplete = delegate { };
     private void Start() {
+        pInput = new PInput();
+        pInput.Enable();
+        pInput.Player.TriggerWave.performed += ctx => triggerWave();
+        pInput.Player.TriggerWave.canceled += ctx => { if(waveTriggered) return; waveTriggerSlider.doValueKill(); waveTriggerSlider.doValue(0f, .25f, true); };
+
+        waveTriggerSlider.setValue(0f);
+        nextWaveText.gameObject.SetActive(false);
+
         EnemyController.levelComplete += triggerEndOfWave;
         ec = FindObjectOfType<EnemyController>();
         for(int i = 0; i < transform.childCount; i++)
@@ -63,6 +76,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
     }
 
     private void OnDisable() {
+        pInput.Disable();
         EnemyController.levelComplete -= triggerEndOfWave;
     }
 
@@ -84,8 +98,23 @@ public class WaveSpawner : Singleton<WaveSpawner> {
                 yield return new WaitForSeconds(1f);
 
             rampUp();
-            yield return new WaitForSeconds(timeBtwWaves);    //  TIME BTW WAVES
+
+            //  waits for player to trigger next wave
+            yield return new WaitForSeconds(2f);
+            nextWaveText.gameObject.SetActive(true);
+            waveTriggered = false;
+            while(!waveTriggered)
+                yield return new WaitForSeconds(1f);
         }
+    }
+
+    public void triggerWave() {
+        if(waveTriggered) return;
+        waveTriggerSlider.setValue(0f);
+        waveTriggerSlider.doValue(1f, 1f, false, delegate { 
+            waveTriggered = true;
+            nextWaveText.gameObject.SetActive(false);
+        });
     }
 
     void rampUp() {

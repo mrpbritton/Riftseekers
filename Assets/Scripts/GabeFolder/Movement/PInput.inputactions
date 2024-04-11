@@ -112,6 +112,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "TriggerWave",
+                    "type": "Button",
+                    "id": "fa9b5552-5c4d-4c7f-bb83-733c56f8c46a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -706,6 +715,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ControllerAim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "72f740e2-3dcb-45fb-aaa6-d454d1bdd39a",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TriggerWave",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

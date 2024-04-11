@@ -134,6 +134,15 @@ public partial class @PInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TriggerWave"",
+                    ""type"": ""Button"",
+                    ""id"": ""fa9b5552-5c4d-4c7f-bb83-733c56f8c46a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -730,6 +739,17 @@ public partial class @PInput: IInputActionCollection2, IDisposable
                     ""action"": ""ControllerAim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""72f740e2-3dcb-45fb-aaa6-d454d1bdd39a"",
+                    ""path"": ""<Keyboard>/z"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TriggerWave"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -800,6 +820,7 @@ public partial class @PInput: IInputActionCollection2, IDisposable
         m_Player_ControllerAim = m_Player.FindAction("ControllerAim", throwIfNotFound: true);
         m_Player_AnyKey = m_Player.FindAction("AnyKey", throwIfNotFound: true);
         m_Player_AnyController = m_Player.FindAction("AnyController", throwIfNotFound: true);
+        m_Player_TriggerWave = m_Player.FindAction("TriggerWave", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
@@ -876,6 +897,7 @@ public partial class @PInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_ControllerAim;
     private readonly InputAction m_Player_AnyKey;
     private readonly InputAction m_Player_AnyController;
+    private readonly InputAction m_Player_TriggerWave;
     public struct PlayerActions
     {
         private @PInput m_Wrapper;
@@ -892,6 +914,7 @@ public partial class @PInput: IInputActionCollection2, IDisposable
         public InputAction @ControllerAim => m_Wrapper.m_Player_ControllerAim;
         public InputAction @AnyKey => m_Wrapper.m_Player_AnyKey;
         public InputAction @AnyController => m_Wrapper.m_Player_AnyController;
+        public InputAction @TriggerWave => m_Wrapper.m_Player_TriggerWave;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -937,6 +960,9 @@ public partial class @PInput: IInputActionCollection2, IDisposable
             @AnyController.started += instance.OnAnyController;
             @AnyController.performed += instance.OnAnyController;
             @AnyController.canceled += instance.OnAnyController;
+            @TriggerWave.started += instance.OnTriggerWave;
+            @TriggerWave.performed += instance.OnTriggerWave;
+            @TriggerWave.canceled += instance.OnTriggerWave;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -977,6 +1003,9 @@ public partial class @PInput: IInputActionCollection2, IDisposable
             @AnyController.started -= instance.OnAnyController;
             @AnyController.performed -= instance.OnAnyController;
             @AnyController.canceled -= instance.OnAnyController;
+            @TriggerWave.started -= instance.OnTriggerWave;
+            @TriggerWave.performed -= instance.OnTriggerWave;
+            @TriggerWave.canceled -= instance.OnTriggerWave;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -1054,6 +1083,7 @@ public partial class @PInput: IInputActionCollection2, IDisposable
         void OnControllerAim(InputAction.CallbackContext context);
         void OnAnyKey(InputAction.CallbackContext context);
         void OnAnyController(InputAction.CallbackContext context);
+        void OnTriggerWave(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

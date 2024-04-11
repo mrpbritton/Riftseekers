@@ -41,7 +41,7 @@ public class PauseUI : MonoBehaviour {
         toggleShown();
     }
     public void options() {
-        Debug.Log("here's the options");
+        OptionsCanvas.I.show();
     }
     public void mainMenu() {
         SceneManager.LoadScene(0);
