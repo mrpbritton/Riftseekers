@@ -6925,6 +6925,90 @@ MonoBehaviour:
   - {fileID: 4370656158545140831}
   - {fileID: 5869231273165467066}
   - {fileID: 4008781386605652316}
+--- !u!1001 &8084025147818629719
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1134619532179757097}
+    m_Modifications:
+    - target: {fileID: 2728491994039431641, guid: c5b8018fa8bc54d408df4294c69361bc,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728491994039431641, guid: c5b8018fa8bc54d408df4294c69361bc,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.5866055
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728491994039431641, guid: c5b8018fa8bc54d408df4294c69361bc,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728491994039431641, guid: c5b8018fa8bc54d408df4294c69361bc,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.817034
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728491994039431641, guid: c5b8018fa8bc54d408df4294c69361bc,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728491994039431641, guid: c5b8018fa8bc54d408df4294c69361bc,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728491994039431641, guid: c5b8018fa8bc54d408df4294c69361bc,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728491994039431641, guid: c5b8018fa8bc54d408df4294c69361bc,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728491994039431641, guid: c5b8018fa8bc54d408df4294c69361bc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728491994039431641, guid: c5b8018fa8bc54d408df4294c69361bc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728491994039431641, guid: c5b8018fa8bc54d408df4294c69361bc,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178395284830936632, guid: c5b8018fa8bc54d408df4294c69361bc,
+        type: 3}
+      propertyPath: m_Name
+      value: Base_Lore_Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178395284830936632, guid: c5b8018fa8bc54d408df4294c69361bc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c5b8018fa8bc54d408df4294c69361bc, type: 3}
+--- !u!4 &6191806313433557902 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2728491994039431641, guid: c5b8018fa8bc54d408df4294c69361bc,
+    type: 3}
+  m_PrefabInstance: {fileID: 8084025147818629719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9074011481392011804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7162,8 +7246,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 9173542413737851882, guid: 1cd3fdeb5684a654d8cca1f875170217, type: 3}
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8238111960590484021, guid: 1cd3fdeb5684a654d8cca1f875170217,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6191806313433557902}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1cd3fdeb5684a654d8cca1f875170217, type: 3}
 --- !u!4 &1134619532179757097 stripped

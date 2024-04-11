@@ -166,6 +166,11 @@ public class AugmentLibrary : Singleton<AugmentLibrary> {
         return temp;
     }
 
+    public GameObject GetLoreItem()
+    {
+        return loreDrop;
+    }
+
     public LorePiece_SO GetRandLore()
     {
         return remainingLore[Random.Range(0, remainingLore.Count)];

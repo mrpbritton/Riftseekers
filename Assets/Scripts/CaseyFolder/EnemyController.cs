@@ -71,11 +71,8 @@ public class EnemyController : MonoBehaviour
 
                 case int n when (n >= healthChance + augmentChance && n < healthChance + augmentChance + loreChance):
                     Debug.Log("lore");
-                    /*
-                    int l = UnityEngine.Random.Range(0, AugmentLibrary.I.getLore().Count);
-                    GameObject lor = Instantiate(AugmentLibrary.I.getLore[i]);
+                    GameObject lor = Instantiate(AugmentLibrary.I.GetLoreItem());
                     lor.transform.position = deadEnemy.transform.position;
-                    */
                     break;
 
                 case int n when (n >= healthChance + augmentChance + loreChance && n < healthChance + augmentChance + loreChance + abilityChance):
