@@ -68,7 +68,7 @@ public class OptionsCanvas : Singleton<OptionsCanvas> {
         //  screen mode
         SaveData.setUniversalInt("screenMode", (int)curScreenMode);
         Screen.fullScreenMode = curScreenMode;
-
+        
         settingsChanged();
     }
     public void revert() {

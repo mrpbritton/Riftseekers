@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WaveSpawner : Singleton<WaveSpawner> {
@@ -30,6 +31,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
     [SerializeField] Transform pParent;
     [SerializeField] CircularSlider waveTriggerSlider;
     [SerializeField] Transform nextWaveText;
+    [SerializeField] TextMeshProUGUI waveTriggerText;
 
     PInput pInput;
 
@@ -110,6 +112,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
 
     public void triggerWave() {
         if(waveTriggered) return;
+        waveTriggerText.text = "hold<color=yellow>" + (InputManager.isUsingKeyboard() ? " z " : " a ") + "<color=white>for next wave";
         waveTriggerSlider.setValue(0f);
         waveTriggerSlider.doValue(1f, 1f, false, delegate { 
             waveTriggered = true;
