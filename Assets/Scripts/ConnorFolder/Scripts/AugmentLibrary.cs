@@ -179,6 +179,7 @@ public class AugmentLibrary : Singleton<AugmentLibrary> {
     }
     public LorePiece_SO getAndRemoveLore() {
         var ind = Inventory.getRandLoreIndex();
+        if(ind == -1) return null;
         var temp = remainingLore[ind];
         Inventory.removeLoreIndex(ind);
         return temp;

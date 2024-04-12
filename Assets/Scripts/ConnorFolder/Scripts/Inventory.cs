@@ -85,6 +85,7 @@ public static class Inventory {
     }
 
     public static int getRandLoreIndex() {
+        if(itemBag.unseenLore.Count == 0) return -1;
         return itemBag.unseenLore[Random.Range(0, itemBag.unseenLore.Count)];
     }
     public static void removeLoreIndex(int index) {
