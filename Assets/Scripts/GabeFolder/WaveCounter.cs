@@ -8,6 +8,8 @@ public class WaveCounter : Singleton<WaveCounter>
     [SerializeField] private TMP_Text text;
     private Color waveColor = Color.yellow;
 
+    [SerializeField] TextMeshProUGUI moneyText;
+
     public void OnEnable()
     {
         WaveSpawner.WaveComplete += UpdateCounter;

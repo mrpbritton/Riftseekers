@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
 
 public class AugmentLibrary : Singleton<AugmentLibrary> {
@@ -182,6 +183,16 @@ public class AugmentLibrary : Singleton<AugmentLibrary> {
         if(ind == -1) return null;
         var temp = remainingLore[ind];
         Inventory.removeLoreIndex(ind);
+        return temp;
+    }
+
+    public List<LorePiece_SO> getSeenLore() {
+        List<LorePiece_SO> temp = new List<LorePiece_SO>();
+
+        for(int i = 0; i < remainingLore.Count; i++) {
+            if(Inventory.seenLore(i))
+                temp.Add(remainingLore[i]);
+        }
         return temp;
     }
 

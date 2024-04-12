@@ -91,6 +91,9 @@ public static class Inventory {
     public static void removeLoreIndex(int index) {
         itemBag.unseenLore.Remove(index);
     }
+    public static bool seenLore(int index) {
+        return !itemBag.unseenLore.Contains(index);
+    }
 
     public static int getWaveIndex() {
         return itemBag.waveIndex;
