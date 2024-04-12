@@ -35,6 +35,8 @@ public class WaveSpawner : Singleton<WaveSpawner> {
 
     PInput pInput;
 
+    public int waveIndex = 0;
+
     public static System.Action WaveComplete = delegate { };
     private void Start() {
         pInput = new PInput();
@@ -74,6 +76,10 @@ public class WaveSpawner : Singleton<WaveSpawner> {
             index++;
         }
 
+        waveIndex = Inventory.getWaveIndex();
+        rampUp(false);
+
+        WaveCounter.I.UpdateCounter();
         StartCoroutine(wave());
     }
 
@@ -99,7 +105,10 @@ public class WaveSpawner : Singleton<WaveSpawner> {
             while(!waveDone)
                 yield return new WaitForSeconds(1f);
 
-            rampUp();
+            waveIndex++;
+            rampUp(true);
+            Inventory.setWaveIndex(waveIndex);
+            Inventory.saveInventory();
 
             //  waits for player to trigger next wave
             yield return new WaitForSeconds(2f);
@@ -114,26 +123,27 @@ public class WaveSpawner : Singleton<WaveSpawner> {
         if(waveTriggered) return;
         waveTriggerText.text = "hold<color=yellow>" + (InputManager.isUsingKeyboard() ? " z " : " a ") + "<color=white>for next wave";
         waveTriggerSlider.setValue(0f);
-        waveTriggerSlider.doValue(1f, 1f, false, delegate { 
+        waveTriggerSlider.doValue(1f, 1f, false, delegate {
             waveTriggered = true;
             nextWaveText.gameObject.SetActive(false);
         });
     }
 
-    void rampUp() {
-        if(WaveCounter.I.WaveNum < 5) {
-            monstersPerWave += (int)(startingMonstersPerWave * Mathf.Pow(roundBase, WaveCounter.I.WaveNum));
+    void rampUp(bool runCompete) {
+        if(waveIndex < 5) {
+            monstersPerWave += (int)(startingMonstersPerWave * Mathf.Pow(roundBase, waveIndex));
             minSpawnTime *= spawnTimeInc;
             maxSpawntime *= spawnTimeInc;
         }
         else {
             foreach(var i in enemies) {
-                i.GetComponent<EnemyHealth>().maxhealth = i.GetComponent<EnemyHealth>().baseHealth + (5 * WaveCounter.I.WaveNum);
-                i.transform.localScale = Vector3.one * (0.25f * WaveCounter.I.WaveNum);
-                i.GetComponentInChildren<Damage_GA>().damage = i.GetComponentInChildren<Damage_GA>().originalDamage * (.5f *  WaveCounter.I.WaveNum);
+                i.GetComponent<EnemyHealth>().maxhealth = i.GetComponent<EnemyHealth>().baseHealth + (5 * waveIndex);
+                i.transform.localScale = Vector3.one * (0.25f * waveIndex);
+                i.GetComponentInChildren<Damage_GA>().damage = i.GetComponentInChildren<Damage_GA>().originalDamage * (.5f * waveIndex);
             }
         }
-        WaveComplete();
+        if(runCompete)
+            WaveComplete();
     }
 
     Transform getRelevantSpawnPoint() {

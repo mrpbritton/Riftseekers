@@ -7,24 +7,24 @@ public class WaveCounter : Singleton<WaveCounter>
 {
     [SerializeField] private TMP_Text text;
     private Color waveColor = Color.yellow;
-    public int WaveNum { get; private set; }
 
     public void OnEnable()
     {
         WaveSpawner.WaveComplete += UpdateCounter;
-        UpdateCounter();
+    }
+
+    private void OnDisable() {
+        WaveSpawner.WaveComplete -= UpdateCounter;
     }
 
     public void UpdateCounter()
     {
-        WaveNum++;
         waveColor.g -= 0.01f;
         UpdateColor();
     }
 
     public void ResetCounter()
     {
-        WaveNum = 0;
         waveColor = Color.yellow;
         UpdateColor();
     }
@@ -32,6 +32,6 @@ public class WaveCounter : Singleton<WaveCounter>
     private void UpdateColor()
     {
         text.text = $"<color=#{ColorUtility.ToHtmlStringRGB(waveColor)}>" + "wave: "
-                  + $"<color=white>" + WaveNum;
+                  + $"<color=white>" + WaveSpawner.I.waveIndex;
     }
 }

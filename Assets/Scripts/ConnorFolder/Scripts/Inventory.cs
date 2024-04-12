@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public static class Inventory {
@@ -82,6 +83,20 @@ public static class Inventory {
     public static int itemCount() {
         return itemBag.items.Count;
     }
+
+    public static int getRandLoreIndex() {
+        return itemBag.unseenLore[Random.Range(0, itemBag.unseenLore.Count)];
+    }
+    public static void removeLoreIndex(int index) {
+        itemBag.unseenLore.Remove(index);
+    }
+
+    public static int getWaveIndex() {
+        return itemBag.waveIndex;
+    }
+    public static void setWaveIndex(int index) {
+        itemBag.waveIndex = index;
+    }
 }
 
 [System.Serializable]
@@ -89,6 +104,8 @@ public class Bag {
     public int maxCount;
     public List<ItemSaveData> items;
     public int money;
+    public List<int> unseenLore = new List<int>();
+    public int waveIndex;
 
     public Bag(int m, int max, List<ConItem> i = null) {
         maxCount = max;
@@ -99,6 +116,12 @@ public class Bag {
                 items.Add(new ItemSaveData(j));
             }
         }
+
+        for(int j = 0; j < AugmentLibrary.I.getLoreCount(); j++) {
+            unseenLore.Add(j);
+        }
+
+        waveIndex = 0;
     }
 }
 
@@ -124,4 +147,4 @@ public class ItemSaveData {
         }
         return null;
     }
-}
+} 

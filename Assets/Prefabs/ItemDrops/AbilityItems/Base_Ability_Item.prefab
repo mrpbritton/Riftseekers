@@ -36,7 +36,7 @@ Transform:
   m_Children:
   - {fileID: 4119728680997736018}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9131264499686526837
 MonoBehaviour:
@@ -150,6 +150,7 @@ GameObject:
   - component: {fileID: 4119728680997736018}
   - component: {fileID: 5203713860059401553}
   - component: {fileID: 3905635716671530445}
+  - component: {fileID: 3097389738014517062}
   m_Layer: 13
   m_Name: Sprite
   m_TagString: Untagged
@@ -245,3 +246,15 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &3097389738014517062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 950214892605299165}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f68c82acff739d498399af8f77f5b96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
