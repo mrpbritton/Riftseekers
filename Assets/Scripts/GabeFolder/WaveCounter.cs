@@ -19,6 +19,10 @@ public class WaveCounter : Singleton<WaveCounter>
         WaveSpawner.WaveComplete -= UpdateCounter;
     }
 
+    private void Update() {
+        moneyText.text = "Money: " + Inventory.getMoney().ToString();
+    }
+
     public void UpdateCounter()
     {
         waveColor.g -= 0.01f;
