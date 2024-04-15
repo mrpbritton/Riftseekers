@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,6 +22,17 @@ public class EnemyDoor : MonoBehaviour
         startpos2 = section2.position.x;
         endpos1 = startpos1 - 2;
         endpos2 = startpos2 + 2;
+    }
+
+    private void OnEnable()
+    {
+        WaveSpawner.openDoor += openDoor;
+        WaveSpawner.closeDoor += closeDoor;
+    }
+    private void OnDisable()
+    {
+        WaveSpawner.openDoor -= openDoor;
+        WaveSpawner.closeDoor -= closeDoor;
     }
 
     void Update()
