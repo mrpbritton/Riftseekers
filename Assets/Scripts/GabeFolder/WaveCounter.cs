@@ -20,7 +20,7 @@ public class WaveCounter : Singleton<WaveCounter>
     }
 
     private void Update() {
-        moneyText.text = "Money: " + Inventory.getMoney().ToString();
+        moneyText.text = "money: " + Inventory.getMoney().ToString();
     }
 
     public void UpdateCounter()

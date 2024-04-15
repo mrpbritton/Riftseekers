@@ -138,7 +138,10 @@ public class WaveSpawner : Singleton<WaveSpawner> {
     public void triggerWave() {
         if(waveTriggered) return;
         waveTriggerText.text = "hold<color=yellow>" + (InputManager.isUsingKeyboard() ? " z " : " a ") + "<color=white>for next wave";
+        waveTriggerSlider.doValueKill();
         waveTriggerSlider.setValue(0f);
+        waveTriggerSlider.setColor(Color.yellow);
+        waveTriggerSlider.doColor(Color.white, 1f);
         waveTriggerSlider.doValue(1f, 1f, false, delegate {
             waveTriggered = true;
             waveTriggerSlider.setValue(0f);

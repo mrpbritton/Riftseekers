@@ -50,33 +50,9 @@ MonoBehaviour:
   radius: 3
   dmg: 5
   maxKnockback: 10
-  explosionEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6505677060152033919}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 8518667216997764675}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+  animObj: {fileID: 8518667216997764675}
+  barrelObj: {fileID: 6505677060152033919}
+  respawnTime: 5
 --- !u!1001 &2392759877755576423
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,13 +14,11 @@ public abstract class Attack : MonoBehaviour {
     private readonly int rayDistance = 100; //how far the ray will cast out
     protected PInput pInput;
     public PlayerUICanvas cooldownBar;
-    protected ExplosionManager explosionManager;
 
     protected virtual void Start()
     {
         pInput = new PInput();
         pInput.Enable();
-        explosionManager = FindObjectOfType<ExplosionManager>();
     }
 
     protected void OnDisable()

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
-public class ExplosionManager : MonoBehaviour {
+public class ExplosionManager : Singleton<ExplosionManager> {
     //  None - doesn't hurt anyone
     public enum explosionState {
         None, HurtsEnemies, HurtsPlayer, HurtsAll

@@ -44,7 +44,7 @@ public class Bullet : MonoBehaviour
                 AkSoundEngine.PostEvent("Object_Hit", gameObject);
             }
             var hitOffset = (transform.position - playerTrans.position).normalized * 1f;
-            FindObjectOfType<ExplosionManager>().blueExplode(transform.position - hitOffset, .25f, 0f, 0f, ExplosionManager.explosionState.None);
+            ExplosionManager.I.blueExplode(transform.position - hitOffset, .25f, 0f, 0f, ExplosionManager.explosionState.None);
 
             if (bCanPierce && bTagIsEnemy)
             {

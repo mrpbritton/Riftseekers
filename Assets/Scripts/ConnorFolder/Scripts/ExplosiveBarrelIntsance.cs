@@ -9,13 +9,23 @@ public class ExplosiveBarrelIntsance : MonoBehaviour {
     [SerializeField] float radius;
     [SerializeField] float dmg;
     [SerializeField] float maxKnockback;
-    [SerializeField] UnityEvent explosionEvent;
+    [SerializeField] GameObject animObj, barrelObj;
+    [SerializeField] float respawnTime = 5f;
 
-    private void Start() {
-        explosionEvent.AddListener(delegate { FindObjectOfType<ExplosionManager>().explode(transform.position, radius, dmg, maxKnockback, ExplosionManager.explosionState.HurtsAll); });
-    }
+    Coroutine waiter = null;
 
     public void triggerExplosion() {
-        explosionEvent.Invoke();
+        if(waiter != null) return;
+        ExplosionManager.I.explode(transform.position, radius, dmg, maxKnockback, ExplosionManager.explosionState.HurtsAll);
+        StartCoroutine(explodeWaiter());
+    }
+
+    IEnumerator explodeWaiter() {
+        barrelObj.SetActive(false);
+        animObj.SetActive(true);
+        yield return new WaitForSeconds(respawnTime);
+        barrelObj.SetActive(true);
+        animObj.SetActive(false);
+
     }
 }

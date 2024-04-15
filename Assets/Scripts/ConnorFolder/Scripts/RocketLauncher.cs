@@ -22,8 +22,8 @@ public class RocketLauncher : Attack {
 
     public override void DoAttack() {
         var curRocket = Instantiate(rocketPreset.gameObject);
-        var rocketEndExplosion = explosionManager.queueExplode(curRocket.transform, explosionSize, explosionDmg, explosionKnockback, ExplosionManager.explosionState.HurtsEnemies, maxTravelTime);
-        curRocket.GetComponentInChildren<RocketInstance>().setup(rocketEndExplosion, explosionManager, explosionSize, explosionDmg, explosionKnockback);
+        var rocketEndExplosion = ExplosionManager.I.queueExplode(curRocket.transform, explosionSize, explosionDmg, explosionKnockback, ExplosionManager.explosionState.HurtsEnemies, maxTravelTime);
+        curRocket.GetComponentInChildren<RocketInstance>().setup(rocketEndExplosion, ExplosionManager.I, explosionSize, explosionDmg, explosionKnockback);
         curRocket.transform.position = transform.position + Vector3.up * height;
         curRocket.transform.localEulerAngles = new Vector3(0f, curRocket.transform.eulerAngles.y, curRocket.transform.eulerAngles.z);
         Destroy(curRocket.gameObject, maxTravelTime + .1f);
