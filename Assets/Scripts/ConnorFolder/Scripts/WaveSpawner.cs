@@ -35,7 +35,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
 
     PInput pInput;
 
-    public int waveIndex = 0;
+    [HideInInspector] public int waveIndex = 0;
 
     public static System.Action WaveComplete = delegate { };
     private void Start() {
@@ -141,6 +141,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
         waveTriggerSlider.setValue(0f);
         waveTriggerSlider.doValue(1f, 1f, false, delegate {
             waveTriggered = true;
+            waveTriggerSlider.setValue(0f);
             nextWaveText.gameObject.SetActive(false);
         });
     }
