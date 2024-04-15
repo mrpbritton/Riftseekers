@@ -3115,6 +3115,7 @@ PrefabInstance:
     - {fileID: 7512459809063928703, guid: 66562dc996ca2b5478f1b7f0a538878b, type: 3}
     - {fileID: 1486973088829066078, guid: 66562dc996ca2b5478f1b7f0a538878b, type: 3}
     - {fileID: 7178965217855365021, guid: 66562dc996ca2b5478f1b7f0a538878b, type: 3}
+    - {fileID: 2265613832386268298, guid: 66562dc996ca2b5478f1b7f0a538878b, type: 3}
     m_RemovedGameObjects:
     - {fileID: 7500516432358523321, guid: 66562dc996ca2b5478f1b7f0a538878b, type: 3}
     m_AddedGameObjects:
@@ -3141,7 +3142,7 @@ PrefabInstance:
       addedObject: {fileID: 6347688342931768367}
     - targetCorrespondingSourceObject: {fileID: 3828959025880857685, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
-      insertIndex: 9
+      insertIndex: 8
       addedObject: {fileID: 3840245540853374335}
     - targetCorrespondingSourceObject: {fileID: 3828959025880857685, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
@@ -3159,6 +3160,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7693884579626589775}
+    - targetCorrespondingSourceObject: {fileID: 3828959025880857685, guid: 66562dc996ca2b5478f1b7f0a538878b,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8641921472839443935}
     - targetCorrespondingSourceObject: {fileID: 5468476014619769451, guid: 66562dc996ca2b5478f1b7f0a538878b,
         type: 3}
       insertIndex: -1
@@ -3315,6 +3320,28 @@ MonoBehaviour:
   bulletPref: {fileID: 1383134052721241191, guid: de448d4ae90ab924599af64112244d19,
     type: 3}
   bParent: {fileID: 0}
+--- !u!195 &8641921472839443935
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 629408075775950726}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!114 &1991647805931262147 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2755336133540598544, guid: 66562dc996ca2b5478f1b7f0a538878b,

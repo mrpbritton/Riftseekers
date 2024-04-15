@@ -177,6 +177,7 @@ GameObject:
   - component: {fileID: 8164874445426116418}
   - component: {fileID: 2119433019155913702}
   - component: {fileID: 5558390978700170226}
+  - component: {fileID: 166975794495494509}
   m_Layer: 0
   m_Name: doorFrame
   m_TagString: Untagged
@@ -191,7 +192,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9014325037675436124}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -199,7 +200,7 @@ Transform:
   - {fileID: 477145343305062887}
   - {fileID: 847320844564877858}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2119433019155913702
 MeshFilter:
@@ -251,3 +252,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &166975794495494509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9014325037675436124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a181a16f2f55e5645922490e8c15abfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  section1: {fileID: 477145343305062887}
+  section2: {fileID: 847320844564877858}
+  bToggle: 0
+  bOpen: 0
+  bMoving: 0
+  doorSpeed: 3

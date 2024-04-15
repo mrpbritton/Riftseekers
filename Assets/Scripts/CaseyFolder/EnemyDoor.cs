@@ -18,21 +18,21 @@ public class EnemyDoor : MonoBehaviour
 
     void Start()
     {
-        startpos1 = section1.position.x;
-        startpos2 = section2.position.x;
-        endpos1 = startpos1 - 2;
-        endpos2 = startpos2 + 2;
+        startpos1 = section1.localPosition.x;
+        startpos2 = section2.localPosition.x;
+        endpos1 = startpos1 - 1.5f;
+        endpos2 = startpos2 + 1.5f;
     }
 
     private void OnEnable()
     {
-        WaveSpawner.openDoor += openDoor;
-        WaveSpawner.closeDoor += closeDoor;
+//        WaveSpawner.openDoor += openDoor;
+//        WaveSpawner.closeDoor += closeDoor;
     }
     private void OnDisable()
     {
-        WaveSpawner.openDoor -= openDoor;
-        WaveSpawner.closeDoor -= closeDoor;
+//        WaveSpawner.openDoor -= openDoor;
+//        WaveSpawner.closeDoor -= closeDoor;
     }
 
     void Update()
