@@ -90,6 +90,22 @@ public class WaveSpawner : Singleton<WaveSpawner> {
 
     IEnumerator wave() {
         yield return new WaitForSeconds(5f);
+        //  checks if needs to do tutorial
+        if(SaveData.getInt("Tutorial", 0) == 0) {
+            for(int i = 0; i < enemies.Count; i++) {
+                var point = getRelevantSpawnPoint();
+                var temp = enemyPools[i][0];
+                enemyPools[i].RemoveAt(0);
+                temp.SetActive(true);
+                temp.transform.position = point.position;
+                ec.enemies.Add(temp);
+                while(temp.activeInHierarchy)
+                    yield return new WaitForSeconds(1f);
+            }
+            WaveOverCanvas.I.runAnim();
+        }
+        SaveData.setInt("Tutorial", 1);
+
         while(true) {
             waveDone = false;
             for(int i = 0; i < monstersPerWave; i++) {
