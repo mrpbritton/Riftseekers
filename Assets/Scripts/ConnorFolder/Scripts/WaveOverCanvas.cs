@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class WaveOverCanvas : MonoBehaviour {
+public class WaveOverCanvas : Singleton<WaveOverCanvas> {
     [SerializeField] List<string> waveOverTexts = new List<string>();
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] Transform startPos, endPos;
@@ -17,7 +17,7 @@ public class WaveOverCanvas : MonoBehaviour {
         WaveSpawner.WaveComplete -= runAnim;
     }
 
-    void runAnim() {
+    public void runAnim() {
         StartCoroutine(animWaiter());
     }
 
