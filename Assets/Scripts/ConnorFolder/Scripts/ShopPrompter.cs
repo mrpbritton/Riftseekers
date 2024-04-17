@@ -23,6 +23,8 @@ public class ShopPrompter : MonoBehaviour {
     string shopTag() { return "ShopTag:" + shopName; }
     ShopData reference;
 
+    [SerializeField] Sprite loreSprite;
+
     private void Start() {
         pInput = new PInput();
         pInput.Enable();
@@ -42,7 +44,7 @@ public class ShopPrompter : MonoBehaviour {
 
         //  populates items
         var data = SaveData.getString(shopTag());
-        reference = string.IsNullOrEmpty(data) ? new ShopData() : JsonUtility.FromJson<ShopData>(data);
+        reference = string.IsNullOrEmpty(data) ? new ShopData(Random.Range(2,5), Random.Range(3, 6)) : JsonUtility.FromJson<ShopData>(data);
         SaveData.setString(shopTag(), JsonUtility.ToJson(reference));
         Inventory.loadInventory();
         reshow();
@@ -64,7 +66,7 @@ public class ShopPrompter : MonoBehaviour {
             }
             else if(i - reference.items.Count < reference.loreInds.Count) {
                 var l = AugmentLibrary.I.getLore(reference.loreInds[i - reference.items.Count]);
-                shopSlots[i].sprite = l.image;
+                shopSlots[i].sprite = loreSprite;
                 shopSlots[i].transform.parent.GetComponentInChildren<TextMeshProUGUI>().text = l.title;
             }
             else {
@@ -97,6 +99,7 @@ public class ShopPrompter : MonoBehaviour {
 
     void show() {
         shown = true;
+        reshow();
         helperUI.completeInteraction(transform);
         canvas.SetActive(true);
         FindObjectOfType<PlayerMovement>().enabled = false;
@@ -147,12 +150,10 @@ public class ShopData {
     public List<ConItem> items = new List<ConItem>();
     public List<int> loreInds = new List<int>();
 
-    public ShopData() {
-        int itCount = Random.Range(2, 5);
+    public ShopData(int itCount, int loCount) {
         for(int i = 0; i < itCount; i++)
             items.Add(AugmentLibrary.I.getRandItem());
 
-        int loCount = Random.Range(3, 6);
         for(int i = 0; i < loCount; i++)
             loreInds.Add(Inventory.getRandLoreIndex());
     }

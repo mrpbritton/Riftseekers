@@ -50,19 +50,6 @@ public class EnemyController : MonoBehaviour
                     break;
 
                 case int n when (n >= healthChance && n < healthChance + augmentChance):
-                    //drop chance per rarity of augments
-                    switch(UnityEngine.Random.Range(0, 100))
-                    {
-                        case int m when (m >= 0 && m < 60):
-                            Debug.Log("common augment");
-                            break;
-                        case int m when (m >= 60 && m < 90):
-                            Debug.Log("uncommon augment");
-                            break;
-                        case int m when (m >= 90 && m <= 100):
-                            Debug.Log("rare augment");
-                            break;
-                    }
                     GameObject aug = Instantiate(augmentItem);
                     aug.GetComponent<AddAugment_GA>().refType = AugmentLibrary.I.getRandAugment().type;
                     aug.transform.position = deadEnemy.transform.position;
@@ -70,14 +57,12 @@ public class EnemyController : MonoBehaviour
                     break;
 
                 case int n when (n >= healthChance + augmentChance && n < healthChance + augmentChance + loreChance):
-                    Debug.Log("lore");
-                    GameObject lor = Instantiate(AugmentLibrary.I.GetLoreItem());
+                    GameObject lor = Instantiate(loreItem);
                     lor.transform.position = deadEnemy.transform.position;
                     break;
 
                 case int n when (n >= healthChance + augmentChance + loreChance && n < healthChance + augmentChance + loreChance + abilityChance):
 
-//                    int i = UnityEngine.Random.Range(0, AttackLibrary.I.getItems().Count);
                     GameObject abil = Instantiate(abilityItem);
 //                    abil.GetComponent<AddItem_GA>().refType = AttackLibrary.I.getItem(i).type;
                     abil.transform.position = deadEnemy.transform.position;

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2502079855477282841}
   - component: {fileID: 7750732156827821421}
   - component: {fileID: 2464874774120446858}
-  - component: {fileID: 1534090378777859385}
   m_Layer: 0
   m_Name: Navigator
   m_TagString: Untagged
@@ -83,7 +82,8 @@ MonoBehaviour:
     type: 3}
   augmentItem: {fileID: 1042051823612733527, guid: eb39bcd91d540b6408c4a0f58eaa99a8,
     type: 3}
-  loreItem: {fileID: 0}
+  loreItem: {fileID: 7178395284830936632, guid: c5b8018fa8bc54d408df4294c69361bc,
+    type: 3}
   abilityItem: {fileID: 237051754313004310, guid: 30ddc45d9d724bc47bd916510716dfd7,
     type: 3}
   total: 0
@@ -94,15 +94,3 @@ MonoBehaviour:
   augmentChance: 20
   loreChance: 20
   abilityChance: 10
---- !u!114 &1534090378777859385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4504932776723605752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53f7abaec63c38b4e8aa4ed85e59c367, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

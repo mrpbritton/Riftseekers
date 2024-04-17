@@ -38,6 +38,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
     [HideInInspector] public int waveIndex = 0;
 
     public static System.Action WaveComplete = delegate { };
+    public static System.Action WaveStart = delegate { };
     private void Start() {
         pInput = new PInput();
         pInput.Enable();
@@ -108,6 +109,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
         SaveData.setInt("Tutorial", 1);
 
         while(true) {
+            WaveStart();
             waveDone = false;
             for(int i = 0; i < monstersPerWave; i++) {
                 var point = getRelevantSpawnPoint();
