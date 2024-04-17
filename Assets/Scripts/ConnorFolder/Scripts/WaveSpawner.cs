@@ -81,7 +81,6 @@ public class WaveSpawner : Singleton<WaveSpawner> {
 
         WaveCounter.I.UpdateCounter();
 
-        Debug.Log("here2");
         StartCoroutine(wave());
     }
 
@@ -92,7 +91,6 @@ public class WaveSpawner : Singleton<WaveSpawner> {
 
     IEnumerator wave() {
         yield return new WaitForSeconds(1f);
-        Debug.Log("here");
         //  checks if needs to do tutorial
         if(SaveData.getInt("Tutorial", 0) == 0) {
             for(int i = 0; i < enemies.Count; i++) {
@@ -111,7 +109,6 @@ public class WaveSpawner : Singleton<WaveSpawner> {
 
         while(true) {
             waveDone = false;
-            Debug.Log("doing htings");
             for(int i = 0; i < monstersPerWave; i++) {
                 var point = getRelevantSpawnPoint();
                 int rand = Random.Range(0, enemyPools.Count);
