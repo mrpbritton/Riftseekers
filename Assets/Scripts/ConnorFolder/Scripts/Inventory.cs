@@ -124,9 +124,7 @@ public class Bag {
                 items.Add(new ItemSaveData(j));
             }
         }
-
-        Debug.Log(AugmentLibrary.I.getLoreCount());
-        Debug.Log(unseenLore);
+        
         for(int j = 0; j < AugmentLibrary.I.getLoreCount(); j++) {
             unseenLore.Add(j);
         }
