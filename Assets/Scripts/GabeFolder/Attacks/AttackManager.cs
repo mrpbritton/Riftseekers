@@ -35,9 +35,8 @@ public class AttackManager : Singleton<AttackManager>
 
     };
     
-    public new void Awake()
+    public void Start()
     {
-        base.Awake();
         //SaveData.wipe(); //this is for debugging purposes, DO NOT HAVE THIS ON AT ALL TIMES
         pInput = new PInput();
         pInput.Enable();
