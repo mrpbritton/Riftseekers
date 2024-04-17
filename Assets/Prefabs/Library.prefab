@@ -46,14 +46,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 365e02fb45f29e74fa2acd17d8b79dd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  items:
-  - {fileID: 11400000, guid: 5840d634ed5e9a14fa5c3d96ae708b85, type: 2}
-  - {fileID: 11400000, guid: d5420cb34c3f943438c8c54675da49c4, type: 2}
-  augments:
-  - {fileID: 11400000, guid: 8e9e97df85bc01b44b4709efcfee0034, type: 2}
-  - {fileID: 11400000, guid: 7646d9b926f31f64482751c162ed6d49, type: 2}
-  - {fileID: 11400000, guid: 7c426e8824fafa54caa83875328a2ea4, type: 2}
+  mundaneItems: []
+  abnormalItems: []
+  remarkableItems: []
+  fabulousItems: []
+  mundaneAugments: []
+  abnormalAugments: []
+  remarkableAugments: []
+  fabulousAugments: []
   itemDrop: {fileID: 4112455011839822409}
+  mundaneMat: {fileID: 0}
+  abnormalMat: {fileID: 0}
+  remarkableMat: {fileID: 0}
+  fabulousMat: {fileID: 0}
+  remainingLore: []
+  loreDrop: {fileID: 7178395284830936632, guid: c5b8018fa8bc54d408df4294c69361bc,
+    type: 3}
 --- !u!1001 &4204195309385514847
 PrefabInstance:
   m_ObjectHideFlags: 0

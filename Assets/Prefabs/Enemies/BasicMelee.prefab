@@ -24,7 +24,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7877150208782359511
 Transform:
   m_ObjectHideFlags: 0
@@ -178,13 +178,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 956882322456177311}
-  bCover: 0
   bAttacking: 0
-  cover: []
   enemy:
     serializedVersion: 2
     m_Bits: 6643
-  coverTime: 5
   hitCooldown: 1
   enemySpeed: 12
   stopDistance: 0

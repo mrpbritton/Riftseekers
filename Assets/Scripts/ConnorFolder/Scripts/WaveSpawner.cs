@@ -80,6 +80,8 @@ public class WaveSpawner : Singleton<WaveSpawner> {
         rampUp(false);
 
         WaveCounter.I.UpdateCounter();
+
+        Debug.Log("here2");
         StartCoroutine(wave());
     }
 
@@ -89,7 +91,8 @@ public class WaveSpawner : Singleton<WaveSpawner> {
     }
 
     IEnumerator wave() {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1f);
+        Debug.Log("here");
         //  checks if needs to do tutorial
         if(SaveData.getInt("Tutorial", 0) == 0) {
             for(int i = 0; i < enemies.Count; i++) {
@@ -108,6 +111,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
 
         while(true) {
             waveDone = false;
+            Debug.Log("doing htings");
             for(int i = 0; i < monstersPerWave; i++) {
                 var point = getRelevantSpawnPoint();
                 int rand = Random.Range(0, enemyPools.Count);
@@ -168,7 +172,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
 
     Transform getRelevantSpawnPoint() {
         List<Transform> useables = new List<Transform>();
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < Mathf.Min(3, spawnPoints.Count); i++) {
             var u = spawnPoints.FindClosest(playerTrans.position);
             useables.Add(u);
             spawnPoints.RemoveAll(x => x.gameObject.GetInstanceID() == u.gameObject.GetInstanceID());

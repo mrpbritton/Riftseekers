@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class WaveCounter : Singleton<WaveCounter>
 {
@@ -9,18 +10,24 @@ public class WaveCounter : Singleton<WaveCounter>
     private Color waveColor = Color.yellow;
 
     [SerializeField] TextMeshProUGUI moneyText;
+    float curMoneyShown = 0f;
+
+    Transform tweeningObj;
+
+    private void Start() {
+        tweeningObj = new GameObject().transform;
+        tweeningObj.parent = transform;
+    }
 
     public void OnEnable()
     {
         WaveSpawner.WaveComplete += UpdateCounter;
+        Inventory.moneyChanged += updateMoneyText;
     }
 
     private void OnDisable() {
         WaveSpawner.WaveComplete -= UpdateCounter;
-    }
-
-    private void Update() {
-        moneyText.text = "money: " + Inventory.getMoney().ToString();
+        Inventory.moneyChanged -= updateMoneyText;
     }
 
     public void UpdateCounter()
@@ -39,5 +46,14 @@ public class WaveCounter : Singleton<WaveCounter>
     {
         text.text = $"<color=#{ColorUtility.ToHtmlStringRGB(waveColor)}>" + "wave: "
                   + $"<color=white>" + WaveSpawner.I.waveIndex;
+    }
+
+    void updateMoneyText() {
+        tweeningObj.DOKill();
+        tweeningObj.localPosition = Vector3.right * curMoneyShown;
+        tweeningObj.DOMoveX(Inventory.getMoney(), .25f).OnUpdate(() => {
+            moneyText.text = "money: " + tweeningObj.localPosition.x.ToString();
+            curMoneyShown = tweeningObj.localPosition.x;
+        });
     }
 }

@@ -1,13 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System;
 using UnityEngine;
 
 public static class Inventory {
     static int maxItemCount = 9;  //  this number is the max number of items the player can hold
-    static Bag itemBag = new Bag(250, maxItemCount);
+    static Bag itemBag;
 
     static string bagTag = "BagTag";
+
+    public static Action moneyChanged = delegate { };
 
     //  Item saving things
     public static void saveInventory() {
@@ -44,6 +46,7 @@ public static class Inventory {
     public static void changeMoney(int chng) {
         itemBag.money += chng;
 
+        moneyChanged();
         saveInventory();
     }
     public static int getMoney() {
@@ -86,7 +89,7 @@ public static class Inventory {
 
     public static int getRandLoreIndex() {
         if(itemBag.unseenLore.Count == 0) return -1;
-        return itemBag.unseenLore[Random.Range(0, itemBag.unseenLore.Count)];
+        return itemBag.unseenLore[UnityEngine.Random.Range(0, itemBag.unseenLore.Count)];
     }
     public static void removeLoreIndex(int index) {
         itemBag.unseenLore.Remove(index);
@@ -115,12 +118,15 @@ public class Bag {
         maxCount = max;
         money = m;
         items = new List<ItemSaveData>();
+        unseenLore = new List<int>();
         if(i != null) {
             foreach(var j in i) {
                 items.Add(new ItemSaveData(j));
             }
         }
 
+        Debug.Log(AugmentLibrary.I.getLoreCount());
+        Debug.Log(unseenLore);
         for(int j = 0; j < AugmentLibrary.I.getLoreCount(); j++) {
             unseenLore.Add(j);
         }
