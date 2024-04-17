@@ -95,6 +95,7 @@ public class ShopPrompter : MonoBehaviour {
             hide();
         else
             show();
+        Time.timeScale = shown ? 0f : 1f;
     }
 
     void show() {
@@ -119,19 +120,31 @@ public class ShopPrompter : MonoBehaviour {
     }
 
     public void buy(int index) {
-        if(index >= reference.items.Count)
-            return;
-
-        var bought = reference.items[index];
-        //  checks if player has enough money
-        if(Inventory.getMoney() < bought.value) {
-            shopSlots[index].transform.parent.GetComponent<Image>().color = Color.red;
-            shopSlots[index].transform.parent.GetComponent<Image>().DOColor(Color.white, .25f);
-            return;
+        if(index < reference.items.Count) {
+            var bought = reference.items[index];
+            //  checks if player has enough money
+            if(Inventory.getMoney() < bought.value) {
+                shopSlots[index].transform.parent.GetComponent<Image>().color = Color.red;
+                shopSlots[index].transform.parent.GetComponent<Image>().DOColor(Color.white, .25f);
+                return;
+            }
+            Inventory.addItem(bought);
+            Inventory.changeMoney(-bought.value);
+            reference.items.RemoveAt(index);
         }
-        Inventory.addItem(bought);
-        Inventory.changeMoney(-bought.value);
-        reference.items.RemoveAt(index);
+        else if(index < reference.items.Count + reference.loreInds.Count) {
+            var bought = AugmentLibrary.I.getLore(reference.loreInds[index - reference.items.Count]);
+
+            if(Inventory.getMoney() < bought.value) {
+                shopSlots[index].transform.parent.GetComponent<Image>().color = Color.red;
+                shopSlots[index].transform.parent.GetComponent<Image>().DOColor(Color.white, .25f);
+                return;
+            }
+            Inventory.removeLoreIndex(reference.loreInds[index - reference.items.Count]);
+            Inventory.changeMoney(-bought.value);
+            reference.loreInds.RemoveAt(index - reference.items.Count);
+        }
+        else return;
         reshow();
     }
     public void sell(int index) {

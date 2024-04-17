@@ -17,6 +17,7 @@ public static class Inventory {
         SaveData.setString(bagTag, d);
     }
     public static void loadInventory() {
+        Debug.Log("here");
         var d = SaveData.getString(bagTag);
         itemBag = string.IsNullOrEmpty(d) ? new Bag(250, maxItemCount) : JsonUtility.FromJson<Bag>(d);
     }
@@ -93,6 +94,7 @@ public static class Inventory {
     }
     public static void removeLoreIndex(int index) {
         itemBag.unseenLore.Remove(index);
+        Debug.Log("Player has Lore #: " + index);
     }
     public static bool seenLore(int index) {
         return !itemBag.unseenLore.Contains(index);

@@ -14,4 +14,6 @@ public class LorePiece_SO : ScriptableObject
     public string lore;
 
     public Sprite image;
+
+    public int value;
 }
