@@ -62,6 +62,11 @@ public class ShopPrompter : MonoBehaviour {
                 shopSlots[i].sprite = reference.items[i].image;
                 shopSlots[i].transform.parent.GetComponentInChildren<TextMeshProUGUI>().text = reference.items[i].value.ToString();
             }
+            else if(i - reference.items.Count < reference.loreInds.Count) {
+                var l = AugmentLibrary.I.getLore(reference.loreInds[i - reference.items.Count]);
+                shopSlots[i].sprite = l.image;
+                shopSlots[i].transform.parent.GetComponentInChildren<TextMeshProUGUI>().text = l.title;
+            }
             else {
                 shopSlots[i].sprite = null;
                 shopSlots[i].transform.parent.GetComponentInChildren<TextMeshProUGUI>().text = "";
@@ -140,11 +145,15 @@ public class ShopPrompter : MonoBehaviour {
 [System.Serializable]
 public class ShopData {
     public List<ConItem> items = new List<ConItem>();
+    public List<int> loreInds = new List<int>();
 
     public ShopData() {
-        int count = Random.Range(3, 15);
-        int itCount = AugmentLibrary.I.getItemCount();
-        for(int i = 0; i < count; i++)
+        int itCount = Random.Range(2, 5);
+        for(int i = 0; i < itCount; i++)
             items.Add(AugmentLibrary.I.getRandItem());
+
+        int loCount = Random.Range(3, 6);
+        for(int i = 0; i < loCount; i++)
+            loreInds.Add(Inventory.getRandLoreIndex());
     }
 }

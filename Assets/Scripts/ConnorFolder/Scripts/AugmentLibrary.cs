@@ -178,6 +178,9 @@ public class AugmentLibrary : Singleton<AugmentLibrary> {
     {
         return remainingLore[Random.Range(0, remainingLore.Count)];
     }
+    public LorePiece_SO getLore(int index) {
+        return remainingLore[index];
+    }
     public LorePiece_SO getAndRemoveLore() {
         var ind = Inventory.getRandLoreIndex();
         if(ind == -1) return null;

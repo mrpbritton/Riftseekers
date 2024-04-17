@@ -38,7 +38,7 @@ public static class Inventory {
         saveInventory();
     }
     public static void clear() {
-        itemBag.items.Clear();
+        itemBag = new Bag(250, maxItemCount);
 
         saveInventory();
     }

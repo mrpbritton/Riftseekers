@@ -17,6 +17,7 @@ public class WaveCounter : Singleton<WaveCounter>
     private void Start() {
         tweeningObj = new GameObject().transform;
         tweeningObj.parent = transform;
+        moneyText.text = "money: " + Inventory.getMoney().ToString("0.0");
     }
 
     public void OnEnable()
@@ -52,7 +53,7 @@ public class WaveCounter : Singleton<WaveCounter>
         tweeningObj.DOKill();
         tweeningObj.localPosition = Vector3.right * curMoneyShown;
         tweeningObj.DOMoveX(Inventory.getMoney(), .25f).OnUpdate(() => {
-            moneyText.text = "money: " + tweeningObj.localPosition.x.ToString();
+            moneyText.text = "money: " + tweeningObj.localPosition.x.ToString("0.0");
             curMoneyShown = tweeningObj.localPosition.x;
         });
     }

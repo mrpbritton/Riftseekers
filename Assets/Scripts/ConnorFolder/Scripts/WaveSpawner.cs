@@ -130,6 +130,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
             //  waits for player to trigger next wave
             yield return new WaitForSeconds(2f);
             nextWaveText.gameObject.SetActive(true);
+            waveTriggerText.text = "hold<color=yellow>" + (InputManager.isUsingKeyboard() ? " z " : " a ") + "<color=white>for next wave";
             waveTriggered = false;
             while(!waveTriggered)
                 yield return new WaitForSeconds(1f);

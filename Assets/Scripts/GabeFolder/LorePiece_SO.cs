@@ -12,4 +12,6 @@ public class LorePiece_SO : ScriptableObject
     [TextArea(3, 10)]
     [Tooltip("The written lore")]
     public string lore;
+
+    public Sprite image;
 }
