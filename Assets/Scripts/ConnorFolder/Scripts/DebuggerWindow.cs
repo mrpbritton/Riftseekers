@@ -23,6 +23,16 @@ public class DebuggerWindow : EditorWindow {
             SaveData.wipe();
             Debug.Log("Cleared");
         }
+        if(GUILayout.Button("Add Lore")) {
+            int ind = 0;
+            do {
+                if(AugmentLibrary.I == null)
+                    Debug.Log("Press Play b4 pressing this");
+                ind = Random.Range(0, AugmentLibrary.I.getLoreCount());
+            } while(Inventory.seenLore(ind));
+            Debug.Log("Added: " + ind);
+            Inventory.removeLoreIndex(ind);
+        }
         GUILayout.EndHorizontal();
     }
 }

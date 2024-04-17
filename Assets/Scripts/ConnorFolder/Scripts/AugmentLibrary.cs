@@ -21,7 +21,7 @@ public class AugmentLibrary : Singleton<AugmentLibrary> {
     [SerializeField] Material mundaneMat, abnormalMat, remarkableMat, fabulousMat;
 
     [Header("Lore Drops")]
-    [SerializeField] List<LorePiece_SO> remainingLore = new();
+    [SerializeField] List<LorePiece_SO> remainingLore = new List<LorePiece_SO>();
     [SerializeField] GameObject loreDrop;
     public enum rarity {
         None, Mundane, Abnormal, Remarkable, Fabulous
