@@ -42,7 +42,7 @@ public class ShopPrompter : MonoBehaviour {
 
         //  populates items
         var data = SaveData.getString(shopTag());
-        reference = string.IsNullOrEmpty(data) ? new ShopData() : JsonUtility.FromJson<ShopData>(data);
+        reference = string.IsNullOrEmpty(data) ? new ShopData(Random.Range(2,5), Random.Range(3, 6)) : JsonUtility.FromJson<ShopData>(data);
         SaveData.setString(shopTag(), JsonUtility.ToJson(reference));
         Inventory.loadInventory();
         reshow();
@@ -147,12 +147,10 @@ public class ShopData {
     public List<ConItem> items = new List<ConItem>();
     public List<int> loreInds = new List<int>();
 
-    public ShopData() {
-        int itCount = Random.Range(2, 5);
+    public ShopData(int itCount, int loCount) {
         for(int i = 0; i < itCount; i++)
             items.Add(AugmentLibrary.I.getRandItem());
 
-        int loCount = Random.Range(3, 6);
         for(int i = 0; i < loCount; i++)
             loreInds.Add(Inventory.getRandLoreIndex());
     }
