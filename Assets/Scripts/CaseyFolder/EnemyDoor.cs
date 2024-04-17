@@ -10,7 +10,8 @@ public class EnemyDoor : MonoBehaviour
     private float startpos1, startpos2;
     private float endpos1, endpos2;
     [SerializeField]
-    private bool bToggle, bOpen, bMoving;
+    private bool bToggle, bSafeDoor;
+    private bool bOpen, bMoving;
     [Tooltip("Time in seconds to open")]
     [SerializeField]
     private float doorSpeed = 3;
@@ -26,13 +27,13 @@ public class EnemyDoor : MonoBehaviour
 
     private void OnEnable()
     {
-//        WaveSpawner.openDoor += openDoor;
-//        WaveSpawner.closeDoor += closeDoor;
+        WaveSpawner.WaveComplete += waveComplete;
+        WaveSpawner.WaveStart += waveStart;
     }
     private void OnDisable()
     {
-//        WaveSpawner.openDoor -= openDoor;
-//        WaveSpawner.closeDoor -= closeDoor;
+        WaveSpawner.WaveComplete -= waveComplete;
+        WaveSpawner.WaveStart -= waveStart;
     }
 
     void Update()
@@ -93,5 +94,15 @@ public class EnemyDoor : MonoBehaviour
     {
         bMoving = true;
         timeElapsed = 0;
+    }
+
+    public void waveComplete()
+    {
+
+    }
+
+    public void waveStart()
+    {
+
     }
 }
