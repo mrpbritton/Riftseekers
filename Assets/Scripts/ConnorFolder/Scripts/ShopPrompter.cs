@@ -23,6 +23,8 @@ public class ShopPrompter : MonoBehaviour {
     string shopTag() { return "ShopTag:" + shopName; }
     ShopData reference;
 
+    [SerializeField] Sprite loreSprite;
+
     private void Start() {
         pInput = new PInput();
         pInput.Enable();
@@ -64,7 +66,7 @@ public class ShopPrompter : MonoBehaviour {
             }
             else if(i - reference.items.Count < reference.loreInds.Count) {
                 var l = AugmentLibrary.I.getLore(reference.loreInds[i - reference.items.Count]);
-                shopSlots[i].sprite = l.image;
+                shopSlots[i].sprite = loreSprite;
                 shopSlots[i].transform.parent.GetComponentInChildren<TextMeshProUGUI>().text = l.title;
             }
             else {
@@ -97,6 +99,7 @@ public class ShopPrompter : MonoBehaviour {
 
     void show() {
         shown = true;
+        reshow();
         helperUI.completeInteraction(transform);
         canvas.SetActive(true);
         FindObjectOfType<PlayerMovement>().enabled = false;
