@@ -17,7 +17,6 @@ public static class Inventory {
         SaveData.setString(bagTag, d);
     }
     public static void loadInventory() {
-        Debug.Log("here");
         var d = SaveData.getString(bagTag);
         itemBag = string.IsNullOrEmpty(d) ? new Bag(250, maxItemCount) : JsonUtility.FromJson<Bag>(d);
     }
