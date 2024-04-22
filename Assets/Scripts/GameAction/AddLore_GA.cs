@@ -6,7 +6,7 @@ public class AddLore_GA : GameAction
 {
     public override void Action()
     {
-        AugmentLibrary.I.getAndRemoveLore();
+        AugmentLibrary.I.getAndRemoveLore(Inventory.getRandLoreIndex());
         ItemDictionaryPopupCanvas.I.showForLore();
         Inventory.saveInventory();
     }
