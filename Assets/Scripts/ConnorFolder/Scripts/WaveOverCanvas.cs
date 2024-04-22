@@ -23,6 +23,7 @@ public class WaveOverCanvas : Singleton<WaveOverCanvas> {
 
     IEnumerator animWaiter() {
         float stepTime = .35f;
+        text.gameObject.SetActive(true);
         text.text = waveOverTexts[Random.Range(0, waveOverTexts.Count)];
         text.transform.position = startPos.position;
         text.transform.DOMove(endPos.position, 2f);
@@ -34,5 +35,7 @@ public class WaveOverCanvas : Singleton<WaveOverCanvas> {
         yield return new WaitForSeconds(2f - stepTime);
         text.DOColor(Color.clear, stepTime);
         text.transform.DOScale(0f, stepTime);
+        yield return new WaitForSeconds(stepTime);
+        text.gameObject.SetActive(false);
     }
 }

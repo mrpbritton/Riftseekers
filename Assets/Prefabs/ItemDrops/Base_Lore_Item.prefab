@@ -130,8 +130,8 @@ GameObject:
   - component: {fileID: 2728491994039431641}
   - component: {fileID: 1697971550127304346}
   - component: {fileID: 5432637955767705534}
-  - component: {fileID: 1949127841347819394}
   - component: {fileID: 8690909276615290302}
+  - component: {fileID: 1949127841347819394}
   - component: {fileID: 5326409092716831145}
   m_Layer: 13
   m_Name: Base_Lore_Item
@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 0
   actionList:
+  - {fileID: 8690909276615290302}
   - {fileID: 1949127841347819394}
 --- !u!114 &5432637955767705534
 MonoBehaviour:
@@ -185,19 +186,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactRange: 2
   interactSequence: {fileID: 1697971550127304346}
---- !u!114 &1949127841347819394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7178395284830936632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c2065eb3dc731a46b9e95eac1467c07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  delay: 0
 --- !u!114 &8690909276615290302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,7 +199,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0
-  lore: {fileID: 11400000, guid: e2ed6e857ab41084196b33f24190499b, type: 2}
+--- !u!114 &1949127841347819394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7178395284830936632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c2065eb3dc731a46b9e95eac1467c07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delay: 0
 --- !u!54 &5326409092716831145
 Rigidbody:
   m_ObjectHideFlags: 0
