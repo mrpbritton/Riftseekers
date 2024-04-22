@@ -14785,7 +14785,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382398578}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c9b25b9a45a279d45971ca3a8fc453e0, type: 3}
   m_Name: 
@@ -56098,6 +56098,7 @@ GameObject:
   - component: {fileID: 1343033112}
   - component: {fileID: 1343033111}
   - component: {fileID: 1343033110}
+  - component: {fileID: 1343033113}
   m_Layer: 0
   m_Name: Area Light (1)
   m_TagString: Untagged
@@ -56205,6 +56206,23 @@ Transform:
   m_Father: {fileID: 1138218453}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1343033113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343033109}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9b25b9a45a279d45971ca3a8fc453e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeDelay: 0
+  minValue: 0.1
+  maxValue: 1
+  offTime: 0.1
+  flickerIntensity: 5
 --- !u!1001 &1345313035
 PrefabInstance:
   m_ObjectHideFlags: 0
