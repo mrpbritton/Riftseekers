@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 8690909276615290302}
   - component: {fileID: 1949127841347819394}
   - component: {fileID: 5326409092716831145}
+  - component: {fileID: 8529196574907963154}
   m_Layer: 13
   m_Name: Base_Lore_Item
   m_TagString: Untagged
@@ -239,3 +240,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &8529196574907963154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7178395284830936632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54e840e32ffe14f4db8d70c2389f4fbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifespan: 25

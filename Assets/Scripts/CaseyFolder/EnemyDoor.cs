@@ -38,7 +38,7 @@ public class EnemyDoor : MonoBehaviour
 
     void Update()
     {
-        if(bToggle)
+/*        if(bToggle)
         {
             bToggle = false;
             if (bMoving)
@@ -48,7 +48,7 @@ public class EnemyDoor : MonoBehaviour
             else
                 openDoor();
         }
-
+*/
         if(bMoving)
         {
             if(bOpen)
@@ -86,23 +86,37 @@ public class EnemyDoor : MonoBehaviour
 
     public void openDoor()
     {
+        if (bOpen)
+            return;
+        if (bMoving)
+            return;
         bMoving = true;
         timeElapsed = 0;
     }
 
     public void closeDoor()
     {
+        if(!bOpen)
+            return;
+        if (bMoving)
+            return;
         bMoving = true;
         timeElapsed = 0;
     }
 
     public void waveComplete()
     {
-
+        if(bSafeDoor)
+            openDoor();
+        else
+            closeDoor();
     }
 
     public void waveStart()
     {
-
+        if (!bSafeDoor)
+            closeDoor();
+        else
+            openDoor();
     }
 }
