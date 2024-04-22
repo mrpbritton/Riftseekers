@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class AddLore_GA : GameAction
 {
-    public int loreIndex;
     public override void Action()
     {
-        AugmentLibrary.I.getAndRemoveLore(loreIndex);
+        AugmentLibrary.I.getAndRemoveLore(Inventory.getRandLoreIndex());
         ItemDictionaryPopupCanvas.I.showForLore();
         Inventory.saveInventory();
     }
