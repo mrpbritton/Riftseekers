@@ -10,7 +10,7 @@ public class EnemyDoor : MonoBehaviour
     private float startpos1, startpos2;
     private float endpos1, endpos2;
     [SerializeField]
-    private bool bToggle, bSafeDoor;
+    private bool bToggle;
     private bool bOpen, bMoving;
     [Tooltip("Time in seconds to open")]
     [SerializeField]
@@ -38,17 +38,6 @@ public class EnemyDoor : MonoBehaviour
 
     void Update()
     {
-/*        if(bToggle)
-        {
-            bToggle = false;
-            if (bMoving)
-                return;
-            if (bOpen)
-                closeDoor();
-            else
-                openDoor();
-        }
-*/
         if(bMoving)
         {
             if(bOpen)
@@ -106,17 +95,11 @@ public class EnemyDoor : MonoBehaviour
 
     public void waveComplete()
     {
-        if(bSafeDoor)
-            openDoor();
-        else
-            closeDoor();
+        openDoor();
     }
 
     public void waveStart()
     {
-        if (!bSafeDoor)
-            closeDoor();
-        else
-            openDoor();
+        closeDoor();
     }
 }
