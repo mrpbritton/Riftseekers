@@ -23,4 +23,13 @@ public class Terminals : MonoBehaviour
         screen.SetActive(true);
     } 
 
+    public void powerOff()
+    {
+        screen.SetActive(false);
+    }
+
+    public void viewLog(int index)
+    {
+        text.text = logs[index];
+    }
 }
