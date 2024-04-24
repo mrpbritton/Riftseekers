@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -37,13 +38,19 @@ public class WaveSpawner : Singleton<WaveSpawner> {
 
     [HideInInspector] public int waveIndex = 0;
 
+    Coroutine triggerWaiter = null;
+
     public static System.Action WaveComplete = delegate { };
     public static System.Action WaveStart = delegate { };
     private void Start() {
         pInput = new PInput();
         pInput.Enable();
         pInput.Player.TriggerWave.performed += ctx => triggerWave();
-        pInput.Player.TriggerWave.canceled += ctx => { if(waveTriggered) return; waveTriggerSlider.doValueKill(); waveTriggerSlider.doValue(0f, .25f, true); };
+        pInput.Player.TriggerWave.canceled += ctx => {
+            if(waveTriggered) return;
+            waveTriggerSlider.doValueKill();
+            waveTriggerSlider.doValue(0f, .25f, true);
+        };
 
         waveTriggerSlider.setValue(0f);
         nextWaveText.gameObject.SetActive(false);
@@ -131,6 +138,9 @@ public class WaveSpawner : Singleton<WaveSpawner> {
 
             //  waits for player to trigger next wave
             yield return new WaitForSeconds(2f);
+            if(triggerWaiter != null)
+                StopCoroutine(triggerWaiter);
+            triggerWaiter = StartCoroutine(triggerWaveWaiter());
             nextWaveText.gameObject.SetActive(true);
             waveTriggerText.text = "hold<color=yellow>" + (InputManager.isUsingKeyboard() ? " z " : " a ") + "<color=white>for next wave";
             waveTriggered = false;
@@ -150,7 +160,26 @@ public class WaveSpawner : Singleton<WaveSpawner> {
             waveTriggered = true;
             waveTriggerSlider.setValue(0f);
             nextWaveText.gameObject.SetActive(false);
+            triggerWaiter = null;
         });
+    }
+    public void triggerImmediateWave() {
+        waveTriggered = true;
+        waveTriggerSlider.setValue(0f);
+        nextWaveText.gameObject.SetActive(false);
+        triggerWaiter = null;
+    }
+    public void setCanManualStartWave(bool b) {
+        if(b)
+            pInput.Player.TriggerWave.performed += ctx => triggerWave();
+        else
+            pInput.Player.TriggerWave.performed -= ctx => triggerWave();
+    }
+
+    IEnumerator triggerWaveWaiter() {
+        yield return new WaitForSeconds(2f);
+        nextWaveText.transform.DOPunchScale(Vector3.one * .5f, .35f);
+        triggerWaiter = null;
     }
 
     void rampUp(bool runCompete) {

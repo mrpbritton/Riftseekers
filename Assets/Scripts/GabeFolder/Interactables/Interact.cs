@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(GameActionSequence))]
-public class Interact : MonoBehaviour
-{
+public class Interact : MonoBehaviour {
     private PInput pInput;
     protected Transform player;
 
@@ -17,8 +16,7 @@ public class Interact : MonoBehaviour
     InteractUI helperUI;
 
     protected virtual void Awake() { }
-    protected void Start()
-    {
+    protected void Start() {
         pInput = new();
         pInput.Enable();
         pInput.Player.Interact.performed += ctxt => Interacted();
@@ -35,23 +33,19 @@ public class Interact : MonoBehaviour
         else if(TryGetComponent<HealthPack_GA>(out var hp))
             helperUI.addInteractable(transform, new InteractInfo("Health Pack", InteractInfo.interactType.Health));
 
-        if (player == null)
-        {
-            player = FindObjectOfType<PlayerMovement>().transform;
-        }
+        player = FindObjectOfType<PlayerMovement>().transform;
     }
 
-    protected void OnDestroy()
-    {
+    protected void OnDestroy() {
         pInput.Player.Interact.performed -= ctxt => Interacted();
         pInput.Disable();
     }
 
-    protected virtual void Interacted() 
-    {
+    protected virtual void Interacted() {
+        Debug.Log(player == null);
         var pPos = new Vector2(player.position.x, player.position.z);
         var mePos = new Vector2(transform.position.x, transform.position.z);
-        if (Vector3.Distance(pPos, mePos) > interactRange) return; //if cant interact, return
+        if(Vector3.Distance(pPos, mePos) > interactRange) return; //if cant interact, return
         interactSequence.Play();
         helperUI.completeInteraction(transform);
     }
@@ -61,7 +55,9 @@ public class Interact : MonoBehaviour
     }
 
     public bool inRange() {
-        if(player == null) return false;
+        if(player == null) {
+            return false;
+        }
         var d = Vector3.Distance(transform.position, player.position);
         return d < getInteractRange();
     }
