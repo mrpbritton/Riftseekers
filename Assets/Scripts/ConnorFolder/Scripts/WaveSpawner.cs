@@ -39,6 +39,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
     [HideInInspector] public int waveIndex = 0;
 
     Coroutine triggerWaiter = null;
+    Coroutine waver = null;
 
     public static System.Action WaveComplete = delegate { };
     public static System.Action WaveStart = delegate { };
@@ -88,8 +89,6 @@ public class WaveSpawner : Singleton<WaveSpawner> {
         rampUp(false);
 
         WaveCounter.I.UpdateCounter();
-
-        StartCoroutine(wave());
     }
 
     private void OnDisable() {
@@ -147,6 +146,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
             while(!waveTriggered)
                 yield return new WaitForSeconds(1f);
         }
+        waver = null;
     }
 
     public void triggerWave() {
@@ -164,6 +164,8 @@ public class WaveSpawner : Singleton<WaveSpawner> {
         });
     }
     public void triggerImmediateWave() {
+        if(waver == null)
+            waver = StartCoroutine(wave());
         waveTriggered = true;
         waveTriggerSlider.setValue(0f);
         nextWaveText.gameObject.SetActive(false);
