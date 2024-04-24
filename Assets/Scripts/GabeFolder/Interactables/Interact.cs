@@ -42,7 +42,9 @@ public class Interact : MonoBehaviour {
     }
 
     protected virtual void Interacted() {
-        Debug.Log(player == null);
+        if(player == null) {
+            player = FindObjectOfType<PlayerMovement>().transform;
+        }
         var pPos = new Vector2(player.position.x, player.position.z);
         var mePos = new Vector2(transform.position.x, transform.position.z);
         if(Vector3.Distance(pPos, mePos) > interactRange) return; //if cant interact, return
@@ -56,7 +58,7 @@ public class Interact : MonoBehaviour {
 
     public bool inRange() {
         if(player == null) {
-            return false;
+            player = FindObjectOfType<PlayerMovement>().transform;
         }
         var d = Vector3.Distance(transform.position, player.position);
         return d < getInteractRange();

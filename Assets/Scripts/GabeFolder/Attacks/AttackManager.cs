@@ -38,8 +38,6 @@ public class AttackManager : Singleton<AttackManager>
     public void Start()
     {
         //SaveData.wipe(); //this is for debugging purposes, DO NOT HAVE THIS ON AT ALL TIMES
-        pInput = new PInput();
-        pInput.Enable();
         /*
          - gun and sword can't swing together
          - rocket could go at anytime
@@ -85,6 +83,11 @@ public class AttackManager : Singleton<AttackManager>
             #endregion
         }
         #endregion
+    }
+
+    private void OnEnable() {
+        pInput = new PInput();
+        pInput.Enable();
     }
 
     #region Performing Attacks
