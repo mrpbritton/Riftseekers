@@ -88,6 +88,10 @@ public class AttackManager : Singleton<AttackManager>
     private void OnEnable() {
         pInput = new PInput();
         pInput.Enable();
+        pInput.Player.BasicAttack.started += ctx => PerformAttack(meleeAttack, Attack.AttackType.Melee);
+        pInput.Player.SecondAttack.started += ctx => PerformAttack(rangedAttack, Attack.AttackType.Ranged);
+        pInput.Player.Ability1.started += ctx => PerformAttack(specialAttack, Attack.AttackType.Special);
+        pInput.Player.Dash.started += ctx => PerformAttack(movementAttack, Attack.AttackType.Movement);
     }
 
     #region Performing Attacks
