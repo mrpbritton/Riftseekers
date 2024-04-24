@@ -52,15 +52,58 @@ public class AttackManager : Singleton<AttackManager>
         //Inventory.addItem(AugmentLibrary.I.FindItem(specialAttack.AScript));
         //Inventory.addItem(AugmentLibrary.I.FindItem(movementAttack.AScript));
         Inventory.saveInventory();
+        #region Attack Subscriptions
+
+        if (FindObjectOfType<TutorialChecker>() == null || true)
+        {
+            #region Started Subscriptions
+            pInput.Player.BasicAttack.started += ctx => PerformAttack(meleeAttack, Attack.AttackType.Melee);
+            pInput.Player.SecondAttack.started += ctx => PerformAttack(rangedAttack, Attack.AttackType.Ranged);
+            pInput.Player.Ability1.started += ctx => PerformAttack(specialAttack, Attack.AttackType.Special);
+            pInput.Player.Dash.started += ctx => PerformAttack(movementAttack, Attack.AttackType.Movement);
+            #endregion
+
+            #region Canceled Subscriptions
+            pInput.Player.BasicAttack.canceled += ctx => { bMainAttacker = null; };
+            pInput.Player.SecondAttack.canceled += ctx => { bSecondaryAttacker = null; };
+            pInput.Player.Ability1.canceled += ctx => { bAbilAttacker = null; };
+            pInput.Player.Ability2.canceled += ctx => { bAbilAttacker = null; };
+            pInput.Player.Ability3.canceled += ctx => { bAbilAttacker = null; };
+            pInput.Player.Dash.canceled += ctx => { bMoveAttacker = null; };    //  this one's different
+            pInput.Player.Ult.canceled += ctx => { bAbilAttacker = null; };
+            #endregion
+        }
+        //  subs that the tutorial doesn't handle so just subscribe on start
+        else
+        {
+            #region Started Subscriptions
+            #endregion
+
+            #region Canceled Subscriptions
+            #endregion
+        }
+        #endregion
     }
 
     private void OnEnable() {
         pInput = new PInput();
         pInput.Enable();
+        #region Started Subscriptions
         pInput.Player.BasicAttack.started += ctx => PerformAttack(meleeAttack, Attack.AttackType.Melee);
         pInput.Player.SecondAttack.started += ctx => PerformAttack(rangedAttack, Attack.AttackType.Ranged);
         pInput.Player.Ability1.started += ctx => PerformAttack(specialAttack, Attack.AttackType.Special);
         pInput.Player.Dash.started += ctx => PerformAttack(movementAttack, Attack.AttackType.Movement);
+        #endregion
+
+        #region Canceled Subscriptions
+        pInput.Player.BasicAttack.canceled += ctx => { bMainAttacker = null; };
+        pInput.Player.SecondAttack.canceled += ctx => { bSecondaryAttacker = null; };
+        pInput.Player.Ability1.canceled += ctx => { bAbilAttacker = null; };
+        pInput.Player.Ability2.canceled += ctx => { bAbilAttacker = null; };
+        pInput.Player.Ability3.canceled += ctx => { bAbilAttacker = null; };
+        pInput.Player.Dash.canceled += ctx => { bMoveAttacker = null; };    //  this one's different
+        pInput.Player.Ult.canceled += ctx => { bAbilAttacker = null; };
+        #endregion
     }
 
     #region Performing Attacks
