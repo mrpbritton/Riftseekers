@@ -7,6 +7,8 @@ public class EnemyDoor : MonoBehaviour
 {
     [SerializeField]
     private Transform section1, section2;
+    [SerializeField]
+    private GameObject doorStop;
     private float startpos1, startpos2;
     private float endpos1, endpos2;
     [SerializeField]
@@ -23,6 +25,7 @@ public class EnemyDoor : MonoBehaviour
         startpos2 = section2.localPosition.x;
         endpos1 = startpos1 - 1.5f;
         endpos2 = startpos2 + 1.5f;
+        openDoor();
     }
 
     private void OnEnable()
@@ -96,10 +99,13 @@ public class EnemyDoor : MonoBehaviour
     public void waveComplete()
     {
         openDoor();
+        doorStop.GetComponent<MeshCollider>().enabled = false;
     }
 
     public void waveStart()
     {
+        Debug.Log("closing");
         closeDoor();
+        doorStop.GetComponent<MeshCollider>().enabled = true;
     }
 }

@@ -97,6 +97,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
     }
 
     IEnumerator wave() {
+        WaveStart();
         yield return new WaitForSeconds(1f);
         //  checks if needs to do tutorial
         if(SaveData.getInt("Tutorial", 0) == 0) {
