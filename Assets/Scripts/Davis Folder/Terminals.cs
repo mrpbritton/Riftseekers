@@ -17,7 +17,7 @@ public class Terminals : MonoBehaviour
 
     public void powerOn()
     {
-        randVal = Random.Range(0, logs.Length);
+        //randVal = Random.Range(0, Inventory.seenLore().Length);
         Debug.Log(randVal);
         text.text = logs[randVal];
         screen.SetActive(true);
