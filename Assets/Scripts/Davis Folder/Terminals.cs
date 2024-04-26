@@ -21,9 +21,14 @@ public class Terminals : Singleton<Terminals>
     {
         //randVal = Random.Range(0, Inventory.seenLore().Length);
         randVal = Inventory.getRandSeenLoreIndex();
-        foreach (int i in Inventory.getSeenLore())
+        List<int> list = new();
+        if (Inventory.getSeenLore().Count > 0)
         {
-            logButtons[i].interactable = true;
+            list = Inventory.getSeenLore(); 
+            foreach (int i in list)
+            {
+                logButtons[i].interactable = true;
+            }
         }
         Debug.Log(randVal);
         if (randVal > 0)
