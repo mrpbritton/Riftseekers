@@ -130,19 +130,19 @@ public class WaveSpawner : Singleton<WaveSpawner> {
             while(!waveDone)
                 yield return new WaitForSeconds(1f);
 
-            waveIndex++;
             rampUp(true);
             Inventory.setWaveIndex(waveIndex);
             Inventory.saveInventory();
+            waveTriggered = false;
 
             //  waits for player to trigger next wave
             yield return new WaitForSeconds(2f);
+            Debug.Log("here");
             if(triggerWaiter != null)
                 StopCoroutine(triggerWaiter);
             triggerWaiter = StartCoroutine(triggerWaveWaiter());
             nextWaveText.gameObject.SetActive(true);
             waveTriggerText.text = "hold<color=yellow>" + (InputManager.isUsingKeyboard() ? " z " : " a ") + "<color=white>for next wave";
-            waveTriggered = false;
             while(!waveTriggered)
                 yield return new WaitForSeconds(1f);
         }
@@ -160,6 +160,8 @@ public class WaveSpawner : Singleton<WaveSpawner> {
             waveTriggered = true;
             waveTriggerSlider.setValue(0f);
             nextWaveText.gameObject.SetActive(false);
+            waveIndex++;
+            WaveCounter.I.UpdateCounter();
             triggerWaiter = null;
         });
     }
