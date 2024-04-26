@@ -14,6 +14,8 @@ public class ShopPrompter : MonoBehaviour {
     PInput pInput;
     [SerializeField] TextMeshProUGUI moneyText;
     [SerializeField] Transform shopUI;
+    [SerializeField] Button shopDefaultSelect;
+    [SerializeField] Scrollbar termDefaultSelect;
 
     bool shown = false;
 
@@ -36,6 +38,7 @@ public class ShopPrompter : MonoBehaviour {
         pInput.Player.Interact.performed += ctx => toggleShownState();
         pInput.Player.Dash.performed += ctxt => OpenShop();
         pInput.Player.Ability1.performed += ctxt => OpenTerminal();
+        shopDefaultSelect.Select();
 
         interact = GetComponent<Interact>();
 
@@ -73,6 +76,7 @@ public class ShopPrompter : MonoBehaviour {
     private void OpenTerminal()
     {
         toggleShopTerminalState(false);
+        termDefaultSelect.Select();
     }
 
     void reshow() {
