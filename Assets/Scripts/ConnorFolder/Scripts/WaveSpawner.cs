@@ -78,7 +78,6 @@ public class WaveSpawner : Singleton<WaveSpawner> {
             enemyPools.Add(new List<GameObject>());
             for(int j = 0; j < enemiesInPool; j++) {
                 var temp = Instantiate(i.gameObject, pParent);
-                temp.transform.parent = transform;
                 temp.SetActive(false);
                 enemyPools[index].Add(temp);
             }
