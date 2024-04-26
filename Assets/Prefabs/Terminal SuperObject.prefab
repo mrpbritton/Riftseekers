@@ -527,7 +527,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1150836373837361322}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Terminals, Assembly-CSharp
         m_MethodName: viewLog
         m_Mode: 3
@@ -922,128 +922,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!1 &1932156124276339031
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5841248119057061692}
-  - component: {fileID: 6104371055354448489}
-  - component: {fileID: 4077647570547392389}
-  - component: {fileID: 2108866118881420300}
-  m_Layer: 5
-  m_Name: Button (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &5841248119057061692
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932156124276339031}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2811115989431234353}
-  m_Father: {fileID: 2704681324527276898}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &6104371055354448489
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932156124276339031}
-  m_CullTransparentMesh: 1
---- !u!114 &4077647570547392389
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932156124276339031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!114 &2108866118881420300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1932156124276339031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 4077647570547392389}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &2152890794715706967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1055,7 +933,6 @@ GameObject:
   - component: {fileID: 1119400718880384559}
   - component: {fileID: 6564461626764845767}
   - component: {fileID: 6820130550351974686}
-  - component: {fileID: 1150836373837361322}
   m_Layer: 5
   m_Name: Terminal UI
   m_TagString: Untagged
@@ -1125,101 +1002,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1150836373837361322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2152890794715706967}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb77ca78264031d47a6ce93dab9f9bed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  screen: {fileID: 2152890794715706967}
-  text: {fileID: 4207242574095321098}
-  logs:
-  - "My name is Private Lance Vastra and I serve on the security force for block
-    B of the Riftwalker. This is my first security voyage and it\u2019s already sucking
-    the life out of me. Day in and day out I stand watching the same damn hallway.
-    I would rather be doing anything else, nothing interesting ever happens here.
-    I have a girl back home Lydia, she\u2019s the only thing that keeps me going.
-    There\u2019s no outside communication here so all I have is a little recorded
-    message she made for me before I left and I listen to it every night before I
-    go to bed."
-  - "Trouble is brewing on board, rumors are going around that our tear drive is
-    dead and that we are just floating out in space. It\u2019s total crap if there
-    was an emergency the security staff would have known by now. On top of that we
-    have some of the best mechanics in the system on board. Surely they would be
-    able to fix the ship if it were to malfunction right\u2026 The more I think about
-    it the more unsure I am. I think I just need to listen to Lydia again and lie
-    down. All this stress is making my head hurt."
-  - "Well I guess I was wrong. We\u2019re screwed, command just let us know that
-    the rumors are true today. They\u2019ve sent out distress signals but they wouldn\u2019t
-    tell us if any of them came back. \u201CStay busy\u201D they said, trying to
-    keep our minds off it as if the looming doom of the entire ship is something
-    I can just forget about for an evening. On top of that it\u2019s getting worse,
-    the passengers are convinced now and things are getting restless. More fights
-    have been breaking out and people are begging us for help. Little do they know
-    there\u2019s nothing any of us can do but wait at this point. Lydia\u2019s voice
-    brings me no comfort anymore. It's just the same droning melody now, I can\u2019t
-    even remember her face, my only motivation is slowly slipping away from me."
-  - "There is no hope. Today a kid made a run for our supply room and\u2026 and I
-    shot him. Without a second thought either, just following protocol is what I
-    told myself. In reality I know it\u2019s because I need that food to live. All
-    this tension, all these issues hoping that our distress signals would be heard.
-    No one is coming for us. We will not be saved. Now I have blood on my hands and
-    it\u2019s tearing me apart. I keep listening to her voice but it doesn\u2019t
-    help. I sit listening over and over again to the husk of someone I used to love
-    as if that\u2019s going to keep my humanity intact."
-  - "This is the end. Today the people mutinied against us. They\u2019re all dead
-    now. They just kept coming. Charging straight into our line just waiting to be
-    cut down. That hall is stained with the crimson remains of an entire generation.
-    All of it by my hand. Whatever good part of me I had left is dead. I deserve
-    a fate worse than death. How did it come to this? How did a simple security voyage
-    turn me into a butcher. I\u2019m taking my fate into my own hands, giving myself
-    the last bit of justice I deserve. I let the monster inside of me out, and it\u2019s
-    time to put it back in its cage."
-  - "I can\u2019t believe this! I finally have access to an actual real tear drive.
-    I\u2019ve been researching this technology for years and now I finally get to
-    have it in my hands to experiment on. Engineering had to replace the old tear
-    drive in the Riftwalker and so they have given me the old one to repair and experiment
-    with. I can\u2019t wait to get started!"
-  - "This tear drive has been absolutely fascinating to work with! The way the drive
-    quickly spins up to a ready state is quite impressive considering this model\u2019s
-    age. I have a theory that with some tweaking I can open a small tear within the
-    confines of the lab and get a better look at the space that these ships travel
-    through. We all use this technology on a daily basis and I need to understand
-    it before I can research other uses for it."
-  - "I\u2019ve hit a snag. Despite the miniscule size of the tear I am trying to
-    create, the drive doesn\u2019t have a sufficient power supply for the task here
-    in the lab. I will have to procure a solution. I hear the maintenance wing has
-    a surplus of spare batteries for the various facilities and automata on the ship.
-    Maybe I can start there\u2026"
-  - "Success! I was able to generate a localized tear in the lab. I only kept it
-    on for a few minutes just to test the possibility of this. I want to go inside.
-    I want to find out what\u2019s beyond the veil of this mysterious realm we traverse
-    through every day. Despite the amount of time I have spent researching this technology
-    I have found shockingly few descriptions and details of this space and I aim
-    to be a pioneer of this new frontier I have found. Just one step further, I\u2019m
-    so close to discovering something big! This would put me on the map and I would
-    finally be recognized for the scientist I am. I\u2019m going in tomorrow, I need
-    to see this all first hand."
-  - "It\u2019s beautiful, the void, great beyond, or whatever you want to call it.
-    I saw everything. Every event in human history all at once, seemingly in the
-    blink of an eye. In a way, it almost made me seem insignificant. Just a speck
-    of dust on the canvas of history if even that. I don\u2019t remember coming out
-    of there, I just woke up on the floor of the lab and the power seems to be out.
-    What a ride. To think, all of our history as a species is simply a murmur in
-    this higher plane."
-  - "It\u2019s worse than I could\u2019ve imagined. When I came back something must
-    have gone wrong. The ship\u2019s main tear drive is no longer working. I suspect
-    the tuning ring was thrown all out of sort due to the closing of the tear I created
-    in the lab. Hopefully our distress signal reaches help in time or else we\u2019re
-    screwed. How did I let this happen? From my initial testing I knew these tears
-    caused weird irregularities in real space. I let my hubris blind me, the thought
-    that I was special. I\u2019ve damned us all and I have no one to blame but myself. "
 --- !u!1 &2388425639501470923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1747,7 +1529,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1150836373837361322}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Terminals, Assembly-CSharp
         m_MethodName: viewLog
         m_Mode: 3
@@ -1881,7 +1663,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1150836373837361322}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Terminals, Assembly-CSharp
         m_MethodName: viewLog
         m_Mode: 3
@@ -2277,7 +2059,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1150836373837361322}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Terminals, Assembly-CSharp
         m_MethodName: viewLog
         m_Mode: 3
@@ -2546,7 +2328,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1150836373837361322}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Terminals, Assembly-CSharp
         m_MethodName: viewLog
         m_Mode: 3
@@ -2649,71 +2431,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
---- !u!1 &5665581564731239994
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2704681324527276898}
-  - component: {fileID: 7967881684148996416}
-  m_Layer: 5
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2704681324527276898
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5665581564731239994}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8234693215810778419}
-  - {fileID: 5841248119057061692}
-  m_Father: {fileID: 6965522844063486003}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -220, y: 100}
-  m_Pivot: {x: 0.5, y: 1}
---- !u!114 &7967881684148996416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5665581564731239994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 1
-  m_ChildControlHeight: 1
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
 --- !u!1 &5773675463169014288
 GameObject:
   m_ObjectHideFlags: 0
@@ -2726,6 +2443,7 @@ GameObject:
   - component: {fileID: 8794777678901015342}
   - component: {fileID: 504136008584528701}
   - component: {fileID: 1152186637168640498}
+  - component: {fileID: 6817241844721426999}
   m_Layer: 5
   m_Name: Terminal SuperObject
   m_TagString: Untagged
@@ -2745,10 +2463,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2704681324527276898}
   - {fileID: 1119400718880384559}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2817,6 +2534,101 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6817241844721426999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5773675463169014288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb77ca78264031d47a6ce93dab9f9bed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screen: {fileID: 2152890794715706967}
+  text: {fileID: 4207242574095321098}
+  logs:
+  - "My name is Private Lance Vastra and I serve on the security force for block
+    B of the Riftwalker. This is my first security voyage and it\u2019s already sucking
+    the life out of me. Day in and day out I stand watching the same damn hallway.
+    I would rather be doing anything else, nothing interesting ever happens here.
+    I have a girl back home Lydia, she\u2019s the only thing that keeps me going.
+    There\u2019s no outside communication here so all I have is a little recorded
+    message she made for me before I left and I listen to it every night before I
+    go to bed."
+  - "Trouble is brewing on board, rumors are going around that our tear drive is
+    dead and that we are just floating out in space. It\u2019s total crap if there
+    was an emergency the security staff would have known by now. On top of that we
+    have some of the best mechanics in the system on board. Surely they would be
+    able to fix the ship if it were to malfunction right\u2026 The more I think about
+    it the more unsure I am. I think I just need to listen to Lydia again and lie
+    down. All this stress is making my head hurt."
+  - "Well I guess I was wrong. We\u2019re screwed, command just let us know that
+    the rumors are true today. They\u2019ve sent out distress signals but they wouldn\u2019t
+    tell us if any of them came back. \u201CStay busy\u201D they said, trying to
+    keep our minds off it as if the looming doom of the entire ship is something
+    I can just forget about for an evening. On top of that it\u2019s getting worse,
+    the passengers are convinced now and things are getting restless. More fights
+    have been breaking out and people are begging us for help. Little do they know
+    there\u2019s nothing any of us can do but wait at this point. Lydia\u2019s voice
+    brings me no comfort anymore. It's just the same droning melody now, I can\u2019t
+    even remember her face, my only motivation is slowly slipping away from me."
+  - "There is no hope. Today a kid made a run for our supply room and\u2026 and I
+    shot him. Without a second thought either, just following protocol is what I
+    told myself. In reality I know it\u2019s because I need that food to live. All
+    this tension, all these issues hoping that our distress signals would be heard.
+    No one is coming for us. We will not be saved. Now I have blood on my hands and
+    it\u2019s tearing me apart. I keep listening to her voice but it doesn\u2019t
+    help. I sit listening over and over again to the husk of someone I used to love
+    as if that\u2019s going to keep my humanity intact."
+  - "This is the end. Today the people mutinied against us. They\u2019re all dead
+    now. They just kept coming. Charging straight into our line just waiting to be
+    cut down. That hall is stained with the crimson remains of an entire generation.
+    All of it by my hand. Whatever good part of me I had left is dead. I deserve
+    a fate worse than death. How did it come to this? How did a simple security voyage
+    turn me into a butcher. I\u2019m taking my fate into my own hands, giving myself
+    the last bit of justice I deserve. I let the monster inside of me out, and it\u2019s
+    time to put it back in its cage."
+  - "I can\u2019t believe this! I finally have access to an actual real tear drive.
+    I\u2019ve been researching this technology for years and now I finally get to
+    have it in my hands to experiment on. Engineering had to replace the old tear
+    drive in the Riftwalker and so they have given me the old one to repair and experiment
+    with. I can\u2019t wait to get started!"
+  - "This tear drive has been absolutely fascinating to work with! The way the drive
+    quickly spins up to a ready state is quite impressive considering this model\u2019s
+    age. I have a theory that with some tweaking I can open a small tear within the
+    confines of the lab and get a better look at the space that these ships travel
+    through. We all use this technology on a daily basis and I need to understand
+    it before I can research other uses for it."
+  - "I\u2019ve hit a snag. Despite the miniscule size of the tear I am trying to
+    create, the drive doesn\u2019t have a sufficient power supply for the task here
+    in the lab. I will have to procure a solution. I hear the maintenance wing has
+    a surplus of spare batteries for the various facilities and automata on the ship.
+    Maybe I can start there\u2026"
+  - "Success! I was able to generate a localized tear in the lab. I only kept it
+    on for a few minutes just to test the possibility of this. I want to go inside.
+    I want to find out what\u2019s beyond the veil of this mysterious realm we traverse
+    through every day. Despite the amount of time I have spent researching this technology
+    I have found shockingly few descriptions and details of this space and I aim
+    to be a pioneer of this new frontier I have found. Just one step further, I\u2019m
+    so close to discovering something big! This would put me on the map and I would
+    finally be recognized for the scientist I am. I\u2019m going in tomorrow, I need
+    to see this all first hand."
+  - "It\u2019s beautiful, the void, great beyond, or whatever you want to call it.
+    I saw everything. Every event in human history all at once, seemingly in the
+    blink of an eye. In a way, it almost made me seem insignificant. Just a speck
+    of dust on the canvas of history if even that. I don\u2019t remember coming out
+    of there, I just woke up on the floor of the lab and the power seems to be out.
+    What a ride. To think, all of our history as a species is simply a murmur in
+    this higher plane."
+  - "It\u2019s worse than I could\u2019ve imagined. When I came back something must
+    have gone wrong. The ship\u2019s main tear drive is no longer working. I suspect
+    the tuning ring was thrown all out of sort due to the closing of the tear I created
+    in the lab. Hopefully our distress signal reaches help in time or else we\u2019re
+    screwed. How did I let this happen? From my initial testing I knew these tears
+    caused weird irregularities in real space. I let my hubris blind me, the thought
+    that I was special. I\u2019ve damned us all and I have no one to blame but myself. "
 --- !u!1 &6116321394700941146
 GameObject:
   m_ObjectHideFlags: 0
@@ -2939,7 +2751,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1150836373837361322}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Terminals, Assembly-CSharp
         m_MethodName: powerOff
         m_Mode: 1
@@ -3073,7 +2885,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1150836373837361322}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Terminals, Assembly-CSharp
         m_MethodName: viewLog
         m_Mode: 3
@@ -3085,128 +2897,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &6250119582775702403
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8234693215810778419}
-  - component: {fileID: 801641883173021959}
-  - component: {fileID: 7862578943008017561}
-  - component: {fileID: 2294301736027058153}
-  m_Layer: 5
-  m_Name: Button
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &8234693215810778419
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6250119582775702403}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 8767774983027578655}
-  m_Father: {fileID: 2704681324527276898}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &801641883173021959
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6250119582775702403}
-  m_CullTransparentMesh: 1
---- !u!114 &7862578943008017561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6250119582775702403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!114 &2294301736027058153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6250119582775702403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 7862578943008017561}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &6257620806622009639
 GameObject:
   m_ObjectHideFlags: 0
@@ -3599,7 +3289,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1150836373837361322}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Terminals, Assembly-CSharp
         m_MethodName: viewLog
         m_Mode: 3
@@ -3611,141 +3301,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &6621919137925926577
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2811115989431234353}
-  - component: {fileID: 4695775369135372867}
-  - component: {fileID: 1825024718636806131}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2811115989431234353
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6621919137925926577}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5841248119057061692}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &4695775369135372867
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6621919137925926577}
-  m_CullTransparentMesh: 1
---- !u!114 &1825024718636806131
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6621919137925926577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: Terminal
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 48.06
-  m_fontSizeBase: 48.06
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6943494345046025904
 GameObject:
   m_ObjectHideFlags: 0
@@ -3868,7 +3423,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1150836373837361322}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Terminals, Assembly-CSharp
         m_MethodName: viewLog
         m_Mode: 3
@@ -4131,7 +3686,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1150836373837361322}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Terminals, Assembly-CSharp
         m_MethodName: viewLog
         m_Mode: 3
@@ -4143,141 +3698,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &7566291185613505859
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8767774983027578655}
-  - component: {fileID: 6514598909643752610}
-  - component: {fileID: 6155931322895017457}
-  m_Layer: 5
-  m_Name: Text (TMP)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &8767774983027578655
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7566291185613505859}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 8234693215810778419}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &6514598909643752610
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7566291185613505859}
-  m_CullTransparentMesh: 1
---- !u!114 &6155931322895017457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7566291185613505859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: Shop
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 48.06
-  m_fontSizeBase: 48.06
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &7980738159321930198
 GameObject:
   m_ObjectHideFlags: 0
@@ -4643,7 +4063,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1150836373837361322}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Terminals, Assembly-CSharp
         m_MethodName: viewLog
         m_Mode: 3
@@ -4777,7 +4197,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1150836373837361322}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: Terminals, Assembly-CSharp
         m_MethodName: viewLog
         m_Mode: 3

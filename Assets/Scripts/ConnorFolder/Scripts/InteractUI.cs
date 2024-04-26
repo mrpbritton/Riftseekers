@@ -87,7 +87,8 @@ public class InteractUI : MonoBehaviour {
         background.DOScale(0f, .25f);
     }
 
-    public void completeInteraction(Transform interactable) {
+    public void completeInteraction(Transform interactable, bool dontSetMeTrue = false) {
+        if(dontSetMeTrue) return;
         for(int i = 0; i < interactables.Count; i++) {
             if(interactables[i] == interactable) {
                 infos.RemoveAt(i);

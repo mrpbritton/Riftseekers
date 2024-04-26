@@ -13,6 +13,7 @@ public class ShopPrompter : MonoBehaviour {
     List<Image> playerSlots = new List<Image>();
     PInput pInput;
     [SerializeField] TextMeshProUGUI moneyText;
+    [SerializeField] Transform shopUI;
 
     bool shown = false;
 
@@ -101,8 +102,8 @@ public class ShopPrompter : MonoBehaviour {
     void show() {
         shown = true;
         reshow();
-        helperUI.completeInteraction(transform);
         canvas.SetActive(true);
+        shopUI.gameObject.SetActive(true);
         FindObjectOfType<PlayerMovement>().enabled = false;
         AttackManager.I.enabled = false;
     }
@@ -111,6 +112,7 @@ public class ShopPrompter : MonoBehaviour {
         canvas.SetActive(false);
         FindObjectOfType<PlayerMovement>().enabled = true;
         AttackManager.I.enabled = true;
+        Terminals.I.powerOff();
         saveShop();
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class Terminals : MonoBehaviour
+public class Terminals : Singleton<Terminals>
 {
     public GameObject screen;
     public TextMeshProUGUI text;
