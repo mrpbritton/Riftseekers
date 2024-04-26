@@ -34,6 +34,8 @@ public class ShopPrompter : MonoBehaviour {
         pInput = new PInput();
         pInput.Enable();
         pInput.Player.Interact.performed += ctx => toggleShownState();
+        pInput.Player.Dash.performed += ctxt => OpenShop();
+        pInput.Player.Ability1.performed += ctxt => OpenTerminal();
 
         interact = GetComponent<Interact>();
 
@@ -59,6 +61,18 @@ public class ShopPrompter : MonoBehaviour {
 
     private void OnDisable() {
         pInput.Disable();
+        pInput.Player.Dash.performed -= ctxt => OpenShop();
+        pInput.Player.Ability1.performed -= ctxt => OpenTerminal();
+    }
+
+    private void OpenShop()
+    {
+        toggleShopTerminalState(true);
+    }
+
+    private void OpenTerminal()
+    {
+        toggleShopTerminalState(false);
     }
 
     void reshow() {
