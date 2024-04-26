@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class Terminals : Singleton<Terminals>
@@ -10,8 +9,7 @@ public class Terminals : Singleton<Terminals>
     public TextMeshProUGUI text;
     int randVal;
 
-    public List<LorePiece_SO> logs;
-    public List<Button> logButtons;
+    public string[] logs;
     private void Start()
     {
         screen.SetActive(false);
@@ -19,16 +17,9 @@ public class Terminals : Singleton<Terminals>
 
     public void powerOn()
     {
-        randVal = Inventory.getRandSeenLoreIndex();
-        foreach(int i in Inventory.getSeenLore())
-        {
-            logButtons[i].interactable = true;
-        }
+        //randVal = Random.Range(0, Inventory.seenLore().Length);
         Debug.Log(randVal);
-        if (randVal > 0)
-            text.text = logs[randVal].lore;
-        else
-            text.text = "ERROR 331: NO LOG FOUND. CHECK SYSTEM INTEGRITY AND STORAGE.";
+        text.text = logs[randVal];
         screen.SetActive(true);
     } 
 
@@ -39,6 +30,6 @@ public class Terminals : Singleton<Terminals>
 
     public void viewLog(int index)
     {
-        text.text = logs[index].lore;
+        text.text = logs[index];
     }
 }
