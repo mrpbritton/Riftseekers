@@ -27,6 +27,10 @@ public class ShopPrompter : MonoBehaviour {
     [SerializeField] Sprite loreSprite;
 
     private void Start() {
+        StartCoroutine(thing());
+    }
+    IEnumerator thing() {
+        yield return new WaitForSeconds(.1f);
         pInput = new PInput();
         pInput.Enable();
         pInput.Player.Interact.performed += ctx => toggleShownState();
@@ -45,7 +49,7 @@ public class ShopPrompter : MonoBehaviour {
 
         //  populates items
         var data = SaveData.getString(shopTag());
-        reference = string.IsNullOrEmpty(data) ? new ShopData(Random.Range(2,5), Random.Range(3, 6)) : JsonUtility.FromJson<ShopData>(data);
+        reference = string.IsNullOrEmpty(data) ? new ShopData(Random.Range(2, 5), Random.Range(3, 6)) : JsonUtility.FromJson<ShopData>(data);
         SaveData.setString(shopTag(), JsonUtility.ToJson(reference));
         Inventory.loadInventory();
         reshow();
@@ -110,6 +114,7 @@ public class ShopPrompter : MonoBehaviour {
     void hide() {
         shown = false;
         canvas.SetActive(false);
+        shopUI.gameObject.SetActive(false);
         FindObjectOfType<PlayerMovement>().enabled = true;
         AttackManager.I.enabled = true;
         Terminals.I.powerOff();

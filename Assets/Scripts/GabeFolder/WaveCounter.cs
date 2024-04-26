@@ -15,6 +15,11 @@ public class WaveCounter : Singleton<WaveCounter>
     Transform tweeningObj;
 
     private void Start() {
+        StartCoroutine(thing());
+    }
+
+    IEnumerator thing() {
+        yield return new WaitForEndOfFrame();
         tweeningObj = new GameObject().transform;
         tweeningObj.parent = transform;
         moneyText.text = "money: " + Inventory.getMoney().ToString("0.0");
