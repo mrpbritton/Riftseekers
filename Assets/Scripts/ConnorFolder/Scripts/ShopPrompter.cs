@@ -63,7 +63,6 @@ public class ShopPrompter : MonoBehaviour {
 
     void reshow() {
         moneyText.text = "Money: <color=yellow>" + Inventory.getMoney().ToString();
-        shopSlots[0].GetComponent<Button>().Select();
         //  shop
         for(int i = 0; i < shopSlots.Count; i++) {
             if(i < reference.items.Count) {
