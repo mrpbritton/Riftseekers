@@ -113,12 +113,20 @@ public class ShopPrompter : MonoBehaviour {
     }
     void hide() {
         shown = false;
-        canvas.SetActive(false);
-        shopUI.gameObject.SetActive(false);
         FindObjectOfType<PlayerMovement>().enabled = true;
         AttackManager.I.enabled = true;
+        canvas.SetActive(false);
+        shopUI.gameObject.SetActive(false);
         Terminals.I.powerOff();
         saveShop();
+    }
+
+    public void toggleShopTerminalState(bool shop) {
+        if(!shown) return;
+        reshow();
+        shopUI.gameObject.SetActive(shop);
+        if(shop) Terminals.I.powerOff();
+        else Terminals.I.powerOn();
     }
 
     void saveShop() {
