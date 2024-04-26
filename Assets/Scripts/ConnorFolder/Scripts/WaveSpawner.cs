@@ -21,7 +21,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
     [Tooltip("Enemies that will be spawned")]
     [SerializeField] List<GameObject> enemies = new List<GameObject>();
 
-    int enemiesInPool = 200;
+    int enemiesInPool = 500;
     List<List<GameObject>> enemyPools = new List<List<GameObject>>();
 
     KdTree<Transform> spawnPoints = new KdTree<Transform>();
@@ -186,7 +186,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
 
     void rampUp(bool runCompete) {
         if(waveIndex < 5) {
-            monstersPerWave += (int)(startingMonstersPerWave * Mathf.Pow(roundBase, waveIndex));
+            monstersPerWave = Mathf.Clamp(monstersPerWave + (int)(startingMonstersPerWave * Mathf.Pow(roundBase, waveIndex)), 0, enemiesInPool);
             minSpawnTime *= spawnTimeInc;
             maxSpawntime *= spawnTimeInc;
         }
