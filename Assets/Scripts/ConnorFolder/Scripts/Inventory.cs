@@ -91,9 +91,23 @@ public static class Inventory {
         if(itemBag.unseenLore.Count == 0) return -1;
         return itemBag.unseenLore[UnityEngine.Random.Range(0, itemBag.unseenLore.Count)];
     }
+
     public static void removeLoreIndex(int index) {
+        itemBag.seenLore.Add(itemBag.unseenLore[index]);
         itemBag.unseenLore.Remove(index);
         Debug.Log("Player has Lore #: " + index);
+        
+    }
+
+    public static List<int> getSeenLore()
+    {
+        return itemBag.seenLore;
+    }
+
+    public static int getRandSeenLoreIndex()
+    {
+        if (itemBag.seenLore.Count == 0) return -1;
+        return itemBag.seenLore[UnityEngine.Random.Range(0, itemBag.seenLore.Count)];
     }
     public static bool seenLore(int index) {
         return !itemBag.unseenLore.Contains(index);
@@ -113,6 +127,7 @@ public class Bag {
     public List<ItemSaveData> items;
     public int money;
     public List<int> unseenLore = new List<int>();
+    public List<int> seenLore = new List<int>();
     public int waveIndex;
 
     public Bag(int m, int max, List<ConItem> i = null) {
@@ -120,6 +135,7 @@ public class Bag {
         money = m;
         items = new List<ItemSaveData>();
         unseenLore = new List<int>();
+        seenLore = new List<int>();
         if(i != null) {
             foreach(var j in i) {
                 items.Add(new ItemSaveData(j));
