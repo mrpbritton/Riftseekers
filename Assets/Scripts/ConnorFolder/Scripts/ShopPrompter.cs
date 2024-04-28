@@ -42,7 +42,7 @@ public class ShopPrompter : MonoBehaviour {
 
         interact = GetComponent<Interact>();
 
-        helperUI = FindObjectOfType<InteractUI>();
+        helperUI = InteractUI.I;
         helperUI.addInteractable(transform, new InteractInfo("Terminal", InteractInfo.interactType.Shop));
 
         foreach(var i in shopHolder.GetComponentsInChildren<Button>()) {

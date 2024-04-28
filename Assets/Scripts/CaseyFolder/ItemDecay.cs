@@ -26,6 +26,7 @@ public class ItemDecay : MonoBehaviour
         yield return new WaitForSeconds(lifespan - shrinkTime);
         transform.DOScale(0f, shrinkTime);
         yield return new WaitForSeconds(shrinkTime);
+        InteractUI.I.completeInteraction(transform);
         Destroy(gameObject);
     }
 }

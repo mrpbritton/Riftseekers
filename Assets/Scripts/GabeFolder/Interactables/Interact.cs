@@ -21,9 +21,9 @@ public class Interact : MonoBehaviour {
         pInput.Enable();
         pInput.Player.Interact.performed += ctxt => Interacted();
 
-        if(FindObjectOfType<InteractUI>() == null)
+        if(InteractUI.I == null)
             Debug.LogError("Add InteractableUI Prefab to scene");
-        helperUI = FindObjectOfType<InteractUI>();
+        helperUI = InteractUI.I;
 
         //  gets info
         if(TryGetComponent<SpitItem_GA>(out var it))

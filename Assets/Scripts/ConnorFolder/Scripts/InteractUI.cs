@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using DG.Tweening;
 
-public class InteractUI : MonoBehaviour {
+public class InteractUI : Singleton<InteractUI> {
     [SerializeField] Transform background;
     [SerializeField] TextMeshProUGUI infoText;
     [SerializeField] string helpText;
@@ -113,7 +113,8 @@ public class InteractUI : MonoBehaviour {
                 hide();
 
             yield return new WaitForFixedUpdate();
-            checker = StartCoroutine(interactableChecker(info));
+            if(info != null)
+                checker = StartCoroutine(interactableChecker(info));
         }
         else
             checker = null;

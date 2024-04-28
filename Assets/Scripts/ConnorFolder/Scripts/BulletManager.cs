@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletManager : Singleton<BulletManager> {
     [SerializeField] GameObject bulletPref;
-    int poolCount = 100;
+    int poolCount = 1000;
 
     [SerializeField] Transform bParent;
     List<GameObject> bulletPool = new List<GameObject>();

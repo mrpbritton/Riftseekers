@@ -37,6 +37,7 @@ public class WaveSpawner : Singleton<WaveSpawner> {
     PInput pInput;
 
     [HideInInspector] public int waveIndex = 0;
+    int rampUpIndex = 5;
 
     Coroutine triggerWaiter = null;
     Coroutine waver = null;
@@ -123,6 +124,13 @@ public class WaveSpawner : Singleton<WaveSpawner> {
                 var temp = enemyPools[rand][0];
                 enemyPools[rand].RemoveAt(0);
                 temp.SetActive(true);
+                
+                if(waveIndex >= rampUpIndex) {
+                    temp.GetComponent<EnemyHealth>().maxhealth = temp.GetComponent<EnemyHealth>().baseHealth + (5 * (waveIndex - rampUpIndex + 1));
+                    temp.transform.localScale = Vector3.one + Vector3.one * (0.25f * (waveIndex - rampUpIndex + 1));
+                    if(temp.TryGetComponent<Damage_GA>(out var da))
+                        da.damage = da.originalDamage * (1.1f * (waveIndex - rampUpIndex + 1));
+                }
                 temp.transform.position = point.position;
                 ec.enemies.Add(temp);
                 yield return new WaitForSeconds(Random.Range(minSpawnTime, maxSpawntime));
@@ -137,7 +145,6 @@ public class WaveSpawner : Singleton<WaveSpawner> {
 
             //  waits for player to trigger next wave
             yield return new WaitForSeconds(2f);
-            Debug.Log("here");
             if(triggerWaiter != null)
                 StopCoroutine(triggerWaiter);
             triggerWaiter = StartCoroutine(triggerWaveWaiter());
@@ -187,17 +194,10 @@ public class WaveSpawner : Singleton<WaveSpawner> {
     }
 
     void rampUp(bool runCompete) {
-        if(waveIndex < 5) {
+        if(waveIndex < rampUpIndex) {
             monstersPerWave = Mathf.Clamp(monstersPerWave + (int)(startingMonstersPerWave * Mathf.Pow(roundBase, waveIndex)), 0, enemiesInPool);
             minSpawnTime *= spawnTimeInc;
             maxSpawntime *= spawnTimeInc;
-        }
-        else {
-            foreach(var i in enemies) {
-                i.GetComponent<EnemyHealth>().maxhealth = i.GetComponent<EnemyHealth>().baseHealth + (5 * waveIndex);
-                i.transform.localScale = Vector3.one * (0.25f * waveIndex);
-                i.GetComponentInChildren<Damage_GA>().damage = i.GetComponentInChildren<Damage_GA>().originalDamage * (.5f * waveIndex);
-            }
         }
         if(runCompete)
             WaveComplete();
