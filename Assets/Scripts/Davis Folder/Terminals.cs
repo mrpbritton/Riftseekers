@@ -8,6 +8,7 @@ public class Terminals : Singleton<Terminals>
 {
     public GameObject screen;
     public TextMeshProUGUI text;
+    public Button initialSelected;
     int randVal;
 
     public List<LorePiece_SO> logs;
@@ -20,6 +21,7 @@ public class Terminals : Singleton<Terminals>
     public void powerOn()
     {
         //randVal = Random.Range(0, Inventory.seenLore().Length);
+        initialSelected.Select();
         randVal = Inventory.getRandSeenLoreIndex();
         List<int> list = new();
         if (Inventory.getSeenLore().Count > 0)
