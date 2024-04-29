@@ -85,16 +85,20 @@ public class ShopPrompter : MonoBehaviour {
         //  shop
         for(int i = 0; i < shopSlots.Count; i++) {
             if(i < reference.items.Count) {
+                shopSlots[i].enabled = true;
                 shopSlots[i].sprite = reference.items[i].image;
+                shopSlots[i].enabled = reference.items[i].image != null;
                 shopSlots[i].transform.parent.GetComponentInChildren<TextMeshProUGUI>().text = reference.items[i].value.ToString();
             }
             else if(i - reference.items.Count < reference.loreInds.Count) {
                 var l = AugmentLibrary.I.getLore(reference.loreInds[i - reference.items.Count]);
+                shopSlots[i].enabled = true;
                 shopSlots[i].sprite = loreSprite;
                 shopSlots[i].transform.parent.GetComponentInChildren<TextMeshProUGUI>().text = l.title;
             }
             else {
                 shopSlots[i].sprite = null;
+                shopSlots[i].enabled = false;
                 shopSlots[i].transform.parent.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
         }
@@ -102,10 +106,12 @@ public class ShopPrompter : MonoBehaviour {
         //  player
         for(int i = 0; i < playerSlots.Count; i++) {
             if(i < Inventory.getItems(AugmentLibrary.I).Count) {
+                playerSlots[i].enabled = true;
                 playerSlots[i].sprite = i < Inventory.getItems(AugmentLibrary.I).Count ? Inventory.getItem(i, AugmentLibrary.I).image : null;
                 playerSlots[i].transform.parent.GetComponentInChildren<TextMeshProUGUI>().text = Inventory.getItem(i, AugmentLibrary.I).value.ToString();
             }
             else {
+                playerSlots[i].enabled = false;
                 playerSlots[i].sprite = null;
                 playerSlots[i].transform.parent.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
