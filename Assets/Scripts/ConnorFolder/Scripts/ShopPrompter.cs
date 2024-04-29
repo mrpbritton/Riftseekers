@@ -71,6 +71,7 @@ public class ShopPrompter : MonoBehaviour {
     private void OpenShop()
     {
         toggleShopTerminalState(true);
+        shopDefaultSelect.Select();
     }
 
     private void OpenTerminal()
